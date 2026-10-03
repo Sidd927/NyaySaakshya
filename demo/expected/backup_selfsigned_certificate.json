@@ -1,6 +1,6 @@
 {
   "capture_sha256": "c08508835713a7485fc8456a58b93c226786f7f46b6da483706f586240ac2caa",
-  "command": "PYTHONPATH=src python3 -c \"...submit_path('/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/backup_selfsigned_certificate.pcap')...\"  (equivalently: curl -F file=@/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/backup_selfsigned_certificate.pcap http://127.0.0.1:8000/api/v1/analyses)",
+  "command": "PYTHONPATH=src python3 -c \"...submit_path('demo/captures/backup_selfsigned_certificate.pcap')...\"  (equivalently: curl -F file=@demo/captures/backup_selfsigned_certificate.pcap http://127.0.0.1:8000/api/v1/analyses)",
   "exit_status": "success",
   "input_capture": "backup_selfsigned_certificate.pcap",
   "purpose": "Backup: generated TLS 1.2, self-signed leaf",

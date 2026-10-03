@@ -1,0 +1,72 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%">
+      <stop offset="0%" stop-color="#1b2a4a"/>
+      <stop offset="60%" stop-color="#0f1b33"/>
+      <stop offset="100%" stop-color="#0a1222"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f3d27a"/>
+      <stop offset="50%" stop-color="#d4a84c"/>
+      <stop offset="100%" stop-color="#b8863a"/>
+    </linearGradient>
+    <linearGradient id="goldSoft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8c171" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#b8863a" stop-opacity="0.6"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <circle cx="400" cy="400" r="368" fill="none" stroke="url(#gold)" stroke-width="4" opacity="0.55"/>
+  <circle cx="400" cy="400" r="346" fill="none" stroke="#d4a84c" stroke-width="1.5" opacity="0.3"/>
+  <g stroke="#3a5276" stroke-width="2" opacity="0.55">
+    <path d="M120 400 H 230" />
+    <path d="M680 400 H 570" />
+    <path d="M400 120 V 230" />
+    <path d="M400 680 V 570" />
+    <path d="M190 190 L 260 260" />
+    <path d="M610 190 L 540 260" />
+    <path d="M190 610 L 260 540" />
+    <path d="M610 610 L 540 540" />
+  </g>
+  <g fill="#d4a84c" opacity="0.8">
+    <circle cx="120" cy="400" r="5"/>
+    <circle cx="680" cy="400" r="5"/>
+    <circle cx="400" cy="120" r="5"/>
+    <circle cx="400" cy="680" r="5"/>
+    <circle cx="190" cy="190" r="4"/>
+    <circle cx="610" cy="190" r="4"/>
+    <circle cx="190" cy="610" r="4"/>
+    <circle cx="610" cy="610" r="4"/>
+  </g>
+  <path d="M400 185
+           L 560 245
+           C 560 395, 500 520, 400 590
+           C 300 520, 240 395, 240 245
+           Z"
+        fill="#132244" stroke="url(#gold)" stroke-width="5"/>
+  <path d="M400 205
+           L 540 258
+           C 540 392, 486 505, 400 568
+           C 314 505, 260 392, 260 258
+           Z"
+        fill="none" stroke="#5a6f94" stroke-width="1.5" opacity="0.6"/>
+  <g transform="translate(400,375)">
+    <path d="M-118 0 C -70 -62, 70 -62, 118 0 C 70 62, -70 62, -118 0 Z"
+          fill="none" stroke="url(#gold)" stroke-width="6" stroke-linejoin="round"/>
+    <circle cx="0" cy="0" r="44" fill="#0a1222" stroke="url(#gold)" stroke-width="5"/>
+    <circle cx="0" cy="0" r="20" fill="url(#gold)"/>
+    <circle cx="9" cy="-9" r="6" fill="#f7e7bd"/>
+    <line x1="-118" y1="-10" x2="-50" y2="-10" stroke="#d4a84c" stroke-width="2" opacity="0.5"/>
+    <line x1="118" y1="10" x2="50" y2="10" stroke="#d4a84c" stroke-width="2" opacity="0.5"/>
+  </g>
+  <g stroke="url(#goldSoft)" stroke-width="3" fill="none" opacity="0.8">
+    <path d="M340 505 L 400 530 L 460 505" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="400" y="665" text-anchor="middle" font-family="Lohit Devanagari, Samyak Devanagari, sans-serif"
+        font-size="48" fill="url(#gold)" font-weight="700" letter-spacing="1">न्यायसाक्ष्य</text>
+  <text x="400" y="712" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="25" fill="#cdd7ea" letter-spacing="6">NYAYSAAKSHYA</text>
+</svg>

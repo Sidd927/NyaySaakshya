@@ -28,6 +28,9 @@ PCAP_DIR = "research/experiments/oq33r/out"
 PLAINTEXT = os.path.join(PCAP_DIR, "postfix_smtp_plaintext_session.pcap")
 IMPLICIT = os.path.join(PCAP_DIR, "dovecot_imap_imaps_implicit_tls.pcap")
 
+#: Keep in sync with FREEZE_BASELINE_TAG in test_backend_architecture.py.
+FREEZE_BASELINE_TAG = "v1.0.0-nyaysaakshya"
+
 
 def _tshark() -> bool:
     try:
@@ -152,10 +155,11 @@ def test_backend_core_was_not_touched_to_build_this():
     freeze tests in test_backend_architecture.py are the enforcement; this test names
     the intent so a future regression here is legible without cross-referencing."""
     import subprocess
-    diff = subprocess.run(["git", "diff", "--name-only", "v0.3.0-phase8", "HEAD"],
+    diff = subprocess.run(["git", "diff", "--name-only", FREEZE_BASELINE_TAG, "HEAD"],
                           capture_output=True, text=True)
     if diff.returncode != 0:
-        pytest.skip("git unavailable")
+        pytest.skip("freeze baseline tag %s not found (fetch tags: git fetch --tags)"
+                    % FREEZE_BASELINE_TAG)
     changed = {os.path.basename(f) for f in diff.stdout.splitlines()
               if f.startswith("src/nyaysaakshya/backend/")}
     assert "db.py" not in changed

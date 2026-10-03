@@ -1,6 +1,6 @@
 {
   "capture_sha256": "ce5377348e22ad92c33d705e31388944bad8224534d478c38b57a75d3ba4a501",
-  "command": "PYTHONPATH=src python3 -c \"...submit_path('/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/backup_weak_certificate.pcap')...\"  (equivalently: curl -F file=@/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/backup_weak_certificate.pcap http://127.0.0.1:8000/api/v1/analyses)",
+  "command": "PYTHONPATH=src python3 -c \"...submit_path('demo/captures/backup_weak_certificate.pcap')...\"  (equivalently: curl -F file=@demo/captures/backup_weak_certificate.pcap http://127.0.0.1:8000/api/v1/analyses)",
   "exit_status": "success",
   "input_capture": "backup_weak_certificate.pcap",
   "purpose": "Backup: generated TLS 1.2, RSA-1024 + SHA-1",

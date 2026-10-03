@@ -1,6 +1,6 @@
 {
   "capture_sha256": "43ee75d5eae7b523dcc051b6e92a200a8d171342ddecf24ce32e3a0f140e216d",
-  "command": "PYTHONPATH=src python3 -c \"...submit_path('/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/backup_healthy_chain.pcap')...\"  (equivalently: curl -F file=@/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/backup_healthy_chain.pcap http://127.0.0.1:8000/api/v1/analyses)",
+  "command": "PYTHONPATH=src python3 -c \"...submit_path('demo/captures/backup_healthy_chain.pcap')...\"  (equivalently: curl -F file=@demo/captures/backup_healthy_chain.pcap http://127.0.0.1:8000/api/v1/analyses)",
   "exit_status": "success",
   "input_capture": "backup_healthy_chain.pcap",
   "purpose": "Backup: generated TLS 1.2, healthy chain (negative control)",

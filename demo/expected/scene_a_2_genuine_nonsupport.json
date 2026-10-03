@@ -1,6 +1,6 @@
 {
   "capture_sha256": "eacbc065c3427acf406ec8f2059ded8b6e77162a60a3c1497b8fbd805a941e20",
-  "command": "PYTHONPATH=src python3 -c \"...submit_path('/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/scene_a_2_genuine_nonsupport.pcap')...\"  (equivalently: curl -F file=@/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/scene_a_2_genuine_nonsupport.pcap http://127.0.0.1:8000/api/v1/analyses)",
+  "command": "PYTHONPATH=src python3 -c \"...submit_path('demo/captures/scene_a_2_genuine_nonsupport.pcap')...\"  (equivalently: curl -F file=@demo/captures/scene_a_2_genuine_nonsupport.pcap http://127.0.0.1:8000/api/v1/analyses)",
   "exit_status": "success",
   "input_capture": "scene_a_2_genuine_nonsupport.pcap",
   "purpose": "STARTTLS inversion: genuine server non-support",

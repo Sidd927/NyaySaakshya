@@ -14,6 +14,11 @@ import pytest
 BACKEND = "src/nyaysaakshya/backend"
 SRC = "src/nyaysaakshya"
 
+#: The freeze guards below diff HEAD against this tag: protected packages may not change
+#: after it except where a guard explicitly allows. A repository without the tag (a
+#: shallow or tag-less clone) cannot be checked, so the guards skip with a reason.
+FREEZE_BASELINE_TAG = "v1.0.0-nyaysaakshya"
+
 
 def _modules(package_dir):
     for name in sorted(os.listdir(package_dir)):
@@ -229,10 +234,10 @@ PHASE_11_DECLARED = {
 def _protected_changes():
     import subprocess
     diff = subprocess.run(
-        ["git", "diff", "--name-only", "v0.2.0-phase7", "HEAD"],
+        ["git", "diff", "--name-only", FREEZE_BASELINE_TAG, "HEAD"],
         capture_output=True, text=True)
     if diff.returncode != 0:                      # pragma: no cover - no git
-        pytest.skip("git unavailable")
+        pytest.skip("freeze baseline tag %s not found (fetch tags: git fetch --tags)" % FREEZE_BASELINE_TAG)
     changed = [line for line in diff.stdout.splitlines() if line]
     protected = ("src/nyaysaakshya/posture/", "src/nyaysaakshya/analysis/",
                  "src/nyaysaakshya/crosssession/", "src/nyaysaakshya/ml/",
@@ -388,10 +393,10 @@ PHASE8_MUTABLE = {
 def test_phase_eight_core_is_untouched():
     """Phase 8 is frozen apart from an explicit, justified allowlist."""
     import subprocess
-    diff = subprocess.run(["git", "diff", "--name-only", "v0.3.0-phase8", "HEAD"],
+    diff = subprocess.run(["git", "diff", "--name-only", FREEZE_BASELINE_TAG, "HEAD"],
                           capture_output=True, text=True)
     if diff.returncode != 0:                      # pragma: no cover - no git
-        pytest.skip("git unavailable")
+        pytest.skip("freeze baseline tag %s not found (fetch tags: git fetch --tags)" % FREEZE_BASELINE_TAG)
     changed = {f for f in diff.stdout.splitlines()
                if f.startswith("src/nyaysaakshya/backend/")}
     assert changed <= PHASE8_MUTABLE, changed - PHASE8_MUTABLE
@@ -400,10 +405,10 @@ def test_phase_eight_core_is_untouched():
 def test_frozen_backend_modules_really_are_frozen():
     """Names the modules no later phase may touch, so the allowlist cannot drift."""
     import subprocess
-    diff = subprocess.run(["git", "diff", "--name-only", "v0.3.0-phase8", "HEAD"],
+    diff = subprocess.run(["git", "diff", "--name-only", FREEZE_BASELINE_TAG, "HEAD"],
                           capture_output=True, text=True)
     if diff.returncode != 0:                      # pragma: no cover - no git
-        pytest.skip("git unavailable")
+        pytest.skip("freeze baseline tag %s not found (fetch tags: git fetch --tags)" % FREEZE_BASELINE_TAG)
     frozen = {"db.py", "lifecycle.py", "artifacts.py", "pipeline.py", "service.py",
               "errors.py", "limits.py", "__main__.py"}
     touched = {os.path.basename(f) for f in diff.stdout.splitlines()

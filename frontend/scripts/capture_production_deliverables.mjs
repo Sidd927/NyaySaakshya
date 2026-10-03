@@ -1,8 +1,11 @@
 import { spawn } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const ARTIFACTS_DIR = '/Users/siddhant_patil/.gemini/antigravity-ide/brain/6d94de98-bbef-49b8-8afd-e84d6c9bc53c';
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+// Output goes to audit/ (git-ignored) unless ARTIFACTS_DIR is set.
+const ARTIFACTS_DIR = process.env.ARTIFACTS_DIR || path.join(REPO_ROOT, 'audit', 'artifacts');
 const CHROME_PATH = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const DEBUG_PORT = 9224;
 

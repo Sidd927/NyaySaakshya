@@ -1,6 +1,6 @@
 {
   "capture_sha256": "c2a84bf4ed973fcdff29bc5dd8ea24791d195fa186be3bbe7a359f68a3201fff",
-  "command": "PYTHONPATH=src python3 -c \"...submit_path('/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/scene_c_no_ai_equivalence.pcap')...\"  (equivalently: curl -F file=@/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/scene_c_no_ai_equivalence.pcap http://127.0.0.1:8000/api/v1/analyses?ai=true)",
+  "command": "PYTHONPATH=src python3 -c \"...submit_path('demo/captures/scene_c_no_ai_equivalence.pcap')...\"  (equivalently: curl -F file=@demo/captures/scene_c_no_ai_equivalence.pcap http://127.0.0.1:8000/api/v1/analyses?ai=true)",
   "exit_status": "success",
   "input_capture": "scene_c_no_ai_equivalence.pcap",
   "purpose": "--no-ai equivalence",

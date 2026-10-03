@@ -30,7 +30,7 @@ export const LandingHero: React.FC = () => {
         <div className="sms-gate__copy">
           <p className="sms-gate__eyebrow">Passive analysis · Real evidence · Stronger email security</p>
           <h1 id="sms-gate-title" className="sms-gate__title">
-            Secure<span className="is-mail">Mail</span>Scope
+            Nyay<span className="is-mail">Saakshya</span>
           </h1>
           <p className="sms-gate__sub">Cryptographic Security Posture Assessment for Email Traffic</p>
           <p className="sms-gate__desc">

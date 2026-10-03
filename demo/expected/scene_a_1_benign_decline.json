@@ -1,6 +1,6 @@
 {
   "capture_sha256": "1f9863aef21f602c7093c980750b13afb4f63262c94c978512bd0047779f04f0",
-  "command": "PYTHONPATH=src python3 -c \"...submit_path('/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/scene_a_1_benign_decline.pcap')...\"  (equivalently: curl -F file=@/Users/siddhant_patil/Projects/NyaySaakshya/demo/captures/scene_a_1_benign_decline.pcap http://127.0.0.1:8000/api/v1/analyses)",
+  "command": "PYTHONPATH=src python3 -c \"...submit_path('demo/captures/scene_a_1_benign_decline.pcap')...\"  (equivalently: curl -F file=@demo/captures/scene_a_1_benign_decline.pcap http://127.0.0.1:8000/api/v1/analyses)",
   "exit_status": "success",
   "input_capture": "scene_a_1_benign_decline.pcap",
   "purpose": "STARTTLS inversion: benign client decline",

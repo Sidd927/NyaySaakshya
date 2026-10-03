@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="frontend/public/branding/logo.svg" alt="NyaySaakshya logo: a shield with an eye, with the name in Devanagari and English" width="200">
+</p>
+
 # NyaySaakshya
 
 **Forensic triage for cyber-fraud evidence: upload a network capture, see what matters, and put a timestamped, hash-verified report in the case file.**
@@ -256,6 +260,8 @@ The backend is configured through environment variables:
 | `SMS_MAX_ANALYSIS_SECONDS` | `600` | per-analysis budget; must be ≥ `SMS_TSHARK_TIMEOUT_S` |
 | `SMS_DEFAULT_PAGE_SIZE` / `SMS_MAX_PAGE_SIZE` | `20` / `100` | list pagination |
 | `SMS_MAX_JSON_BYTES` | `65536` | largest JSON request body |
+
+The default data directory, `./nyaysaakshya-data`, is intentional: it is the NyaySaakshya-named default, it is git-ignored, and it is created on first run. Set `SMS_DATA_DIR` (or `--data-dir`) to put state elsewhere.
 
 ### Docker
 

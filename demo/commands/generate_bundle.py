@@ -134,13 +134,16 @@ def main() -> None:
                             print(f"  wrote {out_path} ({len(raw)} bytes, "
                                   f"sha256={hashlib.sha256(raw).hexdigest()[:16]}...)")
 
+            # Repo-relative, so the recorded command is runnable from the repository root
+            # and does not embed the machine-specific absolute path.
+            shown_path = os.path.relpath(capture_path, REPO_ROOT)
             manifest = {
                 "scene_id": scene_id,
                 "purpose": purpose,
                 "input_capture": capture_name,
                 "capture_sha256": capture_sha256,
-                "command": f"PYTHONPATH=src python3 -c \"...submit_path('{capture_path}')...\"  "
-                           f"(equivalently: curl -F file=@{capture_path} "
+                "command": f"PYTHONPATH=src python3 -c \"...submit_path('{shown_path}')...\"  "
+                           f"(equivalently: curl -F file=@{shown_path} "
                            f"http://127.0.0.1:8000/api/v1/analyses{'?ai=true' if needs_ai_pair else ''})",
                 "exit_status": "success",
                 "runs": runs,

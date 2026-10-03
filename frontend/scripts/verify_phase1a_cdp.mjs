@@ -1,9 +1,13 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 const DEBUG_PORT = 9222;
-const ARTIFACT_DIR = '/Users/siddhant_patil/.gemini/antigravity-ide/brain/b43e7f3d-2177-47fc-915f-8e69df23609b';
-const AUDIT_DIR = '/Users/siddhant_patil/Projects/NyaySaakshya/audit/phase1a';
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+// Output goes to audit/ (git-ignored) unless ARTIFACTS_DIR is set.
+const ARTIFACT_DIR = process.env.ARTIFACTS_DIR || path.join(REPO_ROOT, 'audit', 'artifacts');
+fs.mkdirSync(ARTIFACT_DIR, { recursive: true });
+const AUDIT_DIR = path.join(REPO_ROOT, 'audit', 'phase1a');
 
 if (!fs.existsSync(AUDIT_DIR)) {
   fs.mkdirSync(AUDIT_DIR, { recursive: true });
