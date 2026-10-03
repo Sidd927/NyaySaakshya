@@ -44,10 +44,10 @@ fi
 echo "-- Git / release identity --"
 GITTAG=$(git describe --tags --exact-match 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
 echo "  ..   current checkout: ${GITTAG:-unknown}"
-if git merge-base --is-ancestor v0.6.0-phase11 HEAD 2>/dev/null; then
-  echo "  OK   v0.6.0-phase11 is an ancestor of the current checkout"
+if git merge-base --is-ancestor v1.0.0-nyaysaakshya HEAD 2>/dev/null; then
+  echo "  OK   v1.0.0-nyaysaakshya is an ancestor of the current checkout"
 else
-  echo "  FAIL v0.6.0-phase11 is not an ancestor of the current checkout -- wrong branch?"
+  echo "  FAIL v1.0.0-nyaysaakshya is not an ancestor of the current checkout -- wrong branch?"
   FAIL=1
 fi
 
