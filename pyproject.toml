@@ -37,6 +37,8 @@ where = ["src"]
 [tool.setuptools.package-data]
 "nyaysaakshya.dashboard" = ["static/*.html", "static/*.js", "static/*.css",
                                "static/views/*.js"]
+# The report translation catalogue is JSON data read at runtime (reporting/i18n.py).
+"nyaysaakshya.reporting" = ["i18n/*/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

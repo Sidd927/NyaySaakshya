@@ -1,0 +1,250 @@
+{
+ "language": "mr",
+ "name": "Marathi",
+ "script": "Devanagari",
+ "schema_version": 1,
+ "catalogue_version": "0.1.0-draft",
+ "digits": "ascii",
+ "status": "MACHINE-DRAFTED. Every entry carries needs_review=true. Nothing in this catalogue has been reviewed by a person.",
+ "notes": [
+  "The English report is authoritative; the Marathi rendering is a translation aid.",
+  "ASCII digits are used for every score, count, identifier and hash so values copy and paste verbatim into a case file.",
+  "Technical tokens stay in Latin script: protocol names (TLS, SMTP, IMAP, POP3, STARTTLS), standard names (RFC 8446, NIST SP 800-52r2), hash names, field names, rule ids and cipher-suite names.",
+  "Terminology below is the drafting convention; a reviewer may change any term, but should change it everywhere."
+ ],
+ "terminology": [
+  {
+   "en": "security posture",
+   "mr": "सुरक्षा स्थिती"
+  },
+  {
+   "en": "assessment",
+   "mr": "मूल्यांकन"
+  },
+  {
+   "en": "evidence",
+   "mr": "पुरावा"
+  },
+  {
+   "en": "finding",
+   "mr": "निष्कर्ष"
+  },
+  {
+   "en": "issue",
+   "mr": "समस्या"
+  },
+  {
+   "en": "session",
+   "mr": "सत्र"
+  },
+  {
+   "en": "capture (PCAP)",
+   "mr": "कॅप्चर (PCAP)"
+  },
+  {
+   "en": "severity",
+   "mr": "तीव्रता"
+  },
+  {
+   "en": "priority",
+   "mr": "प्राधान्य"
+  },
+  {
+   "en": "certainty",
+   "mr": "खात्री"
+  },
+  {
+   "en": "coverage",
+   "mr": "व्याप्ती"
+  },
+  {
+   "en": "recurrence",
+   "mr": "पुनरावृत्ती"
+  },
+  {
+   "en": "abstention / to abstain",
+   "mr": "निष्कर्ष टाळणे",
+   "note": "the engine declines to conclude; neither a pass nor a failure"
+  },
+  {
+   "en": "observable / not observable",
+   "mr": "निरीक्षणयोग्य / निरीक्षणयोग्य नाही",
+   "note": "whether a passive capture can show it at all"
+  },
+  {
+   "en": "remediation",
+   "mr": "उपाययोजना"
+  },
+  {
+   "en": "verification",
+   "mr": "पडताळणी"
+  },
+  {
+   "en": "standard",
+   "mr": "मानक"
+  },
+  {
+   "en": "baseline",
+   "mr": "आधाररेषा"
+  },
+  {
+   "en": "control endpoint",
+   "mr": "नियंत्रण एंडपॉइंट"
+  },
+  {
+   "en": "deviation",
+   "mr": "विचलन"
+  },
+  {
+   "en": "cleartext",
+   "mr": "क्लिअरटेक्स्ट"
+  },
+  {
+   "en": "certificate",
+   "mr": "प्रमाणपत्र"
+  },
+  {
+   "en": "CRITICAL (severity and posture band)",
+   "mr": "अतिगंभीर",
+   "note": "one Marathi word for both uses, as in English"
+  }
+ ],
+ "source_scan": {
+  "about": "Test fixture: every English literal of >=3 words in these modules (excluding docstrings, exception messages and the rule attributes description/standards/rule_id) must be covered by an entry here, or be listed under 'ignore' with the reason it never reaches the HTML report.",
+  "modules": [
+   "analysis/rules/__init__.py",
+   "analysis/rules/certificate_rules.py",
+   "analysis/rules/configuration_rules.py",
+   "analysis/rules/keyexchange_rules.py",
+   "analysis/rules/plaintext_rules.py",
+   "analysis/rules/starttls_rules.py",
+   "analysis/rules/tls_rules.py",
+   "crosssession/rules.py",
+   "crosssession/contrast.py",
+   "crosssession/baseline.py",
+   "crosssession/comparability.py",
+   "posture/remediation.py",
+   "posture/engine.py",
+   "posture/fusion.py",
+   "posture/risk.py",
+   "posture/scoring.py",
+   "posture/model.py",
+   "ml/engine.py",
+   "ml/explain.py",
+   "crypto/oids.py",
+   "crypto/keyexchange.py",
+   "crypto/certificates.py",
+   "posture/standards.py"
+  ],
+  "ignore": [
+   {
+    "en": "RFC 5280: Internet X.509 PKI certificate and CRL profile",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "RFC 5280 SS6: certification path validation requires a set of trust anchors, which a packet capture does not contain",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "RFC 5280 SS4.2.1.1: the Authority Key Identifier identifies the key that signed a certificate, and is the intended means of chain building",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "RFC 6960: OCSP status is retrieved in a separate network transaction and is not present in a passively captured mail session",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "RFC 8446 SS2: the TLS 1.3 Certificate message is encrypted",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "{y}-{m}-{d} {hour}:{minute}:{second} UTC",
+    "why": "date formatter template, not report prose (timestamps are covered by a pass-through pattern)"
+   },
+   {
+    "en": "RFC 8446 SS4.2.8: TLS 1.3 negotiates key exchange in the key_share extension; the cipher suite does not encode it",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "NIST SP 800-52r2 SS3.3.1: servers shall be configured to use ephemeral key establishment",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "RFC 8314 SS3: cleartext email submission/access is obsolete; TLS is required for credential protection",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "NIST SP 800-52r2 SS3.1 (TLS required to protect transmitted data)",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "RFC 3207 SS6 (SMTP STARTTLS security considerations)",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "RFC 2595 (STARTTLS for IMAP and POP3)",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "RFC 8996 (BCP 195) SS4-5: TLS 1.0 and TLS 1.1 MUST NOT be used",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "NIST SP 800-52r2 SS3.1: servers shall use TLS 1.2, should use TLS 1.3, should not use TLS 1.1, shall not use TLS 1.0/SSL 3.0/SSL 2.0",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "RFC 3207 §6 (SMTP STARTTLS security considerations)",
+    "why": "standards-citation constant: the HTML report prints the standard's name only; this text appears in the JSON report's citations"
+   },
+   {
+    "en": "{group_severity_value} weight {weight} applied once per each of {group_recurrence} affected session(s)",
+    "why": "per-component score explanation: carried in the JSON report; the HTML report renders the components as a table from structured fields"
+   },
+   {
+    "en": "{group_severity_value} weight {weight} x recurrence multiplier {multiplier} for {group_recurrence} affected session(s)",
+    "why": "per-component score explanation: carried in the JSON report; the HTML report renders the components as a table from structured fields"
+   },
+   {
+    "en": "{group_severity_value} weight {weight} x recurrence and rank-{index} discount {multiplier}",
+    "why": "per-component score explanation: carried in the JSON report; the HTML report renders the components as a table from structured fields"
+   },
+   {
+    "en": "nearest-rank quantile q={q} over {len_scores} validation sessions",
+    "why": "model calibration note: part of model_summary in the JSON report, not rendered in the HTML report"
+   },
+   {
+    "en": "IANA standard name for suite {profile_hex_code}",
+    "why": "evidence-basis label for a cipher suite: evidence_refs in the JSON report, not rendered in the HTML report"
+   },
+   {
+    "en": "RFC 8996 (BCP 195)",
+    "why": "standards-registry description: carried in the JSON report only; the HTML report prints standard names, not this text"
+   },
+   {
+    "en": "prohibits negotiating TLS 1.0 and TLS 1.1",
+    "why": "standards-registry description: carried in the JSON report only; the HTML report prints standard names, not this text"
+   },
+   {
+    "en": "defines the TLS versions a server shall and shall not be configured to use, and requires TLS to protect transmitted data",
+    "why": "standards-registry description: carried in the JSON report only; the HTML report prints standard names, not this text"
+   },
+   {
+    "en": "documents that a man-in-the-middle can strip the SMTP STARTTLS capability",
+    "why": "standards-registry description: carried in the JSON report only; the HTML report prints standard names, not this text"
+   },
+   {
+    "en": "defines STARTTLS for IMAP and STLS for POP3",
+    "why": "standards-registry description: carried in the JSON report only; the HTML report prints standard names, not this text"
+   },
+   {
+    "en": "declares cleartext email submission and access obsolete and specifies implicit TLS on the dedicated ports",
+    "why": "standards-registry description: carried in the JSON report only; the HTML report prints standard names, not this text"
+   },
+   {
+    "en": "cited by a rule but not present in the Phase-7 standards registry; carried through verbatim rather than dropped",
+    "why": "standards-registry description: carried in the JSON report only; the HTML report prints standard names, not this text"
+   }
+  ]
+ }
+}

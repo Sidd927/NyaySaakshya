@@ -1,0 +1,40 @@
+{
+ "entries": [
+  {
+   "id": "ml.no-mail-protocol-identified-for-6321",
+   "en": "no mail protocol identified for this stream; there is no learned normal to compare it against",
+   "mr": "या स्ट्रीमसाठी कोणताही मेल प्रोटोकॉल ओळखला गेला नाही; तुलना करण्यासाठी शिकलेले कोणतेही सामान्य वर्तन नाही",
+   "needs_review": true
+  },
+  {
+   "id": "ml.session-completeness-is-its-shape-1bb8",
+   "en": "session completeness is {completeness:opt}; its shape partly reflects where the capture begins or ends rather than how the traffic behaved, so it is not scored",
+   "mr": "सत्राची पूर्णता: {completeness}; त्याचे स्वरूप वाहतूक कशी वागली यापेक्षा कॅप्चर कुठे सुरू होतो किंवा संपतो हे अंशतः दर्शवते, त्यामुळे त्याला गुण दिलेले नाहीत",
+   "needs_review": true
+  },
+  {
+   "id": "ml.anomaly-score-threshold-41d5",
+   "en": "anomaly score {score:num} {rel:tr} threshold {threshold:num}",
+   "mr": "विसंगती गुण {score}, मर्यादा {threshold} च्या तुलनेत: {rel}",
+   "needs_review": true
+  },
+  {
+   "id": "ml.anomaly-score-no-threshold-selected-6b69",
+   "en": "anomaly score {score:num}; no threshold selected",
+   "mr": "विसंगती गुण {score}; कोणतीही मर्यादा निवडलेली नाही",
+   "needs_review": true
+  },
+  {
+   "id": "ml.no-single-feature-dominated-the-09c2",
+   "en": "; no single feature dominated the score",
+   "mr": "; कोणत्याही एका वैशिष्ट्याचा गुणावर प्रभाव नव्हता",
+   "needs_review": true
+  },
+  {
+   "id": "ml.score-is-most-associated-with-546b",
+   "en": "; score is most associated with {named}. Association with learned-normal deviation only; not a security verdict",
+   "mr": "; गुणाचा सर्वाधिक संबंध {named} शी आहे. हा संबंध केवळ शिकलेल्या सामान्य वर्तनापासूनच्या विचलनाशी आहे; सुरक्षा निकाल नाही",
+   "needs_review": true
+  }
+ ]
+}

@@ -1,0 +1,118 @@
+{
+ "entries": [
+  {
+   "id": "extra.role.leaf",
+   "en": "leaf",
+   "mr": "लीफ प्रमाणपत्र",
+   "needs_review": true
+  },
+  {
+   "id": "extra.role.issuer",
+   "en": "issuer[{n:num}]",
+   "mr": "जारीकर्ता प्रमाणपत्र [{n}]",
+   "needs_review": true
+  },
+  {
+   "id": "extra.checklist.item-detail",
+   "en": "{item:tr}: {detail:tr}",
+   "mr": "{item}: {detail}",
+   "needs_review": true
+  },
+  {
+   "id": "extra.checklist.item-paren",
+   "en": "{item:tr} ({detail:tr})",
+   "mr": "{item} ({detail})",
+   "needs_review": true
+  },
+  {
+   "id": "extra.tls.both-hellos",
+   "en": "both hellos",
+   "mr": "दोन्ही hello संदेश",
+   "needs_review": true
+  },
+  {
+   "id": "extra.value.true",
+   "en": "'true'",
+   "mr": "'होय (true)'",
+   "needs_review": true
+  },
+  {
+   "id": "extra.value.false",
+   "en": "'false'",
+   "mr": "'नाही (false)'",
+   "needs_review": true
+  },
+  {
+   "id": "extra.mode.implicit",
+   "en": "implicit",
+   "mr": "इम्प्लिसिट",
+   "needs_review": true
+  },
+  {
+   "id": "extra.mode.explicit",
+   "en": "explicit",
+   "mr": "एक्सप्लिसिट",
+   "needs_review": true
+  },
+  {
+   "id": "extra.contrast.upgrading",
+   "en": "upgrading",
+   "mr": "अपग्रेड करणारी",
+   "needs_review": true
+  },
+  {
+   "id": "extra.contrast.not-upgrading",
+   "en": "not upgrading",
+   "mr": "अपग्रेड न करणारी",
+   "needs_review": true
+  },
+  {
+   "id": "extra.ml.at-or-above",
+   "en": "at or above",
+   "mr": "मर्यादेइतका किंवा त्याहून अधिक",
+   "needs_review": true
+  },
+  {
+   "id": "extra.ml.below",
+   "en": "below",
+   "mr": "मर्यादेपेक्षा कमी",
+   "needs_review": true
+  },
+  {
+   "id": "extra.report.title-conclusion",
+   "en": "{title:tr} — {conclusion:tr}",
+   "mr": "{title} — {conclusion}",
+   "needs_review": true
+  },
+  {
+   "id": "extra.report.numbered-stage",
+   "en": "{n:num}. {stage:tr}",
+   "mr": "{n}. {stage}",
+   "needs_review": true
+  },
+  {
+   "id": "extra.report.session-ref",
+   "en": "session {id} ({proto})",
+   "mr": "सत्र {id} ({proto})",
+   "needs_review": true
+  },
+  {
+   "id": "extra.report.title",
+   "en": "NyaySaakshya",
+   "mr": "न्यायसाक्ष्य",
+   "needs_review": true
+  },
+  {
+   "id": "extra.report.subtitle",
+   "en": "Cryptographic Security Posture Assessment",
+   "mr": "क्रिप्टोग्राफिक सुरक्षा स्थिती मूल्यांकन",
+   "needs_review": true
+  },
+  {
+   "id": "extra.standards.note",
+   "en": "every citation originates from a Phase-4/5 rule; the Phase-7 registry adds structure and introduces no new standard",
+   "mr": "प्रत्येक उद्धरण Phase-4/5 मधील नियमातून आलेले आहे; Phase-7 नोंदणी केवळ रचना जोडते आणि कोणतेही नवीन मानक आणत नाही",
+   "needs_review": true
+  }
+ ]
+}

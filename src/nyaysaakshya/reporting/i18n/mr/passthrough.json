@@ -1,0 +1,89 @@
+{
+ "patterns": [
+  {
+   "id": "blank",
+   "pattern": "^\\s*$",
+   "why": "empty or whitespace-only"
+  },
+  {
+   "id": "dash",
+   "pattern": "^[—–-]$",
+   "why": "the empty-value marker"
+  },
+  {
+   "id": "number",
+   "pattern": "^[-+]?\\d+(?:\\.\\d+)*%?$",
+   "why": "counts, scores, versions, percentages: data, shown unchanged"
+  },
+  {
+   "id": "score",
+   "pattern": "^\\d+(?:\\.\\d+)? / \\d+$",
+   "why": "a score written 'N / 100'"
+  },
+  {
+   "id": "hex-id",
+   "pattern": "^[0-9a-f]{8,128}$",
+   "why": "SHA-256 capture ids, assessment ids, run ids, artifact hashes"
+  },
+  {
+   "id": "timestamp",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}[T ]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z| ?UTC|[+-]\\d{2}:?\\d{2})?$",
+   "why": "ISO timestamps"
+  },
+  {
+   "id": "ipv4-endpoint",
+   "pattern": "^\\d{1,3}(?:\\.\\d{1,3}){3}(?::\\d+)?$",
+   "why": "IPv4 address, optionally with a port"
+  },
+  {
+   "id": "ipv6-endpoint",
+   "pattern": "^\\[?(?:[0-9a-fA-F]{0,4}:){2,}[0-9a-fA-F:.]*\\]?(?::\\d+)?$",
+   "why": "IPv6 address, optionally with a port"
+  },
+  {
+   "id": "frame-list",
+   "pattern": "^\\d+(?:, \\d+)*$",
+   "why": "packet frame numbers"
+  },
+  {
+   "id": "protocol-name",
+   "pattern": "^(?i:smtp|imap|pop3|smtps|imaps|pop3s|submission)$",
+   "why": "mail protocol names are technical identifiers (any case)"
+  },
+  {
+   "id": "standard-name",
+   "pattern": "^(?:NIST SP [0-9A-Za-z.\\-]+(?: Part \\d+ Rev\\.\\d+)?|RFC \\d+(?: \\(BCP \\d+\\))?|BCP \\d+)$",
+   "why": "names of published standards"
+  },
+  {
+   "id": "rule-id",
+   "pattern": "^[A-Z]{2,5}(?:-[A-Z0-9]+)+$",
+   "why": "rule identifiers such as SEC-CERT-001"
+  },
+  {
+   "id": "repr-id-list",
+   "pattern": "^\\[(?:'[A-Za-z0-9_\\-]+'(?:, )?)+\\]$",
+   "why": "a list of identifiers printed as a Python list (provenance table)"
+  },
+  {
+   "id": "repr-dict",
+   "pattern": "^\\{(?:'[a-z_]+': (?:\\d+(?:\\.\\d+)?|'[^']*')(?:, )?)+\\}$",
+   "why": "a flat dictionary printed as a Python dict (provenance table)"
+  },
+  {
+   "id": "technical-token",
+   "pattern": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+$",
+   "why": "hyphenated technical tokens: formula ids (F2-group-damped), model ids (robust-z)"
+  },
+  {
+   "id": "cipher-suite",
+   "pattern": "^(?:TLS|SSL)_[A-Z0-9_]+$",
+   "why": "IANA cipher-suite names"
+  },
+  {
+   "id": "punctuation",
+   "pattern": "^[.,;:!?]+$",
+   "why": "a lone punctuation mark left over when the report joins two sentences"
+  }
+ ]
+}

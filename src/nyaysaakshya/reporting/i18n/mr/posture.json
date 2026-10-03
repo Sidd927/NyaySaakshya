@@ -1,0 +1,196 @@
+{
+ "entries": [
+  {
+   "id": "posture.passive-analysis-conclusions-describe-what-94f9",
+   "en": "passive analysis: conclusions describe what the capture shows, not the server's configuration",
+   "mr": "निष्क्रिय विश्लेषण: निष्कर्ष कॅप्चरमध्ये काय दिसते याचे वर्णन करतात, सर्व्हरच्या संरचनेचे नव्हे",
+   "needs_review": true
+  },
+  {
+   "id": "posture.no-attacker-intent-or-attribution-8437",
+   "en": "no attacker, intent or attribution is or can be established from a packet capture",
+   "mr": "पॅकेट कॅप्चरवरून कोणताही हल्लेखोर, हेतू किंवा जबाबदारी निश्चित झालेली नाही किंवा होऊ शकत नाही",
+   "needs_review": true
+  },
+  {
+   "id": "posture.certificate-chain-expiry-and-key-a512",
+   "en": "certificate chain, expiry and key strength are not observable for TLS 1.3 or resumed sessions (RFC 8446 SS2, SS2.2)",
+   "mr": "TLS 1.3 किंवा पुन्हा सुरू केलेल्या सत्रांसाठी प्रमाणपत्र साखळी, मुदत आणि कीची क्षमता निरीक्षणयोग्य नाहीत (RFC 8446 SS2, SS2.2)",
+   "needs_review": true
+  },
+  {
+   "id": "posture.absence-of-a-starttls-advertisement-b2d2",
+   "en": "absence of a STARTTLS advertisement is ambiguous: stripping and genuine non-support are byte-identical at the application layer",
+   "mr": "STARTTLS घोषणा नसणे संदिग्ध आहे: क्षमता काढून टाकणे आणि प्रत्यक्ष असमर्थन हे ॲप्लिकेशन स्तरावर बाइट-दर-बाइट सारखेच असतात",
+   "needs_review": true
+  },
+  {
+   "id": "posture.nyaysaakshya-cannot-confirm-that-any-dcc3",
+   "en": "NyaySaakshya cannot confirm that any remediation was applied or effective",
+   "mr": "न्यायसाक्ष्य कोणतीही उपाययोजना लागू झाली किंवा ती प्रभावी ठरली याची खातरजमा करू शकत नाही",
+   "needs_review": true
+  },
+  {
+   "id": "posture.the-ml-lane-is-a-b282",
+   "en": "the ML lane is a secondary prioritisation signal only; Phase 6 (ADR-0015) measured zero unique true detections on every held-out split",
+   "mr": "ML विश्लेषण हा केवळ दुय्यम प्राधान्य संकेत आहे; Phase 6 (ADR-0015) ने प्रत्येक राखीव (held-out) विभागात शून्य वैशिष्ट्यपूर्ण खरे शोध मोजले",
+   "needs_review": true
+  },
+  {
+   "id": "posture.an-anomaly-score-is-a-ef54",
+   "en": "an anomaly score is a distance from a learned normal, not a vulnerability and not an attack",
+   "mr": "विसंगती गुण म्हणजे शिकलेल्या सामान्य वर्तनापासूनचे अंतर; ती असुरक्षितता नाही आणि हल्लाही नाही",
+   "needs_review": true
+  },
+  {
+   "id": "posture.the-model-was-trained-on-a1a6",
+   "en": "the model was trained on synthetic corpora whose feature space is 98.6% separable by generator, so its generalisation to real traffic is unestablished",
+   "mr": "मॉडेलला कृत्रिम (synthetic) डेटासंचांवर प्रशिक्षण दिले गेले, ज्यांची वैशिष्ट्य-जागा निर्मात्यानुसार 98.6% वेगळी करता येते, त्यामुळे प्रत्यक्ष वाहतुकीवरील त्याची सामान्यीकरण क्षमता अस्थापित आहे",
+   "needs_review": true
+  },
+  {
+   "id": "posture.ml-lane-disabled-posture-computed-5495",
+   "en": "ML lane disabled; posture computed from deterministic and cross-session evidence only",
+   "mr": "ML विश्लेषण बंद; सुरक्षा स्थिती केवळ निर्धारक आणि क्रॉस-सेशन पुराव्यातून काढली",
+   "needs_review": true
+  },
+  {
+   "id": "posture.ml-lane-enabled-but-no-4771",
+   "en": "ML lane enabled but no scored result was supplied",
+   "mr": "ML विश्लेषण सुरू आहे, परंतु कोणताही गुण-निकाल पुरवला गेला नाही",
+   "needs_review": true
+  },
+  {
+   "id": "posture.secondary-prioritisation-signal-only-5559",
+   "en": "secondary prioritisation signal only",
+   "mr": "केवळ दुय्यम प्राधान्य संकेत",
+   "needs_review": true
+  },
+  {
+   "id": "posture.every-severity-status-and-standard-3dae",
+   "en": "every severity, status and standard originates in a Phase-4 or Phase-5 rule; the posture engine aggregates and never re-judges",
+   "mr": "प्रत्येक तीव्रता, स्थिती आणि मानक Phase-4 किंवा Phase-5 नियमातून आलेले आहे; सुरक्षा स्थिती इंजिन फक्त एकत्र करते आणि पुन्हा निर्णय देत नाही",
+   "needs_review": true
+  },
+  {
+   "id": "posture.capture-sessions-from-a-different-7509",
+   "en": "capture sessions from a different client to the same endpoint, or obtain the server configuration; the observed bytes alone support more than one reading",
+   "mr": "त्याच एंडपॉइंटवर वेगळ्या क्लायंटची सत्रे कॅप्चर करा, किंवा सर्व्हरची संरचना मिळवा; केवळ निरीक्षण केलेले बाइट्स एकापेक्षा अधिक अर्थांना आधार देतात",
+   "needs_review": true
+  },
+  {
+   "id": "posture.re-capture-the-full-session-fcf5",
+   "en": "re-capture the full session including connection setup and teardown",
+   "mr": "कनेक्शन सुरू करणे आणि बंद करणे यासह संपूर्ण सत्र पुन्हा कॅप्चर करा",
+   "needs_review": true
+  },
+  {
+   "id": "posture.not-resolvable-by-passive-capture-e938",
+   "en": "not resolvable by passive capture; this fact is structurally hidden from an observer without key material",
+   "mr": "निष्क्रिय कॅप्चरने सोडवता येत नाही; की-सामग्रीशिवाय निरीक्षकाला ही बाब संरचनात्मकदृष्ट्या दिसत नाही",
+   "needs_review": true
+  },
+  {
+   "id": "posture.capture-more-sessions-from-the-cdbc",
+   "en": "capture more sessions from the same client to the same endpoint so a baseline can be established",
+   "mr": "आधाररेषा तयार करता यावी म्हणून त्याच क्लायंटकडून त्याच एंडपॉइंटकडे आणखी सत्रे कॅप्चर करा",
+   "needs_review": true
+  },
+  {
+   "id": "posture.re-capture-without-packet-loss-b2fb",
+   "en": "re-capture without packet loss; the current capture supports conflicting readings of the same fact",
+   "mr": "पॅकेट गळतीशिवाय पुन्हा कॅप्चर करा; सध्याचा कॅप्चर एकाच वस्तुस्थितीच्या परस्परविरोधी अर्थांना आधार देतो",
+   "needs_review": true
+  },
+  {
+   "id": "posture.capture-sessions-sharing-the-same-821c",
+   "en": "capture sessions sharing the same client, endpoint, protocol and TLS mode",
+   "mr": "समान क्लायंट, एंडपॉइंट, प्रोटोकॉल आणि TLS पद्धत असलेली सत्रे कॅप्चर करा",
+   "needs_review": true
+  },
+  {
+   "id": "posture.not-currently-supported-by-the-9a4c",
+   "en": "not currently supported by the analysis rules; record the variant for a future rule",
+   "mr": "विश्लेषण नियमांद्वारे सध्या समर्थित नाही; भविष्यातील नियमासाठी हा प्रकार नोंदवा",
+   "needs_review": true
+  },
+  {
+   "id": "posture.session-is-statistically-unlike-the-1a3b",
+   "en": "Session is statistically unlike the learned normal",
+   "mr": "हे सत्र शिकलेल्या सामान्य वर्तनापेक्षा सांख्यिकीयदृष्ट्या वेगळे आहे",
+   "needs_review": true
+  },
+  {
+   "id": "posture.this-session-s-feature-vector-5d58",
+   "en": "This session's feature vector is an outlier relative to the model's training population. This is not a vulnerability, not an attack, and not evidence of either.",
+   "mr": "या सत्राचा वैशिष्ट्य-व्हेक्टर मॉडेलच्या प्रशिक्षण गटाच्या तुलनेत बाह्य (outlier) आहे. ही असुरक्षितता नाही, हल्ला नाही आणि दोन्हींपैकी कशाचाही पुरावा नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "posture.contributing-sources-disagree-on-the-90f0",
+   "en": "contributing sources disagree on the analytic outcome:",
+   "mr": "योगदान देणारे स्रोत विश्लेषणाच्या निकालाबाबत असहमत आहेत:",
+   "needs_review": true
+  },
+  {
+   "id": "posture.the-less-certain-reading-is-acac",
+   "en": "; the less certain reading is retained",
+   "mr": "; कमी निश्चित अर्थ कायम ठेवला आहे",
+   "needs_review": true
+  },
+  {
+   "id": "posture.certificate-chain-expiry-and-key-1796",
+   "en": "certificate chain, expiry and key strength are not recoverable from a passive capture of a TLS 1.3 or resumed session (RFC 8446 SS2, SS2.2)",
+   "mr": "TLS 1.3 किंवा पुन्हा सुरू केलेल्या सत्राच्या निष्क्रिय कॅप्चरवरून प्रमाणपत्र साखळी, मुदत आणि कीची क्षमता पुन्हा मिळवता येत नाहीत (RFC 8446 SS2, SS2.2)",
+   "needs_review": true
+  },
+  {
+   "id": "posture.a-behavioural-deviation-is-a-1a27",
+   "en": "a behavioural deviation is a difference from a baseline, not a vulnerability; an anomaly signal is a prioritisation input and neither asserts nor implies an attack",
+   "mr": "वर्तनातील विचलन म्हणजे आधाररेषेपासूनचा फरक; ती असुरक्षितता नाही. विसंगती संकेत हा प्राधान्य ठरवण्यासाठीचा इनपुट आहे आणि तो हल्ला असल्याचे सांगत नाही किंवा सुचवतही नाही",
+   "needs_review": true
+  },
+  {
+   "id": "posture.no-session-could-be-assessed-58a6",
+   "en": "no session could be assessed; posture is not graded rather than graded well, because absence of evidence is not evidence of security",
+   "mr": "कोणत्याही सत्राचे मूल्यांकन करता आले नाही; सुरक्षा स्थितीला श्रेणी दिलेली नाही — चांगली श्रेणी दिलेली नाही, कारण पुराव्याचा अभाव म्हणजे सुरक्षिततेचा पुरावा नव्हे",
+   "needs_review": true
+  },
+  {
+   "id": "posture.no-established-issue-and-no-64af",
+   "en": "no established issue and no evidence coverage supplied; the engine cannot distinguish a clean capture from an unobserved one and declines to certify a band",
+   "mr": "कोणतीही निश्चित समस्या आणि पुराव्याची व्याप्ती पुरवलेली नाही; इंजिन स्वच्छ कॅप्चर आणि न तपासलेला कॅप्चर यातील फरक ओळखू शकत नाही आणि श्रेणी प्रमाणित करण्यास नकार देते",
+   "needs_review": true
+  },
+  {
+   "id": "posture.score-computed-but-only-of-64a3",
+   "en": "score {value:num} computed, but only {fraction} of sessions yielded any conclusion (floor {floor}); a band is not certified over a capture this sparsely assessed",
+   "mr": "गुण {value} काढले, परंतु केवळ {fraction} सत्रांतून काही निष्कर्ष मिळाला (किमान मर्यादा {floor}); इतक्या कमी प्रमाणात मूल्यांकन झालेल्या कॅप्चरवर श्रेणी प्रमाणित केली जात नाही",
+   "needs_review": true
+  },
+  {
+   "id": "posture.with-no-established-security-issue-657d",
+   "en": "{start:num} with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
+   "mr": "{start} — गुण कमी करण्यासाठी कोणतीही निश्चित सुरक्षा समस्या नाही; हा निष्कर्ष वाहतुकीच्या किती भागावर आधारित आहे यासाठी पुराव्याची व्याप्ती पाहा",
+   "needs_review": true
+  },
+  {
+   "id": "posture.minus-across-issue-group-s-f16c",
+   "en": "{start:num} minus {penalty:num} across {n:num} issue group(s) under {formula}",
+   "mr": "{start} वजा {penalty}, {n} समस्या गटांवर, {formula} सूत्रानुसार",
+   "needs_review": true
+  },
+  {
+   "id": "posture.secondary-prioritisation-signal-only-adr-58fe",
+   "en": "secondary prioritisation signal only; ADR-0015 records zero unique true detections on every held-out split",
+   "mr": "केवळ दुय्यम प्राधान्य संकेत; ADR-0015 नुसार प्रत्येक राखीव (held-out) विभागात शून्य वैशिष्ट्यपूर्ण खरे शोध नोंदले गेले",
+   "needs_review": true
+  },
+  {
+   "id": "posture.an-anomaly-is-a-statistical-0d20",
+   "en": "an anomaly is a statistical deviation from learned normal, not a vulnerability and not an attack",
+   "mr": "विसंगती म्हणजे शिकलेल्या सामान्य वर्तनापासूनचे सांख्यिकीय विचलन; ती असुरक्षितता नाही आणि हल्लाही नाही",
+   "needs_review": true
+  }
+ ]
+}

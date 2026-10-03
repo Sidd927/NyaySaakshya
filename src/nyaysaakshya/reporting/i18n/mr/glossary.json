@@ -1,0 +1,166 @@
+{
+ "title": {
+  "en": "How to read this report",
+  "mr": "हा अहवाल कसा वाचावा"
+ },
+ "lead": {
+  "en": "The main terms and figures in this report, in plain words. This block is the same in every report and contains no analysis.",
+  "mr": "या अहवालातील मुख्य संज्ञा आणि आकडे सोप्या शब्दांत. हा भाग प्रत्येक अहवालात सारखाच असतो आणि त्यात कोणतेही विश्लेषण नाही."
+ },
+ "draft_notice": {
+  "en": "Notice: this Marathi translation is a draft and has not yet been reviewed. For official use, refer to the English report.",
+  "mr": "सूचना: हे मराठी भाषांतर मसुदा आहे आणि अद्याप त्याचे पुनरावलोकन झालेले नाही. अधिकृत वापरासाठी इंग्रजी अहवाल पाहा."
+ },
+ "english_banner": {
+  "en": "English original — authoritative copy",
+  "mr": "इंग्रजी मूळ अहवाल — प्रमाण प्रत"
+ },
+ "notices": [
+  {
+   "en": "This report is a Marathi translation of the English original. If the two differ, the English report is authoritative.",
+   "mr": "हा अहवाल मूळ इंग्रजी अहवालाचे मराठी भाषांतर आहे. दोन्हींमध्ये फरक आढळल्यास इंग्रजी अहवाल प्रमाण मानावा."
+  }
+ ],
+ "items": [
+  {
+   "id": "score-and-band",
+   "term": {
+    "en": "Posture score and band",
+    "mr": "सुरक्षा स्थिती गुण आणि श्रेणी"
+   },
+   "en": "The posture score starts at 100 and each penalty for an observed issue is subtracted. The band follows from the score: STRONG at 90 or above, ADEQUATE at 75 or above, WEAK at 50 or above, and CRITICAL below 50. The weights and thresholds are transparent engineering policy, not a calibrated measurement derived from incident data.",
+   "mr": "सुरक्षा स्थिती गुण 100 पासून सुरू होतात आणि आढळलेल्या प्रत्येक समस्येचा दंड त्यातून वजा केला जातो. गुणांवरून श्रेणी ठरते: 90 किंवा अधिक = मजबूत, 75 किंवा अधिक = पुरेशी, 50 किंवा अधिक = कमकुवत, आणि 50 पेक्षा कमी = अतिगंभीर. हे भार आणि मर्यादा पारदर्शक अभियांत्रिकी धोरण आहेत; प्रत्यक्ष घटनांच्या आकडेवारीवरून काढलेले मोजमाप नाहीत.",
+   "needs_review": true
+  },
+  {
+   "id": "insufficient-evidence",
+   "term": {
+    "en": "Insufficient evidence",
+    "mr": "अपुरा पुरावा"
+   },
+   "en": "If fewer than half of the sessions could be assessed, no band is given and the report says INSUFFICIENT EVIDENCE. This is not a passing result and must not be read as one.",
+   "mr": "निम्म्यापेक्षा कमी सत्रांचे मूल्यांकन करता आले, तर कोणतीही श्रेणी दिली जात नाही आणि अहवालात \"अपुरा पुरावा\" असे दिसते. हा उत्तीर्ण निकाल नाही आणि तसा त्याचा अर्थ लावू नये.",
+   "needs_review": true
+  },
+  {
+   "id": "severity-priority",
+   "term": {
+    "en": "Severity and priority",
+    "mr": "तीव्रता आणि प्राधान्य"
+   },
+   "en": "Severity states how serious a condition is. Priority states the order in which an analyst should work. They are different things: the priority order is not a severity ranking.",
+   "mr": "तीव्रता म्हणजे एखादी स्थिती किती गंभीर आहे हे सांगते. प्राधान्य म्हणजे विश्लेषकाने कोणत्या क्रमाने काम करावे हे सांगते. या दोन भिन्न गोष्टी आहेत: प्राधान्यक्रम म्हणजे तीव्रतेचा क्रम नव्हे.",
+   "needs_review": true
+  },
+  {
+   "id": "coverage",
+   "term": {
+    "en": "Evidence coverage",
+    "mr": "पुराव्याची व्याप्ती"
+   },
+   "en": "Coverage says how much of the captured traffic the analysis could actually assess. It is shown beside the score and is never folded into it: a score over a small share of the traffic and the same score over nearly all of it are different claims.",
+   "mr": "व्याप्ती सांगते की कॅप्चर केलेल्या वाहतुकीपैकी किती भागाचे विश्लेषण प्रत्यक्षात करता आले. ती गुणांच्या शेजारी दाखवली जाते आणि गुणांमध्ये कधीही मिसळली जात नाही: वाहतुकीच्या लहान भागावरील गुण आणि जवळजवळ संपूर्ण वाहतुकीवरील तोच गुण हे दोन भिन्न दावे आहेत.",
+   "needs_review": true
+  },
+  {
+   "id": "evidence-states",
+   "term": {
+    "en": "Evidence states",
+    "mr": "पुराव्याच्या स्थिती"
+   },
+   "en": "OBSERVED: seen directly in the captured bytes. INFERRED: worked out from observed facts, with the reasoning recorded. UNKNOWN: not enough evidence to decide. AMBIGUOUS: the evidence supports more than one reading. INCOMPLETE: the capture stops at the relevant point. NOT OBSERVABLE: cannot be seen in a passive capture at all.",
+   "mr": "निरीक्षण केलेले: कॅप्चर केलेल्या बाइट्समध्ये थेट दिसले. अनुमानित: निरीक्षण केलेल्या तथ्यांवरून काढलेले, तर्क नोंदवलेला. अज्ञात: निर्णय घेण्यासाठी पुरेसा पुरावा नाही. संदिग्ध: पुराव्यातून एकापेक्षा अधिक अर्थ निघतात. अपूर्ण: संबंधित ठिकाणी कॅप्चर थांबतो. निरीक्षणयोग्य नाही: निष्क्रिय कॅप्चरमध्ये ते मुळातच दिसू शकत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "not-observable",
+   "term": {
+    "en": "Not observable",
+    "mr": "निरीक्षणयोग्य नाही"
+   },
+   "en": "Some things cannot be seen in a capture at all. For example, the certificate in a TLS 1.3 connection is encrypted, so the report says it is not observable instead of guessing.",
+   "mr": "काही गोष्टी कॅप्चरमध्ये मुळातच दिसू शकत नाहीत. उदाहरणार्थ, TLS 1.3 कनेक्शनमधील प्रमाणपत्र एन्क्रिप्टेड असते, म्हणून अहवाल अंदाज लावण्याऐवजी \"निरीक्षणयोग्य नाही\" असे सांगतो.",
+   "needs_review": true
+  },
+  {
+   "id": "abstention",
+   "term": {
+    "en": "Abstention",
+    "mr": "निष्कर्ष टाळणे"
+   },
+   "en": "An abstention is neither a failure nor a pass. It records that the evidence did not support a conclusion, and what would settle the question.",
+   "mr": "निष्कर्ष टाळणे म्हणजे अपयशही नाही आणि उत्तीर्ण होणेही नाही. पुराव्याने निष्कर्षाला आधार दिला नाही आणि प्रश्न कशाने सुटेल, एवढेच ते नोंदवते.",
+   "needs_review": true
+  },
+  {
+   "id": "certainty",
+   "term": {
+    "en": "Certainty",
+    "mr": "खात्री"
+   },
+   "en": "CONFIRMED: every supporting fact was directly observed. PROBABLE: at least one supporting fact was inferred and none contradicts it. UNCERTAIN: the supporting evidence is ambiguous or incomplete. UNDETERMINED: there is no usable supporting evidence. Certainty is separate from severity.",
+   "mr": "निश्चित: आधार देणारे प्रत्येक तथ्य थेट निरीक्षण केलेले आहे. संभाव्य: आधार देणारे किमान एक तथ्य अनुमानित आहे आणि कोणतेही त्याला विरोध करत नाही. अनिश्चित: आधार देणारा पुरावा संदिग्ध किंवा अपूर्ण आहे. निर्धारित न झालेले: वापरता येण्याजोगा आधार देणारा पुरावा नाही. खात्री ही तीव्रतेपासून वेगळी आहे.",
+   "needs_review": true
+  },
+  {
+   "id": "recurrence",
+   "term": {
+    "en": "Recurrence",
+    "mr": "पुनरावृत्ती"
+   },
+   "en": "Recurrence counts the sessions in which a condition was observed. One misconfiguration seen many times is one issue with a recurrence count, not many issues.",
+   "mr": "पुनरावृत्ती म्हणजे ज्या सत्रांमध्ये एखादी स्थिती आढळली त्यांची संख्या. अनेकदा आढळलेली एकच चुकीची संरचना ही अनेक समस्या नसून पुनरावृत्ती संख्येसह एकच समस्या असते.",
+   "needs_review": true
+  },
+  {
+   "id": "standards",
+   "term": {
+    "en": "Standards",
+    "mr": "मानके"
+   },
+   "en": "A standard named here (for example an RFC or a NIST publication) is the basis a rule cited for an observation. It is not a statement that anything complies, or is certified, against that standard.",
+   "mr": "येथे नमूद केलेले मानक (उदा. RFC किंवा NIST प्रकाशन) हे एखाद्या नियमाने निरीक्षणासाठी आधार म्हणून नमूद केलेले आहे. एखादी गोष्ट त्या मानकाचे पालन करते किंवा त्याबाबत प्रमाणित आहे, असे ते सांगत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "identifiers",
+   "term": {
+    "en": "Identifiers and time",
+    "mr": "अभिज्ञापक आणि वेळ"
+   },
+   "en": "The capture identifier is the SHA-256 fingerprint of the analysed file. A file with a different fingerprint is a different file, and this report does not describe it. The assessment identifier names this exact conclusion: the same capture analysed with the same versions gives the same identifier. The time shown is the time of analysis, not of report generation.",
+   "mr": "कॅप्चर अभिज्ञापक म्हणजे विश्लेषित फाइलचा SHA-256 ठसा. वेगळा ठसा असलेली फाइल ही वेगळी फाइल आहे आणि हा अहवाल तिचे वर्णन करत नाही. मूल्यांकन अभिज्ञापक हा याच निष्कर्षाचे नाव आहे: समान आवृत्त्यांसह तोच कॅप्चर विश्लेषित केल्यास तोच अभिज्ञापक मिळतो. दाखवलेली वेळ ही विश्लेषणाची वेळ आहे, अहवाल तयार केल्याची नव्हे.",
+   "needs_review": true
+  },
+  {
+   "id": "tls-words",
+   "term": {
+    "en": "TLS, STARTTLS and cleartext",
+    "mr": "TLS, STARTTLS आणि क्लिअरटेक्स्ट"
+   },
+   "en": "TLS is the encryption that protects mail while it travels over a network. STARTTLS is the step by which a connection that begins unencrypted is switched to TLS. Cleartext means readable by anyone on the network path.",
+   "mr": "TLS हे असे एन्क्रिप्शन आहे जे मेल नेटवर्कवरून प्रवास करताना त्याचे संरक्षण करते. STARTTLS ही अशी पायरी आहे ज्यात एन्क्रिप्शनशिवाय सुरू झालेले कनेक्शन TLS मध्ये बदलले जाते. क्लिअरटेक्स्ट म्हणजे नेटवर्क मार्गावरील कोणालाही वाचता येणारे.",
+   "needs_review": true
+  },
+  {
+   "id": "cross-session",
+   "term": {
+    "en": "Comparing sessions",
+    "mr": "सत्रांची तुलना"
+   },
+   "en": "Some findings compare a session with other sessions in the same capture: earlier sessions of the same client (the baseline) and sessions of other clients to the same server (the control). A difference is reported as a difference, not as an attack; with too little history the report abstains.",
+   "mr": "काही निष्कर्ष एका सत्राची तुलना त्याच कॅप्चरमधील इतर सत्रांशी करतात: त्याच क्लायंटची आधीची सत्रे (आधाररेषा) आणि त्याच सर्व्हरशी इतर क्लायंटची सत्रे (नियंत्रण). फरक हा फरक म्हणून नोंदवला जातो, हल्ला म्हणून नाही; इतिहास खूप कमी असल्यास अहवाल निष्कर्ष टाळतो.",
+   "needs_review": true
+  },
+  {
+   "id": "ml-lane",
+   "term": {
+    "en": "The ML lane",
+    "mr": "ML विश्लेषण"
+   },
+   "en": "The machine-learning lane is optional and secondary. It can only change the order in which findings are listed; it never creates a finding and never changes the score.",
+   "mr": "मशीन लर्निंग विश्लेषण ऐच्छिक आणि दुय्यम आहे. ते फक्त निष्कर्ष कोणत्या क्रमाने दाखवले जातात तो बदलू शकते; ते कधीही निष्कर्ष तयार करत नाही आणि गुण बदलत नाही.",
+   "needs_review": true
+  }
+ ]
+}

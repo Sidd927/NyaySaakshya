@@ -1,0 +1,82 @@
+{
+ "entries": [
+  {
+   "id": "chrome.no-data-recorded-for-this-ff0b",
+   "en": "No data recorded for this table.",
+   "mr": "या तक्त्यासाठी कोणताही डेटा नोंदवलेला नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.assessment-ef13",
+   "en": "Assessment",
+   "mr": "मूल्यांकन",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.capture-772a",
+   "en": "Capture",
+   "mr": "कॅप्चर",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.run-b1b3",
+   "en": "Run",
+   "mr": "रन",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.analysed-78e0",
+   "en": "Analysed",
+   "mr": "विश्लेषण वेळ",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.band-withheld-coverage-below-the-951a",
+   "en": "band withheld: coverage below the assessment floor",
+   "mr": "श्रेणी रोखून ठेवली: व्याप्ती मूल्यांकनाच्या किमान मर्यादेपेक्षा कमी",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.some-content-was-truncated-for-681f",
+   "en": "Some content was truncated for rendering: ",
+   "mr": "रेंडरिंगसाठी काही मजकूर छाटण्यात आला: ",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.forensic-assessment-4368",
+   "en": "Forensic assessment",
+   "mr": "न्यायवैद्यक मूल्यांकन",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.report-schema-80ee",
+   "en": "Report schema",
+   "mr": "अहवाल स्कीमा",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.renderer-e720",
+   "en": "Renderer",
+   "mr": "रेंडरर",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.posture-schema-b6f7",
+   "en": "Posture schema",
+   "mr": "पोश्चर स्कीमा",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.posture-engine-d419",
+   "en": "Posture engine",
+   "mr": "पोश्चर इंजिन",
+   "needs_review": true
+  },
+  {
+   "id": "chrome.the-timestamp-shown-is-the-9db0",
+   "en": "The timestamp shown is the time of analysis, not of report generation. This report is a rendering of the canonical assessment and introduces no security conclusion of its own.",
+   "mr": "दाखवलेली वेळ ही विश्लेषणाची वेळ आहे, अहवाल तयार केल्याची नव्हे. हा अहवाल प्रमाणित मूल्यांकनाचे केवळ सादरीकरण आहे आणि त्यात स्वतःचा कोणताही सुरक्षा निष्कर्ष जोडलेला नाही.",
+   "needs_review": true
+  }
+ ]
+}

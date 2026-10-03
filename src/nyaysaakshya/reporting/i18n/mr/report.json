@@ -1,0 +1,1096 @@
+{
+ "entries": [
+  {
+   "id": "report.not-present-in-assessment-88c4",
+   "en": "Not present in assessment",
+   "mr": "मूल्यांकनात आढळले नाही",
+   "needs_review": true
+  },
+  {
+   "id": "report.truncated-f9b6",
+   "en": " […truncated]",
+   "mr": " […छाटले]",
+   "needs_review": true
+  },
+  {
+   "id": "report.not-scored-fcaa",
+   "en": "Not scored",
+   "mr": "गुण दिलेले नाहीत",
+   "needs_review": true
+  },
+  {
+   "id": "report.nyaysaakshya-observes-traffic-that-was-d91f",
+   "en": "NyaySaakshya observes traffic that was already captured. It does not connect to any server, hold any private key, decrypt any session, or read message content. Anything that cannot be determined from the captured bytes is reported as not observable rather than inferred.",
+   "mr": "न्यायसाक्ष्य केवळ आधीच कॅप्चर केलेल्या वाहतुकीचे निरीक्षण करते. ते कोणत्याही सर्व्हरशी जोडले जात नाही, कोणतीही खासगी की (private key) स्वतःकडे ठेवत नाही, कोणतेही सत्र डिक्रिप्ट करत नाही आणि संदेशातील मजकूर वाचत नाही. कॅप्चर केलेल्या बाइट्समधून जे निश्चित करता येत नाही, ते अनुमानित न करता \"निरीक्षणयोग्य नाही\" असे नोंदवले जाते.",
+   "needs_review": true
+  },
+  {
+   "id": "report.the-severity-weights-and-band-e4bc",
+   "en": "The severity weights and band thresholds behind this score are transparent engineering policy, not a calibrated measurement derived from incident data.",
+   "mr": "या गुणांमागील तीव्रतेचे भार आणि श्रेणीच्या मर्यादा या पारदर्शक अभियांत्रिकी धोरणाचा भाग आहेत; त्या प्रत्यक्ष घटनांच्या आकडेवारीवरून काढलेले मोजमाप नाहीत.",
+   "needs_review": true
+  },
+  {
+   "id": "report.coverage-is-reported-beside-the-1198",
+   "en": "Coverage is reported beside the posture score and is never folded into it. A score computed over a small share of the traffic and the same score computed over nearly all of it are different claims.",
+   "mr": "व्याप्ती ही सुरक्षा स्थिती गुणांच्या शेजारी स्वतंत्रपणे दाखवली जाते आणि ती गुणांमध्ये कधीही मिसळली जात नाही. वाहतुकीच्या लहान भागावर काढलेला गुण आणि जवळजवळ संपूर्ण वाहतुकीवर काढलेला तोच गुण हे दोन भिन्न दावे आहेत.",
+   "needs_review": true
+  },
+  {
+   "id": "report.severity-states-how-serious-a-3a2c",
+   "en": "Severity states how serious a condition is. Priority states the order in which an analyst should work. The ML column shows any bounded adjustment the anomaly lane contributed to the ordering; it cannot move a finding across a severity tier and it never changes a severity.",
+   "mr": "तीव्रता म्हणजे एखादी स्थिती किती गंभीर आहे हे सांगते. प्राधान्य म्हणजे विश्लेषकाने कोणत्या क्रमाने काम करावे हे सांगते. ML स्तंभात विसंगती-विश्लेषणाने क्रमवारीत केलेला कोणताही मर्यादित बदल दिसतो; तो निष्कर्षाला एका तीव्रतेच्या पातळीतून दुसऱ्यात हलवू शकत नाही आणि तीव्रता कधीही बदलत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.recurrence-counts-the-sessions-in-ec43",
+   "en": "Recurrence counts the sessions in which a condition was observed. Findings are grouped by condition, so one misconfiguration seen many times is one issue with a recurrence count, not many issues.",
+   "mr": "पुनरावृत्ती म्हणजे ज्या सत्रांमध्ये एखादी स्थिती आढळली त्यांची संख्या. निष्कर्ष स्थितीनुसार गटबद्ध केले जातात, म्हणून अनेकदा आढळलेली एकच चुकीची संरचना अनेक समस्या न मानता पुनरावृत्ती संख्येसह एकच समस्या मानली जाते.",
+   "needs_review": true
+  },
+  {
+   "id": "report.a-standard-appearing-here-means-ae3d",
+   "en": "A standard appearing here means a rule cited it as the basis for an observation. It is not a statement of compliance or certification against that standard.",
+   "mr": "येथे एखादे मानक दिसणे म्हणजे एखाद्या नियमाने त्या निरीक्षणाचा आधार म्हणून ते मानक नमूद केले आहे. हे त्या मानकाचे पालन किंवा प्रमाणीकरण झाल्याचे विधान नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.this-system-does-not-verify-9fc1",
+   "en": "This system does not verify that remediation was performed or that it succeeded. Each recommendation above includes its own verification step, which must be carried out and confirmed independently.",
+   "mr": "उपाययोजना केली गेली किंवा ती यशस्वी झाली, याची ही प्रणाली खातरजमा करत नाही. वरील प्रत्येक शिफारशीत स्वतःची पडताळणी पायरी आहे; ती स्वतंत्रपणे पार पाडून तिची खात्री करणे आवश्यक आहे.",
+   "needs_review": true
+  },
+  {
+   "id": "report.the-machine-learning-lane-contributes-29a8",
+   "en": "The machine-learning lane contributes a bounded adjustment to the order in which findings are presented. It does not determine any security fact, does not set or change a severity, does not create a finding, and does not affect the posture score. Its adjustment is arithmetically smaller than the gap between severity tiers, so it cannot move a finding from one tier to another.",
+   "mr": "मशीन लर्निंग (ML) विश्लेषण निष्कर्ष कोणत्या क्रमाने सादर होतात त्यात मर्यादित बदल करते. ते कोणतीही सुरक्षा वस्तुस्थिती ठरवत नाही, तीव्रता निश्चित किंवा बदलत नाही, निष्कर्ष तयार करत नाही आणि सुरक्षा स्थिती गुणांवर परिणाम करत नाही. त्याचा बदल तीव्रतेच्या पातळ्यांमधील अंतरापेक्षा गणितीदृष्ट्या लहान असतो, म्हणून तो निष्कर्षाला एका पातळीतून दुसऱ्यात हलवू शकत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.an-anomaly-score-is-a-9305",
+   "en": "An anomaly score is a statistical distance from a learned normal. It is not a vulnerability, not an attack, and not evidence of one.",
+   "mr": "विसंगती गुण म्हणजे शिकलेल्या सामान्य वर्तनापासूनचे सांख्यिकीय अंतर. ती असुरक्षितता नाही, हल्ला नाही आणि त्यांचा पुरावाही नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.an-abstention-is-neither-a-2781",
+   "en": "An abstention is neither a failure nor a pass. It records that the evidence did not support a conclusion. Treating any row above as compliant, or as a detected problem, misreads it.",
+   "mr": "निष्कर्ष टाळणे म्हणजे अपयशही नाही आणि उत्तीर्ण होणेही नाही. पुराव्याने निष्कर्षाला आधार दिला नाही, एवढेच ते नोंदवते. वरील कोणत्याही ओळीला अनुपालन करणारी किंवा आढळलेली समस्या मानणे म्हणजे तिचा चुकीचा अर्थ लावणे होय.",
+   "needs_review": true
+  },
+  {
+   "id": "report.every-conclusion-in-this-report-f709",
+   "en": "Every conclusion in this report traces to specific frames in the capture, to the rule that examined them, and to the standard that rule cited. The capture identifier above is the SHA-256 of the analysed bytes; a capture that hashes differently is a different capture and this assessment does not describe it.",
+   "mr": "या अहवालातील प्रत्येक निष्कर्ष कॅप्चरमधील विशिष्ट फ्रेम्सपर्यंत, ती तपासणाऱ्या नियमापर्यंत आणि त्या नियमाने नमूद केलेल्या मानकापर्यंत शोधता येतो. वर दिलेला कॅप्चर अभिज्ञापक हा विश्लेषित बाइट्सचा SHA-256 आहे; वेगळा हॅश असलेला कॅप्चर हा वेगळा कॅप्चर आहे आणि हे मूल्यांकन त्याचे वर्णन करत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.capture-validation-and-sha-256-506d",
+   "en": "Capture validation and SHA-256 identity",
+   "mr": "कॅप्चरची वैधता तपासणी आणि SHA-256 ओळख",
+   "needs_review": true
+  },
+  {
+   "id": "report.packet-dissection-e152",
+   "en": "Packet dissection",
+   "mr": "पॅकेट विच्छेदन (dissection)",
+   "needs_review": true
+  },
+  {
+   "id": "report.tcp-stream-and-protocol-session-b05e",
+   "en": "TCP stream and protocol session reconstruction",
+   "mr": "TCP स्ट्रीम आणि प्रोटोकॉल सत्र पुनर्रचना",
+   "needs_review": true
+  },
+  {
+   "id": "report.deterministic-security-analysis-against-versioned-1473",
+   "en": "Deterministic security analysis against versioned, standards-bound rules",
+   "mr": "आवृत्तीबद्ध, मानकांवर आधारित नियमांनुसार निर्धारक सुरक्षा विश्लेषण",
+   "needs_review": true
+  },
+  {
+   "id": "report.cross-session-reasoning-b265",
+   "en": "Cross-session reasoning",
+   "mr": "क्रॉस-सेशन (सत्रांमधील) तर्क",
+   "needs_review": true
+  },
+  {
+   "id": "report.yes-5397",
+   "en": "Yes",
+   "mr": "होय",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-816c",
+   "en": "No",
+   "mr": "नाही",
+   "needs_review": true
+  },
+  {
+   "id": "report.of-sessions-assessed-cbad",
+   "en": "{pct} ({assessed} of {total} sessions assessed)",
+   "mr": "{pct} ({total} पैकी {assessed} सत्रांचे मूल्यांकन झाले)",
+   "needs_review": true
+  },
+  {
+   "id": "report.executive-summary-c468",
+   "en": "Executive summary",
+   "mr": "कार्यकारी सारांश",
+   "needs_review": true
+  },
+  {
+   "id": "report.the-posture-band-is-withheld-1922",
+   "en": "The posture band is withheld. Evidence coverage is below the threshold at which this system is willing to grade a capture. A withheld band is not a passing result and must not be read as one.",
+   "mr": "सुरक्षा स्थिती श्रेणी रोखून ठेवली आहे. पुराव्याची व्याप्ती ही प्रणाली कॅप्चरला श्रेणी देण्यासाठी आवश्यक मानते त्या मर्यादेपेक्षा कमी आहे. रोखून ठेवलेली श्रेणी म्हणजे उत्तीर्ण निकाल नव्हे आणि तसा तिचा अर्थ लावू नये.",
+   "needs_review": true
+  },
+  {
+   "id": "report.assessment-scope-4631",
+   "en": "Assessment scope",
+   "mr": "मूल्यांकनाची व्याप्ती (स्कोप)",
+   "needs_review": true
+  },
+  {
+   "id": "report.what-this-assessment-covers-and-22cb",
+   "en": "What this assessment covers, and what it structurally cannot.",
+   "mr": "हे मूल्यांकन काय समाविष्ट करते आणि संरचनात्मकदृष्ट्या काय समाविष्ट करू शकत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.overall-security-posture-c802",
+   "en": "Overall security posture",
+   "mr": "एकूण सुरक्षा स्थिती",
+   "needs_review": true
+  },
+  {
+   "id": "report.posture-2b9b",
+   "en": "Posture",
+   "mr": "सुरक्षा स्थिती",
+   "needs_review": true
+  },
+  {
+   "id": "report.score-489f",
+   "en": "Score",
+   "mr": "गुण",
+   "needs_review": true
+  },
+  {
+   "id": "report.evidence-coverage-f96a",
+   "en": "Evidence coverage",
+   "mr": "पुराव्याची व्याप्ती",
+   "needs_review": true
+  },
+  {
+   "id": "report.how-much-of-the-captured-aea6",
+   "en": "How much of the captured traffic the analysis could actually assess.",
+   "mr": "कॅप्चर केलेल्या वाहतुकीपैकी किती भागाचे विश्लेषण प्रत्यक्षात करता आले.",
+   "needs_review": true
+  },
+  {
+   "id": "report.this-assessment-carries-no-coverage-fee0",
+   "en": "This assessment carries no coverage information. A posture claim cannot be qualified without it and should be treated with corresponding caution.",
+   "mr": "या मूल्यांकनात व्याप्तीची कोणतीही माहिती नाही. ती नसताना सुरक्षा स्थितीबाबतचा दावा पात्र ठरवता येत नाही; त्याकडे त्यानुसार सावधगिरीने पाहावे.",
+   "needs_review": true
+  },
+  {
+   "id": "report.sessions-total-b1d4",
+   "en": "Sessions total",
+   "mr": "एकूण सत्रे",
+   "needs_review": true
+  },
+  {
+   "id": "report.sessions-assessed-5046",
+   "en": "Sessions assessed",
+   "mr": "मूल्यांकन झालेली सत्रे",
+   "needs_review": true
+  },
+  {
+   "id": "report.sessions-abstained-ce5c",
+   "en": "Sessions abstained",
+   "mr": "निष्कर्ष टाळलेली सत्रे",
+   "needs_review": true
+  },
+  {
+   "id": "report.assessed-fraction-3896",
+   "en": "Assessed fraction",
+   "mr": "मूल्यांकन झालेला अंश",
+   "needs_review": true
+  },
+  {
+   "id": "report.coverage-was-insufficient-for-this-c3ac",
+   "en": "Coverage was insufficient for this system to issue a posture band.",
+   "mr": "ही प्रणाली सुरक्षा स्थिती श्रेणी देऊ शकेल एवढी व्याप्ती पुरेशी नव्हती.",
+   "needs_review": true
+  },
+  {
+   "id": "report.protocol-posture-4722",
+   "en": "Protocol posture",
+   "mr": "प्रोटोकॉलनिहाय सुरक्षा स्थिती",
+   "needs_review": true
+  },
+  {
+   "id": "report.posture-per-protocol-across-the-fe5b",
+   "en": "Posture per protocol, across the dimensions the evidence supports.",
+   "mr": "पुराव्याने समर्थित असलेल्या पैलूंनुसार प्रत्येक प्रोटोकॉलची सुरक्षा स्थिती.",
+   "needs_review": true
+  },
+  {
+   "id": "report.prioritised-findings-3a8d",
+   "en": "Prioritised findings",
+   "mr": "प्राधान्यक्रमित निष्कर्ष",
+   "needs_review": true
+  },
+  {
+   "id": "report.investigative-priority-as-ranked-by-6d03",
+   "en": "Investigative priority, as ranked by the assessment. This ordering is not a severity ranking.",
+   "mr": "मूल्यांकनाने ठरवलेला तपासाचा प्राधान्यक्रम. हा क्रम तीव्रतेचा क्रम नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.detailed-findings-c7bb",
+   "en": "Detailed findings",
+   "mr": "तपशीलवार निष्कर्ष",
+   "needs_review": true
+  },
+  {
+   "id": "report.standards-basis-6be8",
+   "en": "Standards basis",
+   "mr": "मानकांचा आधार",
+   "needs_review": true
+  },
+  {
+   "id": "report.standards-cited-by-the-rules-24fb",
+   "en": "Standards cited by the rules that produced these findings.",
+   "mr": "हे निष्कर्ष तयार करणाऱ्या नियमांनी नमूद केलेली मानके.",
+   "needs_review": true
+  },
+  {
+   "id": "report.remediation-guidance-b5e5",
+   "en": "Remediation guidance",
+   "mr": "उपाययोजना मार्गदर्शन",
+   "needs_review": true
+  },
+  {
+   "id": "report.rule-bound-guidance-carried-from-e91b",
+   "en": "Rule-bound guidance carried from the assessment, in its own words.",
+   "mr": "मूल्यांकनातून घेतलेले, नियमांवर आधारित मार्गदर्शन — त्याच्याच शब्दांत.",
+   "needs_review": true
+  },
+  {
+   "id": "report.ai-ml-transparency-8124",
+   "en": "AI / ML transparency",
+   "mr": "AI / ML पारदर्शकता",
+   "needs_review": true
+  },
+  {
+   "id": "report.what-the-machine-learning-lane-7087",
+   "en": "What the machine-learning lane did, and what it is not permitted to do.",
+   "mr": "मशीन लर्निंग विश्लेषणाने काय केले आणि त्याला काय करण्याची परवानगी नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.the-machine-learning-lane-was-77f3",
+   "en": "The machine-learning lane was not used. Every conclusion in this report comes from deterministic rules and cross-session reasoning.",
+   "mr": "मशीन लर्निंग विश्लेषण वापरले गेले नाही. या अहवालातील प्रत्येक निष्कर्ष निर्धारक नियमांतून आणि क्रॉस-सेशन तर्कातून आलेला आहे.",
+   "needs_review": true
+  },
+  {
+   "id": "report.ml-lane-4b45",
+   "en": "ML lane",
+   "mr": "ML विश्लेषण",
+   "needs_review": true
+  },
+  {
+   "id": "report.enabled-df17",
+   "en": "Enabled",
+   "mr": "सुरू",
+   "needs_review": true
+  },
+  {
+   "id": "report.model-68c2",
+   "en": "Model",
+   "mr": "मॉडेल",
+   "needs_review": true
+  },
+  {
+   "id": "report.model-version-ba83",
+   "en": "Model version",
+   "mr": "मॉडेल आवृत्ती",
+   "needs_review": true
+  },
+  {
+   "id": "report.feature-schema-6266",
+   "en": "Feature schema",
+   "mr": "फीचर स्कीमा",
+   "needs_review": true
+  },
+  {
+   "id": "report.sessions-scored-b069",
+   "en": "Sessions scored",
+   "mr": "गुण दिलेली सत्रे",
+   "needs_review": true
+  },
+  {
+   "id": "report.model-artifact-hash-b7ea",
+   "en": "Model artifact hash",
+   "mr": "मॉडेल आर्टिफॅक्ट हॅश",
+   "needs_review": true
+  },
+  {
+   "id": "report.abstentions-and-observability-limits-196d",
+   "en": "Abstentions and observability limits",
+   "mr": "निष्कर्ष टाळलेल्या बाबी आणि निरीक्षणाच्या मर्यादा",
+   "needs_review": true
+  },
+  {
+   "id": "report.questions-this-assessment-declined-to-2e62",
+   "en": "Questions this assessment declined to answer, and what would settle them.",
+   "mr": "या मूल्यांकनाने ज्या प्रश्नांची उत्तरे देण्याचे टाळले आणि ते प्रश्न कशाने सुटतील.",
+   "needs_review": true
+  },
+  {
+   "id": "report.the-assessment-recorded-no-abstentions-d36b",
+   "en": "The assessment recorded no abstentions. Every question the rule set asked of this capture could be answered from the available evidence.",
+   "mr": "मूल्यांकनात निष्कर्ष टाळल्याची कोणतीही नोंद नाही. नियमसंचाने या कॅप्चरबाबत विचारलेल्या प्रत्येक प्रश्नाचे उत्तर उपलब्ध पुराव्यातून देता आले.",
+   "needs_review": true
+  },
+  {
+   "id": "report.assessment-limitations-2937",
+   "en": "Assessment limitations",
+   "mr": "मूल्यांकनाच्या मर्यादा",
+   "needs_review": true
+  },
+  {
+   "id": "report.constraints-that-bound-what-this-4ce3",
+   "en": "Constraints that bound what this assessment can support.",
+   "mr": "हे मूल्यांकन कशाला आधार देऊ शकते यावर घातलेल्या मर्यादा.",
+   "needs_review": true
+  },
+  {
+   "id": "report.this-assessment-carries-no-recorded-b03d",
+   "en": "This assessment carries no recorded limitations. That is unusual and should be verified against the engine version that produced it.",
+   "mr": "या मूल्यांकनात कोणत्याही मर्यादेची नोंद नाही. हे असामान्य आहे आणि ते तयार करणाऱ्या इंजिन आवृत्तीच्या आधारे पडताळून पाहावे.",
+   "needs_review": true
+  },
+  {
+   "id": "report.evidence-and-provenance-cb09",
+   "en": "Evidence and provenance",
+   "mr": "पुरावा आणि उत्पत्ती (प्रोव्हिनन्स)",
+   "needs_review": true
+  },
+  {
+   "id": "report.what-was-analysed-by-which-1076",
+   "en": "What was analysed, by which engine, and on what evidence.",
+   "mr": "काय विश्लेषित केले, कोणत्या इंजिनने आणि कोणत्या पुराव्यावर.",
+   "needs_review": true
+  },
+  {
+   "id": "report.machine-learning-secondary-prioritisation-signal-3b42",
+   "en": "Machine-learning secondary prioritisation signal",
+   "mr": "मशीन लर्निंगवर आधारित दुय्यम प्राधान्य संकेत",
+   "needs_review": true
+  },
+  {
+   "id": "report.evidence-fusion-deduplication-and-contradiction-5df5",
+   "en": "Evidence fusion, deduplication and contradiction handling",
+   "mr": "पुराव्यांचे एकत्रीकरण, पुनरावृत्ती-वगळणी आणि विरोधाभासांची हाताळणी",
+   "needs_review": true
+  },
+  {
+   "id": "report.risk-classification-posture-scoring-prioritisation-f43b",
+   "en": "Risk classification, posture scoring, prioritisation and remediation",
+   "mr": "जोखीम वर्गीकरण, सुरक्षा स्थिती गुण, प्राधान्यक्रम आणि उपाययोजना",
+   "needs_review": true
+  },
+  {
+   "id": "report.methodology-b509",
+   "en": "Methodology",
+   "mr": "कार्यपद्धती",
+   "needs_review": true
+  },
+  {
+   "id": "report.the-stages-that-produced-this-cdb2",
+   "en": "The stages that produced this assessment.",
+   "mr": "हे मूल्यांकन तयार करणारे टप्पे.",
+   "needs_review": true
+  },
+  {
+   "id": "report.the-machine-learning-lane-was-9305",
+   "en": "The machine-learning lane was not exercised for this assessment.",
+   "mr": "या मूल्यांकनासाठी मशीन लर्निंग विश्लेषणाचा वापर केला गेला नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.truncated-to-characters-original-1155",
+   "en": "{what:tr} truncated to {limit:num} characters (original {orig:num})",
+   "mr": "{what} {limit} अक्षरांपर्यंत छाटले (मूळ {orig})",
+   "needs_review": true
+  },
+  {
+   "id": "report.not-recorded-9925",
+   "en": "not recorded",
+   "mr": "नोंदवलेले नाही",
+   "needs_review": true
+  },
+  {
+   "id": "report.unknown-50d8",
+   "en": "unknown",
+   "mr": "अज्ञात",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-issue-group-penalises-the-1e79",
+   "en": "No issue group penalises the posture score. Groups present are informational or positive evidence.",
+   "mr": "कोणताही समस्या गट सुरक्षा स्थिती गुण कमी करत नाही. उपस्थित गट माहितीपर किंवा सकारात्मक पुराव्याचे आहेत.",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-issue-groups-were-produced-df5c",
+   "en": "No issue groups were produced for this capture.",
+   "mr": "या कॅप्चरसाठी कोणतेही समस्या गट तयार झाले नाहीत.",
+   "needs_review": true
+  },
+  {
+   "id": "report.scoring-formula-9fce",
+   "en": "Scoring formula",
+   "mr": "गुणांकन सूत्र",
+   "needs_review": true
+  },
+  {
+   "id": "report.findings-in-investigative-priority-order-4621",
+   "en": "Findings in investigative priority order",
+   "mr": "तपासाच्या प्राधान्यक्रमानुसार निष्कर्ष",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-prioritised-findings-58b8",
+   "en": "No prioritised findings.",
+   "mr": "प्राधान्यक्रमित निष्कर्ष नाहीत.",
+   "needs_review": true
+  },
+  {
+   "id": "report.total-271f",
+   "en": ", … ({n:num} total)",
+   "mr": ", … (एकूण {n})",
+   "needs_review": true
+  },
+  {
+   "id": "report.issue-groups-with-evidence-and-b224",
+   "en": "Issue groups with evidence and standards basis",
+   "mr": "पुरावा आणि मानकांच्या आधारासह समस्या गट",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-issue-groups-f946",
+   "en": "No issue groups.",
+   "mr": "समस्या गट नाहीत.",
+   "needs_review": true
+  },
+  {
+   "id": "report.standards-cited-in-this-assessment-4ef3",
+   "en": "Standards cited in this assessment",
+   "mr": "या मूल्यांकनात नमूद केलेली मानके",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-standards-were-cited-cd7e",
+   "en": "No standards were cited.",
+   "mr": "कोणतेही मानक नमूद केलेले नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.recommended-actions-f3d2",
+   "en": "Recommended actions",
+   "mr": "शिफारस केलेल्या कृती",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-remediation-guidance-is-available-31c8",
+   "en": "No remediation guidance is available for the issue classes found.",
+   "mr": "आढळलेल्या समस्या वर्गांसाठी उपाययोजना मार्गदर्शन उपलब्ध नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.disabled-f4f4",
+   "en": "Disabled",
+   "mr": "बंद",
+   "needs_review": true
+  },
+  {
+   "id": "report.role-c3f1",
+   "en": "Role",
+   "mr": "भूमिका",
+   "needs_review": true
+  },
+  {
+   "id": "report.abstentions-ccd6",
+   "en": "Abstentions",
+   "mr": "निष्कर्ष टाळलेल्या बाबी",
+   "needs_review": true
+  },
+  {
+   "id": "report.limitation-ae0b",
+   "en": "limitation",
+   "mr": "मर्यादा",
+   "needs_review": true
+  },
+  {
+   "id": "report.overall-posture-8e70",
+   "en": "Overall posture",
+   "mr": "एकूण सुरक्षा स्थिती",
+   "needs_review": true
+  },
+  {
+   "id": "report.posture-score-aced",
+   "en": "Posture score",
+   "mr": "सुरक्षा स्थिती गुण",
+   "needs_review": true
+  },
+  {
+   "id": "report.protocols-observed-37f3",
+   "en": "Protocols observed",
+   "mr": "निरीक्षण केलेले प्रोटोकॉल",
+   "needs_review": true
+  },
+  {
+   "id": "report.issue-groups-4287",
+   "en": "Issue groups",
+   "mr": "समस्या गट",
+   "needs_review": true
+  },
+  {
+   "id": "report.session-s-were-reconstructed-from-cc5b",
+   "en": "{total:num} session(s) were reconstructed from the capture; {assessed:num} were assessed and {abstained:num} were abstained from.",
+   "mr": "कॅप्चरमधून {total} सत्रांची पुनर्रचना करण्यात आली; त्यापैकी {assessed} सत्रांचे मूल्यांकन झाले आणि {abstained} सत्रांबाबत निष्कर्ष टाळण्यात आला.",
+   "needs_review": true
+  },
+  {
+   "id": "report.issue-group-s-penalise-the-b8da",
+   "en": "{n:num} issue group(s) penalise the posture score. The highest severity recorded is {sev:tr}.",
+   "mr": "{n} समस्या गट सुरक्षा स्थिती गुण कमी करतात. नोंदवलेली सर्वाधिक तीव्रता: {sev}.",
+   "needs_review": true
+  },
+  {
+   "id": "report.analysis-type-08fb",
+   "en": "Analysis type",
+   "mr": "विश्लेषणाचा प्रकार",
+   "needs_review": true
+  },
+  {
+   "id": "report.passive-pcap-analysis-d9b0",
+   "en": "Passive PCAP analysis",
+   "mr": "निष्क्रिय (passive) PCAP विश्लेषण",
+   "needs_review": true
+  },
+  {
+   "id": "report.capture-identifier-sha-256-0987",
+   "en": "Capture identifier (SHA-256)",
+   "mr": "कॅप्चर अभिज्ञापक (SHA-256)",
+   "needs_review": true
+  },
+  {
+   "id": "report.analysis-timestamp-4ddc",
+   "en": "Analysis timestamp",
+   "mr": "विश्लेषणाची वेळ",
+   "needs_review": true
+  },
+  {
+   "id": "report.time-of-analysis-not-of-5f8c",
+   "en": "time of analysis, not of report generation",
+   "mr": "विश्लेषणाची वेळ; अहवाल तयार केल्याची वेळ नव्हे",
+   "needs_review": true
+  },
+  {
+   "id": "report.score-decomposition-6be4",
+   "en": "Score decomposition",
+   "mr": "गुणांची फोड",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-penalties-were-applied-c61e",
+   "en": "No penalties were applied.",
+   "mr": "कोणताही गुण वजा केलेला नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.the-score-starts-at-and-5d1b",
+   "en": "The score starts at {start:num} and each penalty above is subtracted from it. Only observed issues penalise; compliant observations earn no credit, and missing evidence neither penalises nor rewards.",
+   "mr": "गुण {start} पासून सुरू होतात आणि वर दाखवलेला प्रत्येक दंड त्यातून वजा केला जातो. फक्त निरीक्षण केलेल्या समस्यांमुळे गुण कमी होतात; अनुपालन करणाऱ्या निरीक्षणांना कोणतेही अतिरिक्त गुण मिळत नाहीत आणि पुराव्याच्या अभावामुळे गुण कमीही होत नाहीत किंवा वाढतही नाहीत.",
+   "needs_review": true
+  },
+  {
+   "id": "report.evidence-states-observed-across-all-762f",
+   "en": "Evidence states observed across all fields",
+   "mr": "सर्व क्षेत्रांमध्ये आढळलेल्या पुराव्याच्या स्थिती",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-evidence-state-counts-recorded-ac0b",
+   "en": "No evidence-state counts recorded.",
+   "mr": "पुराव्याच्या स्थितींची कोणतीही संख्या नोंदवलेली नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.session-completeness-d545",
+   "en": "Session completeness",
+   "mr": "सत्राची पूर्णता",
+   "needs_review": true
+  },
+  {
+   "id": "report.prioritised-findings-truncated-to-of-2416",
+   "en": "prioritised findings truncated to {shown:num} of {total:num}",
+   "mr": "प्राधान्यक्रमित निष्कर्ष {total} पैकी {shown} पर्यंत छाटले",
+   "needs_review": true
+  },
+  {
+   "id": "report.rank-dd48",
+   "en": "Rank",
+   "mr": "क्रमांक",
+   "needs_review": true
+  },
+  {
+   "id": "report.severity-de31",
+   "en": "Severity",
+   "mr": "तीव्रता",
+   "needs_review": true
+  },
+  {
+   "id": "report.issue-7378",
+   "en": "Issue",
+   "mr": "समस्या",
+   "needs_review": true
+  },
+  {
+   "id": "report.status-bae7",
+   "en": "Status",
+   "mr": "स्थिती",
+   "needs_review": true
+  },
+  {
+   "id": "report.certainty-b696",
+   "en": "Certainty",
+   "mr": "खात्री",
+   "needs_review": true
+  },
+  {
+   "id": "report.sessions-e11e",
+   "en": "Sessions",
+   "mr": "सत्रे",
+   "needs_review": true
+  },
+  {
+   "id": "report.priority-886c",
+   "en": "Priority",
+   "mr": "प्राधान्य",
+   "needs_review": true
+  },
+  {
+   "id": "report.ml-adj-39b9",
+   "en": "ML adj.",
+   "mr": "ML समायोजन",
+   "needs_review": true
+  },
+  {
+   "id": "report.issue-groups-truncated-to-of-fb75",
+   "en": "issue groups truncated to {shown:num} of {total:num}",
+   "mr": "समस्या गट {total} पैकी {shown} पर्यंत छाटले",
+   "needs_review": true
+  },
+  {
+   "id": "report.issue-title-f760",
+   "en": "issue title",
+   "mr": "समस्येचे शीर्षक",
+   "needs_review": true
+  },
+  {
+   "id": "report.fact-kind-4dca",
+   "en": "Fact kind",
+   "mr": "तथ्याचा प्रकार",
+   "needs_review": true
+  },
+  {
+   "id": "report.dimension-45e1",
+   "en": "Dimension",
+   "mr": "पैलू",
+   "needs_review": true
+  },
+  {
+   "id": "report.observability-e239",
+   "en": "Observability",
+   "mr": "निरीक्षणक्षमता",
+   "needs_review": true
+  },
+  {
+   "id": "report.recurrence-f7ad",
+   "en": "Recurrence",
+   "mr": "पुनरावृत्ती",
+   "needs_review": true
+  },
+  {
+   "id": "report.standard-2dfa",
+   "en": "Standard",
+   "mr": "मानक",
+   "needs_review": true
+  },
+  {
+   "id": "report.frames-e3e7",
+   "en": "Frames",
+   "mr": "फ्रेम्स",
+   "needs_review": true
+  },
+  {
+   "id": "report.penalising-a31a",
+   "en": "Penalising",
+   "mr": "गुण कमी करते का",
+   "needs_review": true
+  },
+  {
+   "id": "report.explanation-73b8",
+   "en": "explanation",
+   "mr": "स्पष्टीकरण",
+   "needs_review": true
+  },
+  {
+   "id": "report.contradictory-evidence-recorded-539d",
+   "en": "Contradictory evidence recorded: {text:tr}",
+   "mr": "विरोधाभासी पुरावा नोंदवला: {text}",
+   "needs_review": true
+  },
+  {
+   "id": "report.citations-fd32",
+   "en": "Citations",
+   "mr": "उद्धरणे",
+   "needs_review": true
+  },
+  {
+   "id": "report.sections-7ff5",
+   "en": "Sections",
+   "mr": "कलमे",
+   "needs_review": true
+  },
+  {
+   "id": "report.observed-eb6e",
+   "en": "observed",
+   "mr": "निरीक्षण",
+   "needs_review": true
+  },
+  {
+   "id": "report.rationale-34fe",
+   "en": "rationale",
+   "mr": "कारणमीमांसा",
+   "needs_review": true
+  },
+  {
+   "id": "report.action-34eb",
+   "en": "action",
+   "mr": "कृती",
+   "needs_review": true
+  },
+  {
+   "id": "report.verification-6527",
+   "en": "verification",
+   "mr": "पडताळणी",
+   "needs_review": true
+  },
+  {
+   "id": "report.observed-2e15",
+   "en": "Observed",
+   "mr": "निरीक्षण",
+   "needs_review": true
+  },
+  {
+   "id": "report.why-it-matters-750c",
+   "en": "Why it matters",
+   "mr": "हे महत्त्वाचे का आहे",
+   "needs_review": true
+  },
+  {
+   "id": "report.recommended-action-28fb",
+   "en": "Recommended action",
+   "mr": "शिफारस केलेली कृती",
+   "needs_review": true
+  },
+  {
+   "id": "report.affected-scope-e602",
+   "en": "Affected scope",
+   "mr": "बाधित व्याप्ती",
+   "needs_review": true
+  },
+  {
+   "id": "report.verification-0312",
+   "en": "Verification",
+   "mr": "पडताळणी",
+   "needs_review": true
+  },
+  {
+   "id": "report.remediation-limitation-1192",
+   "en": "remediation limitation",
+   "mr": "उपाययोजनेची मर्यादा",
+   "needs_review": true
+  },
+  {
+   "id": "report.abstention-statement-2b4e",
+   "en": "abstention statement",
+   "mr": "निष्कर्ष टाळल्याचे विधान",
+   "needs_review": true
+  },
+  {
+   "id": "report.abstention-reason-0051",
+   "en": "abstention reason",
+   "mr": "निष्कर्ष टाळण्याचे कारण",
+   "needs_review": true
+  },
+  {
+   "id": "report.abstention-resolution-866a",
+   "en": "abstention resolution",
+   "mr": "निष्कर्ष टाळल्यानंतरचा उपाय",
+   "needs_review": true
+  },
+  {
+   "id": "report.reason-f219",
+   "en": "Reason",
+   "mr": "कारण",
+   "needs_review": true
+  },
+  {
+   "id": "report.issue-class-f876",
+   "en": "Issue class",
+   "mr": "समस्या वर्ग",
+   "needs_review": true
+  },
+  {
+   "id": "report.could-not-conclude-a7f1",
+   "en": "Could not conclude",
+   "mr": "निष्कर्ष काढता आला नाही",
+   "needs_review": true
+  },
+  {
+   "id": "report.why-21e2",
+   "en": "Why",
+   "mr": "का",
+   "needs_review": true
+  },
+  {
+   "id": "report.would-be-resolved-by-d0f7",
+   "en": "Would be resolved by",
+   "mr": "कशाने सुटेल",
+   "needs_review": true
+  },
+  {
+   "id": "report.protocol-1ed7",
+   "en": "Protocol",
+   "mr": "प्रोटोकॉल",
+   "needs_review": true
+  },
+  {
+   "id": "report.assessment-identifier-822b",
+   "en": "Assessment identifier",
+   "mr": "मूल्यांकन अभिज्ञापक",
+   "needs_review": true
+  },
+  {
+   "id": "report.analysis-run-identifier-06a3",
+   "en": "Analysis run identifier",
+   "mr": "विश्लेषण रन अभिज्ञापक",
+   "needs_review": true
+  },
+  {
+   "id": "report.posture-schema-version-6ec5",
+   "en": "Posture schema version",
+   "mr": "पोश्चर स्कीमा आवृत्ती",
+   "needs_review": true
+  },
+  {
+   "id": "report.posture-engine-version-fa9d",
+   "en": "Posture engine version",
+   "mr": "पोश्चर इंजिन आवृत्ती",
+   "needs_review": true
+  },
+  {
+   "id": "report.report-schema-version-7850",
+   "en": "Report schema version",
+   "mr": "अहवाल स्कीमा आवृत्ती",
+   "needs_review": true
+  },
+  {
+   "id": "report.renderer-version-88fa",
+   "en": "Renderer version",
+   "mr": "रेंडरर आवृत्ती",
+   "needs_review": true
+  },
+  {
+   "id": "report.engine-provenance-5c3d",
+   "en": "Engine provenance",
+   "mr": "इंजिन उत्पत्ती (प्रोव्हिनन्स)",
+   "needs_review": true
+  },
+  {
+   "id": "report.input-b568",
+   "en": "Input",
+   "mr": "इनपुट",
+   "needs_review": true
+  },
+  {
+   "id": "report.packet-capture-pcap-4030",
+   "en": "Packet capture (PCAP)",
+   "mr": "पॅकेट कॅप्चर (PCAP)",
+   "needs_review": true
+  },
+  {
+   "id": "report.protocols-assessed-b048",
+   "en": "Protocols assessed",
+   "mr": "मूल्यांकन केलेले प्रोटोकॉल",
+   "needs_review": true
+  },
+  {
+   "id": "report.output-4bed",
+   "en": "Output",
+   "mr": "आउटपुट",
+   "needs_review": true
+  },
+  {
+   "id": "report.canonical-posture-assessment-78f4",
+   "en": "Canonical posture assessment",
+   "mr": "प्रमाणित सुरक्षा स्थिती मूल्यांकन",
+   "needs_review": true
+  },
+  {
+   "id": "report.withheld-evidence-coverage-below-the-6537",
+   "en": "withheld: evidence coverage below the assessment floor",
+   "mr": "रोखून ठेवले: पुराव्याची व्याप्ती मूल्यांकनाच्या किमान मर्यादेपेक्षा कमी",
+   "needs_review": true
+  },
+  {
+   "id": "report.none-observed-6640",
+   "en": "None observed",
+   "mr": "काहीही आढळले नाही",
+   "needs_review": true
+  },
+  {
+   "id": "report.sessions-per-protocol-1ac3",
+   "en": "Sessions per protocol",
+   "mr": "प्रोटोकॉलनिहाय सत्रे",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-protocol-sessions-were-recorded-45ad",
+   "en": "No protocol sessions were recorded in this assessment.",
+   "mr": "या मूल्यांकनात कोणतीही प्रोटोकॉल सत्रे नोंदवलेली नाहीत.",
+   "needs_review": true
+  },
+  {
+   "id": "report.weight-69c0",
+   "en": "Weight",
+   "mr": "भार",
+   "needs_review": true
+  },
+  {
+   "id": "report.recurrence-multiplier-6c84",
+   "en": "Recurrence multiplier",
+   "mr": "पुनरावृत्ती गुणक",
+   "needs_review": true
+  },
+  {
+   "id": "report.penalty-de32",
+   "en": "Penalty",
+   "mr": "दंड (गुण कपात)",
+   "needs_review": true
+  },
+  {
+   "id": "report.evidence-state-b8ee",
+   "en": "Evidence state",
+   "mr": "पुराव्याची स्थिती",
+   "needs_review": true
+  },
+  {
+   "id": "report.count-66e1",
+   "en": "Count",
+   "mr": "संख्या",
+   "needs_review": true
+  },
+  {
+   "id": "report.share-09ca",
+   "en": "Share",
+   "mr": "वाटा",
+   "needs_review": true
+  },
+  {
+   "id": "report.completeness-7781",
+   "en": "Completeness",
+   "mr": "पूर्णता",
+   "needs_review": true
+  },
+  {
+   "id": "report.per-protocol-posture-f43b",
+   "en": "Per-protocol posture",
+   "mr": "प्रोटोकॉलनिहाय सुरक्षा स्थिती",
+   "needs_review": true
+  },
+  {
+   "id": "report.no-per-protocol-posture-recorded-75f3",
+   "en": "No per-protocol posture recorded.",
+   "mr": "प्रोटोकॉलनिहाय सुरक्षा स्थिती नोंदवलेली नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "report.conclusion-6a38",
+   "en": "conclusion",
+   "mr": "निष्कर्ष",
+   "needs_review": true
+  },
+  {
+   "id": "report.contradiction-7c0f",
+   "en": "contradiction",
+   "mr": "विरोधाभास",
+   "needs_review": true
+  },
+  {
+   "id": "report.provenance-entry-0ed3",
+   "en": "provenance entry",
+   "mr": "उत्पत्ती नोंद",
+   "needs_review": true
+  },
+  {
+   "id": "report.item-ecdd",
+   "en": "Item",
+   "mr": "बाब",
+   "needs_review": true
+  },
+  {
+   "id": "report.value-8dce",
+   "en": "Value",
+   "mr": "मूल्य",
+   "needs_review": true
+  },
+  {
+   "id": "report.total-penalising-the-score-1779",
+   "en": "{total:num} total · {pen:num} penalising the score",
+   "mr": "एकूण {total} · त्यापैकी {pen} गुण कमी करणारे",
+   "needs_review": true
+  },
+  {
+   "id": "report.band-895f",
+   "en": "Band",
+   "mr": "श्रेणी",
+   "needs_review": true
+  },
+  {
+   "id": "report.dimensions-assessed-23a1",
+   "en": "Dimensions assessed",
+   "mr": "मूल्यांकन झालेले पैलू",
+   "needs_review": true
+  },
+  {
+   "id": "report.not-observable-72b0",
+   "en": "Not observable",
+   "mr": "निरीक्षणयोग्य नाही",
+   "needs_review": true
+  },
+  {
+   "id": "glue.entry-d7d2",
+   "en": "{marker:mk} {sev:tr}",
+   "mr": "{marker} {sev}",
+   "needs_review": true
+  }
+ ]
+}

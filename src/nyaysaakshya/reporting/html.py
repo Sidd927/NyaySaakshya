@@ -16,9 +16,9 @@ assessment content.
 from __future__ import annotations
 
 from html import escape
-from typing import Iterable, List
+from typing import Callable, Iterable, List, Tuple
 
-from nyaysaakshya.reporting import styles
+from nyaysaakshya.reporting import i18n, styles
 from nyaysaakshya.reporting.model import Bar, ReportDocument, Section, Table
 
 
@@ -134,11 +134,34 @@ footer code { font-family: %(mono)s; word-break: break-all; }
 """
 
 
-def _css() -> str:
+#: Added only to non-English output. Devanagari needs a taller line, no letter-spacing and
+#: no forced upper-case (they break conjuncts and mangle Latin tokens inside Marathi text),
+#: and a font stack with Devanagari faces. Still no webfont: the reader's system supplies one.
+_CSS_DEVANAGARI = """
+[lang="mr"] { font-family: %(font)s, "Nirmala UI", "Noto Sans Devanagari", "Mangal",
+  "Kohinoor Devanagari", "Devanagari Sangam MN", "Lohit Devanagari", sans-serif; }
+[lang="mr"] body, body[lang="mr"] { line-height: 1.75; }
+[lang="mr"] .masthead h1, [lang="mr"] th, [lang="mr"] .verdict .k, [lang="mr"] h2 {
+  letter-spacing: 0; text-transform: none; }
+[lang="mr"] th, [lang="mr"] td { font-size: .78rem; word-break: normal;
+  overflow-wrap: break-word; hyphens: manual; }
+[lang="mr"] figure { overflow-x: auto; }
+[lang="mr"] table { min-width: 100%%; }
+.notice.draft { border-left-color: var(--high); font-weight: 600; }
+@media print { [lang="mr"] figure { overflow: visible; } [lang="mr"] table { font-size: 8pt; } }
+.langbanner { background: var(--panel); border-left: 4px solid var(--accent);
+  padding: .6rem 1rem; margin: 2.5rem 0 1rem; font-weight: 600; }
+"""
+
+
+def _css(lang: str = i18n.LANG_EN) -> str:
     tokens = dict(styles.COLOR)
     tokens["font"] = styles.HTML_FONT_STACK
     tokens["mono"] = styles.HTML_MONO_STACK
-    return _CSS % tokens
+    css = _CSS % tokens
+    if lang != i18n.LANG_EN:
+        css += _CSS_DEVANAGARI % tokens
+    return css
 
 
 # -------------------------------------------------------------------- helpers
@@ -151,14 +174,18 @@ def _severity_class(cell: str) -> str:
     for severity in styles.SEVERITY_ORDER:
         if severity in cell:
             return "sev sev-" + severity
+    # A translated cell carries no English severity word, but the ASCII marker survives.
+    for severity in styles.SEVERITY_ORDER:
+        if styles.SEVERITY_MARKER[severity] in cell:
+            return "sev sev-" + severity
     return ""
 
 
-def _table(table: Table) -> str:
+def _table(table: Table, t: Callable[[str], str] = lambda text: text) -> str:
     out: List[str] = ["<figure>"]
     if not table.rows:
         out.append('<p class="empty">%s</p>' % esc(
-            table.empty_note or "No data recorded for this table."))
+            table.empty_note or t("No data recorded for this table.")))
         out.append("</figure>")
         return "".join(out)
     out.append("<table><caption>%s</caption><thead><tr>" % esc(table.caption))
@@ -201,9 +228,10 @@ def _bars(bars: Iterable[Bar]) -> str:
     return "".join(out)
 
 
-def _section(index: int, section: Section) -> str:
+def _section(index: int, section: Section, t: Callable[[str], str] = lambda text: text,
+             id_prefix: str = "") -> str:
     klass = ' class="page-break"' if section.page_break_before else ""
-    out = ['<section id="%s"%s>' % (esc(section.section_id), klass)]
+    out = ['<section id="%s"%s>' % (esc(id_prefix + section.section_id), klass)]
     out.append('<h2><span class="num">%d.</span>%s</h2>' % (index, esc(section.title)))
     if section.lead:
         out.append('<p class="lead">%s</p>' % esc(section.lead))
@@ -218,7 +246,7 @@ def _section(index: int, section: Section) -> str:
         out.append("<p>%s</p>" % esc(paragraph))
     out.append(_bars(section.bars))
     for table in section.tables:
-        out.append(_table(table))
+        out.append(_table(table, t))
     for notice in section.notices:
         out.append('<div class="notice">%s</div>' % esc(notice))
     out.append("</section>")
@@ -226,21 +254,19 @@ def _section(index: int, section: Section) -> str:
 
 
 # --------------------------------------------------------------------- render
-def render_html(document: ReportDocument) -> str:
-    """Render a complete, standalone HTML document."""
+def _wrap(document: ReportDocument, t: Callable[[str], str], id_prefix: str = "",
+          draft_notice: str = "") -> str:
+    """One report, from ``<div class="wrap">`` to its closing tag.
+
+    `t` translates the renderer's own fixed strings (identity for English). Everything that
+    came from the assessment has already been through `esc()`/localisation by the time it
+    reaches here; this function adds only literals.
+    """
     m = document.metadata
     posture_colour = styles.posture_color(document.overall_posture)
     withheld = document.overall_posture == "INSUFFICIENT_EVIDENCE"
 
     out: List[str] = []
-    out.append("<!DOCTYPE html>")
-    out.append('<html lang="en"><head><meta charset="utf-8">')
-    out.append('<meta name="viewport" content="width=device-width, initial-scale=1">')
-    out.append("<title>%s — %s — %s</title>"
-               % (esc(document.title), esc(document.subtitle), esc(m.assessment_id)))
-    out.append('<meta name="generator" content="%s %s">'
-               % (esc(document.title), esc(m.renderer_version)))
-    out.append("<style>%s</style></head><body>" % _css())
     out.append('<div class="wrap">')
 
     # masthead
@@ -248,52 +274,115 @@ def render_html(document: ReportDocument) -> str:
     out.append("<h1>%s</h1>" % esc(document.title))
     out.append("<p>%s</p>" % esc(document.subtitle))
     out.append('<div class="ids">')
-    out.append("<span>Assessment <strong>%s</strong></span>" % esc(m.assessment_id))
-    out.append("<span>Capture <strong>%s</strong></span>" % esc(m.capture_id))
+    out.append("<span>%s <strong>%s</strong></span>" % (t("Assessment"), esc(m.assessment_id)))
+    out.append("<span>%s <strong>%s</strong></span>" % (t("Capture"), esc(m.capture_id)))
     if m.run_id:
-        out.append("<span>Run <strong>%s</strong></span>" % esc(m.run_id))
-    out.append("<span>Analysed <strong>%s</strong></span>" % esc(m.generated_at))
+        out.append("<span>%s <strong>%s</strong></span>" % (t("Run"), esc(m.run_id)))
+    out.append("<span>%s <strong>%s</strong></span>" % (t("Analysed"), esc(m.generated_at)))
     out.append("</div></header>")
+    if draft_notice:
+        out.append('<div class="notice draft" role="note">%s</div>' % esc(draft_notice))
 
     # verdict block: posture and coverage together, always (doc 22 §7)
     out.append('<div class="verdict">')
-    out.append('<div><div class="k">Overall posture</div>'
+    out.append('<div><div class="k">%s</div>'
                '<div class="v" style="color:%s">%s</div>%s</div>'
-               % (esc(posture_colour), esc(document.overall_posture_label),
-                  '<div class="note">band withheld: coverage below the assessment '
-                  'floor</div>' if withheld else ""))
-    out.append('<div><div class="k">Posture score</div>'
-               '<div class="v small">%s</div></div>' % esc(document.score_text))
-    out.append('<div><div class="k">Evidence coverage</div>'
-               '<div class="v small">%s</div></div>' % esc(document.coverage_text))
-    out.append('<div><div class="k">ML lane</div><div class="v small">%s</div></div>'
-               % esc("Enabled" if m.ai_enabled else "Disabled"))
+               % (t("Overall posture"), esc(posture_colour), esc(document.overall_posture_label),
+                  '<div class="note">%s</div>'
+                  % t("band withheld: coverage below the assessment floor") if withheld else ""))
+    out.append('<div><div class="k">%s</div>'
+               '<div class="v small">%s</div></div>' % (t("Posture score"), esc(document.score_text)))
+    out.append('<div><div class="k">%s</div>'
+               '<div class="v small">%s</div></div>' % (t("Evidence coverage"),
+                                                         esc(document.coverage_text)))
+    out.append('<div><div class="k">%s</div><div class="v small">%s</div></div>'
+               % (t("ML lane"), esc(t("Enabled" if m.ai_enabled else "Disabled"))))
     out.append("</div>")
 
     if document.truncations:
-        out.append('<div class="notice">Some content was truncated for rendering: '
+        out.append('<div class="notice">%s'
+                   % t("Some content was truncated for rendering: ")
                    + esc("; ".join(document.truncations)) + "</div>")
 
     out.append("<main>")
     for index, section in enumerate(document.sections, start=1):
-        out.append(_section(index, section))
+        out.append(_section(index, section, t, id_prefix))
     out.append("</main>")
 
     out.append("<footer>")
-    out.append("<p>%s · Forensic assessment · Assessment <code>%s</code></p>"
-               % (esc(document.title), esc(m.assessment_id)))
-    out.append("<p>Report schema %s · Renderer %s · Posture schema %s · "
-               "Posture engine %s</p>"
-               % (esc(m.report_schema_version), esc(m.renderer_version),
-                  esc(m.posture_schema_version), esc(m.posture_engine_version)))
-    out.append("<p>The timestamp shown is the time of analysis, not of report "
-               "generation. This report is a rendering of the canonical assessment "
-               "and introduces no security conclusion of its own.</p>")
-    out.append("</footer></div></body></html>")
+    out.append("<p>%s · %s · %s <code>%s</code></p>"
+               % (esc(document.title), t("Forensic assessment"), t("Assessment"),
+                  esc(m.assessment_id)))
+    out.append("<p>%s %s · %s %s · %s %s · %s %s</p>"
+               % (t("Report schema"), esc(m.report_schema_version),
+                  t("Renderer"), esc(m.renderer_version),
+                  t("Posture schema"), esc(m.posture_schema_version),
+                  t("Posture engine"), esc(m.posture_engine_version)))
+    out.append("<p>%s</p>" % t(
+        "The timestamp shown is the time of analysis, not of report generation. This report "
+        "is a rendering of the canonical assessment and introduces no security conclusion of "
+        "its own."))
+    out.append("</footer></div>")
     return "".join(out)
 
 
-def render(assessment: dict) -> str:
+def _head(document: ReportDocument, lang: str, html_lang: str) -> str:
+    m = document.metadata
+    out: List[str] = []
+    out.append("<!DOCTYPE html>")
+    out.append('<html lang="%s"><head><meta charset="utf-8">' % html_lang)
+    out.append('<meta name="viewport" content="width=device-width, initial-scale=1">')
+    out.append("<title>%s — %s — %s</title>"
+               % (esc(document.title), esc(document.subtitle), esc(m.assessment_id)))
+    out.append('<meta name="generator" content="%s %s">'
+               % (esc(document.title), esc(m.renderer_version)))
+    out.append("<style>%s</style></head><body>" % _css(lang))
+    return "".join(out)
+
+
+def render_html(document: ReportDocument) -> str:
+    """Render a complete, standalone English HTML document."""
+    return (_head(document, i18n.LANG_EN, "en") + _wrap(document, lambda text: text)
+            + "</body></html>")
+
+
+def render_localized(document: ReportDocument,
+                     lang: str) -> Tuple[str, i18n.LocalizationReport]:
+    """Render `document` (always the English projection) as ``en``, ``mr`` or ``both``.
+
+    ``both`` stacks the Marathi report first and the unmodified English original after it,
+    in one file. The English part is the same report `render_html` produces; it is only
+    wrapped, labelled as the authoritative copy, and given distinct section ids.
+    Returns the HTML and the localisation report (what, if anything, was left in English).
+    """
+    if lang == i18n.LANG_EN:
+        return render_html(document), i18n.LocalizationReport(language=i18n.LANG_EN)
+    if lang not in i18n.SUPPORTED_LANGS:
+        raise ValueError("unsupported report language: %r" % (lang,))
+
+    translator = i18n.make_translator(i18n.LANG_MR)
+    marathi, _ = i18n.localize(document, i18n.LANG_MR, translator)
+    glossary = translator.catalogue.glossary
+    # Shown at the very top for as long as any catalogue entry is unreviewed.
+    draft = glossary["draft_notice"][i18n.LANG_MR] if translator.catalogue.pending_review else ""
+    if lang == i18n.LANG_MR:
+        return (_head(marathi, i18n.LANG_MR, "mr") + _wrap(marathi, translator, "", draft)
+                + "</body></html>"), translator.report
+
+    banner = glossary["english_banner"]
+    parts = [
+        _head(marathi, i18n.LANG_MR, "mr"),
+        '<div lang="mr" id="mr-report">', _wrap(marathi, translator, "mr-", draft), "</div>",
+        '<div lang="en" id="en-report" class="page-break">',
+        '<div class="wrap"><div class="langbanner">%s · <span lang="mr">%s</span></div></div>'
+        % (esc(banner["en"]), esc(banner["mr"])),
+        _wrap(document, lambda text: text, "en-"), "</div>",
+        "</body></html>",
+    ]
+    return "".join(parts), translator.report
+
+
+def render(assessment: dict, lang: str = i18n.LANG_EN) -> str:
     """Convenience: project then render."""
     from nyaysaakshya.reporting.projection import project
-    return render_html(project(assessment))
+    return render_localized(project(assessment), lang)[0]

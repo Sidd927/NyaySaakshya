@@ -1,0 +1,310 @@
+{
+ "entries": [
+  {
+   "id": "crosssession.passive-pcap-evidence-alone-cannot-47c2",
+   "en": "Passive PCAP evidence alone cannot distinguish a consistently legitimate plaintext configuration from a consistently stripped STARTTLS configuration when no unaffected comparable control endpoint or other differentiating evidence exists.",
+   "mr": "इतर कोणताही प्रभावित नसलेला तुलना करण्यायोग्य नियंत्रण एंडपॉइंट किंवा फरक स्पष्ट करणारा अन्य पुरावा नसताना, केवळ निष्क्रिय PCAP पुरावा सातत्याने वैध असलेली क्लिअरटेक्स्ट संरचना आणि सातत्याने STARTTLS काढून टाकलेली संरचना यांतील फरक ओळखू शकत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.cross-session-comparison-does-not-a65c",
+   "en": "Cross-session comparison does not apply to this session.",
+   "mr": "सत्रांमधील (क्रॉस-सेशन) तुलना या सत्राला लागू होत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.insufficient-comparable-history-to-assess-eb7d",
+   "en": "Insufficient comparable history to assess this session.",
+   "mr": "या सत्राचे मूल्यांकन करण्यासाठी तुलना करण्यायोग्य इतिहास अपुरा आहे.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.no-anomaly-is-inferred-from-6926",
+   "en": ". No anomaly is inferred from the absence of history; the engine abstains.",
+   "mr": ". इतिहास नसल्याच्या कारणावरून कोणतीही विसंगती गृहीत धरली जात नाही; इंजिन निष्कर्ष टाळते.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.starttls-stls-advertisement-deviation-from-382f",
+   "en": "STARTTLS/STLS advertisement deviation from baseline",
+   "mr": "STARTTLS/STLS क्षमतेच्या घोषणेत आधाररेषेपासून विचलन",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.historical-advertisement-behaviour-is-not-7738",
+   "en": "Historical advertisement behaviour is not consistent.",
+   "mr": "क्षमतेच्या घोषणेचे ऐतिहासिक वर्तन सुसंगत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.prior-comparable-sessions-disagree-about-4417",
+   "en": "Prior comparable sessions disagree about whether the capability was advertised, so no expectation can be established and no deviation can be claimed.",
+   "mr": "क्षमता जाहीर केली गेली होती की नाही यावर मागील तुलना करण्यायोग्य सत्रांचे एकमत नाही, त्यामुळे कोणतीही अपेक्षा निश्चित करता येत नाही आणि विचलनाचा दावा करता येत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.this-endpoint-consistently-lacks-the-62cd",
+   "en": "This endpoint consistently lacks the upgrade capability while comparable endpoints at the same server consistently have it.",
+   "mr": "हा एंडपॉइंट सातत्याने अपग्रेड क्षमता देत नाही, तर त्याच सर्व्हरवरील तुलना करण्यायोग्य एंडपॉइंट सातत्याने ती देतात.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.this-client-s-own-history-be40",
+   "en": "This client's own history is self-consistent ({total:num} prior sessions all {expected:opt}), so its behaviour alone looks unremarkable. However {controls:num} comparable session(s) from other clients at the same server did upgrade successfully. A capability the server demonstrably offers to others is absent for this client. That is a supported deviation worth investigating. It is not proof that the capability was removed in transit -- client-specific server policy produces the same observation -- and no actor is identified.",
+   "mr": "या क्लायंटचा स्वतःचा इतिहास सुसंगत आहे (मागील {total} सत्रांमध्ये सर्वत्र {expected}), त्यामुळे केवळ त्याचे वर्तन पाहता काही विशेष वाटत नाही. मात्र त्याच सर्व्हरवरील इतर क्लायंटच्या {controls} तुलना करण्यायोग्य सत्रांनी यशस्वीरित्या अपग्रेड केले. सर्व्हर इतरांना जी क्षमता स्पष्टपणे देतो, ती या क्लायंटसाठी अनुपस्थित आहे. हे तपासण्यायोग्य, पुराव्याने समर्थित विचलन आहे. ती क्षमता प्रवासात काढून टाकली गेली याचा हा पुरावा नाही — क्लायंट-विशिष्ट सर्व्हर धोरणातूनही तेच निरीक्षण दिसते — आणि कोणताही कर्ता निश्चित केलेला नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.per-client-server-policy-and-cdab",
+   "en": "Per-client server policy and interference are indistinguishable here.",
+   "mr": "प्रति-क्लायंट सर्व्हर धोरण आणि हस्तक्षेप यांत येथे फरक ओळखता येत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.advertisement-behaviour-matches-the-established-5ee5",
+   "en": "Advertisement behaviour matches the established baseline.",
+   "mr": "क्षमतेच्या घोषणेचे वर्तन प्रस्थापित आधाररेषेशी जुळते.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.all-prior-comparable-sessions-showed-b1de",
+   "en": "All {total:num} prior comparable sessions showed {expected:opt} and this session agrees.",
+   "mr": "मागील सर्व {total} तुलना करण्यायोग्य सत्रांमध्ये {expected} आढळले आणि हे सत्र त्याच्याशी सुसंगत आहे.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.no-comparable-control-endpoint-was-4003",
+   "en": "No comparable control endpoint was available to corroborate this from a second angle.",
+   "mr": "याला दुसऱ्या दिशेने दुजोरा देण्यासाठी तुलना करण्यायोग्य नियंत्रण एंडपॉइंट उपलब्ध नव्हता.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.this-endpoint-deviates-from-both-e53d",
+   "en": "This endpoint deviates from both its own history and from comparable endpoints that remain unaffected.",
+   "mr": "हा एंडपॉइंट स्वतःच्या इतिहासापासून आणि प्रभावित नसलेल्या तुलना करण्यायोग्य एंडपॉइंटपासून — दोन्हीपासून — वेगळा वागतो.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.prior-comparable-sessions-consistently-showed-fc1b",
+   "en": "Prior comparable sessions consistently showed {expected:opt}; this session shows {current:opt}. Separately, {controls:num} comparable session(s) from other clients at the same endpoint did upgrade successfully. Two independent comparisons therefore disagree with this session. That is a well-supported deviation warranting investigation -- it is not proof that the capability was removed in transit, and no actor is identified.",
+   "mr": "मागील तुलना करण्यायोग्य सत्रांमध्ये सातत्याने {expected} आढळले; या सत्रात {current} आढळले. याशिवाय, त्याच एंडपॉइंटवरील इतर क्लायंटच्या {controls} तुलना करण्यायोग्य सत्रांनी यशस्वीरित्या अपग्रेड केले. म्हणजेच दोन स्वतंत्र तुलना या सत्राशी विसंगत आहेत. हे चांगल्या प्रकारे पुराव्याने समर्थित, तपासणी आवश्यक असलेले विचलन आहे — ती क्षमता प्रवासात काढून टाकली गेल्याचा हा पुरावा नाही, आणि कोणताही कर्ता निश्चित केलेला नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.a-deviation-supported-by-contrast-4741",
+   "en": "A deviation supported by contrast indicates that this endpoint behaves differently, not why.",
+   "mr": "विरोधाभासाने (contrast) समर्थित विचलन हे दर्शवते की हा एंडपॉइंट वेगळा वागतो; तो का वेगळा वागतो हे नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.no-unaffected-comparable-control-endpoint-4f02",
+   "en": "no unaffected comparable control endpoint exists, so the deviation cannot be corroborated",
+   "mr": "प्रभावित नसलेला तुलना करण्यायोग्य नियंत्रण एंडपॉइंट अस्तित्वात नाही, त्यामुळे विचलनाला दुजोरा देता येत नाही",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.too-few-control-sessions-to-8c54",
+   "en": "too few control sessions to corroborate the deviation",
+   "mr": "विचलनाला दुजोरा देण्यासाठी नियंत्रण सत्रे खूप कमी आहेत",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.comparable-endpoints-disagree-among-themselves-2451",
+   "en": "comparable endpoints disagree among themselves, so they cannot corroborate the deviation",
+   "mr": "तुलना करण्यायोग्य एंडपॉइंट आपापसांत एकमत नाहीत, त्यामुळे ते विचलनाला दुजोरा देऊ शकत नाहीत",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.comparable-endpoints-show-the-same-ea59",
+   "en": "comparable endpoints show the same behaviour as this session, which does not corroborate a concern",
+   "mr": "तुलना करण्यायोग्य एंडपॉइंट या सत्रासारखेच वर्तन दाखवतात, त्यामुळे चिंतेला दुजोरा मिळत नाही",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.this-session-deviates-from-its-9d24",
+   "en": "This session deviates from its own history; the cause is undetermined.",
+   "mr": "हे सत्र स्वतःच्या इतिहासापासून वेगळे वागते; कारण निश्चित झालेले नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.prior-comparable-sessions-consistently-showed-d231",
+   "en": "Prior comparable sessions consistently showed {expected:opt} and this session shows {current:opt}. However, {reason:tr}. A configuration change and interference produce the same observation here, so no security conclusion is drawn.",
+   "mr": "मागील तुलना करण्यायोग्य सत्रांमध्ये सातत्याने {expected} आढळले आणि या सत्रात {current} आढळले. मात्र, {reason}. संरचनेतील बदल आणि हस्तक्षेप येथे तेच निरीक्षण निर्माण करतात, त्यामुळे कोणताही सुरक्षा निष्कर्ष काढलेला नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.starttls-stls-upgrade-deviation-from-76b9",
+   "en": "STARTTLS/STLS upgrade deviation from baseline",
+   "mr": "STARTTLS/STLS अपग्रेडमध्ये आधाररेषेपासून विचलन",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.upgrade-outcome-differs-from-the-21d4",
+   "en": "Upgrade outcome differs from the established baseline.",
+   "mr": "अपग्रेडचा निकाल प्रस्थापित आधाररेषेपेक्षा वेगळा आहे.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.prior-comparable-sessions-consistently-showed-e401",
+   "en": "Prior comparable sessions consistently showed {expected:opt} and this session shows {current:opt}.",
+   "mr": "मागील तुलना करण्यायोग्य सत्रांमध्ये सातत्याने {expected} आढळले आणि या सत्रात {current} आढळले.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.the-client-did-not-request-5fb7",
+   "en": "The client did not request the upgrade, which is a legitimate client-side choice as often as it is anything else.",
+   "mr": "क्लायंटने अपग्रेडची विनंती केली नाही; ही क्लायंटच्या बाजूची वैध निवड असू शकते, इतर कोणत्याही कारणाइतकीच शक्यता तिची आहे.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.a-behavioural-difference-is-reported-9c11",
+   "en": "A behavioural difference is reported as a difference; it is not treated as an attack.",
+   "mr": "वर्तनातील फरक हा फरक म्हणून नोंदवला जातो; तो हल्ला मानला जात नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.a-client-declining-an-available-610c",
+   "en": "A client declining an available upgrade is legitimate behaviour and is not distinguishable here from an induced decline.",
+   "mr": "उपलब्ध अपग्रेड क्लायंटने नाकारणे हे वैध वर्तन आहे आणि येथे ते घडवून आणलेल्या नकारापासून वेगळे ओळखता येत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.negotiated-tls-version-deviation-from-42cf",
+   "en": "Negotiated TLS version deviation from baseline",
+   "mr": "वाटाघाटी झालेल्या TLS आवृत्तीत आधाररेषेपासून विचलन",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.negotiated-version-improved-from-to-d98c",
+   "en": "Negotiated version improved from {expected:opt} to {current:opt}.",
+   "mr": "वाटाघाटी झालेली आवृत्ती {expected} वरून {current} अशी सुधारली.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.a-move-to-a-newer-9ea6",
+   "en": "A move to a newer TLS version is an improvement, not an anomaly.",
+   "mr": "नवीन TLS आवृत्तीकडे जाणे ही सुधारणा आहे, विसंगती नव्हे.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.negotiated-version-regressed-from-to-fab1",
+   "en": "Negotiated version regressed from {expected:opt} to {current:opt}.",
+   "mr": "वाटाघाटी झालेली आवृत्ती {expected} वरून {current} अशी मागे गेली.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.all-prior-comparable-sessions-negotiated-60d9",
+   "en": "All {total:num} prior comparable sessions negotiated {expected:opt}; this session negotiated the weaker {current:opt}. A regression to a weaker protocol version is a security-relevant change. The cause is not determined: server reconfiguration, client capability and interference are indistinguishable here.",
+   "mr": "मागील सर्व {total} तुलना करण्यायोग्य सत्रांमध्ये {expected} ची वाटाघाटी झाली; या सत्रात अधिक कमकुवत {current} ची वाटाघाटी झाली. अधिक कमकुवत प्रोटोकॉल आवृत्तीकडे मागे जाणे हा सुरक्षेशी संबंधित बदल आहे. कारण निश्चित झालेले नाही: सर्व्हरची पुनर्रचना, क्लायंटची क्षमता आणि हस्तक्षेप येथे वेगळे ओळखता येत नाहीत.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.the-cause-of-the-version-71de",
+   "en": "The cause of the version regression is not established by this rule.",
+   "mr": "आवृत्ती मागे जाण्याचे कारण हा नियम निश्चित करत नाही.",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.subject-session-is-not-comparable-292f",
+   "en": "subject session is not comparable; no contrast is meaningful",
+   "mr": "विषय सत्र तुलना करण्यायोग्य नाही; कोणतीही तुलना अर्थपूर्ण नाही",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.implicit-tls-carries-no-upgrade-b6a8",
+   "en": "implicit TLS carries no upgrade behaviour to contrast",
+   "mr": "इम्प्लिसिट TLS मध्ये तुलना करण्यासाठी कोणतेही अपग्रेड वर्तन नसते",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.no-comparable-session-from-a-b549",
+   "en": "no comparable session from a different client at this endpoint; without an unaffected control the behaviour cannot be contrasted",
+   "mr": "या एंडपॉइंटवर वेगळ्या क्लायंटचे कोणतेही तुलना करण्यायोग्य सत्र नाही; प्रभावित नसलेल्या नियंत्रणाशिवाय वर्तनाची तुलना करता येत नाही",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.only-control-session-s-required-0f3d",
+   "en": "only {n:num} control session(s); {min:num} required",
+   "mr": "फक्त {n} नियंत्रण सत्रे; {min} आवश्यक",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.control-endpoints-disagree-upgraded-the-8006",
+   "en": "control endpoints disagree ({up:num}/{n:num} upgraded); the comparable population is not homogeneous enough to contrast against",
+   "mr": "नियंत्रण एंडपॉइंट एकमत नाहीत ({n} पैकी {up} ने अपग्रेड केले); तुलना करण्यायोग्य गट विरोधाभासासाठी पुरेसा एकसमान नाही",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.comparable-control-session-s-from-4260",
+   "en": "{n:num} comparable control session(s) from other clients, all {state:tr}",
+   "mr": "इतर क्लायंटची {n} तुलना करण्यायोग्य नियंत्रण सत्रे, सर्व {state}",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.comparable-session-from-a-different-5585",
+   "en": "comparable session from a different client at the same endpoint",
+   "mr": "त्याच एंडपॉइंटवरील वेगळ्या क्लायंटचे तुलना करण्यायोग्य सत्र",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.subject-not-comparable-d3f9",
+   "en": "subject not comparable: {reason:tr}",
+   "mr": "विषय तुलना करण्यायोग्य नाही: {reason}",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.subject-evidence-insufficient-c7de",
+   "en": "subject evidence insufficient: {reason:tr}",
+   "mr": "विषयाचा पुरावा अपुरा: {reason}",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.only-prior-comparable-session-s-2050",
+   "en": "only {n:num} prior comparable session(s); {min:num} required before a baseline is used",
+   "mr": "फक्त {n} मागील तुलना करण्यायोग्य सत्रे; आधाररेषा वापरण्यापूर्वी {min} आवश्यक",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.prior-comparable-session-at-the-d78c",
+   "en": "prior comparable session at the same endpoint, protocol and TLS mode",
+   "mr": "त्याच एंडपॉइंट, प्रोटोकॉल आणि TLS पद्धतीतील मागील तुलना करण्यायोग्य सत्र",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.prior-comparable-sessions-at-da0f",
+   "en": "{n:num} prior comparable sessions at {endpoint}",
+   "mr": "{endpoint} येथील {n} मागील तुलना करण्यायोग्य सत्रे",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.no-mail-protocol-identified-for-6ee2",
+   "en": "no mail protocol identified for this stream",
+   "mr": "या स्ट्रीमसाठी कोणताही मेल प्रोटोकॉल ओळखला गेला नाही",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.client-or-server-endpoint-identity-a0b4",
+   "en": "client or server endpoint identity could not be resolved",
+   "mr": "क्लायंट किंवा सर्व्हर एंडपॉइंटची ओळख निश्चित करता आली नाही",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.session-is-truncated-its-behaviour-b748",
+   "en": "session is truncated; its behaviour may be an artefact of the capture",
+   "mr": "सत्र छाटलेले आहे; त्याचे वर्तन कॅप्चरमुळे दिसणारा परिणाम असू शकतो",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.client-to-protocol-tls-mode-54a8",
+   "en": "client {client} to {server}, protocol {protocol}, {mode:tr} TLS mode",
+   "mr": "क्लायंट {client} ते {server}, प्रोटोकॉल {protocol}, {mode} TLS पद्धत",
+   "needs_review": true
+  },
+  {
+   "id": "crosssession.different-client-service-endpoint-protocol-bedb",
+   "en": "different client, service endpoint, protocol or TLS mode",
+   "mr": "वेगळा क्लायंट, सेवा एंडपॉइंट, प्रोटोकॉल किंवा TLS पद्धत",
+   "needs_review": true
+  }
+ ]
+}

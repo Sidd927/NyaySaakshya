@@ -1,0 +1,460 @@
+{
+ "entries": [
+  {
+   "id": "labels.strong-f384",
+   "en": "STRONG",
+   "mr": "मजबूत",
+   "needs_review": true
+  },
+  {
+   "id": "labels.adequate-c9ad",
+   "en": "ADEQUATE",
+   "mr": "पुरेशी",
+   "needs_review": true
+  },
+  {
+   "id": "labels.weak-ad3b",
+   "en": "WEAK",
+   "mr": "कमकुवत",
+   "needs_review": true
+  },
+  {
+   "id": "labels.critical-307d",
+   "en": "CRITICAL",
+   "mr": "अतिगंभीर",
+   "needs_review": true
+  },
+  {
+   "id": "labels.insufficient-evidence-78c4",
+   "en": "INSUFFICIENT EVIDENCE",
+   "mr": "अपुरा पुरावा",
+   "needs_review": true
+  },
+  {
+   "id": "labels.high-d77d",
+   "en": "HIGH",
+   "mr": "उच्च",
+   "needs_review": true
+  },
+  {
+   "id": "labels.medium-f685",
+   "en": "MEDIUM",
+   "mr": "मध्यम",
+   "needs_review": true
+  },
+  {
+   "id": "labels.low-d8b9",
+   "en": "LOW",
+   "mr": "कमी",
+   "needs_review": true
+  },
+  {
+   "id": "labels.info-9c9c",
+   "en": "INFO",
+   "mr": "माहितीपर",
+   "needs_review": true
+  },
+  {
+   "id": "labels.observed-issue-93c1",
+   "en": "OBSERVED ISSUE",
+   "mr": "आढळलेली समस्या",
+   "needs_review": true
+  },
+  {
+   "id": "labels.compliant-5303",
+   "en": "COMPLIANT",
+   "mr": "अनुपालन करणारे",
+   "needs_review": true
+  },
+  {
+   "id": "labels.ambiguous-aa5d",
+   "en": "AMBIGUOUS",
+   "mr": "संदिग्ध",
+   "needs_review": true
+  },
+  {
+   "id": "labels.not-observable-8ab1",
+   "en": "NOT OBSERVABLE",
+   "mr": "निरीक्षणयोग्य नाही",
+   "needs_review": true
+  },
+  {
+   "id": "labels.informational-af8f",
+   "en": "INFORMATIONAL",
+   "mr": "माहितीपर",
+   "needs_review": true
+  },
+  {
+   "id": "labels.confirmed-0542",
+   "en": "CONFIRMED",
+   "mr": "निश्चित",
+   "needs_review": true
+  },
+  {
+   "id": "labels.probable-51f8",
+   "en": "PROBABLE",
+   "mr": "संभाव्य",
+   "needs_review": true
+  },
+  {
+   "id": "labels.uncertain-8c3c",
+   "en": "UNCERTAIN",
+   "mr": "अनिश्चित",
+   "needs_review": true
+  },
+  {
+   "id": "labels.undetermined-7a14",
+   "en": "UNDETERMINED",
+   "mr": "निर्धारित न झालेले",
+   "needs_review": true
+  },
+  {
+   "id": "labels.observable-f399",
+   "en": "OBSERVABLE",
+   "mr": "निरीक्षणयोग्य",
+   "needs_review": true
+  },
+  {
+   "id": "labels.partially-observable-b67c",
+   "en": "PARTIALLY OBSERVABLE",
+   "mr": "अंशतः निरीक्षणयोग्य",
+   "needs_review": true
+  },
+  {
+   "id": "labels.insufficient-history-ece0",
+   "en": "Insufficient history",
+   "mr": "अपुरा इतिहास",
+   "needs_review": true
+  },
+  {
+   "id": "labels.ambiguous-evidence-04c6",
+   "en": "Ambiguous evidence",
+   "mr": "संदिग्ध पुरावा",
+   "needs_review": true
+  },
+  {
+   "id": "labels.insufficient-capture-68d5",
+   "en": "Insufficient capture",
+   "mr": "अपुरा कॅप्चर",
+   "needs_review": true
+  },
+  {
+   "id": "labels.contradictory-evidence-d46a",
+   "en": "Contradictory evidence",
+   "mr": "विरोधाभासी पुरावा",
+   "needs_review": true
+  },
+  {
+   "id": "labels.unsupported-protocol-variant-d825",
+   "en": "Unsupported protocol variant",
+   "mr": "असमर्थित प्रोटोकॉल प्रकार",
+   "needs_review": true
+  },
+  {
+   "id": "labels.not-comparable-36e1",
+   "en": "Not comparable",
+   "mr": "तुलना करण्यायोग्य नाही",
+   "needs_review": true
+  },
+  {
+   "id": "labels.observed-0da9",
+   "en": "OBSERVED",
+   "mr": "निरीक्षण केलेले",
+   "needs_review": true
+  },
+  {
+   "id": "labels.inferred-bc0d",
+   "en": "INFERRED",
+   "mr": "अनुमानित",
+   "needs_review": true
+  },
+  {
+   "id": "labels.unknown-25ba",
+   "en": "UNKNOWN",
+   "mr": "अज्ञात",
+   "needs_review": true
+  },
+  {
+   "id": "labels.incomplete-efcb",
+   "en": "INCOMPLETE",
+   "mr": "अपूर्ण",
+   "needs_review": true
+  },
+  {
+   "id": "labels.complete-2c85",
+   "en": "COMPLETE",
+   "mr": "पूर्ण",
+   "needs_review": true
+  },
+  {
+   "id": "labels.truncated-22ca",
+   "en": "TRUNCATED",
+   "mr": "छाटलेले",
+   "needs_review": true
+  },
+  {
+   "id": "labels.deprecated-tls-version-9e40",
+   "en": "Deprecated tls version",
+   "mr": "कालबाह्य TLS आवृत्ती",
+   "needs_review": true
+  },
+  {
+   "id": "labels.plaintext-auth-exposure-d6c0",
+   "en": "Plaintext auth exposure",
+   "mr": "एन्क्रिप्शनशिवाय प्रमाणीकरण उघड",
+   "needs_review": true
+  },
+  {
+   "id": "labels.no-tls-protection-d081",
+   "en": "No tls protection",
+   "mr": "TLS संरक्षण नाही",
+   "needs_review": true
+  },
+  {
+   "id": "labels.starttls-upgrade-failure-26ee",
+   "en": "Starttls upgrade failure",
+   "mr": "STARTTLS अपग्रेड अयशस्वी",
+   "needs_review": true
+  },
+  {
+   "id": "labels.starttls-behaviour-deviation-e1ca",
+   "en": "Starttls behaviour deviation",
+   "mr": "STARTTLS वर्तनातील विचलन",
+   "needs_review": true
+  },
+  {
+   "id": "labels.tls-version-deviation-9bcb",
+   "en": "Tls version deviation",
+   "mr": "TLS आवृत्तीतील विचलन",
+   "needs_review": true
+  },
+  {
+   "id": "labels.tls-handshake-evidence-7944",
+   "en": "Tls handshake evidence",
+   "mr": "TLS हँडशेकचा पुरावा",
+   "needs_review": true
+  },
+  {
+   "id": "labels.starttls-advertisement-f69d",
+   "en": "Starttls advertisement",
+   "mr": "STARTTLS क्षमतेची घोषणा",
+   "needs_review": true
+  },
+  {
+   "id": "labels.implicit-tls-session-613c",
+   "en": "Implicit tls session",
+   "mr": "इम्प्लिसिट TLS सत्र",
+   "needs_review": true
+  },
+  {
+   "id": "labels.certificate-observability-53c3",
+   "en": "Certificate observability",
+   "mr": "प्रमाणपत्र निरीक्षणक्षमता",
+   "needs_review": true
+  },
+  {
+   "id": "labels.forward-secrecy-ac64",
+   "en": "Forward secrecy",
+   "mr": "फॉरवर्ड सिक्रेसी (पुढील गोपनीयता)",
+   "needs_review": true
+  },
+  {
+   "id": "labels.certificate-extraction-f89e",
+   "en": "Certificate extraction",
+   "mr": "प्रमाणपत्र काढणे (एक्स्ट्रॅक्शन)",
+   "needs_review": true
+  },
+  {
+   "id": "labels.certificate-validity-12dd",
+   "en": "Certificate validity",
+   "mr": "प्रमाणपत्राची वैधता",
+   "needs_review": true
+  },
+  {
+   "id": "labels.certificate-key-strength-bee9",
+   "en": "Certificate key strength",
+   "mr": "प्रमाणपत्र कीची क्षमता",
+   "needs_review": true
+  },
+  {
+   "id": "labels.insecure-configuration-0a7f",
+   "en": "Insecure configuration",
+   "mr": "असुरक्षित संरचना (कॉन्फिगरेशन)",
+   "needs_review": true
+  },
+  {
+   "id": "labels.anomaly-6fd7",
+   "en": "Anomaly",
+   "mr": "विसंगती",
+   "needs_review": true
+  },
+  {
+   "id": "labels.unclassified-390c",
+   "en": "Unclassified",
+   "mr": "वर्गीकृत नाही",
+   "needs_review": true
+  },
+  {
+   "id": "labels.base-security-issue-8c66",
+   "en": "Base security issue",
+   "mr": "मूलभूत सुरक्षा समस्या",
+   "needs_review": true
+  },
+  {
+   "id": "labels.behavioural-deviation-88c0",
+   "en": "Behavioural deviation",
+   "mr": "वर्तनातील विचलन",
+   "needs_review": true
+  },
+  {
+   "id": "labels.anomaly-signal-bd8d",
+   "en": "Anomaly signal",
+   "mr": "विसंगती संकेत",
+   "needs_review": true
+  },
+  {
+   "id": "labels.positive-evidence-55a6",
+   "en": "Positive evidence",
+   "mr": "सकारात्मक पुरावा",
+   "needs_review": true
+  },
+  {
+   "id": "labels.abstention-a1f0",
+   "en": "Abstention",
+   "mr": "निष्कर्ष टाळणे",
+   "needs_review": true
+  },
+  {
+   "id": "labels.protocol-version-8e10",
+   "en": "Protocol version",
+   "mr": "प्रोटोकॉल आवृत्ती",
+   "needs_review": true
+  },
+  {
+   "id": "labels.plaintext-exposure-0f2c",
+   "en": "Plaintext exposure",
+   "mr": "क्लिअरटेक्स्ट उघडकीस",
+   "needs_review": true
+  },
+  {
+   "id": "labels.upgrade-integrity-7cef",
+   "en": "Upgrade integrity",
+   "mr": "अपग्रेडची अखंडता",
+   "needs_review": true
+  },
+  {
+   "id": "labels.crypto-configuration-64d8",
+   "en": "Crypto configuration",
+   "mr": "क्रिप्टो संरचना",
+   "needs_review": true
+  },
+  {
+   "id": "labels.certificate-trust-294d",
+   "en": "Certificate trust",
+   "mr": "प्रमाणपत्र विश्वासार्हता",
+   "needs_review": true
+  },
+  {
+   "id": "labels.behavioural-consistency-c0d4",
+   "en": "Behavioural consistency",
+   "mr": "वर्तनातील सुसंगती",
+   "needs_review": true
+  },
+  {
+   "id": "labels.protocol-version-96a7",
+   "en": "PROTOCOL VERSION",
+   "mr": "प्रोटोकॉल आवृत्ती",
+   "needs_review": true
+  },
+  {
+   "id": "labels.plaintext-exposure-326d",
+   "en": "PLAINTEXT EXPOSURE",
+   "mr": "क्लिअरटेक्स्ट उघडकीस",
+   "needs_review": true
+  },
+  {
+   "id": "labels.upgrade-integrity-ff56",
+   "en": "UPGRADE INTEGRITY",
+   "mr": "अपग्रेडची अखंडता",
+   "needs_review": true
+  },
+  {
+   "id": "labels.crypto-configuration-6977",
+   "en": "CRYPTO CONFIGURATION",
+   "mr": "क्रिप्टो संरचना",
+   "needs_review": true
+  },
+  {
+   "id": "labels.certificate-trust-0542",
+   "en": "CERTIFICATE TRUST",
+   "mr": "प्रमाणपत्र विश्वासार्हता",
+   "needs_review": true
+  },
+  {
+   "id": "labels.behavioural-consistency-e8b6",
+   "en": "BEHAVIOURAL CONSISTENCY",
+   "mr": "वर्तनातील सुसंगती",
+   "needs_review": true
+  },
+  {
+   "id": "labels.unmapped-c48a",
+   "en": "UNMAPPED",
+   "mr": "नोंदणीत नाही",
+   "needs_review": true
+  },
+  {
+   "id": "labels.unidentified-5450",
+   "en": "unidentified",
+   "mr": "ओळखले नाही",
+   "needs_review": true
+  },
+  {
+   "id": "labels.distinct-standards-00a8",
+   "en": "distinct_standards",
+   "mr": "वेगळी मानके",
+   "needs_review": true
+  },
+  {
+   "id": "labels.note-c510",
+   "en": "note",
+   "mr": "टीप",
+   "needs_review": true
+  },
+  {
+   "id": "labels.note-2c92",
+   "en": "Note",
+   "mr": "टीप",
+   "needs_review": true
+  },
+  {
+   "id": "labels.contradictions-recorded-9c98",
+   "en": "Contradictions recorded",
+   "mr": "नोंदवलेले विरोधाभास",
+   "needs_review": true
+  },
+  {
+   "id": "labels.duplicate-sources-merged-0289",
+   "en": "Duplicate sources merged",
+   "mr": "एकत्र केलेले पुनरावृत्त स्रोत",
+   "needs_review": true
+  },
+  {
+   "id": "labels.rule-ids-4c6a",
+   "en": "Rule ids",
+   "mr": "नियम क्रमांक",
+   "needs_review": true
+  },
+  {
+   "id": "labels.source-counts-8695",
+   "en": "Source counts",
+   "mr": "स्रोतांची संख्या",
+   "needs_review": true
+  },
+  {
+   "id": "labels.versions-a239",
+   "en": "Versions",
+   "mr": "आवृत्त्या",
+   "needs_review": true
+  }
+ ]
+}
