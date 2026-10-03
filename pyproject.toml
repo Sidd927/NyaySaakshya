@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nyaysaakshya"
+version = "0.1.0"
+description = "Passive PCAP cryptographic security posture assessment for email"
+requires-python = ">=3.9"
+# Core has ZERO runtime dependencies: the evidence model + tshark adapter use stdlib only.
+# This keeps offline/air-gapped deployment simple (ADR-0011). Heavier deps (FastAPI, sklearn)
+# arrive in their own phases behind optional extras.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+# Phase-8 backend. Optional by design: the core evidence/analysis/posture layers stay
+# zero-dependency so offline and air-gapped use stays simple (ADR-0011).
+backend = [
+    "fastapi>=0.110",
+    "pydantic>=2",
+    "uvicorn>=0.27",
+    "python-multipart>=0.0.9",   # required for multipart uploads
+]
+test-backend = ["httpx>=0.27"]   # FastAPI TestClient transport
+# Phase-9 reporting. JSON and HTML need NO dependency at all — the HTML renderer uses
+# html.escape and string composition (ADR-0019). Only PDF needs an extra, so a core
+# install still satisfies two of the three report formats.
+reporting-pdf = ["reportlab>=4"]
+test-reporting = ["pypdf>=4"]    # verifies rendered PDFs actually parse
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# The dashboard is static assets, not Python. They must ship with the package or the
+# console cannot be served (doc 23 section 6). No build step produces them.
+[tool.setuptools.package-data]
+"nyaysaakshya.dashboard" = ["static/*.html", "static/*.js", "static/*.css",
+                               "static/views/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

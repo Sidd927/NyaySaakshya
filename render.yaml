@@ -1,0 +1,29 @@
+# Render Blueprint for the NyaySaakshya backend -- Free web-service compute plan.
+# TShark requires Docker (Render's native Python runtime has no apt access), so the
+# service is built from the repository Dockerfile.
+#
+# No disk is declared: Render's Free web services do not support persistent disks.
+# SMS_DATA_DIR (/data, see Dockerfile) is a plain directory in the container's own
+# ephemeral filesystem -- it works with zero code changes, but everything in it
+# (the SQLite catalog and all stored artifacts) is lost on every restart, redeploy,
+# instance replacement, or Render maintenance recycle. This is a deliberate trade-off
+# for a demonstration deployment, not an oversight -- do not add a `disk:` block back
+# without upgrading `plan` to a tier that supports one.
+#
+# Apply with: Render Dashboard -> New -> Blueprint -> this repository.
+services:
+  - type: web
+    name: nyaysaakshya-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: SMS_DATA_DIR
+        value: /data
+      - key: SMS_ALLOWED_ORIGINS
+        sync: false   # set to the deployed Vercel frontend URL after it exists
+      # All other SMS_* limits (SMS_MAX_UPLOAD_BYTES, SMS_MAX_ANALYSIS_SECONDS, etc.)
+      # keep their documented defaults unless a deployment-specific reason requires
+      # overriding them -- see the README's Configuration section for the full list.
