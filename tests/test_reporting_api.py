@@ -127,8 +127,41 @@ def test_stale_renderer_version_forces_regeneration(tmp_path):
     assert svc_module._is_current(record) is True
     stale = record.__class__(
         **dict(record.to_dict(), relative_path=record.relative_path,
-               original_filename="securemailscope-x.r0.1.v0.0.1.html"))
+               original_filename="nyaysaakshya-x.r0.1.v0.0.1.html"))
     assert svc_module._is_current(stale) is False
+
+
+def test_report_stored_under_the_previous_filename_stem_is_regenerated(tmp_path):
+    """A store written before the stem became `nyaysaakshya-` still works.
+
+    Its record no longer matches the stamp, so it counts as stale and the report is
+    rendered afresh under the current name, the same path a renderer-version change takes.
+    The old record is left in place, never served and never an error.
+    """
+    svc, run_id, assessment = _seeded(tmp_path)
+    reports = ReportService(svc.repo, svc.artifacts)
+    ident = assessment["assessment_id"]
+    legacy_name = "securemailscope-%s.r%s.v%s.html" % (
+        ident, REPORT_SCHEMA_VERSION, RENDERER_VERSION)
+    legacy_payload = b"<html>stored by the previous build</html>"
+    legacy = svc.artifacts.store_stream(
+        io.BytesIO(legacy_payload), run_id=run_id,
+        capture_id=assessment["capture_id"], kind="html",
+        original_filename=legacy_name)
+    svc.repo.add_artifact(legacy)
+    from nyaysaakshya.reporting import service as svc_module
+    assert svc_module._is_current(legacy) is False
+
+    served, meta = reports.get_or_create(run_id, assessment, "html")
+    assert b"stored by the previous build" not in served
+    assert meta["artifact_id"] != legacy.artifact_id
+    assert meta["filename"] == "nyaysaakshya-%s.html" % ident
+
+    stored = [a for a in svc.repo.list_artifacts(run_id) if a.kind == "html"]
+    assert stored[-1].original_filename.startswith("nyaysaakshya-%s.r" % ident)
+    assert svc_module._is_current(stored[-1]) is True
+    again, meta2 = reports.get_or_create(run_id, assessment, "html")
+    assert again == served and meta2["artifact_id"] == meta["artifact_id"]
 
 
 def test_missing_artifact_file_forces_regeneration(tmp_path):
@@ -158,7 +191,7 @@ def test_json_is_not_stored_as_a_duplicate_artifact(tmp_path):
 ])
 def test_download_filename_is_built_from_internal_ids_only(hostile):
     name = safe_filename(hostile, "pdf")
-    assert name.startswith("securemailscope-")
+    assert name.startswith("nyaysaakshya-")
     assert name.endswith(".pdf")
     for bad in ("/", "\\", "..", "\x00", " ", ";"):
         assert bad not in name
@@ -214,7 +247,7 @@ def test_pdf_endpoint_downloads_with_safe_name(tmp_path):
     assert r.headers["content-type"] == "application/pdf"
     disposition = r.headers["content-disposition"]
     assert disposition.startswith("attachment;")
-    assert "securemailscope-%s.pdf" % assessment["assessment_id"] in disposition
+    assert "nyaysaakshya-%s.pdf" % assessment["assessment_id"] in disposition
     assert ".." not in disposition and "/" not in disposition.split("filename=")[1]
     assert r.content[:5] == b"%PDF-"
 

@@ -123,8 +123,8 @@ def test_filename_suffix_per_language(seeded):
     svc, run_id, assessment = seeded
     client = _client(svc)
     ident = assessment["assessment_id"]
-    for lang, expected in (("mr", "securemailscope-%s-mr.html"),
-                           ("both", "securemailscope-%s-both.html")):
+    for lang, expected in (("mr", "nyaysaakshya-%s-mr.html"),
+                           ("both", "nyaysaakshya-%s-both.html")):
         disposition = client.get(_url(run_id, lang=lang, download=True)).headers["content-disposition"]
         assert 'filename="%s"' % (expected % ident) in disposition, disposition
     assert safe_filename(ident, "html", "mr").endswith("-mr.html")
@@ -182,8 +182,8 @@ def test_stored_name_records_language_and_catalogue(seeded):
     client = _client(svc)
     client.get(_url(run_id)); client.get(_url(run_id, lang="mr"))
     names = {a.kind: a.original_filename for a in _artifacts(svc, run_id)}
-    assert re.fullmatch(r"securemailscope-[0-9a-f]+\.r[0-9.]+\.v[0-9.]+\.html", names["html"])
-    assert re.fullmatch(r"securemailscope-[0-9a-f]+\.r[0-9.]+\.v[0-9.]+\.lmr\.c[0-9a-f]{12}\.html",
+    assert re.fullmatch(r"nyaysaakshya-[0-9a-f]+\.r[0-9.]+\.v[0-9.]+\.html", names["html"])
+    assert re.fullmatch(r"nyaysaakshya-[0-9a-f]+\.r[0-9.]+\.v[0-9.]+\.lmr\.c[0-9a-f]{12}\.html",
                         names["html_mr"])
 
 

@@ -73,7 +73,7 @@ MAX_REPORT_BYTES = 32 * 1024 * 1024
 #: that produced it. Parsed back out to decide regeneration.
 #: A translated report additionally records its language and the translation catalogue it was
 #: built from (`.l<lang>.c<fingerprint>`); an English name has neither, exactly as before.
-_STAMP = re.compile(r"^securemailscope-(?P<assessment>[0-9a-f]+)"
+_STAMP = re.compile(r"^nyaysaakshya-(?P<assessment>[0-9a-f]+)"
                     r"\.r(?P<report>[0-9.]+)\.v(?P<renderer>[0-9.]+)"
                     r"(?:\.l(?P<lang>[a-z]+)\.c(?P<catalogue>[0-9a-f]+))?\.(?P<ext>\w+)$")
 _FINGERPRINT_CHARS = 12
@@ -111,7 +111,7 @@ def safe_filename(assessment_id: str, fmt: str, lang: str = LANG_EN) -> str:
     _check_language(fmt, lang)
     ident = re.sub(r"[^A-Za-z0-9_-]", "", str(assessment_id))[:64] or "assessment"
     suffix = "" if lang == LANG_EN else "-" + lang
-    return "securemailscope-{0}{1}.{2}".format(ident, suffix, fmt)
+    return "nyaysaakshya-{0}{1}.{2}".format(ident, suffix, fmt)
 
 
 def _catalogue_stamp() -> str:
@@ -121,7 +121,7 @@ def _catalogue_stamp() -> str:
 def _stamped_name(assessment_id: str, fmt: str, lang: str = LANG_EN) -> str:
     ident = re.sub(r"[^A-Za-z0-9_-]", "", str(assessment_id))[:64] or "assessment"
     language = "" if lang == LANG_EN else ".l{0}.c{1}".format(lang, _catalogue_stamp())
-    return "securemailscope-{0}.r{1}.v{2}{3}.{4}".format(
+    return "nyaysaakshya-{0}.r{1}.v{2}{3}.{4}".format(
         ident, REPORT_SCHEMA_VERSION, RENDERER_VERSION, language, fmt)
 
 
