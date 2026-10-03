@@ -384,7 +384,8 @@ export const InvestigationProvider: React.FC<{ children: React.ReactNode }> = ({
       setDashboard(dashData);
       setInvestigationFromFixtures(false);
       setAssessment(assessData);
-      setReports(repsData?.items || []);
+      // English formats first, then any translated renditions (HTML only for now).
+      setReports([...(repsData?.items || []), ...(repsData?.translations || [])]);
       const items = sessData.items || [];
       setSessions(items);
 

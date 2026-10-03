@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import functools
 import glob
+import hashlib
 import json
 import os
 import re
@@ -146,6 +147,12 @@ class Catalogue:
         self.entries = tuple(entries)
         self.passthrough = tuple(passthrough)
         self.glossary = glossary
+        #: Content identity of everything that can change a rendered report. Stored reports
+        #: carry it, so swapping in reviewed text (or flipping needs_review) makes them stale.
+        self.fingerprint = hashlib.sha256(json.dumps(
+            {"entries": [[e.entry_id, e.en, e.target, e.needs_review] for e in entries],
+             "glossary": glossary, "passthrough": [[i, p.pattern] for i, p, _w in passthrough]},
+            sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()
         self._exact: Dict[str, Entry] = {}
         templates: List[Entry] = []
         for entry in entries:
@@ -167,8 +174,13 @@ class Catalogue:
 
     @property
     def pending_review(self) -> int:
-        """Entries not yet reviewed by a person. While this is non-zero the report says so."""
-        return sum(1 for entry in self.entries if entry.needs_review)
+        """Items not yet reviewed by a person: catalogue entries and the "how to read" text.
+
+        While this is non-zero every translated report carries a draft notice, so the text
+        of the static glossary cannot be approved by accident while the rest is.
+        """
+        return (sum(1 for entry in self.entries if entry.needs_review)
+                + sum(1 for item in self.glossary.get("items", []) if item.get("needs_review", True)))
 
     def translate(self, text: str) -> Optional[str]:
         """The target-language rendering of `text`, or None if it cannot be translated.
@@ -295,7 +307,14 @@ def load_catalogue(language: str) -> Catalogue:
     """Load and validate ``i18n/<language>/``. Cached; raises `CatalogueError` if malformed."""
     if language not in CATALOGUE_LANGS:
         raise CatalogueError("no catalogue for language %r" % language)
-    directory = os.path.join(_I18N_DIR, language)
+    return load_catalogue_from(os.path.join(_I18N_DIR, language), language)
+
+
+def load_catalogue_from(directory: str, language: str = LANG_MR) -> Catalogue:
+    """Load and validate a catalogue from any directory (not cached).
+
+    Used by the review tool to check a corrected copy before it replaces the shipped one.
+    """
     meta = _read_json(os.path.join(directory, "meta.json"))
     glossary = _read_json(os.path.join(directory, "glossary.json"))
     patterns_doc = _read_json(os.path.join(directory, "passthrough.json"))
@@ -312,7 +331,7 @@ def load_catalogue(language: str) -> Catalogue:
 
     entries: List[Entry] = []
     ids: set = set()
-    skip = {"meta.json", "glossary.json", "passthrough.json"}
+    skip = {"meta.json", "glossary.json", "passthrough.json", "examples.json"}
     for path in sorted(glob.glob(os.path.join(directory, "*.json"))):
         if os.path.basename(path) in skip:
             continue

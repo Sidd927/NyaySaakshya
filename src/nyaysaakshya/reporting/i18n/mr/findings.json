@@ -4,1171 +4,1756 @@
    "id": "finding.nist-sp-800-57-part-aeab",
    "en": "NIST SP 800-57 Part 1 Rev.5 SS5.6.1: RSA moduli below 2048 bits provide less than 112 bits of security and are disallowed",
    "mr": "NIST SP 800-57 Part 1 Rev.5 SS5.6.1: 2048 बिट्सपेक्षा लहान RSA मॉड्युलस 112 बिट्सपेक्षा कमी सुरक्षा देतात आणि ते अस्वीकार्य आहेत",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-negotiated-tls-version-encrypts-b157",
    "en": "the negotiated TLS version encrypts the Certificate message, so it is structurally invisible to passive observation (RFC 8446 SS2)",
    "mr": "वाटाघाटी केलेली TLS आवृत्ती Certificate संदेश एन्क्रिप्ट करते, त्यामुळे तो निष्क्रिय निरीक्षणाला संरचनात्मकदृष्ट्या दिसत नाही (RFC 8446 SS2)",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.only-a-clienthello-was-captured-254c",
    "en": "only a ClientHello was captured, so the server's Certificate message was never observed",
    "mr": "फक्त ClientHello कॅप्चर झाला, त्यामुळे सर्व्हरचा Certificate संदेश कधीही निरीक्षणात आला नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-handshake-was-interrupted-before-d30a",
    "en": "the handshake was interrupted before a Certificate message was observed; the capture is truncated at this point",
    "mr": "Certificate संदेश निरीक्षणात येण्यापूर्वीच हँडशेक खंडित झाला; या टप्प्यावर कॅप्चर छाटलेला आहे",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-serverhello-was-captured-so-1385",
    "en": "no ServerHello was captured, so it cannot be established whether a Certificate message was sent",
    "mr": "कोणताही ServerHello कॅप्चर झाला नाही, त्यामुळे Certificate संदेश पाठवला गेला का हे निश्चित करता येत नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-cleartext-certificate-message-appears-e3d7",
    "en": "no cleartext Certificate message appears in this stream, which also occurs whenever a session is resumed",
    "mr": "या स्ट्रीममध्ये क्लिअरटेक्स्ट Certificate संदेश दिसत नाही; सत्र पुन्हा सुरू (resume) केले गेले तरीही असेच घडते",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-certificate-was-observable-in-8ecb",
    "en": "No certificate was observable in this session.",
    "mr": "या सत्रात कोणतेही प्रमाणपत्र निरीक्षणयोग्य नव्हते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-certificate-could-be-extracted-72ac",
    "en": "No certificate could be extracted because {reason:tr}. This is not a finding about the certificate itself: absence of certificate evidence is not evidence of an absent, invalid or untrusted certificate.",
    "mr": "प्रमाणपत्र काढता आले नाही, कारण {reason}. हा प्रमाणपत्राबद्दलचा निष्कर्ष नाही: प्रमाणपत्राच्या पुराव्याचा अभाव म्हणजे प्रमाणपत्र अस्तित्वात नाही, अवैध आहे किंवा अविश्वासार्ह आहे याचा पुरावा नव्हे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.under-tls-1-3-the-c5ce",
    "en": "Under TLS 1.3 the Certificate message is encrypted and cannot be recovered passively without key material.",
    "mr": "TLS 1.3 मध्ये Certificate संदेश एन्क्रिप्ट केलेला असतो आणि की-सामग्रीशिवाय तो निष्क्रिय पद्धतीने पुन्हा मिळवता येत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.resumed-sessions-omit-the-certificate-4703",
    "en": "Resumed sessions omit the Certificate message at any TLS version.",
    "mr": "पुन्हा सुरू केलेल्या (resumed) सत्रांमध्ये कोणत्याही TLS आवृत्तीत Certificate संदेश नसतो.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.a-capture-started-mid-session-9da5",
    "en": "A capture started mid-session will not contain the handshake.",
    "mr": "सत्राच्या मध्यातून सुरू झालेल्या कॅप्चरमध्ये हँडशेक असणार नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.certificate-extracted-from-the-cleartext-c5dd",
    "en": "{count:num} certificate{plural} extracted from the cleartext handshake.",
    "mr": "क्लिअरटेक्स्ट हँडशेकमधून {count} प्रमाणपत्र(े) काढण्यात आली.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-handshake-presented-certificate-in-379e",
    "en": "The handshake presented {count:num} certificate{plural} in cleartext. Leaf subjectAltName DNS entries: {names}. Provenance: observed -- read directly from this session's captured bytes, not retrieved from the server and not recovered from an earlier session.",
    "mr": "हँडशेकमध्ये {count} प्रमाणपत्र(े) क्लिअरटेक्स्ट स्वरूपात सादर झाली. लीफ प्रमाणपत्रातील subjectAltName DNS नोंदी: {names}. उत्पत्ती: निरीक्षण केलेली — या सत्राच्या कॅप्चर केलेल्या बाइट्समधून थेट वाचलेली; ती सर्व्हरकडून मिळवलेली नाही आणि आधीच्या सत्रातून पुनर्प्राप्त केलेली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.subject-and-issuer-identity-are-a0f4",
    "en": "Subject and issuer identity are not reported: the dissector emits distinguished-name components without indicating which name they belong to, so attributing them would be a guess.",
    "mr": "विषय (subject) आणि जारीकर्ता (issuer) यांची ओळख नोंदवलेली नाही: डिसेक्टर distinguished-name घटक कोणत्या नावाचे आहेत हे न सांगता देतो, त्यामुळे ते ठरवणे केवळ अंदाज ठरला असता.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.certificate-validity-period-fa57",
    "en": "Certificate validity period",
    "mr": "प्रमाणपत्राचा वैधता कालावधी",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.certificate-validity-could-not-be-4951",
    "en": "Certificate validity could not be evaluated.",
    "mr": "प्रमाणपत्राची वैधता तपासता आली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-capture-carries-no-timestamp-b21e",
    "en": "The capture carries no timestamp for this session, so there is no defensible reference instant. The current date is deliberately NOT used: it would report certificates as expired that were valid when the traffic was recorded.",
    "mr": "या सत्रासाठी कॅप्चरमध्ये कोणताही टाइमस्टॅम्प नाही, त्यामुळे विश्वासार्ह संदर्भ क्षण उपलब्ध नाही. सध्याची तारीख जाणीवपूर्वक वापरलेली नाही: कारण ती वापरल्यास वाहतूक नोंदवली तेव्हा वैध असलेली प्रमाणपत्रे कालबाह्य असल्याचे दाखवली गेली असती.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.expired-51fa",
    "en": "{role:tr} expired {not_after}",
    "mr": "{role} कालबाह्य झाले: {not_after}",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.not-valid-until-ecdc",
    "en": "{role:tr} not valid until {not_before}",
    "mr": "{role} {not_before} पर्यंत वैध नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-moment-the-traffic-was-06a7",
    "en": "the moment the traffic was captured ({reference}), not the current date",
    "mr": "वाहतूक कॅप्चर केली गेली तो क्षण ({reference}), सध्याची तारीख नव्हे",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-certificate-was-outside-its-a587",
    "en": "A certificate was outside its validity period during this session.",
    "mr": "या सत्रादरम्यान एक प्रमाणपत्र त्याच्या वैधता कालावधीच्या बाहेर होते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.evaluated-against-a-client-performing-fa3b",
    "en": "Evaluated against {when:tr}: {detail:tr}. A client performing RFC 5280 validation would reject this certificate.",
    "mr": "मूल्यांकनाचा संदर्भ: {when}; {detail}. RFC 5280 नुसार पडताळणी करणारा क्लायंट हे प्रमाणपत्र नाकारेल.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.renew-the-certificate-and-automate-2953",
    "en": "Renew the certificate and automate renewal so that expiry cannot recur; verify the server clock if a certificate is reported as not yet valid.",
    "mr": "प्रमाणपत्र नूतनीकरण करा आणि नूतनीकरण स्वयंचलित करा, जेणेकरून मुदत संपण्याची पुनरावृत्ती होणार नाही; एखादे प्रमाणपत्र अजून वैध झाले नाही असे नोंदवले असल्यास सर्व्हरचे घड्याळ तपासा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.validity-is-assessed-against-the-054e",
    "en": "Validity is assessed against the capture timestamp, so this states the certificate's status at capture time, not now.",
    "mr": "वैधतेचे मूल्यांकन कॅप्चरच्या टाइमस्टॅम्पच्या आधारे केले जाते, त्यामुळे हे प्रमाणपत्राची कॅप्चरच्या वेळची स्थिती सांगते, आजची नव्हे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.certificate-validity-dates-could-not-479b",
    "en": "Certificate validity dates could not be read.",
    "mr": "प्रमाणपत्राच्या वैधतेच्या तारखा वाचता आल्या नाहीत.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-validity-window-could-be-8701",
    "en": "No validity window could be decoded from the captured bytes.",
    "mr": "कॅप्चर केलेल्या बाइट्समधून कोणताही वैधता कालावधी डिकोड करता आला नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.all-observed-certificates-were-within-770d",
    "en": "All observed certificates were within their validity period.",
    "mr": "निरीक्षण केलेली सर्व प्रमाणपत्रे त्यांच्या वैधता कालावधीत होती.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.every-extracted-certificate-was-valid-3895",
    "en": "Every extracted certificate was valid at {when:tr}.",
    "mr": "काढलेली प्रत्येक प्रमाणपत्रे {when} या संदर्भानुसार वैध होती.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.some-certificates-carried-no-readable-e2b4",
    "en": "Some certificates carried no readable validity window.",
    "mr": "काही प्रमाणपत्रांमध्ये वाचता येण्याजोगा वैधता कालावधी नव्हता.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.certificate-public-key-strength-58bc",
    "en": "Certificate public key strength",
    "mr": "प्रमाणपत्राच्या सार्वजनिक कीची क्षमता",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.uses-a-bit-rsa-key-ea1e",
    "en": "{role:tr} uses a {bits:num}-bit RSA key",
    "mr": "{role} {bits}-बिट RSA की वापरते",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-certificate-uses-an-rsa-24c6",
    "en": "A certificate uses an RSA key below the permitted length.",
    "mr": "एक प्रमाणपत्र परवानगी असलेल्या लांबीपेक्षा लहान RSA की वापरते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.reissue-the-certificate-with-an-7106",
    "en": "Reissue the certificate with an RSA key of at least 2048 bits, or an ECDSA key on P-256 or stronger.",
    "mr": "किमान 2048 बिट्सची RSA की किंवा P-256 वा त्याहून भक्कम ECDSA की असलेले प्रमाणपत्र पुन्हा जारी करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.key-length-is-derived-from-9c45",
    "en": "Key length is derived from the modulus in the captured certificate.",
    "mr": "कीची लांबी कॅप्चर केलेल्या प्रमाणपत्रातील मॉड्युलसवरून काढलेली आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.certificate-key-strength-could-not-cb6c",
    "en": "Certificate key strength could not be determined.",
    "mr": "प्रमाणपत्र कीची क्षमता निश्चित करता आली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-public-key-parameters-could-9992",
    "en": "No public key parameters could be read. Non-RSA keys are not reported as weak: an unread key is not a small key.",
    "mr": "सार्वजनिक कीचे कोणतेही मापदंड वाचता आले नाहीत. RSA नसलेल्या की कमकुवत म्हणून नोंदवल्या जात नाहीत: न वाचलेली की ही लहान की नव्हे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.observed-certificate-keys-meet-the-0a74",
    "en": "Observed certificate keys meet the minimum length.",
    "mr": "निरीक्षण केलेल्या प्रमाणपत्र की किमान लांबी पूर्ण करतात.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.minimum-required-rsa-bits-1e3d",
    "en": ". Minimum required: RSA {min:num} bits.",
    "mr": ". आवश्यक किमान: RSA {min} बिट्स.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (joined to other text)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.some-certificates-carried-no-readable-007e",
    "en": "Some certificates carried no readable public key parameters.",
    "mr": "काही प्रमाणपत्रांमध्ये वाचता येण्याजोगे सार्वजनिक की मापदंड नव्हते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.certificate-signature-algorithm-c263",
    "en": "Certificate signature algorithm",
    "mr": "प्रमाणपत्र स्वाक्षरी अल्गोरिदम",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.entry-ec4d",
    "en": "{hash} -- {citation:tr}",
    "mr": "{hash} -- {citation}",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-certificate-in-the-chain-b874",
    "en": "A certificate in the chain is signed with a deprecated hash.",
    "mr": "साखळीतील एक प्रमाणपत्र कालबाह्य हॅशने स्वाक्षरीत आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.signature-algorithms-observed-a-chain-da94",
    "en": "Signature algorithms observed: {names}. {detail:tr}. A chain is only as sound as its weakest signature.",
    "mr": "निरीक्षण केलेले स्वाक्षरी अल्गोरिदम: {names}. {detail}. साखळी तिच्या सर्वात कमकुवत स्वाक्षरीइतकीच भक्कम असते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.reissue-the-affected-certificates-with-2b8f",
    "en": "Reissue the affected certificates with SHA-256 or stronger, and confirm the issuing CA no longer signs with SHA-1.",
    "mr": "बाधित प्रमाणपत्रे SHA-256 किंवा त्याहून भक्कम हॅशसह पुन्हा जारी करा आणि जारी करणारी CA यापुढे SHA-1 वापरून स्वाक्षरी करत नाही याची खात्री करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.signature-algorithms-are-reported-for-1124",
    "en": "Signature algorithms are reported for the chain as a whole: the dissector does not attribute them to individual certificates reliably.",
    "mr": "स्वाक्षरी अल्गोरिदम संपूर्ण साखळीसाठी नोंदवले जातात: डिसेक्टर ते वैयक्तिक प्रमाणपत्रांना विश्वासार्हपणे जोडत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.certificate-signature-algorithms-could-not-1c56",
    "en": "Certificate signature algorithms could not be identified.",
    "mr": "प्रमाणपत्र स्वाक्षरी अल्गोरिदम ओळखता आले नाहीत.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-recognised-signature-algorithm-oid-2f87",
    "en": "No recognised signature algorithm OID was read. An unrecognised OID is reported as unidentified, never as weak.",
    "mr": "ओळखता येणारा कोणताही स्वाक्षरी अल्गोरिदम OID वाचला गेला नाही. न ओळखलेला OID \"ओळखले नाही\" म्हणून नोंदवला जातो, कमकुवत म्हणून कधीही नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.certificate-signature-algorithms-are-current-c7bf",
    "en": "Certificate signature algorithms are current.",
    "mr": "प्रमाणपत्र स्वाक्षरी अल्गोरिदम सध्याच्या मानकांनुसार आहेत.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.signature-algorithms-observed-ba9a",
    "en": "Signature algorithms observed: {names}.",
    "mr": "निरीक्षण केलेले स्वाक्षरी अल्गोरिदम: {names}.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.certificate-chain-structure-d277",
    "en": "Certificate chain structure",
    "mr": "प्रमाणपत्र साखळीची रचना",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.trust-was-not-evaluated-rfc-ef41",
    "en": "Trust was NOT evaluated: RFC 5280 SS6 path validation requires trust anchors, and a packet capture contains none.",
    "mr": "विश्वासार्हतेचे मूल्यांकन केले गेले नाही: RFC 5280 SS6 नुसार पाथ व्हॅलिडेशनसाठी ट्रस्ट अँकर आवश्यक असतात आणि पॅकेट कॅप्चरमध्ये ते नसतात.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.revocation-was-not-checked-ocsp-a1d8",
    "en": "Revocation was NOT checked: OCSP and CRL retrieval are separate network transactions absent from this capture.",
    "mr": "रद्दीकरण (revocation) तपासले गेले नाही: OCSP आणि CRL मिळवणे हे स्वतंत्र नेटवर्क व्यवहार आहेत आणि ते या कॅप्चरमध्ये नाहीत.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.this-analysis-is-structural-only-0492",
    "en": "This analysis is structural only. A linked chain is not a trusted chain.",
    "mr": "हे विश्लेषण केवळ संरचनात्मक आहे. जोडलेली साखळी म्हणजे विश्वासार्ह साखळी नव्हे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-server-presented-a-single-595c",
    "en": "The server presented a single self-signed certificate.",
    "mr": "सर्व्हरने एकच स्वयं-स्वाक्षरीत प्रमाणपत्र सादर केले.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-leaf-certificate-s-authority-8a98",
    "en": "The leaf certificate's Authority Key Identifier equals its Subject Key Identifier, so it was issued by the holder of its own key, and no issuing chain was presented. Clients performing standard validation will reject it unless it has been installed as a trust anchor out of band. This is a structural observation about configuration, not an indication of malicious activity.",
    "mr": "लीफ प्रमाणपत्राचा Authority Key Identifier त्याच्या Subject Key Identifier सारखाच आहे, म्हणजे ते स्वतःच्या कीच्या धारकानेच जारी केले आहे आणि जारी करणारी कोणतीही साखळी सादर झाली नाही. मानक पडताळणी करणारे क्लायंट ते नाकारतील, जोपर्यंत ते ट्रस्ट अँकर म्हणून बाहेरून (out of band) स्थापित केलेले नसेल. हे संरचनेबद्दलचे संरचनात्मक निरीक्षण आहे; हानिकारक कृतीचा संकेत नव्हे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.install-a-certificate-issued-by-f2b3",
    "en": "Install a certificate issued by a CA the clients already trust, or distribute the internal root to clients deliberately if a private CA is intended.",
    "mr": "क्लायंट आधीपासून विश्वास ठेवत असलेल्या CA ने जारी केलेले प्रमाणपत्र स्थापित करा; खासगी CA अपेक्षित असल्यास अंतर्गत रूट क्लायंटना जाणीवपूर्वक वितरित करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.certificate-does-not-link-to-f5bb",
    "en": "certificate {i:num} does not link to certificate {j:num}",
    "mr": "प्रमाणपत्र {i} हे प्रमाणपत्र {j} शी जोडलेले नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-presented-chain-does-not-9b54",
    "en": "The presented chain does not link end to end.",
    "mr": "सादर केलेली साखळी सुरुवातीपासून शेवटपर्यंत जोडलेली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-authority-key-identifier-of-0555",
    "en": ". The Authority Key Identifier of one certificate does not match the Subject Key Identifier of the next. This may mean the chain is misordered or incomplete, or that an identifier was not captured -- it is NOT a finding that the chain is invalid.",
    "mr": ". एका प्रमाणपत्राचा Authority Key Identifier पुढच्या प्रमाणपत्राच्या Subject Key Identifier शी जुळत नाही. याचा अर्थ साखळी चुकीच्या क्रमात किंवा अपूर्ण असू शकते, किंवा एखादा अभिज्ञापक कॅप्चर झाला नसेल — ही साखळी अवैध असल्याचा निष्कर्ष नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (joined to other text)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.servers-are-not-required-to-33f1",
    "en": "Servers are not required to send a complete chain; clients may complete it from their own store or from authorityInfoAccess.",
    "mr": "सर्व्हरने पूर्ण साखळी पाठवणे आवश्यक नाही; क्लायंट ती स्वतःच्या स्टोअरमधून किंवा authorityInfoAccess मधून पूर्ण करू शकतात.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.certificate-presented-cadd",
    "en": "{count:num} certificate{plural} presented",
    "mr": "{count} प्रमाणपत्र(े) सादर केली",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.each-certificate-links-to-the-7319",
    "en": "; each certificate links to the next by Authority Key Identifier",
    "mr": "; प्रत्येक प्रमाणपत्र Authority Key Identifier द्वारे पुढच्या प्रमाणपत्राशी जोडलेले आहे",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Sentence part (joined to other text)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.certificate-chain-structure-analysed-545e",
    "en": "Certificate chain structure analysed.",
    "mr": "प्रमाणपत्र साखळीच्या रचनेचे विश्लेषण केले.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.structural-analysis-only-see-the-fdb0",
    "en": "{detail:tr}. Structural analysis only -- see the limitations for what was deliberately not assessed.",
    "mr": "{detail}. केवळ संरचनात्मक विश्लेषण — काय जाणीवपूर्वक तपासले गेले नाही हे मर्यादांमध्ये पाहा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.deprecated-tls-version-0d72",
    "en": "deprecated TLS version",
    "mr": "कालबाह्य TLS आवृत्ती",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-negotiated-version-was-not-031e",
    "en": "the negotiated version was not established",
    "mr": "वाटाघाटी केलेली आवृत्ती निश्चित झाली नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.reported-by-sec-tls-001-76ec",
    "en": "(reported by SEC-TLS-001)",
    "mr": "(SEC-TLS-001 द्वारे नोंदवलेले)",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-handshake-was-observed-1846",
    "en": "no handshake was observed",
    "mr": "कोणताही हँडशेक आढळला नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-cipher-suite-was-not-c409",
    "en": "the cipher suite was not recognised",
    "mr": "सायफर सूट ओळखला गेला नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.not-provided-by-the-negotiated-ebf0",
    "en": "not provided by the negotiated key exchange",
    "mr": "वाटाघाटी केलेल्या की एक्सचेंजकडून दिले जात नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.rsa-key-length-8216",
    "en": "RSA key length",
    "mr": "RSA कीची लांबी",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-certificate-was-observable-a9e6",
    "en": "no certificate was observable",
    "mr": "कोणतेही प्रमाणपत्र निरीक्षणयोग्य नव्हते",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-public-key-parameters-could-8915",
    "en": "no public key parameters could be read",
    "mr": "सार्वजनिक कीचे मापदंड वाचता आले नाहीत",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.bit-rsa-key-below-the-90c1",
    "en": "{bits:num}-bit RSA key below the {min:num}-bit minimum",
    "mr": "{bits}-बिट RSA की {min}-बिट किमान मर्यादेपेक्षा कमी",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.all-observed-keys-meet-the-60c2",
    "en": "all observed keys meet the {min:num}-bit minimum",
    "mr": "निरीक्षण केलेल्या सर्व की {min}-बिट किमान मर्यादा पूर्ण करतात",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.certificate-signature-hash-8489",
    "en": "certificate signature hash",
    "mr": "प्रमाणपत्र स्वाक्षरी हॅश",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.signature-observed-in-the-chain-707b",
    "en": "{hash} signature observed in the chain",
    "mr": "साखळीत {hash} स्वाक्षरी आढळली",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-recognised-signature-algorithm-was-8c36",
    "en": "no recognised signature algorithm was read",
    "mr": "ओळखता येणारा कोणताही स्वाक्षरी अल्गोरिदम वाचला गेला नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-deprecated-signature-hash-observed-22a2",
    "en": "no deprecated signature hash observed",
    "mr": "कालबाह्य स्वाक्षरी हॅश आढळला नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.certificate-validity-window-34e2",
    "en": "certificate validity window",
    "mr": "प्रमाणपत्राचा वैधता कालावधी",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-capture-carries-no-timestamp-110e",
    "en": "the capture carries no timestamp to evaluate against",
    "mr": "मूल्यांकनासाठी कॅप्चरमध्ये कोणताही टाइमस्टॅम्प नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-validity-window-could-be-9ed4",
    "en": "no validity window could be read",
    "mr": "वैधता कालावधी वाचता आला नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-certificate-had-expired-at-d221",
    "en": "a certificate had expired at capture time",
    "mr": "कॅप्चरच्या वेळी एक प्रमाणपत्र कालबाह्य झाले होते",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-certificate-was-not-yet-8375",
    "en": "a certificate was not yet valid at capture time",
    "mr": "कॅप्चरच्या वेळी एक प्रमाणपत्र अजून वैध झाले नव्हते",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.all-observed-certificates-were-valid-db74",
    "en": "all observed certificates were valid at capture time",
    "mr": "निरीक्षण केलेली सर्व प्रमाणपत्रे कॅप्चरच्या वेळी वैध होती",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.self-signed-leaf-certificate-63e9",
    "en": "self-signed leaf certificate",
    "mr": "स्वयं-स्वाक्षरीत लीफ प्रमाणपत्र",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.key-identifiers-were-not-present-b3aa",
    "en": "key identifiers were not present, so self-signing is undetermined",
    "mr": "की अभिज्ञापक उपस्थित नव्हते, त्यामुळे स्वयं-स्वाक्षरी निश्चित झाली नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-server-presented-a-single-cbd8",
    "en": "the server presented a single self-signed certificate",
    "mr": "सर्व्हरने एकच स्वयं-स्वाक्षरीत प्रमाणपत्र सादर केले",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-leaf-certificate-was-issued-4e17",
    "en": "the leaf certificate was issued by a separate key",
    "mr": "लीफ प्रमाणपत्र वेगळ्या कीने जारी केले होते",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-tls-records-were-observed-9c43",
    "en": "no TLS records were observed in this session (reported by SEC-PLAIN-002)",
    "mr": "या सत्रात कोणतेही TLS रेकॉर्ड आढळले नाहीत (SEC-PLAIN-002 द्वारे नोंदवलेले)",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.tls-records-were-observed-170b",
    "en": "TLS records were observed",
    "mr": "TLS रेकॉर्ड आढळले",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.insecure-protocol-configuration-85d7",
    "en": "Insecure protocol configuration",
    "mr": "असुरक्षित प्रोटोकॉल संरचना",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.of-checklist-items-passed-failed-5112",
    "en": "{passed:num} of {total:num} checklist items passed, {failed:num} failed, {unobs:num} were not observable",
    "mr": "{total} पैकी {passed} तपासणी बाबी उत्तीर्ण झाल्या, {failed} अयशस्वी झाल्या, {unobs} निरीक्षणयोग्य नव्हत्या",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.not-evaluated-94b3",
    "en": "not evaluated -- {item:tr}: {detail:tr}",
    "mr": "मूल्यांकन झाले नाही — {item}: {detail}",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.configuration-checklist-item-s-failed-74a4",
    "en": "Configuration checklist: {failed:num} item(s) failed.",
    "mr": "संरचना तपासणी यादी: {failed} बाबी अयशस्वी.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.failing-items-each-failing-item-f016",
    "en": "{summary:tr}. Failing items: {items:tr}. Each failing item is reported as its own finding with its own severity and remediation; this entry records checklist coverage and is deliberately not a second copy of those findings.",
    "mr": "{summary}. अयशस्वी बाबी: {items}. प्रत्येक अयशस्वी बाब स्वतःची तीव्रता आणि उपाययोजनेसह स्वतंत्र निष्कर्ष म्हणून नोंदवली जाते; ही नोंद तपासणी यादीची व्याप्ती दर्शवते आणि त्या निष्कर्षांची दुसरी प्रत जाणीवपूर्वक नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-checklist-is-closed-at-94f6",
    "en": "The checklist is closed at version {version}: conditions outside it were not assessed and are not claimed to be absent.",
    "mr": "तपासणी यादी आवृत्ती {version} वर बंद आहे: तिच्या बाहेरील स्थितींचे मूल्यांकन केले गेले नाही आणि त्या अनुपस्थित असल्याचा दावाही केलेला नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.no-configuration-checklist-item-could-9b07",
    "en": "No configuration checklist item could be evaluated.",
    "mr": "संरचना तपासणी यादीतील कोणतीही बाब तपासता आली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-item-is-reported-as-91ce",
    "en": "{summary:tr}. No item is reported as compliant, because an item with no evidence has not passed -- it was not tested.",
    "mr": "{summary}. कोणतीही बाब अनुपालन करणारी म्हणून नोंदवलेली नाही, कारण पुरावा नसलेली बाब उत्तीर्ण झालेली नाही — ती तपासली गेलीच नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.configuration-checklist-of-items-passed-a12d",
    "en": "Configuration checklist: {passed:num} of {total:num} items passed.",
    "mr": "संरचना तपासणी यादी: {total} पैकी {passed} बाबी उत्तीर्ण.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.items-evaluated-8acf",
    "en": "{summary:tr}. Items evaluated: {items:tr}.",
    "mr": "{summary}. मूल्यांकन झालेल्या बाबी: {items}.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.key-exchange-mechanism-dd39",
    "en": "Key exchange mechanism",
    "mr": "की एक्सचेंज यंत्रणा",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-key-exchange-mechanism-could-a02a",
    "en": "The key exchange mechanism could not be established.",
    "mr": "की एक्सचेंज यंत्रणा निश्चित करता आली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-serverhello-was-captured-so-a3ed",
    "en": "No ServerHello was captured, so the negotiated key exchange is unknown. This is a capture limitation and is not an indication that a weak key exchange was used.",
    "mr": "कोणताही ServerHello कॅप्चर झाला नाही, त्यामुळे वाटाघाटी झालेले की एक्सचेंज अज्ञात आहे. ही कॅप्चरची मर्यादा आहे; कमकुवत की एक्सचेंज वापरले गेले असा याचा संकेत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-missing-serverhello-may-result-3498",
    "en": "A missing ServerHello may result from truncation, packet loss, capture position, or session resumption.",
    "mr": "ServerHello नसण्याचे कारण कॅप्चर छाटला जाणे, पॅकेट गळती, कॅप्चरची जागा किंवा सत्र पुन्हा सुरू केले जाणे हे असू शकते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.the-key-exchange-mechanism-could-c5c8",
    "en": "The key exchange mechanism could not be identified.",
    "mr": "की एक्सचेंज यंत्रणा ओळखता आली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.an-unrecognised-cipher-suite-is-fdee",
    "en": "{basis:tr}. An unrecognised cipher suite is not treated as a weak one: the reference table is deliberately closed-world, so an unlisted suite yields no verdict rather than a guess.",
    "mr": "{basis}. न ओळखलेला सायफर सूट कमकुवत मानला जात नाही: संदर्भ तक्ता जाणीवपूर्वक बंदिस्त (closed-world) आहे, त्यामुळे यादीत नसलेल्या सूटबाबत अंदाज लावण्याऐवजी कोणताही निकाल दिला जात नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-cipher-suite-reference-table-fbb7",
    "en": "The cipher suite reference table covers the IANA registry entries listed in crypto/suites.py; others are reported as unidentified.",
    "mr": "सायफर सूट संदर्भ तक्त्यात crypto/suites.py मध्ये नमूद केलेल्या IANA नोंदणीतील नोंदी आहेत; इतर \"ओळखले नाही\" म्हणून नोंदवले जातात.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.key-exchange-ed4c",
    "en": "Key exchange: {value}.",
    "mr": "की एक्सचेंज: {value}.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.forward-secrecy-could-not-be-a4b0",
    "en": "Forward secrecy could not be assessed for this session.",
    "mr": "या सत्रासाठी फॉरवर्ड सिक्रेसीचे मूल्यांकन करता आले नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-serverhello-was-captured-so-1ff2",
    "en": "No ServerHello was captured, so the key exchange is not established. This is NOT a finding that forward secrecy is absent -- that would convert missing evidence into a security conclusion.",
    "mr": "कोणताही ServerHello कॅप्चर झाला नाही, त्यामुळे की एक्सचेंज निश्चित झालेले नाही. फॉरवर्ड सिक्रेसी अनुपस्थित असल्याचा हा निष्कर्ष नाही — तसे मानल्यास पुराव्याच्या अभावाचे सुरक्षा निष्कर्षात रूपांतर झाले असते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-resumed-session-a-truncated-69a1",
    "en": "A resumed session, a truncated capture, or a capture started mid-stream all produce this result.",
    "mr": "पुन्हा सुरू केलेले सत्र, छाटलेला कॅप्चर किंवा सत्राच्या मध्यातून सुरू झालेला कॅप्चर — या सर्वांमुळे हा निकाल येतो.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.forward-secrecy-could-not-be-fc56",
    "en": "Forward secrecy could not be determined.",
    "mr": "फॉरवर्ड सिक्रेसी निश्चित करता आली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.an-unrecognised-suite-is-not-e543",
    "en": "{basis:tr}. An unrecognised suite is not treated as lacking forward secrecy.",
    "mr": "{basis}. न ओळखलेला सूट फॉरवर्ड सिक्रेसी नसलेला मानला जात नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-session-provides-forward-secrecy-aedc",
    "en": "The session provides forward secrecy.",
    "mr": "हे सत्र फॉरवर्ड सिक्रेसी देते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-negotiated-key-exchange-does-db92",
    "en": "The negotiated key exchange does not provide forward secrecy.",
    "mr": "वाटाघाटी झालेले की एक्सचेंज फॉरवर्ड सिक्रेसी देत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.recorded-traffic-from-this-session-d54e",
    "en": "{basis:tr}. Recorded traffic from this session could be decrypted retrospectively by anyone who later obtains the server's long-term private key.",
    "mr": "{basis}. या सत्रातील नोंदवलेली वाहतूक नंतर सर्व्हरची दीर्घकालीन खासगी की मिळवणारी कोणतीही व्यक्ती मागील तारखेपासून डिक्रिप्ट करू शकेल.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.configure-the-server-to-prefer-971b",
    "en": "Configure the server to prefer ephemeral key establishment (ECDHE or DHE) and to disable static RSA and static Diffie-Hellman cipher suites. Enabling TLS 1.3 removes these key exchanges entirely.",
    "mr": "सर्व्हरला तात्पुरत्या (ephemeral) की प्रस्थापनाला (ECDHE किंवा DHE) प्राधान्य देण्यासाठी आणि स्थिर RSA व स्थिर Diffie-Hellman सायफर सूट बंद करण्यासाठी संरचित करा. TLS 1.3 सुरू केल्याने हे की एक्सचेंज पूर्णपणे काढले जातात.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.this-describes-the-key-exchange-1b06",
    "en": "This describes the key exchange for this session only; other sessions with the same server may negotiate differently.",
    "mr": "हे केवळ या सत्रासाठीच्या की एक्सचेंजचे वर्णन करते; त्याच सर्व्हरशी इतर सत्रांत वेगळी वाटाघाटी होऊ शकते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and forward-secrecy checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.authentication-activity-without-tls-protection-d049",
    "en": "Authentication activity without TLS protection",
    "mr": "TLS संरक्षणाशिवाय प्रमाणीकरण क्रिया",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.authentication-commands-were-exchanged-in-d147",
    "en": "Authentication commands were exchanged in cleartext; no TLS protection was observed for this session.",
    "mr": "प्रमाणीकरणाच्या आज्ञा क्लिअरटेक्स्टमध्ये देवाणघेवाण झाल्या; या सत्रासाठी TLS संरक्षण आढळले नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.an-authentication-related-command-was-c504",
    "en": "An authentication-related command was observed while the session carried no TLS. Anything transmitted was therefore unprotected in transit. This describes what the capture shows; it does not assert that any third party observed or obtained the credentials, which passive capture cannot establish.",
    "mr": "सत्रात TLS नसताना प्रमाणीकरणाशी संबंधित आज्ञा आढळली. त्यामुळे पाठवलेली कोणतीही माहिती प्रवासात असुरक्षित होती. हे कॅप्चरमध्ये काय दिसते त्याचे वर्णन आहे; कोणत्याही तिसऱ्या पक्षाने क्रेडेन्शियल्स पाहिली किंवा मिळवली असे ते सांगत नाही, कारण ते निष्क्रिय कॅप्चरमधून निश्चित करता येत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.require-tls-before-authentication-enable-f2bd",
    "en": "Require TLS before authentication: enable implicit TLS on the submission/access ports, or require a successful STARTTLS/STLS upgrade before accepting credentials.",
    "mr": "प्रमाणीकरणापूर्वी TLS अनिवार्य करा: सबमिशन/ॲक्सेस पोर्टवर इम्प्लिसिट TLS सुरू करा, किंवा क्रेडेन्शियल्स स्वीकारण्यापूर्वी यशस्वी STARTTLS/STLS अपग्रेड आवश्यक करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.observation-of-cleartext-transmission-is-1445",
    "en": "Observation of cleartext transmission is not evidence of interception.",
    "mr": "क्लिअरटेक्स्ट प्रसारण दिसणे म्हणजे हेरगिरी (interception) झाल्याचा पुरावा नव्हे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.credential-values-are-not-extracted-299a",
    "en": "Credential values are not extracted or assessed by this rule.",
    "mr": "क्रेडेन्शियल मूल्ये हा नियम काढत नाही किंवा तपासत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.authentication-activity-was-observed-in-dd1f",
    "en": "Authentication activity was observed in the pre-TLS phase of the session.",
    "mr": "सत्राच्या TLS-पूर्व टप्प्यात प्रमाणीकरण क्रिया आढळली.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.authentication-related-protocol-activity-appeared-4571",
    "en": "Authentication-related protocol activity appeared before the session was protected. The capture does not establish whether credential material itself was exposed.",
    "mr": "सत्र संरक्षित होण्यापूर्वी प्रमाणीकरणाशी संबंधित प्रोटोकॉल क्रिया दिसली. क्रेडेन्शियल सामग्री स्वतः उघड झाली की नाही हे कॅप्चरवरून निश्चित होत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.mail-session-carried-no-tls-5d01",
    "en": "Mail session carried no TLS",
    "mr": "मेल सत्रात TLS नव्हते",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-mail-session-carried-no-bffe",
    "en": "The mail session carried no TLS protection.",
    "mr": "मेल सत्रात कोणतेही TLS संरक्षण नव्हते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-tls-records-were-observed-7dad",
    "en": "No TLS records were observed in this stream, so message and command content travelled in cleartext. This states what was observed. It does not attribute a cause: a session may be unprotected through client choice, server configuration, or interference, and this capture alone cannot distinguish those.",
    "mr": "या स्ट्रीममध्ये कोणतेही TLS रेकॉर्ड आढळले नाहीत, त्यामुळे संदेश आणि आज्ञांची सामग्री क्लिअरटेक्स्टमध्ये प्रवास करत होती. हे काय आढळले ते सांगते. यामागचे कारण ठरवत नाही: सत्र असंरक्षित असण्यामागे क्लायंटची निवड, सर्व्हरची संरचना किंवा हस्तक्षेप असू शकतो आणि केवळ या कॅप्चरवरून त्यातील फरक ओळखता येत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.require-tls-for-this-service-91a3",
    "en": "Require TLS for this service, preferring implicit TLS on the dedicated ports (RFC 8314) or enforced STARTTLS/STLS.",
    "mr": "या सेवेसाठी TLS अनिवार्य करा; समर्पित पोर्टवर इम्प्लिसिट TLS (RFC 8314) किंवा सक्तीचे STARTTLS/STLS यांना प्राधान्य द्या.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.the-cause-of-the-missing-1bc1",
    "en": "The cause of the missing protection is not determined by this rule.",
    "mr": "संरक्षण नसण्याचे कारण हा नियम ठरवत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Unencrypted login and session checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.starttls-stls-upgrade-outcome-925c",
    "en": "STARTTLS/STLS upgrade outcome",
    "mr": "STARTTLS/STLS अपग्रेडचा निकाल",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-server-s-response-to-bbe4",
    "en": "The server's response to the upgrade request was contradictory.",
    "mr": "अपग्रेड विनंतीला सर्व्हरचा प्रतिसाद परस्परविरोधी होता.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.both-a-rejection-and-an-8aa1",
    "en": "Both a rejection and an acceptance were observed for the same upgrade request. The capture does not settle which applied.",
    "mr": "एकाच अपग्रेड विनंतीसाठी नकार आणि स्वीकार दोन्ही आढळले. कोणता लागू झाला हे कॅप्चरवरून ठरत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-client-requested-an-upgrade-0937",
    "en": "The client requested an upgrade and the server refused it.",
    "mr": "क्लायंटने अपग्रेडची विनंती केली आणि सर्व्हरने ती नाकारली.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-client-asked-to-upgrade-4e0f",
    "en": "The client asked to upgrade and the server responded with an error, so the session could not be protected by TLS. RFC 3207 requires that endpoints be configurable to require successful TLS negotiation. A refusal is a configuration and availability condition; it is not by itself evidence of an attack.",
    "mr": "क्लायंटने अपग्रेड मागितले आणि सर्व्हरने त्रुटीसह उत्तर दिले, त्यामुळे सत्र TLS ने संरक्षित करता आले नाही. RFC 3207 नुसार यशस्वी TLS वाटाघाटी अनिवार्य करण्यासाठी एंडपॉइंट संरचित करता येणे आवश्यक आहे. नकार ही संरचना आणि उपलब्धतेची स्थिती आहे; तो स्वतः हल्ल्याचा पुरावा नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.ensure-the-service-offers-and-65b0",
    "en": "Ensure the service offers and accepts STARTTLS/STLS, and configure clients to require successful negotiation for sensitive peers.",
    "mr": "सेवा STARTTLS/STLS देते आणि स्वीकारते याची खात्री करा आणि संवेदनशील सहभागींसाठी यशस्वी वाटाघाटी अनिवार्य करण्यासाठी क्लायंट संरचित करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.a-refusal-observed-passively-cannot-fb62",
    "en": "A refusal observed passively cannot be distinguished from an injected error without corroborating evidence.",
    "mr": "निष्क्रियपणे आढळलेला नकार हा पुष्टी करणाऱ्या पुराव्याशिवाय घुसवलेल्या त्रुटीपासून वेगळा ओळखता येत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.the-session-successfully-upgraded-to-3d1a",
    "en": "The session successfully upgraded to TLS.",
    "mr": "सत्र यशस्वीरित्या TLS मध्ये अपग्रेड झाले.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.advertisement-command-acceptance-and-a-b8e6",
    "en": "Advertisement, command, acceptance and a completed TLS negotiation were all observed. A successful upgrade is not a vulnerability.",
    "mr": "घोषणा, आज्ञा, स्वीकार आणि पूर्ण झालेली TLS वाटाघाटी या सर्व आढळल्या. यशस्वी अपग्रेड ही असुरक्षितता नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-upgrade-was-accepted-but-e620",
    "en": "The upgrade was accepted but completion was not established.",
    "mr": "अपग्रेड स्वीकारले गेले, पण पूर्णता निश्चित झाली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-server-accepted-the-upgrade-426c",
    "en": "The server accepted the upgrade, yet the capture does not show a completed handshake. This is reported as incomplete evidence rather than as a failed upgrade.",
    "mr": "सर्व्हरने अपग्रेड स्वीकारले, तरीही कॅप्चरमध्ये पूर्ण झालेला हँडशेक दिसत नाही. हे अयशस्वी अपग्रेड म्हणून नव्हे, तर अपूर्ण पुरावा म्हणून नोंदवले जाते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.an-upgrade-was-requested-but-b977",
    "en": "An upgrade was requested but no server response was captured.",
    "mr": "अपग्रेडची विनंती झाली, पण सर्व्हरचा कोणताही प्रतिसाद कॅप्चर झाला नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-outcome-of-the-upgrade-f02f",
    "en": "The outcome of the upgrade request cannot be established.",
    "mr": "अपग्रेड विनंतीचा निकाल निश्चित करता येत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.starttls-stls-advertisement-posture-0f1d",
    "en": "STARTTLS/STLS advertisement posture",
    "mr": "STARTTLS/STLS क्षमतेच्या घोषणेची स्थिती",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-server-advertised-an-upgrade-c067",
    "en": "The server advertised an upgrade capability that the client did not use.",
    "mr": "सर्व्हरने अपग्रेड क्षमता जाहीर केली, पण क्लायंटने ती वापरली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-capability-was-present-and-9197",
    "en": "The capability was present and the client did not request it. This is a client behaviour observation. It is not an attack, and passive single-session evidence cannot establish why the client declined.",
    "mr": "क्षमता उपलब्ध होती आणि क्लायंटने ती मागितली नाही. हे क्लायंटच्या वर्तनाचे निरीक्षण आहे. तो हल्ला नाही, आणि निष्क्रिय एकल-सत्र पुराव्यावरून क्लायंटने नकार का दिला हे ठरवता येत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.configure-clients-to-require-starttls-9009",
    "en": "Configure clients to require STARTTLS/STLS for this service where the peer is expected to support it.",
    "mr": "ज्या ठिकाणी सहभागीकडून समर्थन अपेक्षित आहे तेथे या सेवेसाठी STARTTLS/STLS अनिवार्य करण्यासाठी क्लायंट संरचित करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.no-upgrade-capability-was-advertised-b7d0",
    "en": "No upgrade capability was advertised; stripping and genuine non-support cannot be distinguished.",
    "mr": "कोणतीही अपग्रेड क्षमता जाहीर झाली नाही; ती काढून टाकली गेली की प्रत्यक्षात समर्थित नाही, हे वेगळे ओळखता येत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-capability-response-was-observed-13e4",
    "en": "The capability response was observed and did not offer STARTTLS/STLS. A server that does not support the extension and a server whose advertisement was removed in transit produce identical application-layer bytes, so this capture cannot separate them. RFC 3207 SS6 documents that this capability can be removed in transit; observing that it is absent is not evidence that removal occurred.",
    "mr": "क्षमता प्रतिसाद आढळला आणि त्यात STARTTLS/STLS दिले गेले नव्हते. हे विस्तार समर्थित न करणारा सर्व्हर आणि प्रवासात ज्याची घोषणा काढून टाकली गेली असा सर्व्हर, दोघेही अगदी एकसारखे ॲप्लिकेशन-स्तर बाइट्स निर्माण करतात, त्यामुळे हा कॅप्चर त्यांना वेगळे करू शकत नाही. RFC 3207 SS6 नुसार ही क्षमता प्रवासात काढली जाऊ शकते; ती अनुपस्थित असल्याचे दिसणे म्हणजे ती काढली गेल्याचा पुरावा नव्हे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.single-session-passive-evidence-cannot-3131",
    "en": "Single-session passive evidence cannot distinguish capability stripping from genuine non-support.",
    "mr": "एकल-सत्र निष्क्रिय पुरावा क्षमता काढून टाकणे आणि प्रत्यक्ष असमर्थन यातील फरक ओळखू शकत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.resolving-this-requires-comparison-against-918a",
    "en": "Resolving this requires comparison against other sessions, which is outside per-session analysis.",
    "mr": "हे सोडवण्यासाठी इतर सत्रांशी तुलना आवश्यक आहे, जी प्रति-सत्र विश्लेषणाच्या कक्षेबाहेर आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.no-capability-response-was-captured-c735",
    "en": "No capability response was captured for this session.",
    "mr": "या सत्रासाठी कोणताही क्षमता प्रतिसाद कॅप्चर झाला नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.whether-an-upgrade-was-offered-56e8",
    "en": "Whether an upgrade was offered cannot be established.",
    "mr": "अपग्रेड देऊ केले गेले होते का हे निश्चित करता येत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.implicit-tls-session-5af6",
    "en": "Implicit TLS session",
    "mr": "इम्प्लिसिट TLS सत्र",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-session-used-implicit-tls-dab8",
    "en": "The session used implicit TLS; no STARTTLS upgrade applies.",
    "mr": "सत्राने इम्प्लिसिट TLS वापरले; STARTTLS अपग्रेड लागू होत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-connection-was-encrypted-from-fad1",
    "en": "The connection was encrypted from its first record, so there is no cleartext upgrade dialogue to evaluate. The absence of a STARTTLS advertisement here is expected and is not a failure, a lack of support, or evidence of stripping.",
    "mr": "कनेक्शन पहिल्या रेकॉर्डपासूनच एन्क्रिप्टेड होते, त्यामुळे तपासण्यासाठी क्लिअरटेक्स्ट अपग्रेड संवाद नाही. येथे STARTTLS घोषणा नसणे अपेक्षित आहे; ते अपयश, असमर्थन किंवा क्षमता काढून टाकल्याचा पुरावा नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.ssl-2-0-is-prohibited-c35d",
    "en": "SSL 2.0 is prohibited outright and is fundamentally broken",
    "mr": "SSL 2.0 पूर्णपणे प्रतिबंधित आहे आणि मूलतः सदोष आहे",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.ssl-3-0-is-prohibited-d089",
    "en": "SSL 3.0 is prohibited outright (POODLE-era protocol)",
    "mr": "SSL 3.0 पूर्णपणे प्रतिबंधित आहे (POODLE काळातील प्रोटोकॉल)",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.rfc-8996-states-tls-1-de46",
    "en": "RFC 8996 states TLS 1.0 MUST NOT be used and NIST SP 800-52r2 states servers shall not use it; handshake integrity depends on SHA-1",
    "mr": "RFC 8996 नुसार TLS 1.0 वापरू नये (MUST NOT) आणि NIST SP 800-52r2 नुसार सर्व्हरने ते वापरू नये; हँडशेकची अखंडता SHA-1 वर अवलंबून आहे",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.rfc-8996-states-tls-1-ddb3",
    "en": "RFC 8996 states TLS 1.1 MUST NOT be used; NIST SP 800-52r2 states servers should not be configured to use it",
    "mr": "RFC 8996 नुसार TLS 1.1 वापरू नये (MUST NOT); NIST SP 800-52r2 नुसार सर्व्हर ते वापरण्यासाठी संरचित असू नये",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.nist-sp-800-52r2-requires-ba54",
    "en": "NIST SP 800-52r2 requires servers to support TLS 1.2",
    "mr": "NIST SP 800-52r2 नुसार सर्व्हरने TLS 1.2 चे समर्थन करणे आवश्यक आहे",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.nist-sp-800-52r2-recommends-3bb9",
    "en": "NIST SP 800-52r2 recommends TLS 1.3; it is the current best practice",
    "mr": "NIST SP 800-52r2 TLS 1.3 ची शिफारस करते; ती सध्याची सर्वोत्तम पद्धत आहे",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.negotiated-tls-version-posture-7812",
    "en": "Negotiated TLS version posture",
    "mr": "वाटाघाटी झालेल्या TLS आवृत्तीची स्थिती",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-negotiated-tls-version-could-5d72",
    "en": "The negotiated TLS version could not be established from this capture.",
    "mr": "या कॅप्चरवरून वाटाघाटी झालेली TLS आवृत्ती निश्चित करता आली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.tls-records-were-present-but-fc11",
    "en": "TLS records were present but no ServerHello was captured, so the negotiated version is unknown. This is a capture limitation, not an indication that a weak version was used.",
    "mr": "TLS रेकॉर्ड उपस्थित होते, पण कोणताही ServerHello कॅप्चर झाला नाही, त्यामुळे वाटाघाटी झालेली आवृत्ती अज्ञात आहे. ही कॅप्चरची मर्यादा आहे; कमकुवत आवृत्ती वापरली गेली असा याचा संकेत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-missing-serverhello-may-result-b9aa",
    "en": "A missing ServerHello may result from truncation, packet loss, or capture position.",
    "mr": "ServerHello नसण्याचे कारण कॅप्चर छाटला जाणे, पॅकेट गळती किंवा कॅप्चरची जागा हे असू शकते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.a-serverhello-was-observed-but-c7f6",
    "en": "A ServerHello was observed but its version value was not recognised.",
    "mr": "ServerHello आढळला, पण त्यातील आवृत्ती मूल्य ओळखता आले नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-version-field-held-a-1b49",
    "en": "The version field held a value outside the known TLS/SSL set. It is not treated as insecure, because an unrecognised value is not evidence of a deprecated protocol.",
    "mr": "आवृत्ती क्षेत्रात ज्ञात TLS/SSL संचाबाहेरील मूल्य होते. ते असुरक्षित मानले जात नाही, कारण न ओळखलेले मूल्य हे कालबाह्य प्रोटोकॉलचा पुरावा नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.unknown-version-values-may-indicate-6168",
    "en": "Unknown version values may indicate a non-standard implementation or a dissector limitation.",
    "mr": "अज्ञात आवृत्ती मूल्ये अ-मानक अंमलबजावणी किंवा डिसेक्टरची मर्यादा दर्शवू शकतात.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.the-session-negotiated-a-deprecated-7a87",
    "en": "The session negotiated {name}, a deprecated protocol version.",
    "mr": "सत्रात {name} ची वाटाघाटी झाली, जी कालबाह्य प्रोटोकॉल आवृत्ती आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.disable-this-protocol-version-on-2616",
    "en": "Disable this protocol version on the mail service and require TLS 1.2 as a minimum, preferring TLS 1.3.",
    "mr": "मेल सेवेवर ही प्रोटोकॉल आवृत्ती बंद करा आणि किमान TLS 1.2 अनिवार्य करा, TLS 1.3 ला प्राधान्य द्या.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — short recommendation",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "finding.the-session-negotiated-which-meets-2066",
    "en": "The session negotiated {name}, which meets current guidance.",
    "mr": "सत्रात {name} ची वाटाघाटी झाली, जी सध्याच्या मार्गदर्शनाची पूर्तता करते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.negotiated-version-is-outside-the-129f",
    "en": "Negotiated version {name} is outside the evaluated set.",
    "mr": "वाटाघाटी झालेली आवृत्ती {name} मूल्यांकन केलेल्या संचाबाहेरील आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-standards-judgement-is-made-9c34",
    "en": "No standards judgement is made for a version this rule does not cover.",
    "mr": "हा नियम ज्या आवृत्तीचा समावेश करत नाही तिच्यासाठी कोणताही मानकांवर आधारित निर्णय दिला जात नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.tls-handshake-completion-evidence-9e3e",
    "en": "TLS handshake completion evidence",
    "mr": "TLS हँडशेक पूर्णतेचा पुरावा",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.tls-state-and-its-supporting-1acc",
    "en": "TLS state and its supporting evidence disagree.",
    "mr": "TLS स्थिती आणि तिला आधार देणारा पुरावा परस्परविरोधी आहेत.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-session-is-marked-as-1f89",
    "en": "The session is marked as established but the transition evidence does not confirm it. No completion claim is made.",
    "mr": "सत्र प्रस्थापित म्हणून चिन्हांकित आहे, परंतु संक्रमणाचा पुरावा त्याला दुजोरा देत नाही. पूर्णतेचा कोणताही दावा केलेला नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.tls-negotiation-completed-and-encrypted-fd65",
    "en": "TLS negotiation completed and encrypted application data was observed.",
    "mr": "TLS वाटाघाटी पूर्ण झाली आणि एन्क्रिप्टेड ॲप्लिकेशन डेटा आढळला.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.both-hellos-and-subsequent-encrypted-5716",
    "en": "Both hellos and subsequent encrypted application records were captured. Because the Finished messages are themselves encrypted, flowing application data is the strongest passive completion evidence.",
    "mr": "दोन्ही hello संदेश आणि त्यानंतरचे एन्क्रिप्टेड ॲप्लिकेशन रेकॉर्ड कॅप्चर झाले. Finished संदेश स्वतःच एन्क्रिप्टेड असल्यामुळे, वाहणारा ॲप्लिकेशन डेटा हा निष्क्रिय पद्धतीने पूर्णतेचा सर्वात भक्कम पुरावा आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-clienthello-only-03b7",
    "en": "a ClientHello only",
    "mr": "फक्त एक ClientHello",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.tls-negotiation-was-observed-but-a737",
    "en": "TLS negotiation was observed but completion is not established.",
    "mr": "TLS वाटाघाटी आढळली, पण पूर्णता निश्चित झाली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.the-capture-contains-and-no-7d5e",
    "en": "The capture contains {seen:tr} and no encrypted application data, so the handshake cannot be said to have completed. This is reported as incomplete evidence, not as a failed or insecure session.",
    "mr": "कॅप्चरमध्ये {seen} आहे आणि एन्क्रिप्टेड ॲप्लिकेशन डेटा नाही, त्यामुळे हँडशेक पूर्ण झाला असे म्हणता येत नाही. हे अयशस्वी किंवा असुरक्षित सत्र म्हणून नव्हे, तर अपूर्ण पुरावा म्हणून नोंदवले जाते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.truncation-or-capture-position-can-6879",
    "en": "Truncation or capture position can cut a handshake short without any fault in the session itself.",
    "mr": "सत्रात कोणताही दोष नसतानाही कॅप्चर छाटला गेल्यास किंवा कॅप्चरच्या जागेमुळे हँडशेक अर्धवट कापला जाऊ शकतो.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.tls-records-were-present-but-f7e1",
    "en": "TLS records were present but the handshake could not be reconstructed.",
    "mr": "TLS रेकॉर्ड उपस्थित होते, पण हँडशेकची पुनर्रचना करता आली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.neither-hello-was-captured-in-de16",
    "en": "Neither hello was captured in this stream; no completion claim is made.",
    "mr": "या स्ट्रीममध्ये एकही hello संदेश कॅप्चर झाला नाही; पूर्णतेचा कोणताही दावा केलेला नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.certificate-trust-and-revocation-boundary-251d",
    "en": "Certificate trust and revocation boundary",
    "mr": "प्रमाणपत्र विश्वासार्हता आणि रद्दीकरणाची सीमा",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding title",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.a-certificate-was-extracted-and-26d5",
    "en": "A certificate was extracted and its structure analysed (SEC-CERT-001 and SEC-CERT-005), but trust was still not evaluated",
    "mr": "प्रमाणपत्र काढले गेले आणि त्याच्या रचनेचे विश्लेषण झाले (SEC-CERT-001 आणि SEC-CERT-005), तरीही विश्वासार्हतेचे मूल्यांकन झाले नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.no-certificate-was-observable-in-6454",
    "en": "No certificate was observable in this session (SEC-CERT-001 records why)",
    "mr": "या सत्रात कोणतेही प्रमाणपत्र निरीक्षणयोग्य नव्हते (कारण SEC-CERT-001 मध्ये नोंदवले आहे)",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.certificate-trust-and-revocation-were-0d67",
    "en": "Certificate trust and revocation were not evaluated.",
    "mr": "प्रमाणपत्राची विश्वासार्हता आणि रद्दीकरण स्थिती तपासली गेली नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.trust-cannot-be-established-from-4ac2",
    "en": "{state:tr}. Trust cannot be established from a packet capture: RFC 5280 SS6 defines path validation over a set of trust anchors, and a capture contains none. Revocation cannot be established either: OCSP and CRL retrieval are separate network transactions. Neither limitation is a finding against the certificate.",
    "mr": "{state}. पॅकेट कॅप्चरवरून विश्वासार्हता निश्चित करता येत नाही: RFC 5280 SS6 नुसार पाथ व्हॅलिडेशन ट्रस्ट अँकरच्या संचावर आधारित असते आणि कॅप्चरमध्ये ते नसतात. रद्दीकरणही निश्चित करता येत नाही: OCSP आणि CRL मिळवणे हे स्वतंत्र नेटवर्क व्यवहार आहेत. यापैकी कोणतीही मर्यादा प्रमाणपत्राविरुद्धचा निष्कर्ष नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "finding.trust-validation-would-require-a-8030",
    "en": "Trust validation would require a trust store chosen by the analyst; which store, and how enterprise-internal CAs are handled, is an open question (OQ-04).",
    "mr": "विश्वासार्हता पडताळणीसाठी विश्लेषकाने निवडलेले ट्रस्ट स्टोअर आवश्यक असेल; कोणते स्टोअर आणि संस्थेच्या अंतर्गत CA कशा हाताळायच्या हा खुला प्रश्न आहे (OQ-04).",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.revocation-status-would-require-live-3ec4",
    "en": "Revocation status would require live OCSP or CRL access, which would breach the passive, offline operating model.",
    "mr": "रद्दीकरणाच्या स्थितीसाठी थेट OCSP किंवा CRL प्रवेश आवश्यक असेल, जो निष्क्रिय, ऑफलाइन कार्यपद्धतीचा भंग करेल.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   },
   {
    "id": "finding.under-tls-1-3-the-0e06",
    "en": "Under TLS 1.3 the Certificate message is encrypted and is not passively recoverable without key material.",
    "mr": "TLS 1.3 मध्ये Certificate संदेश एन्क्रिप्टेड असतो आणि की-सामग्रीशिवाय तो निष्क्रिय पद्धतीने पुन्हा मिळवता येत नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Abstentions and assessment limitations"
   }
  ]
 }

@@ -33,3 +33,6 @@ frontend/dist/
 # Local browser profile used for manual testing
 .chrome-profile/
 .design-references/
+
+# generated reviewer handoff files (regenerate with tools/catalogue_review.py export)
+/i18n-review/

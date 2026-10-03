@@ -148,11 +148,20 @@ class ReportSummary(BaseModel):
     #: Whether the stored artefact came from the current report schema and renderer.
     current: Optional[bool] = None
     integrity: Optional[str] = None
+    #: Report language: "en" (the authoritative original), "mr" or "both". Additive.
+    language: str = "en"
+    #: Only on translated renditions: the catalogue they come from and whether a person
+    #: has reviewed it ("draft" until every entry is reviewed).
+    catalogue_version: Optional[str] = None
+    translation_status: Optional[str] = None
 
 
 class ReportListResponse(BaseModel):
     run_id: str
+    #: The English formats, exactly as before.
     items: List[ReportSummary]
+    #: Translated renditions of those formats (HTML only for now). Additive.
+    translations: List[ReportSummary] = []
 
 
 def run_to_response(run: Any, *, replayed: bool = False,

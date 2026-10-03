@@ -473,8 +473,16 @@ export interface AssessmentResponse {
   };
 }
 
+/** `en` is the authoritative original; `mr` is Marathi; `both` is Marathi followed by English. */
+export type ReportLanguage = 'en' | 'mr' | 'both';
+
 export interface ReportItem {
   format: 'html' | 'pdf' | 'json';
+  /** Absent on older backends, which only ever serve English. */
+  language?: ReportLanguage;
+  /** Only on translated renditions: `draft` until a person has reviewed every entry. */
+  translation_status?: 'draft' | 'reviewed' | null;
+  catalogue_version?: string | null;
   media_type: string;
   filename: string;
   renderer_available: boolean;
@@ -492,6 +500,8 @@ export interface ReportItem {
 export interface ReportListResponse {
   run_id: string;
   items: ReportItem[];
+  /** Translated renditions of the formats above (HTML only for now). Absent on older backends. */
+  translations?: ReportItem[];
 }
 
 export const EPISTEMIC_SYMBOLS: Record<EvidenceState, string> = {

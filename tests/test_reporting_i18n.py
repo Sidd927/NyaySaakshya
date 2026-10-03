@@ -43,6 +43,18 @@ def catalogue():
     return i18n.load_catalogue("mr")
 
 
+def _reviewed(catalogue):
+    """The same catalogue with every entry and glossary item marked as reviewed."""
+    import copy
+    glossary = copy.deepcopy(catalogue.glossary)
+    for item in glossary["items"]:
+        item["needs_review"] = False
+    return i18n.Catalogue(
+        "mr", catalogue.meta,
+        [dataclasses.replace(e, needs_review=False) for e in catalogue.entries],
+        catalogue.passthrough, glossary)
+
+
 def _catalogue(entries, patterns=()):
     """A small in-memory catalogue for testing the matcher in isolation."""
     compiled = [i18n._compile("t.%d" % n, en, mr, True) for n, (en, mr) in enumerate(entries)]
@@ -68,7 +80,8 @@ def test_every_entry_declares_its_review_status(catalogue):
     # an entry means setting needs_review to false, and nothing else about it changes.
     for entry in catalogue.entries:
         assert isinstance(entry.needs_review, bool), entry.entry_id
-    assert 0 <= catalogue.pending_review <= len(catalogue.entries)
+    glossary_pending = sum(1 for i in catalogue.glossary['items'] if i['needs_review'])
+    assert catalogue.pending_review == sum(e.needs_review for e in catalogue.entries) + glossary_pending
 
 
 def test_ids_and_english_specs_are_unique(catalogue):
@@ -339,11 +352,8 @@ def test_marathi_html_shows_the_draft_notice_while_entries_are_unreviewed(catalo
     assert 'class="notice draft"' in html
 
 
-def test_draft_notice_disappears_only_when_every_entry_is_reviewed(catalogue, monkeypatch):
-    reviewed = i18n.Catalogue(
-        "mr", catalogue.meta,
-        [dataclasses.replace(e, needs_review=False) for e in catalogue.entries],
-        catalogue.passthrough, catalogue.glossary)
+def test_draft_notice_disappears_only_when_every_entry_and_glossary_item_is_reviewed(catalogue, monkeypatch):
+    reviewed = _reviewed(catalogue)
     assert reviewed.pending_review == 0
     monkeypatch.setattr(i18n, "load_catalogue", lambda language: reviewed)
     html, _ = H.render_localized(project(base_assessment()), "mr")
@@ -530,3 +540,12 @@ def test_ignored_source_literals_still_exist_and_say_why(catalogue):
     for item in config["ignore"]:
         assert item["why"], item
         assert _anonymous(item["en"]) in present, "stale ignore entry: %r" % item["en"]
+
+
+def test_one_unreviewed_glossary_item_keeps_the_draft_notice(catalogue, monkeypatch):
+    partly = _reviewed(catalogue)
+    partly.glossary["items"][0]["needs_review"] = True
+    assert partly.pending_review == 1
+    monkeypatch.setattr(i18n, "load_catalogue", lambda language: partly)
+    html, _ = H.render_localized(project(base_assessment()), "mr")
+    assert 'class="notice draft"' in html

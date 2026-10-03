@@ -51,6 +51,17 @@ class UnsupportedFormat(ReportError):
     http_status = 400
 
 
+class UnsupportedLanguage(ReportError):
+    """The requested report language is unknown, or not available for that format.
+
+    400, not 500: the request is well-formed and the assessment is intact. Raised rather
+    than quietly returning English, so nobody receives a report in a language they did not
+    ask for without being told.
+    """
+    code = "UNSUPPORTED_REPORT_LANGUAGE"
+    http_status = 400
+
+
 class ReportTooLarge(ReportError):
     code = "REPORT_TOO_LARGE"
     http_status = 500

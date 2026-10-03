@@ -294,16 +294,23 @@ def create_app(service: Optional[AnalysisService] = None,
             svc.get_run(rid)             # 404 for an unknown run, not an empty list
             assessment = None
         return ReportListResponse(run_id=rid,
-                                  items=reports.list_reports(rid, assessment))
+                                  items=reports.list_reports(rid, assessment),
+                                  translations=reports.list_translations(rid, assessment))
 
     @router.get("/analyses/{run_id}/reports/{fmt}")
     def get_report(run_id: str, fmt: str,
-                   download: bool = Query(False)) -> Response:
+                   download: bool = Query(False),
+                   lang: str = Query("en", description=(
+                       "Report language: `en` (the authoritative original, default), `mr` "
+                       "(Marathi) or `both` (Marathi followed by the English original). "
+                       "Translations are HTML only; PDF and JSON are English-only."))
+                   ) -> Response:
         """Render (or serve a stored) report.
 
         A report is a rendering of the canonical assessment. This endpoint reconstructs
         no security conclusion: it fetches the same document `.../assessment` returns
-        and hands it to a renderer.
+        and hands it to a renderer. A translation changes wording only; every score,
+        identifier and hash is the same in every language.
         """
         rid = _validate_run_id(run_id)
         if fmt not in SUPPORTED_FORMATS:
@@ -311,17 +318,26 @@ def create_app(service: Optional[AnalysisService] = None,
                                  detail={"format": fmt,
                                          "supported": list(SUPPORTED_FORMATS)})
         assessment = svc.get_assessment(rid)
-        payload, meta = _report_service(svc).get_or_create(rid, assessment, fmt)
+        payload, meta = _report_service(svc).get_or_create(rid, assessment, fmt, lang)
 
         headers = {
             "X-Assessment-Id": meta["assessment_id"],
             "X-Report-Schema-Version": meta["report_schema_version"],
             "X-Renderer-Version": meta["renderer_version"],
+            "X-Report-Language": meta["language"],
             "Content-Length": str(len(payload)),
             # A report is a pure function of its assessment, and an assessment is
             # immutable once stored, so this is safe to cache indefinitely.
             "Cache-Control": "private, max-age=86400",
         }
+        if meta["language"] != "en":
+            headers["Content-Language"] = "mr" if meta["language"] == "mr" else "mr, en"
+            headers["X-Translation-Status"] = meta["translation"]["status"]
+            # A translation also depends on the translation catalogue, which changes when
+            # reviewed text is swapped in, so it is revalidated rather than cached for a day.
+            headers["Cache-Control"] = "private, no-cache"
+        else:
+            headers["Content-Language"] = "en"
         if meta.get("report_sha256"):
             headers["X-Report-Sha256"] = meta["report_sha256"]
         # PDFs download by default; HTML and JSON render in place unless asked.

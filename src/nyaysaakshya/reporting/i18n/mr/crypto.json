@@ -4,115 +4,172 @@
    "id": "crypto.rfc-6149-md2-is-obsolete-ad8e",
    "en": "RFC 6149: MD2 is obsolete and must not be used",
    "mr": "RFC 6149: MD2 कालबाह्य आहे आणि वापरू नये",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.rfc-6151-md5-is-not-566d",
    "en": "RFC 6151: MD5 is not suitable for signature applications",
    "mr": "RFC 6151: MD5 स्वाक्षरी वापरांसाठी योग्य नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.rfc-9155-and-nist-sp-b2fd",
    "en": "RFC 9155 and NIST SP 800-131A Rev.2: SHA-1 must not be used for digital signature generation",
    "mr": "RFC 9155 आणि NIST SP 800-131A Rev.2: डिजिटल स्वाक्षरी निर्मितीसाठी SHA-1 वापरू नये",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.rfc-8446-ss1-2-and-aabe",
    "en": "RFC 8446 SS1.2 and App. D.5: TLS 1.3 removed static RSA and static Diffie-Hellman key exchange, so every TLS 1.3 suite is forward secret",
    "mr": "RFC 8446 SS1.2 आणि App. D.5: TLS 1.3 ने स्थिर RSA आणि स्थिर Diffie-Hellman की एक्सचेंज काढून टाकले, त्यामुळे TLS 1.3 चा प्रत्येक सूट फॉरवर्ड सिक्रेसी देणारा आहे",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.no-key-share-group-observed-5f64",
    "en": "no key_share group observed in the ServerHello",
    "mr": "ServerHello मध्ये कोणताही key_share गट आढळला नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.key-share-group-is-not-89c5",
    "en": "key_share group {code} is not in the supported-groups registry",
    "mr": "key_share गट {code} समर्थित-गटांच्या नोंदणीत नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.negotiated-group-from-the-serverhello-d0c2",
    "en": "negotiated group from the ServerHello key_share",
    "mr": "ServerHello key_share मधून वाटाघाटी झालेला गट",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.tls-1-3-negotiates-the-e9ec",
    "en": "TLS 1.3 negotiates the key exchange in the ServerHello key_share extension; the cipher suite does not encode it (RFC 8446)",
    "mr": "TLS 1.3 मध्ये की एक्सचेंजची वाटाघाटी ServerHello key_share विस्तारात होते; सायफर सूटमध्ये ते कोडबद्ध नसते (RFC 8446)",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.rfc-8446-permits-only-ephemeral-5d18",
    "en": "RFC 8446 permits only ephemeral (EC)DHE or PSK key establishment, but no key_share group was observed so the specific group is not established",
    "mr": "RFC 8446 केवळ तात्पुरते (ephemeral) (EC)DHE किंवा PSK की प्रस्थापन परवानगी देते, परंतु कोणताही key_share गट आढळला नाही, त्यामुळे विशिष्ट गट निश्चित झालेला नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.no-cipher-suite-observed-in-485c",
    "en": "no cipher suite observed in a ServerHello",
    "mr": "ServerHello मध्ये कोणताही सायफर सूट आढळला नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.cipher-suite-is-not-in-9db5",
    "en": "cipher suite {suite} is not in the reference table, so its key exchange cannot be identified",
    "mr": "सायफर सूट {suite} संदर्भ तक्त्यात नाही, त्यामुळे त्याचे की एक्सचेंज ओळखता येत नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.does-not-encode-a-key-5cb1",
    "en": "{name} does not encode a key-exchange mechanism",
    "mr": "{name} मध्ये की-एक्सचेंज यंत्रणा कोडबद्ध नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.key-exchange-encoded-in-the-0268",
    "en": "key exchange encoded in the negotiated cipher suite {name}",
    "mr": "वाटाघाटी झालेल्या सायफर सूट {name} मध्ये कोडबद्ध असलेले की एक्सचेंज",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.no-cipher-suite-was-observed-4425",
    "en": "no cipher suite was observed, so forward secrecy cannot be assessed",
    "mr": "कोणताही सायफर सूट आढळला नाही, त्यामुळे फॉरवर्ड सिक्रेसीचे मूल्यांकन करता येत नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.cipher-suite-is-not-in-0f00",
    "en": "cipher suite {suite} is not in the reference table; an unrecognised suite is not treated as lacking forward secrecy",
    "mr": "सायफर सूट {suite} संदर्भ तक्त्यात नाही; न ओळखलेला सूट फॉरवर्ड सिक्रेसी नसलेला मानला जात नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.uses-an-ephemeral-key-exchange-7ab6",
    "en": "{name} uses an ephemeral key exchange ({kex}), which provides forward secrecy",
    "mr": "{name} तात्पुरते (ephemeral) की एक्सचेंज ({kex}) वापरते, जे फॉरवर्ड सिक्रेसी देते",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.uses-key-exchange-which-is-c720",
    "en": "{name} uses {kex} key exchange, which is not ephemeral: recovery of the server's long-term private key would expose this session",
    "mr": "{name} {kex} की एक्सचेंज वापरते, जे तात्पुरते नाही: सर्व्हरची दीर्घकालीन खासगी की मिळवल्यास हे सत्र उघड होईल",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.cipher-suite-is-not-in-f57e",
    "en": "cipher suite {suite} is not in the reference table",
    "mr": "सायफर सूट {suite} संदर्भ तक्त्यात नाही",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   },
   {
    "id": "crypto.chain-reports-certificates-only-the-4f2f",
    "en": "chain reports {count:num} certificates; only the first {max:num} were read (bounded to prevent resource exhaustion from a hostile capture)",
    "mr": "साखळी {count} प्रमाणपत्रे दर्शवते; केवळ पहिली {max} वाचली गेली (प्रतिकूल कॅप्चरमुळे संसाधने संपू नयेत म्हणून मर्यादित)",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Key exchange and certificate details",
+   "kind": "Sentence part (explains how a result was reached)",
+   "shown_in": "Detailed findings"
   }
  ]
 }

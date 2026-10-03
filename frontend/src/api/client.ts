@@ -7,6 +7,7 @@ import type {
   DashboardViewModel,
   ReportDocument,
   HealthResponse,
+  ReportLanguage,
   RunListResponse,
   RunResponse,
   SessionListResponse,
@@ -202,7 +203,16 @@ export const api = {
   /**
    * Safe URL constructor for reports
    */
-  getReportUrl(runId: string, format: 'html' | 'pdf' | 'json', download = false): string {
-    return `${BASE_URL}/analyses/${encodeURIComponent(runId)}/reports/${format}${download ? '?download=true' : ''}`;
+  getReportUrl(
+    runId: string,
+    format: 'html' | 'pdf' | 'json',
+    download = false,
+    lang: ReportLanguage = 'en',
+  ): string {
+    const params: string[] = [];
+    if (download) params.push('download=true');
+    // English is the default, so its URL is exactly what it was before translations existed.
+    if (lang !== 'en') params.push(`lang=${lang}`);
+    return `${BASE_URL}/analyses/${encodeURIComponent(runId)}/reports/${format}${params.length ? `?${params.join('&')}` : ''}`;
   },
 };

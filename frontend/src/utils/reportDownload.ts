@@ -1,4 +1,4 @@
-import type { ReportDocument } from '../api/types';
+import type { ReportDocument, ReportLanguage } from '../api/types';
 import { api } from '../api/client';
 
 function saveBlob(blob: Blob, filename: string) {
@@ -126,24 +126,56 @@ ${actions ? `<h2>Recorded actions</h2><ul>${actions}</ul>` : ''}
 </body></html>`;
 }
 
+const LANGUAGE_NAME: Record<ReportLanguage, string> = {
+  en: 'English',
+  mr: 'Marathi',
+  both: 'Marathi + English',
+};
+
+/** The backend's own explanation of a refusal, if it sent one. */
+async function describeFailure(response: Response): Promise<string> {
+  try {
+    const body = await response.json();
+    const message = body?.error?.message;
+    if (typeof message === 'string' && message) return `${message} (HTTP ${response.status}).`;
+  } catch {
+    // not JSON; fall through
+  }
+  return `The analysis service answered HTTP ${response.status}.`;
+}
+
 export async function downloadReport(options: {
   runId: string;
   format: 'pdf' | 'html' | 'json';
   doc: ReportDocument;
   captureName?: string | null;
   useApi: boolean;
+  /** Defaults to English. A translation is only ever produced by the analysis service. */
+  lang?: ReportLanguage;
 }) {
-  const fallbackName = `nyaysaakshya-report.${options.format}`;
+  const lang: ReportLanguage = options.lang ?? 'en';
+  const fallbackName = `nyaysaakshya-report${lang === 'en' ? '' : `-${lang}`}.${options.format}`;
+  let failure: string | null = null;
   if (options.useApi) {
     try {
-      const response = await fetch(api.getReportUrl(options.runId, options.format, true), { cache: 'no-store' });
+      const response = await fetch(api.getReportUrl(options.runId, options.format, true, lang), { cache: 'no-store' });
       if (response.ok) {
         saveBlob(await response.blob(), filenameFromDisposition(response.headers.get('content-disposition'), fallbackName));
         return;
       }
+      failure = await describeFailure(response);
     } catch {
       // The on-screen report is still downloadable when the API is unreachable.
+      failure = 'The analysis service could not be reached.';
     }
+  }
+  if (lang !== 'en') {
+    // Never hand over the English report when another language was asked for: the reader
+    // would take it for the translation. The offline fallbacks below are English-only.
+    throw new Error(
+      `The ${LANGUAGE_NAME[lang]} report could not be downloaded. ${failure ?? 'Translations need the analysis service.'} `
+      + 'No English substitute was saved.',
+    );
   }
   if (options.format === 'json') {
     saveBlob(new Blob([JSON.stringify(options.doc, null, 2)], { type: 'application/json' }), fallbackName);

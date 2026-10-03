@@ -23,7 +23,7 @@ NyaySaakshya is a triage tool that a non-specialist can operate. An officer uplo
 - **Honest about limits.** What a capture cannot establish is reported as such — never guessed and never silently upgraded to "safe". A thin capture yields "insufficient evidence", not a good grade.
 - **Timestamped and hash-verified.** Each capture is identified by its SHA-256; each assessment and each rendered report carries its own hash; the analysis time is recorded. The same capture and software versions always produce the same evidence, findings and assessment ID, and a stored assessment always renders to the same report bytes.
 - **Reports in JSON, HTML and PDF.** HTML and PDF open offline from disk.
-- **Planned — bilingual reports.** Plain-language report text in Marathi and English, written for non-specialist readers, is on the [roadmap](#roadmap). Today's reports are in English and written for a technical reader.
+- **Marathi reports (draft).** The HTML report can be produced in Marathi, or as Marathi followed by the unmodified English original (`?lang=mr` / `?lang=both`), with a "how to read this report" block for non-specialist readers. **The Marathi text is a machine draft that no person has reviewed yet**; every Marathi report says so at the top, and the English report is the authoritative one. PDF and JSON stay English. See [Reports](#reports).
 
 ### What it examines today
 
@@ -112,6 +112,26 @@ This is forensic provenance and assessment traceability — **not** a legal chai
 
 Rendering is byte-deterministic and each report is identified by `report_sha256`. The timestamp shown is the analysis time.
 
+**Report language.** `GET /api/v1/analyses/{run_id}/reports/html?lang=en|mr|both` (default `en`):
+
+| `lang` | Result |
+|---|---|
+| `en` | the English report, exactly as before |
+| `mr` | the Marathi report, opening with a static "how to read this report" section |
+| `both` | the Marathi report followed by the unmodified English original, in one file |
+
+Translations are HTML only: `pdf` and `json` with a non-English `lang` return `400 UNSUPPORTED_REPORT_LANGUAGE` rather than quietly returning English. Each language is stored as its own artefact, downloads carry a `-mr` / `-both` filename suffix, and the response metadata includes the language and the translation status (`draft` until every catalogue entry has been reviewed). Scores, identifiers and hashes use ASCII digits and are identical in every language. The frontend's Report tab has a language selector wired to this parameter.
+
+**Reviewing the Marathi.** The translations live in a JSON catalogue (`src/nyaysaakshya/reporting/i18n/mr/`) that a reviewer never needs to open:
+
+```bash
+python3 tools/catalogue_review.py export                  # writes i18n-review/marathi-review.xlsx (+ .csv)
+python3 tools/catalogue_review.py import reviewed.xlsx    # dry run: shows what would change
+python3 tools/catalogue_review.py import reviewed.xlsx --apply
+```
+
+The spreadsheet has one row per piece of report text — where it appears, the English, the draft Marathi, an example and what each `{…}` part means — with a decision column (OK as is / Changed / Not sure). Imported corrections are validated first; once every entry is reviewed the draft notice disappears from the reports by itself.
+
 ## AI/ML: bounded by design
 
 The **deterministic security lane** (rules, cross-session reasoning, scoring) is the single source of every fact, finding and score. A **secondary ML lane** — an unsupervised robust-z-score anomaly model — emits only an anomaly score, band and feature attribution. By construction it can re-order findings *within* a severity tier and can never create, raise or lower a security finding or change the posture score. Score and band are identical with the lane on or off.
@@ -132,7 +152,7 @@ It was evaluated honestly and the result is reported here: across every held-out
 | Unsupervised anomaly lane | Implemented, bounded, off by default |
 | JSON / HTML / PDF reports (English) | Implemented |
 | Interactive analyst dashboard | Implemented (React/TypeScript) |
-| Plain-language bilingual (Marathi / English) report text | **Planned** — not yet implemented |
+| Marathi and Marathi + English HTML report | **Implemented as a draft** — text not yet reviewed by a person; PDF is English-only |
 
 ## Architecture
 
@@ -292,7 +312,7 @@ Dockerfile, render.yaml   backend container and Render blueprint
 
 - **Passive evidence has hard limits.** TLS 1.3 encrypts certificates, so they are reported `NOT_OBSERVABLE`. Certificate *chain structure* is validated; *trust* and *revocation* are not (no trust anchor or OCSP/CRL in a capture).
 - **Scope is email-protocol captures.** The engine analyses SMTP, IMAP and POP3 traffic. It is not a general-purpose fraud detector and does not examine other evidence types.
-- **Reports are English and technical today.** Plain-language Marathi/English report text is planned, not built.
+- **Reports are technical, and the Marathi is an unreviewed draft.** The report text is written for an analyst. A Marathi rendering exists for HTML only; it is machine-drafted, marked as a draft in every copy, and the English report is authoritative. Marathi PDF is not available (the PDF renderer embeds no Devanagari font).
 - **Cross-session reasoning needs context.** It requires comparable prior history (default ≥ 5 sessions) and, for a stronger signal, a control endpoint; otherwise it abstains. Consistent stripping at every client is passively indistinguishable from server policy.
 - **The ML lane adds no demonstrated detection value** on the data this project holds; it is a bounded prioritisation signal only.
 - **No authentication, ephemeral free-tier storage.** The prototype is single-analyst; a free-tier hosted instance loses history on restart.
@@ -304,7 +324,7 @@ Dockerfile, render.yaml   backend container and Render blueprint
 
 ## Roadmap
 
-- **Plain-language, bilingual (Marathi / English) report text** aimed at non-specialist readers, alongside the existing technical report.
+- Native-speaker review of the Marathi report text (a spreadsheet workflow is provided; see [Reports](#reports)), then Marathi PDF output (needs an embedded Devanagari font and text shaping).
 - Authentication and persistent storage for multi-officer use.
 
 ## Lineage

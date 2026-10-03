@@ -4,163 +4,244 @@
    "id": "remediation.this-recommendation-addresses-what-the-46dd",
    "en": "this recommendation addresses what the capture showed; the service may have other configuration that was not exercised by the captured traffic",
    "mr": "ही शिफारस कॅप्चरमध्ये जे दिसले त्याबाबत आहे; कॅप्चर केलेल्या वाहतुकीत वापरल्या न गेलेल्या इतर संरचना सेवेत असू शकतात",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Caveat shown with every recommendation",
+   "shown_in": "Remediation guidance / Assessment limitations"
   },
   {
    "id": "remediation.nyaysaakshya-cannot-confirm-that-a-cb7f",
    "en": "NyaySaakshya cannot confirm that a change was applied or effective -- only a later capture can",
    "mr": "न्यायसाक्ष्य बदल लागू झाला किंवा तो प्रभावी ठरला याची खातरजमा करू शकत नाही — ते केवळ नंतरच्या कॅप्चरवरून कळू शकते",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Caveat shown with every recommendation",
+   "shown_in": "Remediation guidance / Assessment limitations"
   },
   {
    "id": "remediation.the-server-negotiated-a-tls-ddef",
    "en": "The server negotiated a TLS version that current standards prohibit or deprecate.",
    "mr": "सर्व्हरने अशी TLS आवृत्ती वापरली जी सध्याच्या मानकांनुसार प्रतिबंधित किंवा कालबाह्य आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what was observed",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.rfc-8996-states-tls-1-d577",
    "en": "RFC 8996 states TLS 1.0 and TLS 1.1 MUST NOT be used, and NIST SP 800-52r2 SS3.1 states servers shall not be configured to use TLS 1.0 or earlier. These versions depend on weakened constructions and are not acceptable for protecting mail credentials or content.",
    "mr": "RFC 8996 नुसार TLS 1.0 आणि TLS 1.1 वापरू नयेत (MUST NOT), आणि NIST SP 800-52r2 SS3.1 नुसार सर्व्हर TLS 1.0 किंवा त्यापूर्वीच्या आवृत्त्या वापरण्यासाठी संरचित असू नयेत. या आवृत्त्या कमकुवत रचनांवर अवलंबून आहेत आणि मेलची क्रेडेन्शियल्स किंवा मजकूर संरक्षित करण्यासाठी त्या स्वीकार्य नाहीत.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — why it matters",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.disable-the-deprecated-protocol-versions-3eb3",
    "en": "Disable the deprecated protocol versions on the mail service and require TLS 1.2 as a minimum, preferring TLS 1.3. Check both the submission/access listeners and any MTA-to-MTA configuration.",
    "mr": "मेल सेवेवरील कालबाह्य प्रोटोकॉल आवृत्त्या बंद करा आणि किमान TLS 1.2 अनिवार्य करा, TLS 1.3 ला प्राधान्य द्या. सबमिशन/ॲक्सेस लिसनर आणि कोणतीही MTA-ते-MTA संरचना दोन्ही तपासा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what to do",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.re-capture-traffic-to-this-7e10",
    "en": "Re-capture traffic to this service after the change and confirm the negotiated version reported in the ServerHello is TLS 1.2 or TLS 1.3.",
    "mr": "बदलानंतर या सेवेकडील वाहतूक पुन्हा कॅप्चर करा आणि ServerHello मध्ये नोंदवलेली वाटाघाटी झालेली आवृत्ती TLS 1.2 किंवा TLS 1.3 असल्याची खात्री करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — how to check the fix",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.authentication-activity-was-observed-on-1e87",
    "en": "Authentication activity was observed on a session where no TLS was established.",
    "mr": "TLS प्रस्थापित नसलेल्या सत्रात प्रमाणीकरण क्रिया आढळली.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what was observed",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.credentials-sent-without-tls-are-5d42",
    "en": "Credentials sent without TLS are readable by anyone on the path. RFC 8314 declares cleartext submission and access obsolete, and NIST SP 800-52r2 SS3.1 requires TLS to protect transmitted data.",
    "mr": "TLS शिवाय पाठवलेली क्रेडेन्शियल्स मार्गावरील कोणालाही वाचता येतात. RFC 8314 क्लिअरटेक्स्ट सबमिशन आणि ॲक्सेस कालबाह्य ठरवते, आणि NIST SP 800-52r2 SS3.1 नुसार प्रसारित डेटाच्या संरक्षणासाठी TLS आवश्यक आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — why it matters",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.require-tls-before-authentication-enable-1dc2",
    "en": "Require TLS before authentication: enable implicit TLS on the dedicated ports (465/993/995) or enforce STARTTLS/STLS, and reject authentication attempts on unprotected connections.",
    "mr": "प्रमाणीकरणापूर्वी TLS अनिवार्य करा: समर्पित पोर्टवर (465/993/995) इम्प्लिसिट TLS सुरू करा किंवा STARTTLS/STLS सक्तीचे करा, आणि असंरक्षित कनेक्शनवरील प्रमाणीकरण प्रयत्न नाकारा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what to do",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.re-capture-and-confirm-that-920e",
    "en": "Re-capture and confirm that no authentication command appears before a completed TLS handshake on any session to this service.",
    "mr": "पुन्हा कॅप्चर करा आणि या सेवेकडील कोणत्याही सत्रात पूर्ण झालेल्या TLS हँडशेकपूर्वी एकही प्रमाणीकरण आज्ञा दिसत नाही याची खात्री करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — how to check the fix",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.a-mail-session-completed-without-2f61",
    "en": "A mail session completed without any TLS protection.",
    "mr": "मेल सत्र कोणत्याही TLS संरक्षणाशिवाय पूर्ण झाले.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what was observed",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.the-entire-session-including-message-2f69",
    "en": "The entire session, including message content and any credentials, was carried in cleartext. RFC 8314 declares this obsolete for submission and access.",
    "mr": "संदेशाचा मजकूर आणि क्रेडेन्शियल्ससह संपूर्ण सत्र क्लिअरटेक्स्टमध्ये वाहिले गेले. RFC 8314 सबमिशन आणि ॲक्सेससाठी हे कालबाह्य ठरवते.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — why it matters",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.require-tls-for-this-service-56b8",
    "en": "Require TLS for this service, preferring implicit TLS on the dedicated port, or enforce STARTTLS/STLS for the cleartext port.",
    "mr": "या सेवेसाठी TLS अनिवार्य करा; समर्पित पोर्टवर इम्प्लिसिट TLS ला प्राधान्य द्या, किंवा क्लिअरटेक्स्ट पोर्टसाठी STARTTLS/STLS सक्तीचे करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what to do",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.re-capture-and-confirm-tls-37a3",
    "en": "Re-capture and confirm TLS records are present on every session to this service.",
    "mr": "पुन्हा कॅप्चर करा आणि या सेवेकडील प्रत्येक सत्रात TLS रेकॉर्ड उपस्थित असल्याची खात्री करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — how to check the fix",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.a-starttls-stls-upgrade-was-3ff0",
    "en": "A STARTTLS/STLS upgrade was requested but the session was not subsequently protected by TLS.",
    "mr": "STARTTLS/STLS अपग्रेडची विनंती झाली, पण त्यानंतर सत्र TLS ने संरक्षित झाले नाही.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what was observed",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.an-upgrade-that-is-requested-33aa",
    "en": "An upgrade that is requested and not completed leaves the session in cleartext while both parties expected protection. RFC 3207 SS6 requires that a failed upgrade not be silently treated as acceptable.",
    "mr": "विनंती केलेले पण पूर्ण न झालेले अपग्रेड सत्राला क्लिअरटेक्स्टमध्येच ठेवते, तर दोन्ही बाजूंना संरक्षणाची अपेक्षा असते. RFC 3207 SS6 नुसार अयशस्वी अपग्रेड शांतपणे स्वीकार्य मानले जाऊ नये.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — why it matters",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.ensure-the-service-both-offers-1164",
    "en": "Ensure the service both offers and accepts STARTTLS/STLS and that its certificate and TLS configuration permit the handshake to complete. Configure clients to fail closed when an upgrade does not succeed rather than continuing in cleartext.",
    "mr": "सेवा STARTTLS/STLS देते आणि स्वीकारते, तसेच तिची प्रमाणपत्र आणि TLS संरचना हँडशेक पूर्ण होऊ देते याची खात्री करा. अपग्रेड यशस्वी न झाल्यास क्लिअरटेक्स्टमध्ये सुरू न राहता बंद (fail closed) करण्यासाठी क्लायंट संरचित करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what to do",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.re-capture-and-confirm-that-ac82",
    "en": "Re-capture and confirm that every session issuing STARTTLS/STLS reaches an established TLS state.",
    "mr": "पुन्हा कॅप्चर करा आणि STARTTLS/STLS देणारे प्रत्येक सत्र प्रस्थापित TLS स्थितीपर्यंत पोहोचते याची खात्री करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — how to check the fix",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.this-session-s-starttls-stls-cd11",
    "en": "This session's STARTTLS/STLS behaviour differs from the behaviour established by prior comparable sessions to the same endpoint.",
    "mr": "या सत्रातील STARTTLS/STLS वर्तन त्याच एंडपॉइंटवरील मागील तुलना करण्यायोग्य सत्रांनी प्रस्थापित केलेल्या वर्तनापेक्षा वेगळे आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what was observed",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.a-behavioural-difference-is-not-4e87",
    "en": "A behavioural difference is not by itself a vulnerability, but an endpoint that usually upgrades and on this occasion did not is worth an analyst's attention. RFC 3207 SS6 documents that the capability can be removed in transit, which is one of several explanations.",
    "mr": "वर्तनातील फरक ही स्वतः असुरक्षितता नाही, परंतु जो एंडपॉइंट सहसा अपग्रेड करतो आणि यावेळी करत नाही त्याकडे विश्लेषकाने लक्ष देणे योग्य आहे. RFC 3207 SS6 नुसार ही क्षमता प्रवासात काढली जाऊ शकते, जे अनेक स्पष्टीकरणांपैकी एक आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — why it matters",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.investigate-why-this-session-differed-72bd",
    "en": "Investigate why this session differed: compare the client and server configuration against the sessions that formed the baseline, and check for an intermediary on this path. Do not treat the deviation as confirmation of manipulation.",
    "mr": "हे सत्र वेगळे का होते याची चौकशी करा: आधाररेषा तयार करणाऱ्या सत्रांशी क्लायंट आणि सर्व्हर संरचनेची तुलना करा आणि या मार्गावर मध्यस्थ आहे का ते तपासा. या विचलनाला हस्तक्षेपाची पुष्टी मानू नका.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what to do",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.capture-further-sessions-from-the-b596",
    "en": "Capture further sessions from the same client to the same endpoint and determine whether the behaviour is persistent or isolated.",
    "mr": "त्याच क्लायंटकडून त्याच एंडपॉइंटकडे आणखी सत्रे कॅप्चर करा आणि हे वर्तन कायम आहे की एकट्या घटनेपुरते आहे हे ठरवा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — how to check the fix",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.the-negotiated-tls-version-differs-6e57",
    "en": "The negotiated TLS version differs from the version established by prior comparable sessions to the same endpoint.",
    "mr": "वाटाघाटी झालेली TLS आवृत्ती त्याच एंडपॉइंटवरील मागील तुलना करण्यायोग्य सत्रांनी प्रस्थापित केलेल्या आवृत्तीपेक्षा वेगळी आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what was observed",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.a-downward-change-in-negotiated-062b",
    "en": "A downward change in negotiated version can indicate a configuration regression or a path that constrains the handshake. NIST SP 800-52r2 SS3.1 defines which versions are acceptable.",
    "mr": "वाटाघाटी केलेल्या आवृत्तीतील घसरण संरचनेतील मागे जाणे किंवा हँडशेकवर मर्यादा घालणारा मार्ग दर्शवू शकते. कोणत्या आवृत्त्या स्वीकार्य आहेत हे NIST SP 800-52r2 SS3.1 मध्ये निश्चित केले आहे.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — why it matters",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.compare-the-service-s-current-5cee",
    "en": "Compare the service's current TLS configuration against the version seen in the baseline sessions, and confirm no intermediary is constraining the negotiation.",
    "mr": "सेवेच्या सध्याच्या TLS संरचनेची आधाररेषा सत्रांमध्ये दिसलेल्या आवृत्तीशी तुलना करा आणि कोणताही मध्यस्थ वाटाघाटीवर मर्यादा घालत नाही याची खात्री करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what to do",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.re-capture-and-confirm-the-5de4",
    "en": "Re-capture and confirm the negotiated version is stable and meets the required minimum.",
    "mr": "पुन्हा कॅप्चर करा आणि वाटाघाटी झालेली आवृत्ती स्थिर असून आवश्यक किमान पातळी पूर्ण करते याची खात्री करा.",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — how to check the fix",
+   "shown_in": "Remediation guidance"
   },
   {
    "id": "remediation.rule-guidance-8933",
    "en": "{action:tr} Rule guidance: {guidance:tr}",
    "mr": "{action} नियमातील मार्गदर्शन: {guidance}",
-   "needs_review": true
+   "needs_review": true,
+   "area": "Recommended actions",
+   "kind": "Recommendation — what to do, plus the rule's own guidance",
+   "shown_in": "Remediation guidance"
   }
  ]
 }

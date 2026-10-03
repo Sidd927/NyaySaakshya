@@ -1,0 +1,25 @@
+{
+ "about": "A real English sentence from a real capture for each templated entry, so a reviewer can see the fill-in values in context. The Marathi shown beside it is always produced from the current catalogue.",
+ "examples": {
+  "crosssession.this-client-s-own-history-be40": "This client's own history is self-consistent (5 prior sessions all 'false'), so its behaviour alone looks unremarkable. However 6 comparable session(s) from other clients at the same server did upgrade successfully. A capability the server demonstrably offers to others is absent for this client. That is a supported deviation worth investigating. It is not proof that the capability was removed in transit -- client-specific server policy produces the same observation -- and no actor is identified.",
+  "extra.checklist.item-paren": "NIST SP 800-52r2 · RFC 8996 (BCP 195)",
+  "extra.report.numbered-stage": "2. Packet dissection",
+  "extra.report.session-ref": "session ba420f353ac7c2d2f380436d2918effe98a946c88bc0a5a4293764a1499f49b7:0 (smtp)",
+  "extra.report.title-conclusion": "Mail session carried no TLS — The mail session carried no TLS protection.",
+  "finding.entry-ec4d": "SHA-1 -- RFC 9155 and NIST SP 800-131A Rev.2: SHA-1 must not be used for digital signature generation",
+  "finding.signature-algorithms-observed-a-chain-da94": "Signature algorithms observed: sha1WithRSAEncryption. SHA-1 -- RFC 9155 and NIST SP 800-131A Rev.2: SHA-1 must not be used for digital signature generation. A chain is only as sound as its weakest signature.",
+  "finding.the-session-negotiated-a-deprecated-7a87": "The session negotiated TLS1.0, a deprecated protocol version.",
+  "finding.uses-a-bit-rsa-key-ea1e": "leaf uses a 1024-bit RSA key",
+  "glue.entry-d7d2": "[!! ] HIGH",
+  "ml.anomaly-score-threshold-41d5": "anomaly score 0.000 at or above threshold 0",
+  "ml.score-is-most-associated-with-546b": "; score is most associated with duration_s (above_normal), baseline_size (below_normal), baseline_consistency (below_normal). Association with learned-normal deviation only; not a security verdict",
+  "posture.minus-across-issue-group-s-f16c": "100 minus 56.00 across 2 issue group(s) under F2-group-damped",
+  "posture.with-no-established-security-issue-657d": "100 with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
+  "remediation.rule-guidance-8933": "Require TLS for this service, preferring implicit TLS on the dedicated port, or enforce STARTTLS/STLS for the cleartext port. Rule guidance: Require TLS for this service, preferring implicit TLS on the dedicated ports (RFC 8314) or enforced STARTTLS/STLS.",
+  "report.issue-group-s-penalise-the-b8da": "2 issue group(s) penalise the posture score. The highest severity recorded is HIGH.",
+  "report.of-sessions-assessed-cbad": "100.0% (1 of 1 sessions assessed)",
+  "report.session-s-were-reconstructed-from-cc5b": "1 session(s) were reconstructed from the capture; 1 were assessed and 0 were abstained from.",
+  "report.the-score-starts-at-and-5d1b": "The score starts at 100 and each penalty above is subtracted from it. Only observed issues penalise; compliant observations earn no credit, and missing evidence neither penalises nor rewards.",
+  "report.total-penalising-the-score-1779": "5 total · 2 penalising the score"
+ }
+}
