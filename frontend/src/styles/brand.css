@@ -1,0 +1,51 @@
+/* Brand layer components. Tokens live in tokens/brand.css. Opt-in only: nothing here
+   targets [lang="mr"] globally, so existing Marathi text in the workbench is unaffected. */
+
+/* Devanagari text. Tracking breaks the shirorekha and conjuncts; the only face loaded for
+   display Marathi (Tiro) has one weight, so faux bold is switched off. */
+.sms-mr {
+  letter-spacing: 0;
+  text-transform: none;
+  hyphens: manual;
+  word-break: normal;
+  font-synthesis: none;
+}
+
+/* Bilingual lockup: Devanagari wordmark over the Latin name. */
+/* Sizes are in px on purpose: index.css sets html { font-size: 0.875rem }, so 1rem is
+   14px in this app and rem values would render 12.5% smaller than designed. */
+.sms-brand-lockup {
+  --lk: 28px; /* Devanagari font size; the Latin line is derived from it */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.sms-brand-lockup--sm { --lk: 20px; }
+.sms-brand-lockup--md { --lk: 28px; }
+.sms-brand-lockup--lg { --lk: 40px; }
+.sms-brand-lockup--xl { --lk: 56px; }
+.sms-brand-lockup--display { --lk: clamp(44px, 14vw, 64px); }
+
+@media (min-width: 768px) {
+  .sms-brand-lockup--display { --lk: clamp(48px, 8.5vw, 104px); }
+}
+
+.sms-brand-lockup__mr {
+  font-family: var(--brand-font-record);
+  font-weight: 400;
+  font-size: var(--lk);
+  line-height: 1.2; /* room for upper and lower matras */
+  color: var(--brand-gold);
+  white-space: nowrap;
+}
+
+.sms-brand-lockup__en {
+  font-family: var(--brand-font-record);
+  font-weight: 500;
+  font-size: max(13px, calc(var(--lk) * 0.42));
+  line-height: 1.15;
+  color: var(--brand-ink);
+  margin-top: 2px;
+}

@@ -1,7 +1,9 @@
 @import './tokens/theme.css';
+@import './tokens/brand.css';
 @import './styles/components.css';
 @import './styles/overview.css';
 @import './styles/landing.css';
+@import './styles/brand.css';
 
 /* Global Reset & Base Typography */
 *, *::before, *::after {

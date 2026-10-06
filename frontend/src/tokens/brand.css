@@ -1,0 +1,36 @@
+/**
+ * NyaySaakshya brand layer tokens (landing page and masthead).
+ *
+ * Additive: nothing here overrides theme.css, and nothing in the workbench reads these.
+ *
+ * Gold is a brand note, not a status colour. It is within about 3 degrees of hue of the
+ * MEDIUM/WEAK amber (--ds-amber), so it must never appear in a severity, posture or
+ * evidence-state context, and never as a button fill. Saffron is deliberately absent:
+ * it sits within a few degrees of the HIGH-severity orange.
+ */
+:root {
+  /* Logo gold. Contrast on --brand-canvas: mid 8.47:1, dim 5.8:1, light 12.8:1. */
+  --brand-gold: #d4a84c;
+  --brand-gold-dim: #b8863a;   /* hairlines and rules only */
+  --brand-gold-light: #f3d27a; /* rare highlight */
+
+  /* Existing surfaces and ink, referenced so they cannot drift from theme.css. */
+  --brand-ground: var(--sms-surface-ground);   /* #06090f */
+  --brand-canvas: var(--sms-surface-canvas);   /* #0b1220 */
+  --brand-ink: var(--sms-text-primary);        /* #f8fafc */
+  --brand-ink-2: var(--sms-text-secondary);    /* #94a3b8, 7.77:1 on ground: the minimum for body copy.
+                                                  --sms-text-muted is 4.19:1 and must not be used here. */
+
+  /* Solid primary action. White text on it is 5.17:1 (the old gradient's cyan end was 1.73:1). */
+  --brand-action: #2563eb;
+
+  /* Type roles. Latin glyphs come from the first face, Devanagari from the next one that
+     has them, so one stack serves mixed-script lines. No size-adjust is applied to any face;
+     if a mixed line needs optical correction it is declared for that context only. */
+  --brand-font-record: 'IBM Plex Serif', 'Tiro Devanagari Marathi', 'Kohinoor Devanagari',
+    'Devanagari Sangam MN', 'Nirmala UI', Georgia, serif;
+  --brand-font-ui: 'IBM Plex Sans', 'IBM Plex Sans Devanagari', 'Kohinoor Devanagari',
+    'Devanagari Sangam MN', 'Nirmala UI', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif;
+  --brand-font-data: var(--ds-font-mono);
+}
