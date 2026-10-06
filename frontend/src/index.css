@@ -5,6 +5,7 @@
 @import './styles/brand.css';
 @import './styles/landing.css';
 @import './styles/landing-hero.css';
+@import './styles/landing-sections.css';
 @import './styles/landing-nav.css';
 
 /* Global Reset & Base Typography */

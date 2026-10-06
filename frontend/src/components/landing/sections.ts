@@ -17,6 +17,7 @@ export interface LandingSection {
 export const LANDING_SECTIONS: LandingSection[] = [
   { id: 'landing-how', label: 'How it works' },
   { id: 'landing-evidence', label: 'Evidence' },
+  { id: 'landing-limits', label: 'Limits' },
   { id: 'landing-reports', label: 'Reports' },
   { id: 'landing-scope', label: 'Scope' },
 ];

@@ -72,6 +72,7 @@
 .sms-nav__links li { display: none; }
 .sms-landing:has(#landing-how) .sms-nav__links li[data-target='landing-how'],
 .sms-landing:has(#landing-evidence) .sms-nav__links li[data-target='landing-evidence'],
+.sms-landing:has(#landing-limits) .sms-nav__links li[data-target='landing-limits'],
 .sms-landing:has(#landing-reports) .sms-nav__links li[data-target='landing-reports'],
 .sms-landing:has(#landing-scope) .sms-nav__links li[data-target='landing-scope'] { display: block; }
 

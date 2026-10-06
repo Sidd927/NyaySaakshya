@@ -109,3 +109,45 @@ export function buildSampleRecord(fixture: FixtureData | undefined): SampleRecor
     limitation: isStr(dashboard.limitations?.[0]) ? dashboard.limitations[0] : null,
   };
 }
+
+/**
+ * Evidence section's worked example: one real session that carries several evidence states at
+ * once (scene_b_certificate_honesty). Every value is read from the fixture; a missing field
+ * drops its row, and no row is ever invented.
+ */
+export interface HonestyExample {
+  fileName: string;
+  posture: { band: string; scoreText: string };
+  rows: Array<{ label: string; state: string; value: string; basis: string; frame: number | null }>;
+  certificateWhy: string | null;
+}
+
+const EXAMPLE_FIELDS: Array<{ key: string; label: string }> = [
+  { key: 'tls_negotiated_version', label: 'TLS version' },
+  { key: 'tls_forward_secrecy', label: 'Forward secrecy' },
+  { key: 'tls_certificate_chain', label: 'Certificate chain' },
+];
+
+export function buildHonestyExample(fixture: FixtureData | undefined): HonestyExample | null {
+  if (!fixture) return null;
+  const posture = fixture.dashboard?.posture;
+  const evidence = fixture.sessions?.items?.[0]?.evidence;
+  if (!isStr(fixture.run?.source_filename) || !isStr(posture?.value) || !isStr(posture?.score_text) || !evidence) return null;
+
+  const rows = EXAMPLE_FIELDS.flatMap(({ key, label }) => {
+    const field = evidence[key];
+    if (!field || !isStr(field.state) || !isStr(field.basis)) return [];
+    const value = field.value === null || field.value === undefined ? 'none' : String(field.value);
+    const frame = Array.isArray(field.frames) && isNum(field.frames[0]) ? field.frames[0] : null;
+    return [{ label, state: field.state, value, basis: field.basis, frame }];
+  });
+  if (rows.length === 0) return null;
+
+  const why = fixture.dashboard?.abstentions?.find((a: { reason?: string }) => a?.reason === 'NOT_OBSERVABLE')?.why;
+  return {
+    fileName: fixture.run.source_filename,
+    posture: { band: posture.value, scoreText: posture.score_text },
+    rows,
+    certificateWhy: isStr(why) ? why : null,
+  };
+}
