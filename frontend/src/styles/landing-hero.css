@@ -1,0 +1,333 @@
+/* Landing hero and the evidence record. Tokens: tokens/brand.css. Sizes are px because
+   html { font-size: 0.875rem } makes 1rem 14px in this app.
+
+   Gold appears twice here: the Devanagari wordmark (brand.css) and .sms-hero__rule.
+   The record uses neutral lines only, and takes every status colour from the workbench
+   components (SeverityBadge, PosturePill, EvidenceBadge). */
+
+.sms-hero {
+  --hero-gutter: 20px;
+  --hero-gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .sms-hero { --hero-gutter: 40px; }
+}
+
+@media (min-width: 1024px) {
+  .sms-hero {
+    --hero-gutter: 56px;
+    --hero-gap: clamp(48px, 5vw, 88px);
+  }
+}
+
+.sms-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: min(1200px, calc(100% - 2 * var(--hero-gutter)));
+  margin: 0 auto;
+  padding-block: clamp(28px, 6vh, 72px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .sms-hero__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 500px);
+    column-gap: var(--hero-gap);
+  }
+}
+
+/* ---- left column ---- */
+
+.sms-hero__copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+/* The shirorekha echo: one hairline from the wordmark toward the record. */
+.sms-hero__rule {
+  height: 1px;
+  width: 100%;
+  margin: 22px 0 26px;
+  background: var(--brand-gold-dim);
+  opacity: 0.7;
+  transform-origin: left center;
+}
+
+@media (min-width: 1024px) {
+  .sms-hero__rule { width: calc(100% + var(--hero-gap)); }
+}
+
+.sms-hero__statement {
+  margin: 0;
+  max-width: 21em;
+  font-family: var(--brand-font-record);
+  font-weight: 400;
+  font-size: clamp(26px, 20px + 1.2vw, 36px);
+  line-height: 1.4;
+  color: var(--brand-ink);
+  text-wrap: balance;
+}
+
+.sms-hero__explainer {
+  margin: 14px 0 0;
+  max-width: 34em;
+  font-family: var(--brand-font-ui);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--brand-ink-2);
+}
+
+.sms-hero__cta {
+  margin-top: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 30px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--brand-action);
+  color: #ffffff;
+  font-family: var(--brand-font-ui);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.sms-hero__cta:hover { background: #1d4ed8; }
+.sms-hero__cta:active { background: #1e40af; }
+.sms-hero__cta:focus-visible { outline: 2px solid #dbeafe; outline-offset: 3px; }
+
+@media (max-width: 559px) {
+  .sms-hero__cta { width: 100%; }
+}
+
+/* ---- evidence record ---- */
+
+.sms-record {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  max-width: 560px;
+  background: var(--brand-canvas);
+  border: 1px solid var(--sms-border-hairline);
+  border-radius: 4px;
+  padding: 0 16px;
+}
+
+@media (min-width: 1024px) {
+  .sms-record { max-width: none; padding: 0 22px; }
+}
+
+.sms-record__head {
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--sms-border-subtle);
+}
+
+.sms-record__title {
+  margin: 0;
+  font-family: var(--brand-font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--brand-ink);
+}
+
+.sms-record__title-mr {
+  margin: 4px 0 0;
+  font-family: var(--brand-font-ui);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--brand-ink-2);
+}
+
+/* The flow: a neutral rail with a dot per step. Narrow screens stack label over value. */
+.sms-record__flow {
+  position: relative;
+  margin: 0;
+  padding: 6px 0 6px 22px;
+  list-style: none;
+}
+
+.sms-record__flow::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 26px;
+  bottom: 26px;
+  width: 1px;
+  background: var(--sms-border-medium);
+}
+
+.sms-record__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 4px;
+  padding: 10px 0;
+}
+
+.sms-record__row::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 17px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--brand-ink-2);
+  box-shadow: 0 0 0 3px var(--brand-canvas);
+}
+
+/* Very narrow phones: give the 4-group hash line the 224px it needs. */
+@media (max-width: 359px) {
+  .sms-record { padding: 0 12px; }
+  .sms-record__flow { padding-left: 20px; }
+  .sms-record__flow::before { left: 3px; }
+  .sms-record__row::before { left: -20px; }
+}
+
+@media (min-width: 560px) {
+  .sms-record__flow { padding-left: 0; }
+  .sms-record__flow::before { left: 88px; top: 28px; bottom: 28px; }
+  .sms-record__row {
+    grid-template-columns: 78px minmax(0, 1fr);
+    column-gap: 28px;
+  }
+  .sms-record__row::before { left: 84px; top: 18px; }
+}
+
+.sms-record__label {
+  font-family: var(--brand-font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--brand-ink-2);
+  padding-top: 1px;
+}
+
+.sms-record__value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sms-record__strong {
+  font-family: var(--brand-font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--brand-ink);
+}
+
+.sms-record__note {
+  font-family: var(--brand-font-ui);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--brand-ink-2);
+}
+
+.sms-record__file {
+  max-width: 100%;
+  font-family: var(--brand-font-data);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--brand-ink);
+  overflow-wrap: break-word;
+}
+
+/* Full SHA-256, four 8-character groups per line. Wraps instead of overflowing. */
+.sms-hash {
+  display: block;
+  width: 34ch;
+  max-width: 100%;
+  font-family: var(--brand-font-data);
+  font-size: clamp(11px, 3.2vw, 13px);
+  line-height: 1.75;
+  letter-spacing: 0;
+  color: var(--brand-ink);
+  font-feature-settings: 'zero' 1;
+}
+
+.sms-hash__group { margin-right: 0.6ch; }
+.sms-hash__group:nth-of-type(4n) { margin-right: 0; } /* of-type: <wbr> siblings must not count */
+
+.sms-record__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sms-record__finding,
+.sms-record__posture {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+}
+
+.sms-record__score {
+  font-family: var(--brand-font-data);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-ink);
+  font-feature-settings: 'tnum' 1;
+}
+
+.sms-record__limit {
+  margin: 0;
+  padding: 13px 0 16px;
+  border-top: 1px solid var(--sms-border-subtle);
+  font-family: var(--brand-font-ui);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--brand-ink-2);
+}
+
+.sms-record__limit-label {
+  margin-right: 8px;
+  font-weight: 600;
+  color: var(--brand-ink);
+}
+
+/* Short desktop screens (laptops): tighten vertical rhythm so the record fits without scrolling. */
+@media (min-width: 1024px) and (max-height: 800px) {
+  .sms-hero__inner { padding-block: 22px; }
+  .sms-record__head { padding: 12px 0 10px; }
+  .sms-record__row { padding: 6px 0; }
+  .sms-record__row::before { top: 13px; }
+  .sms-record__flow::before { top: 20px; bottom: 20px; }
+  .sms-record__limit { padding: 10px 0 12px; }
+  .sms-hero__rule { margin: 18px 0 20px; }
+  .sms-hero__cta { margin-top: 24px; }
+}
+
+/* ---- one entrance, once (disabled for reduced motion) ---- */
+
+@keyframes sms-hero-fade { from { opacity: 0; } }
+@keyframes sms-rule-draw { from { transform: scaleX(0); } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .sms-hero .sms-brand-lockup { animation: sms-hero-fade 420ms var(--ds-ease-out) backwards; }
+  .sms-hero__rule { animation: sms-rule-draw 600ms var(--ds-ease-out) 120ms backwards; }
+  .sms-hero__statement { animation: sms-hero-fade 400ms var(--ds-ease-out) 240ms backwards; }
+  .sms-hero__explainer { animation: sms-hero-fade 400ms var(--ds-ease-out) 300ms backwards; }
+  .sms-hero__cta { animation: sms-hero-fade 400ms var(--ds-ease-out) 360ms backwards; }
+  .sms-record__row { animation: sms-hero-fade 300ms var(--ds-ease-out) backwards; }
+  .sms-record__row:nth-child(1) { animation-delay: 300ms; }
+  .sms-record__row:nth-child(2) { animation-delay: 350ms; }
+  .sms-record__row:nth-child(3) { animation-delay: 400ms; }
+  .sms-record__row:nth-child(4) { animation-delay: 450ms; }
+  .sms-record__row:nth-child(5) { animation-delay: 500ms; }
+  .sms-record__row:nth-child(6) { animation-delay: 550ms; }
+}

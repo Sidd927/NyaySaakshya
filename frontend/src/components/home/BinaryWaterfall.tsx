@@ -20,17 +20,44 @@ const CAM_Y = 1.32;
 const DROP = 0.22;
 const HORIZON = 0.58;
 
-function makeBits(length: number): string {
+/** A run of glyphs for one stream: a slice of `source` (wrapping), or random bits without one. */
+function makeBits(length: number, source?: string): string {
   let bits = '';
+  if (source) {
+    const start = Math.floor(Math.random() * source.length);
+    for (let i = 0; i < length; i += 1) bits += source[(start + i) % source.length];
+    return bits;
+  }
   for (let i = 0; i < length; i += 1) bits += Math.random() > 0.46 ? '1' : '0';
   return bits;
 }
 
+function pickGlyph(source?: string): string {
+  if (source) return source[Math.floor(Math.random() * source.length)];
+  return Math.random() > 0.5 ? '1' : '0';
+}
+
 function streamCount(width: number, quiet: boolean): number {
   if (quiet) return Math.max(8, Math.round(width / 140));
-  if (width < 700) return Math.max(12, Math.round(width / 52));
-  if (width < 1100) return Math.round(width / 30);
-  return Math.round(width / 20);
+  if (width < 700) return Math.max(10, Math.round(width / 62));
+  if (width < 1100) return Math.round(width / 38);
+  return Math.round(width / 26);
+}
+
+/** The hero keeps the rain quiet where the words and the record sit. */
+const BRIGHTNESS = 0.66;
+
+function smooth(v: number, lo: number, hi: number): number {
+  const t = Math.min(1, Math.max(0, (v - lo) / (hi - lo)));
+  return t * t * (3 - 2 * t);
+}
+
+/** Alpha multiplier at a screen point. Wide: dim the text column (left), free on the right
+ *  where the record card covers it anyway. Narrow: dim the whole text column, free at the edges. */
+function shield(sx: number, w: number): number {
+  if (w >= 1000) return 0.4 + 0.6 * smooth(sx / w, 0.4, 0.6);
+  const edge = Math.min(sx, w - sx) / w;
+  return 0.9 - 0.56 * smooth(edge, 0.03, 0.14);
 }
 
 function xLimit(z: number): number {
@@ -45,7 +72,7 @@ function placeX(z: number, side: number): number {
   return side * Math.random() * limit;
 }
 
-function makeStream(index: number): Stream {
+function makeStream(index: number, source?: string): Stream {
   const roll = (index * 17 + 3) % 10;
   const z = roll < 4 ? 1.45 + Math.random() * 0.7 : roll < 7 ? 2.2 + Math.random() * 1.5 : 3.8 + Math.random() * 3.2;
   const len = (z < 2.3 ? 22 : z < 3.6 ? 16 : 10) + Math.floor(Math.random() * (z < 2.3 ? 14 : 8));
@@ -57,14 +84,14 @@ function makeStream(index: number): Stream {
     vy: 0.2 + Math.random() * 0.85 + near * 0.12,
     g: 1.35 + Math.random() * 1.5 + near * 0.22,
     gap: 0.072 + Math.random() * 0.05,
-    bits: makeBits(len),
+    bits: makeBits(len, source),
     fade: 1,
     hold: 0,
     bright: z < 2 ? 1 : z < 3.6 ? 0.55 + Math.random() * 0.2 : 0.28 + Math.random() * 0.16,
   };
 }
 
-function respawn(stream: Stream) {
+function respawn(stream: Stream, source?: string) {
   stream.y = 2.8 + Math.random() * 1.6;
   stream.vy = 0.08 + Math.random() * 0.4;
   const near = Math.max(0, 3.2 - stream.z);
@@ -72,7 +99,7 @@ function respawn(stream: Stream) {
   stream.hold = 0;
   stream.fade = 0;
   stream.gap = 0.072 + Math.random() * 0.05;
-  stream.bits = makeBits((stream.z < 2.3 ? 22 : 12) + Math.floor(Math.random() * 10));
+  stream.bits = makeBits((stream.z < 2.3 ? 22 : 12) + Math.floor(Math.random() * 10), source);
   if (Math.random() < 0.2) stream.x = placeX(stream.z, stream.x < 0 ? -1 : 1);
 }
 
@@ -86,14 +113,20 @@ function project(x: number, y: number, z: number, w: number, h: number, camX: nu
 }
 
 function glyphFill(z: number, along: number, head: boolean): string {
-  if (head && z < 2.5) return '#f3f9ff';
-  if (head) return '#d7e7fb';
-  if (along < 0.22) return z < 2.6 ? '#8fd4f8' : '#67b4f0';
-  if (along < 0.55) return '#3b82f6';
-  return '#1e4fa8';
+  if (head && z < 2.5) return '#e9eff8';
+  if (head) return '#cdd9ec';
+  if (along < 0.22) return z < 2.6 ? '#8eaedb' : '#7699cc';
+  if (along < 0.55) return '#4a77bb';
+  return '#2a4f8c';
 }
 
-export const BinaryWaterfall: React.FC = () => {
+interface BinaryWaterfallProps {
+  /** Characters the streams are made of (the hero passes the displayed capture SHA-256).
+   *  Without it the rain is random 0s and 1s, as before. */
+  glyphSource?: string;
+}
+
+export const BinaryWaterfall: React.FC<BinaryWaterfallProps> = ({ glyphSource }) => {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -123,7 +156,7 @@ export const BinaryWaterfall: React.FC = () => {
       canvas.height = Math.max(1, Math.floor(height * dpr));
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = streamCount(width, motion.matches);
-      streams = Array.from({ length: count }, (_, index) => makeStream(index));
+      streams = Array.from({ length: count }, (_, index) => makeStream(index, glyphSource));
       impacts = [];
     };
 
@@ -143,7 +176,7 @@ export const BinaryWaterfall: React.FC = () => {
       ctx.fillRect(0, 0, width, height);
 
       const haze = ctx.createRadialGradient(width * 0.5, height * 0.74, 0, width * 0.5, height * 0.78, width * 0.62);
-      haze.addColorStop(0, 'rgba(28, 72, 140, 0.28)');
+      haze.addColorStop(0, 'rgba(28, 72, 140, 0.2)');
       haze.addColorStop(0.45, 'rgba(14, 36, 78, 0.12)');
       haze.addColorStop(1, 'rgba(8, 16, 32, 0)');
       ctx.fillStyle = haze;
@@ -170,8 +203,8 @@ export const BinaryWaterfall: React.FC = () => {
       for (let z = 1.45; z <= 7.8; z += 0.42) {
         const a = project(-2.5, 0, z, width, height, camX);
         const b = project(2.5, 0, z, width, height, camX);
-        const fade = Math.max(0, 0.2 - (z - 1.3) * 0.024);
-        ctx.strokeStyle = `rgba(96, 165, 250, ${fade})`;
+        const fade = Math.max(0, 0.2 - (z - 1.3) * 0.024) * 0.45;
+        ctx.strokeStyle = `rgba(96, 140, 210, ${fade})`;
         ctx.beginPath();
         ctx.moveTo(a.sx, a.sy);
         ctx.lineTo(b.sx, b.sy);
@@ -180,7 +213,7 @@ export const BinaryWaterfall: React.FC = () => {
       for (let x = -2.2; x <= 2.2; x += 0.36) {
         const a = project(x, 0, 1.4, width, height, camX);
         const b = project(x, 0, 7.6, width, height, camX);
-        ctx.strokeStyle = 'rgba(96, 165, 250, 0.08)';
+        ctx.strokeStyle = 'rgba(96, 140, 210, 0.035)';
         ctx.beginPath();
         ctx.moveTo(a.sx, a.sy);
         ctx.lineTo(b.sx, b.sy);
@@ -188,8 +221,8 @@ export const BinaryWaterfall: React.FC = () => {
       }
 
       const wash = ctx.createRadialGradient(width * 0.5, height * 0.86, 0, width * 0.5, height * 0.9, width * 0.34);
-      wash.addColorStop(0, 'rgba(34, 211, 238, 0.07)');
-      wash.addColorStop(1, 'rgba(34, 211, 238, 0)');
+      wash.addColorStop(0, 'rgba(76, 124, 192, 0.05)');
+      wash.addColorStop(1, 'rgba(76, 124, 192, 0)');
       ctx.fillStyle = wash;
       ctx.fillRect(0, 0, width, height);
 
@@ -199,7 +232,7 @@ export const BinaryWaterfall: React.FC = () => {
           if (stream.hold > 0) {
             stream.hold -= dt;
             stream.fade = Math.max(0, stream.hold / 0.28);
-            if (stream.hold <= 0) respawn(stream);
+            if (stream.hold <= 0) respawn(stream, glyphSource);
             continue;
           }
           stream.vy = Math.min(rush > 1 ? 5 : 3.1, stream.vy + stream.g * dt * rush);
@@ -214,7 +247,7 @@ export const BinaryWaterfall: React.FC = () => {
           }
           if (Math.random() < dt * 0.35) {
             const i = Math.floor(Math.random() * stream.bits.length);
-            stream.bits = stream.bits.slice(0, i) + (Math.random() > 0.5 ? '1' : '0') + stream.bits.slice(i + 1);
+            stream.bits = stream.bits.slice(0, i) + pickGlyph(glyphSource) + stream.bits.slice(i + 1);
           }
         }
         impacts = impacts.filter((hit) => {
@@ -228,10 +261,10 @@ export const BinaryWaterfall: React.FC = () => {
         const t = hit.age / hit.life;
         const rx = (10 + t * 34) * p.s;
         const ry = rx * 0.22;
-        ctx.globalAlpha = (1 - t) * 0.55 * Math.min(1, p.s);
+        ctx.globalAlpha = (1 - t) * 0.4 * Math.min(1, p.s) * shield(p.sx, width);
         const glow = ctx.createRadialGradient(p.sx, p.sy, 0, p.sx, p.sy, Math.max(8, rx));
-        glow.addColorStop(0, 'rgba(186, 230, 253, 0.85)');
-        glow.addColorStop(0.45, 'rgba(56, 189, 248, 0.35)');
+        glow.addColorStop(0, 'rgba(200, 216, 240, 0.7)');
+        glow.addColorStop(0.45, 'rgba(90, 140, 210, 0.28)');
         glow.addColorStop(1, 'rgba(37, 99, 235, 0)');
         ctx.fillStyle = glow;
         ctx.beginPath();
@@ -253,22 +286,20 @@ export const BinaryWaterfall: React.FC = () => {
           const along = len <= 1 ? 0 : i / (len - 1);
           const head = i === 0;
           const falloff = head ? 1 : 0.2 + (1 - along) * 0.75;
-          let alpha = stream.bright * fog * stream.fade * falloff * (rush > 1 ? Math.min(1.2, rush) : 1);
-          const dx = Math.abs(p.sx - width * 0.5) / width;
-          const dy = Math.abs(p.sy - height * 0.42) / height;
-          if (dx < 0.15 && dy < 0.16) alpha *= 0.42 + dx * 2.2;
+          let alpha = stream.bright * BRIGHTNESS * fog * stream.fade * falloff * (rush > 1 ? Math.min(1.2, rush) : 1);
+          alpha *= shield(p.sx, width);
           if (alpha < 0.035) continue;
           const size = Math.max(stream.z > 5.5 ? 5 : 7, Math.min(28, 28 * p.s));
           ctx.font = `600 ${size}px "IBM Plex Mono", ui-monospace, monospace`;
           ctx.globalAlpha = Math.min(1, alpha);
           ctx.shadowBlur = head && stream.z < 2.15 ? 8 : 0;
-          ctx.shadowColor = 'rgba(125, 211, 252, 0.85)';
+          ctx.shadowColor = 'rgba(140, 170, 220, 0.6)';
           ctx.fillStyle = glyphFill(stream.z, along, head);
           if (head && stream.z < 2.3 && !motion.matches && stream.vy > 0.4) {
             const trail = Math.min(rush > 1 ? 34 : 18, stream.vy * p.s * (rush > 1 ? 15 : 11));
             ctx.shadowBlur = 0;
             ctx.globalAlpha = alpha * 0.28;
-            ctx.strokeStyle = 'rgba(147, 197, 253, 0.9)';
+            ctx.strokeStyle = 'rgba(150, 175, 215, 0.8)';
             ctx.lineWidth = Math.max(1, size * 0.12);
             ctx.beginPath();
             ctx.moveTo(p.sx, p.sy - trail);
@@ -284,7 +315,7 @@ export const BinaryWaterfall: React.FC = () => {
             if (mirror.sy < height - 2 && mirror.sy > p.sy) {
               ctx.shadowBlur = 0;
               ctx.globalAlpha = alpha * 0.22 * (1 - gy / 0.9);
-              ctx.fillStyle = '#7dd3fc';
+              ctx.fillStyle = '#8eaedb';
               ctx.fillText(stream.bits[i], mirror.sx, mirror.sy);
             }
           }
@@ -299,9 +330,15 @@ export const BinaryWaterfall: React.FC = () => {
       if (!motion.matches) boostAt = performance.now();
     };
     window.addEventListener('sms-depart', onDepart);
+    // Resume without a time jump after the tab was hidden.
+    const onVisibility = () => {
+      if (!document.hidden) last = performance.now();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
 
     let lastPaint = 0;
     const step = (now: number) => {
+      if (document.hidden) return;
       if (now - lastPaint < 15) return;
       const dt = Math.min(0.034, (now - last) / 1000 || 0.016);
       last = now;
@@ -347,8 +384,9 @@ export const BinaryWaterfall: React.FC = () => {
       observer.disconnect();
       motion.removeEventListener('change', onMotion);
       window.removeEventListener('sms-depart', onDepart);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, []);
+  }, [glyphSource]);
 
   return <canvas ref={ref} className="sms-gate__rain" aria-hidden="true" />;
 };

@@ -9,6 +9,8 @@ interface BrandLogoProps {
   onClick?: () => void;
   /** Element the lockup renders as, so a page can make it its <h1>. Lockup only. */
   as?: 'div' | 'h1' | 'h2' | 'p';
+  /** DOM id for the lockup element, so a section can be labelled by it. Lockup only. */
+  id?: string;
 }
 
 export const BrandLogo: React.FC<BrandLogoProps> = ({
@@ -18,13 +20,14 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   className = '',
   onClick,
   as: LockupTag = 'div',
+  id,
 }) => {
   // Bilingual lockup: Devanagari wordmark over the Latin name. Static brand text, so
   // there is no onClick; each script carries its own lang for shaping and screen readers.
   // Styles live in styles/brand.css. The variants below are unchanged.
   if (variant === 'lockup') {
     return (
-      <LockupTag className={`sms-brand-lockup sms-brand-lockup--${size} ${className}`.trim()}>
+      <LockupTag id={id} className={`sms-brand-lockup sms-brand-lockup--${size} ${className}`.trim()}>
         <span className="sms-brand-lockup__mr sms-mr" lang="mr">न्यायसाक्ष्य</span>{' '}
         <span className="sms-brand-lockup__en" lang="en">NyaySaakshya</span>
       </LockupTag>

@@ -8,7 +8,10 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  /* The landing scrolls inside itself so a stacked hero is reachable on small screens;
+     the document stays locked, so leaving the landing never carries a scroll offset. */
+  overflow-x: hidden;
+  overflow-y: auto;
   background: #06090f;
 }
 
@@ -65,11 +68,10 @@
 
 .sms-gate {
   position: relative;
-  flex: 1;
+  flex: 1 0 auto;
   min-height: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
   overflow: hidden;
   background: #06090f;
 }
@@ -89,62 +91,15 @@
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 36% 32% at 50% 42%, rgba(6, 9, 15, 0.72), rgba(6, 9, 15, 0.28) 58%, transparent 78%),
-    linear-gradient(180deg, rgba(6, 9, 15, 0.28), transparent 16%, transparent 68%, rgba(5, 8, 14, 0.2));
+    linear-gradient(180deg, rgba(6, 9, 15, 0.5), rgba(6, 9, 15, 0.3) 60%, rgba(5, 8, 14, 0.4));
 }
 
-.sms-gate__copy {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: min(760px, calc(100% - 48px));
-  padding: 12px 0 10vh;
-}
-
-.sms-gate__eyebrow {
-  margin: 0;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #9fb0c4;
-}
-
-.sms-gate__title {
-  margin: 16px 0 0;
-  font-size: clamp(2.7rem, 6.4vw, 4.75rem);
-  font-weight: 650;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: #f8fafc;
-}
-
-.sms-gate__title .is-mail {
-  background: linear-gradient(100deg, #22d3ee, #60a5fa 55%, #3b82f6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.sms-gate__sub {
-  margin: 18px 0 0;
-  max-width: 16em;
-  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
-  font-weight: 560;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  color: #eef3f9;
-}
-
-.sms-gate__desc {
-  margin: 16px 0 0;
-  max-width: 38em;
-  font-size: 15px;
-  line-height: 1.55;
-  color: #9aabbf;
+@media (min-width: 1024px) {
+  .sms-gate__vignette {
+    background:
+      linear-gradient(90deg, rgba(6, 9, 15, 0.7) 0%, rgba(6, 9, 15, 0.46) 38%, rgba(6, 9, 15, 0) 64%),
+      linear-gradient(180deg, rgba(6, 9, 15, 0.3), transparent 16%, transparent 76%, rgba(5, 8, 14, 0.3));
+  }
 }
 
 .sms-gate__cta {
@@ -206,8 +161,13 @@
   animation: sms-nav-leave 340ms ease forwards;
 }
 
-.sms-landing.is-leaving .sms-gate__copy {
+.sms-landing.is-leaving .sms-hero__copy,
+.sms-landing.is-leaving .sms-record {
   animation: sms-hero-leave 400ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.sms-landing.is-leaving .sms-hero__cta {
+  pointer-events: none;
 }
 
 .sms-landing.is-leaving .sms-gate__bloom {
@@ -274,9 +234,6 @@
     padding: 10px 16px;
   }
   .sms-gate__links { display: none; }
-  .sms-gate__copy { padding-bottom: 8vh; }
-  .sms-gate__title { font-size: clamp(2.15rem, 11vw, 3rem); }
-  .sms-gate__sub { font-size: 1.15rem; }
 }
 
 @media (max-width: 700px) {
@@ -294,7 +251,8 @@
   .sms-gate__cta svg { transition-duration: 120ms; }
   .sms-veil.is-on { animation-duration: 80ms; }
   .sms-veil.is-on.is-out { animation-duration: 80ms; }
-  .sms-landing.is-leaving .sms-gate__copy { animation: none; opacity: 0; transition: opacity 100ms linear; }
+  .sms-landing.is-leaving .sms-hero__copy,
+  .sms-landing.is-leaving .sms-record { animation: none; opacity: 0; transition: opacity 100ms linear; }
   .sms-landing.is-leaving .sms-gate__bloom,
   .sms-landing.is-leaving .sms-gate__cta svg { animation: none; transform: none; }
   #main-content.is-revealing { animation: sms-reveal-quiet 140ms linear both; }
