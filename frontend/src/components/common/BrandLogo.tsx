@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface BrandLogoProps {
-  variant?: 'mark' | 'compact' | 'full' | 'lockup';
+  variant?: 'mark' | 'compact' | 'full' | 'lockup' | 'wordmark';
   /** 'display' is the hero scale and is only defined for the lockup variant. */
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'display';
   showSubtitle?: boolean;
@@ -31,6 +31,24 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
         <span className="sms-brand-lockup__mr sms-mr" lang="mr">न्यायसाक्ष्य</span>{' '}
         <span className="sms-brand-lockup__en" lang="en">NyaySaakshya</span>
       </LockupTag>
+    );
+  }
+
+  // Navbar brand: mark plus the Latin name in one colour (styles/brand.css). One size.
+  if (variant === 'wordmark') {
+    return (
+      <span className={`sms-brand-wordmark ${className}`.trim()}>
+        <img
+          src={`${import.meta.env.BASE_URL}branding/logo.svg`}
+          width={28}
+          height={28}
+          alt=""
+          aria-hidden="true"
+          className="sms-brand-wordmark__mark"
+          decoding="async"
+        />
+        <span className="sms-brand-wordmark__name" lang="en">NyaySaakshya</span>
+      </span>
     );
   }
 

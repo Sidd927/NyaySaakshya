@@ -1,0 +1,184 @@
+/* Landing navbar. Calm and flat: a solid ground, one hairline, no blur, no glow, no gradient.
+   Gold appears once, as a 1px underline under the link of the section being read.
+
+   Link visibility is pure CSS: a link shows only if its section is on the page, so nothing
+   here can point at nothing. The ids mirror components/landing/sections.ts. */
+
+.sms-landing {
+  --landing-gutter: 20px; /* same steps as .sms-hero, so the navbar and hero share an edge */
+}
+
+@media (min-width: 768px) {
+  .sms-landing { --landing-gutter: 40px; }
+}
+
+@media (min-width: 1024px) {
+  .sms-landing { --landing-gutter: 56px; }
+}
+
+.sms-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--brand-ground);
+  border-bottom: 1px solid var(--sms-border-hairline);
+}
+
+.sms-nav__inner {
+  position: relative;
+  width: min(1200px, calc(100% - 2 * var(--landing-gutter)));
+  min-height: 64px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sms-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--brand-ink);
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.sms-nav__brand:focus-visible,
+.sms-nav__links a:focus-visible,
+.sms-nav__menu-btn:focus-visible {
+  outline: 2px solid #dbeafe;
+  outline-offset: 3px;
+}
+
+/* ---- links (wide) ---- */
+
+.sms-nav__panel {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.sms-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 0 0 0 36px;
+  padding: 0;
+  list-style: none;
+}
+
+/* A link shows only when its section exists. */
+.sms-nav__links li { display: none; }
+.sms-landing:has(#landing-how) .sms-nav__links li[data-target='landing-how'],
+.sms-landing:has(#landing-evidence) .sms-nav__links li[data-target='landing-evidence'],
+.sms-landing:has(#landing-reports) .sms-nav__links li[data-target='landing-reports'],
+.sms-landing:has(#landing-scope) .sms-nav__links li[data-target='landing-scope'] { display: block; }
+
+.sms-nav__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--brand-font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--brand-ink-2);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.sms-nav__links a:hover { color: var(--brand-ink); }
+
+.sms-nav__links a[aria-current='location'] {
+  color: var(--brand-ink);
+  border-bottom-color: var(--brand-gold);
+}
+
+/* ---- actions ---- */
+
+.sms-nav__cta { min-height: 40px; padding: 0 18px; font-size: 14px; }
+.sms-nav__cta--bar { margin-left: auto; }
+.sms-nav__cta--panel { display: none; }
+
+.sms-nav__menu-btn {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-left: auto;
+  padding: 0 14px;
+  border: 1px solid var(--sms-border-medium);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--brand-ink);
+  font-family: var(--brand-font-ui);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sms-nav__menu-btn:hover { border-color: var(--sms-border-strong); }
+
+/* Phones: the brand and the action cannot share the bar (they need about 320px, a 320px phone
+   has 280). The hero's full-width action is in the first screen, and once the page has sections
+   the menu panel carries it. */
+@media (max-width: 479px) {
+  .sms-nav__cta--bar { display: none; }
+}
+
+/* ---- narrow (under 880px, keep in sync with MENU_QUERY): links and action move into a
+   disclosure panel. Four links, the brand and the action do not fit inline below this. ---- */
+
+@media (max-width: 879px) {
+  /* The menu exists only when there is something in it. */
+  .sms-landing:has([data-landing-section]) .sms-nav__menu-btn { display: inline-flex; }
+  .sms-landing:has([data-landing-section]) .sms-nav__cta--bar { display: none; }
+
+  .sms-nav__cta { min-height: 44px; }
+
+  .sms-nav__panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: calc(-1 * var(--landing-gutter));
+    right: calc(-1 * var(--landing-gutter));
+    flex: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 4px var(--landing-gutter) 18px;
+    max-height: calc(100dvh - 65px);
+    overflow-y: auto;
+    background: var(--brand-ground);
+    border-bottom: 1px solid var(--sms-border-hairline);
+  }
+
+  .sms-nav__panel[data-open='true'] { display: flex; }
+
+  .sms-nav__links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+  }
+
+  .sms-nav__links a {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--sms-border-subtle);
+    border-radius: 0;
+  }
+
+  .sms-nav__links a[aria-current='location'] { border-bottom-color: var(--brand-gold-dim); }
+
+  /* Only reachable when the menu exists. */
+  .sms-nav__cta--panel { display: inline-flex; margin-top: 16px; width: 100%; }
+  .sms-landing:not(:has([data-landing-section])) .sms-nav__panel { display: none; }
+}
+
+/* In-page targets stop below the sticky bar. */
+[data-landing-section] { scroll-margin-top: 72px; }
+[data-landing-section]:focus { outline: none; }

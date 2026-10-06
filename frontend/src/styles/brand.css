@@ -49,3 +49,52 @@
   color: var(--brand-ink);
   margin-top: 2px;
 }
+
+/* The one primary action on the landing (hero and navbar): solid blue, no gradient, no glow.
+   White on --brand-action is 5.17:1. Sizes are set by the context that uses it. */
+.sms-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--brand-action);
+  color: #ffffff;
+  font-family: var(--brand-font-ui);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.sms-cta:hover { background: #1d4ed8; }
+.sms-cta:active { background: #1e40af; }
+.sms-cta:focus-visible { outline: 2px solid #dbeafe; outline-offset: 3px; }
+
+/* Navbar brand: the logo mark beside the Latin name in one colour. The Devanagari wordmark
+   is for display sizes only and never appears here. */
+.sms-brand-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sms-brand-wordmark__mark {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  flex: none;
+}
+
+.sms-brand-wordmark__name {
+  font-family: var(--brand-font-record);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1;
+  color: var(--brand-ink);
+  white-space: nowrap;
+}

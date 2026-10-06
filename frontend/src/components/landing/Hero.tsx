@@ -26,7 +26,7 @@ export const Hero: React.FC = () => {
           <div className="sms-hero__rule" aria-hidden="true" />
           <p className="sms-hero__statement sms-mr" lang="mr">{HERO_COPY.statement.mr}</p>
           <p className="sms-hero__explainer">{HERO_COPY.explainer.en}</p>
-          <button type="button" className="sms-hero__cta" onClick={enterApplication}>
+          <button type="button" className="sms-cta sms-hero__cta" onClick={enterApplication}>
             {HERO_COPY.cta.en}
           </button>
         </div>

@@ -86,25 +86,10 @@
 
 .sms-hero__cta {
   margin-top: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   min-height: 48px;
   padding: 0 30px;
-  border: 0;
-  border-radius: 6px;
-  background: var(--brand-action);
-  color: #ffffff;
-  font-family: var(--brand-font-ui);
   font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 120ms ease;
 }
-
-.sms-hero__cta:hover { background: #1d4ed8; }
-.sms-hero__cta:active { background: #1e40af; }
-.sms-hero__cta:focus-visible { outline: 2px solid #dbeafe; outline-offset: 3px; }
 
 @media (max-width: 559px) {
   .sms-hero__cta { width: 100%; }
