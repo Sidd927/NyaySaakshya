@@ -19,7 +19,7 @@ export const HERO_COPY = {
   },
   explainer: {
     id: 'hero.explainer',
-    en: 'First-pass triage of email-traffic evidence. Every finding traces back to the packets, the rule and the standard behind it.',
+    en: 'First-pass forensic triage of email-traffic evidence. Every finding traces back to the packets, the rule and the standard behind it.',
     needsReview: false,
   },
   cta: {

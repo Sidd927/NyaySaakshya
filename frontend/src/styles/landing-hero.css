@@ -21,6 +21,9 @@
   }
 }
 
+/* Focus lands here from the skip link; the section is a target, not a control. */
+.sms-hero:focus { outline: none; }
+
 .sms-hero__inner {
   position: relative;
   z-index: 2;
@@ -82,6 +85,7 @@
   font-size: 17px;
   line-height: 1.6;
   color: var(--brand-ink-2);
+  text-wrap: pretty; /* no one-word last line */
 }
 
 .sms-hero__cta {
@@ -129,7 +133,7 @@
 .sms-record__title-mr {
   margin: 4px 0 0;
   font-family: var(--brand-font-ui);
-  font-size: 14px;
+  font-size: 15px; /* Devanagari is never set below 15px */
   line-height: 1.6;
   color: var(--brand-ink-2);
 }

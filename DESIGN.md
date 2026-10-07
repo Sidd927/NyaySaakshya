@@ -263,6 +263,8 @@ The line is the single structural idea. It appears as: the hairline under the he
 - **Sections registry.** `components/landing/sections.ts` lists navigable sections (`landing-how`, `landing-evidence`, `landing-limits`, `landing-reports`, `landing-scope`). A section is a nav destination only if it carries `id` and `data-landing-section`. Link visibility is pure CSS (`:has()` in `landing-nav.css`), so the ids are repeated there. The closing section (`landing-start`) is deliberately not navigable.
 - **Primary action.** One label ("Upload a capture") and one behaviour (`enterApplication()` in `components/home/openIngestion.ts`, with its `is-leaving`, `sms-depart` and `sms-pass` transition) across the navbar, the menu, the hero and the closing section.
 - **Scrolling.** The landing scrolls inside `.sms-landing`; the document stays locked. Navigation uses `scrollIntoView` and focuses the target; the URL does not change.
+- **Skip link.** The shell's skip link targets `#main-content`, which on the landing also contains the navbar. `LandingHero` therefore redirects it to the hero (the first element of `<main>`) and keeps the URL unchanged.
+- **Forced colors.** The primary action gains a `ButtonText` border under `forced-colors: active`; every status badge carries text, so nothing depends on fill colour.
 - **Class names.** Landing classes are prefixed `sms-sec`, `sms-problem`, `sms-how`, `sms-states`, `sms-limits`, `sms-rep`, `sms-samplereport`, `sms-scope`, `sms-close`, `sms-foot`. Check a new name against every stylesheet first (`.sms-doc` already belongs to the workbench report).
 - **Sample report.** `frontend/public/samples/deepdive_cross_session_control_endpoint.both.html` is a byte-identical copy of `demo/i18n-samples/`. Do not edit the copy; regenerate it from the source.
 
@@ -270,4 +272,5 @@ The line is the single structural idea. It appears as: the hairline under the he
 
 - Marathi on the landing is draft and needs native review before anything is presented as final.
 - The two scripts share one line in the display stack, and mixed lines are accepted at their natural relative size.
-- The landing is long on phones (about 13,000px at 375px wide). Spacing was reviewed rather than compressed; any reduction should be a separate content and spacing pass.
+- The landing is long on phones (about 13,000px at 375px wide, 12,900px at 390px, 14,200px at 320px). Spacing was reviewed and left as it is: each section answers a different question. Several facts are stated in more than one section on purpose (not observable is not invalid; no server connection; the Marathi draft notice), so a reader who lands on any one section still gets them.
+- The landing was frozen at the Phase 6 release candidate. Change it only to fix a defect.

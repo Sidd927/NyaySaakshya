@@ -101,6 +101,10 @@
 
 .sms-nav__cta { min-height: 40px; padding: 0 18px; font-size: 14px; }
 .sms-nav__cta--bar { margin-left: auto; }
+
+@media (pointer: coarse) {
+  .sms-nav__cta { min-height: 44px; }
+}
 .sms-nav__cta--panel { display: none; }
 
 .sms-nav__menu-btn {

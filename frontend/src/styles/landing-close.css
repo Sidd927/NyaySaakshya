@@ -153,6 +153,10 @@
 .sms-foot__link:hover { text-decoration-color: var(--brand-ink); }
 .sms-foot__link:focus-visible { outline: 2px solid #dbeafe; outline-offset: 3px; border-radius: 2px; }
 
+@media (pointer: coarse) {
+  .sms-foot__link { min-height: 44px; }
+}
+
 @media (max-width: 879px) {
   /* Touch targets stay 44px; the page links sit in one wrapping row so six links do not
      become six stacked rows on a phone. */

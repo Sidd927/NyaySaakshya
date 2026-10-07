@@ -70,6 +70,10 @@
   transition: background-color 120ms ease;
 }
 
+@media (forced-colors: active) {
+  .sms-cta { border: 1px solid ButtonText; }
+}
+
 .sms-cta:hover { background: #1d4ed8; }
 .sms-cta:active { background: #1e40af; }
 .sms-cta:focus-visible { outline: 2px solid #dbeafe; outline-offset: 3px; }
