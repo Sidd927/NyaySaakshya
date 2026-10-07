@@ -1,0 +1,170 @@
+/* Closing action and footer. The closing section reuses the section heading (landing-sections.css);
+   only the chain, the action and the footer are defined here. Gold: nothing new. The chain's
+   connectors are neutral hairlines, and the capture is marked by weight and an ink-coloured node,
+   not by colour. Sizes are px because html { font-size: 0.875rem } makes 1rem 14px in this app. */
+
+.sms-close__chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 0;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sms-close__step {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--brand-font-ui);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--brand-ink-2);
+}
+
+.sms-close__step + .sms-close__step::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  margin-inline: 12px;
+  background: var(--sms-border-strong);
+}
+
+.sms-close__step--first { color: var(--brand-ink); font-weight: 600; }
+
+/* Narrow screens: the chain stands as a vertical rail, the same figure as the hero record's flow,
+   so no connector is ever left dangling at a line end. */
+@media (max-width: 639px) {
+  .sms-close__chain {
+    position: relative;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 22px;
+  }
+
+  .sms-close__chain::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 14px;
+    bottom: 14px;
+    width: 1px;
+    background: var(--sms-border-strong);
+  }
+
+  .sms-close__step { min-height: 28px; }
+
+  .sms-close__step + .sms-close__step::before { content: none; }
+
+  .sms-close__step::after {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    margin-top: -4.5px;
+    border-radius: 50%;
+    background: var(--brand-ink-2);
+    box-shadow: 0 0 0 3px var(--brand-ground);
+  }
+
+  .sms-close__step--first::after { background: var(--brand-ink); }
+}
+
+.sms-close__cta {
+  margin-top: 36px;
+  min-height: 48px;
+  padding: 0 30px;
+  font-size: 16px;
+}
+
+@media (max-width: 559px) {
+  .sms-close__cta { width: 100%; }
+}
+
+.sms-close__caution {
+  margin: 14px 0 0;
+  max-width: 36em;
+  font-family: var(--brand-font-ui);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--brand-ink-2);
+}
+
+/* ---- footer ---- */
+
+.sms-foot {
+  flex: none;
+  background: var(--brand-ground);
+  border-top: 1px solid var(--sms-border-subtle);
+}
+
+.sms-foot__inner {
+  width: min(1200px, calc(100% - 2 * var(--landing-gutter)));
+  margin: 0 auto;
+  padding-block: 44px 52px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px 56px;
+}
+
+@media (min-width: 880px) {
+  .sms-foot__inner { grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr); }
+}
+
+.sms-foot__scope,
+.sms-foot__note {
+  margin: 14px 0 0;
+  max-width: 34em;
+  font-family: var(--brand-font-ui);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--brand-ink-2);
+}
+
+.sms-foot__note { margin-top: 8px; font-size: 13px; }
+
+.sms-foot__h {
+  margin: 0 0 12px;
+  font-family: var(--brand-font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--brand-ink);
+}
+
+.sms-foot__list { margin: 0; padding: 0; list-style: none; }
+
+.sms-foot__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  font-family: var(--brand-font-ui);
+  font-size: 14px;
+  color: var(--brand-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--sms-border-strong);
+  text-underline-offset: 4px;
+}
+
+.sms-foot__link:hover { text-decoration-color: var(--brand-ink); }
+.sms-foot__link:focus-visible { outline: 2px solid #dbeafe; outline-offset: 3px; border-radius: 2px; }
+
+@media (max-width: 879px) {
+  /* Touch targets stay 44px; the page links sit in one wrapping row so six links do not
+     become six stacked rows on a phone. */
+  .sms-foot__link { min-height: 44px; }
+  .sms-foot__list { display: flex; flex-wrap: wrap; gap: 0 22px; }
+}
+
+.sms-foot__fine {
+  margin: 4px 0 0;
+  max-width: 24em;
+  font-family: var(--brand-font-ui);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--brand-ink-2);
+}

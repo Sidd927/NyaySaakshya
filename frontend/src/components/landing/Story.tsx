@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { FIXTURES } from '../../fixtures';
 import { EvidenceStates } from './EvidenceStates';
+import { Closing } from './Closing';
 import { HowItWorks } from './HowItWorks';
 import { Limits } from './Limits';
 import { Problem } from './Problem';
@@ -21,6 +22,7 @@ export const Story: React.FC = () => {
         <Limits />
         <ReportSection />
         <ScopeSection />
+        <Closing />
       </div>
     </div>
   );

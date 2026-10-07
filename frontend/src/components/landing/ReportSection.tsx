@@ -21,7 +21,7 @@ export const ReportSection: React.FC = () => {
       <SectionHead sectionId="landing-reports" title={SECTION_TITLES.report} standfirst={REPORT_STANDFIRST} />
       <div className="sms-rep__split">
         <figure className="sms-samplereport" aria-label="Structure of the sample report">
-          <figcaption className="sms-samplereport__caption">From the sample report</figcaption>
+          <figcaption className="sms-samplereport__caption">The sample report, a second run of the capture at the top</figcaption>
           <div className="sms-samplereport__page">
             <p className="sms-samplereport__brand">NyaySaakshya</p>
             <p className="sms-samplereport__subject">{SAMPLE_REPORT.title}</p>

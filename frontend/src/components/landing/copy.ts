@@ -193,3 +193,23 @@ export const SCOPE_GROUPS: Array<{ id: string; title: string; lines: string[] }>
     ],
   },
 ];
+
+/**
+ * Closing call to action and footer. One new Marathi string (the closing heading, DRAFT); the
+ * action keeps the single label and intent used in the navbar and hero (HERO_COPY.cta).
+ */
+export const CLOSING = {
+  title: { id: 'section.close.heading', en: 'Start with the capture', mr: 'पुराव्यापासून विश्लेषणापर्यंत.', needsReview: true },
+  standfirst: 'Upload a capture file. The analysis runs on its own, and every finding traces back to the packets behind it.',
+  chainLabel: 'The chain from capture to report',
+  chain: ['Capture', 'Analysis', 'Evidence', 'Finding', 'Posture', 'Report'],
+  caution: 'There is no authentication. On a public instance, upload test captures only.',
+} satisfies { title: CopyEntry; standfirst: string; chainLabel: string; chain: string[]; caution: string };
+
+export const FOOTER = {
+  scope: 'Forensic triage of email-traffic evidence: SMTP, IMAP and POP3 captures, analysed passively and offline.',
+  note: 'A prototype for a single analyst. The English report is authoritative; the Marathi report is a machine draft that no person has reviewed.',
+  navLabel: 'On this page',
+  reportTitle: 'Sample report',
+  top: 'Back to top',
+};

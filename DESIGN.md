@@ -198,3 +198,76 @@ No component code changes in this step. No visual regression check applies to *t
 - [x] No decorative eyebrows, no middot-joined meta strings, no em-dash-as-design-element anywhere in this document.
 - [x] Every color has a stated reason tied to a real backend concept (evidence state / severity / posture / lifecycle) — none are decorative.
 - [x] Accent is scarce (interactive-only), matching the Linear discipline this system borrows.
+
+---
+
+## 7. Brand layer (landing page)
+
+§1 to §6 describe the workbench. This section documents the layer added for the landing page (`?view=landing`), concept **The Unbroken Line / अखंड रेषा**: evidence stays traceable from capture to conclusion, and the page is built as one continuous line from the problem to the report. The layer is additive. Its tokens live in `frontend/src/tokens/brand.css` and nothing in the workbench reads them. Where §1 to §6 and the live `theme.css` differ, `theme.css` is the source of truth; this section only records what the brand layer adds.
+
+### 7.1 Type
+
+All faces are OFL, loaded from `@fontsource` as subset CSS in `main.tsx`, one weight each.
+
+| Role | Face | Weight | Token / use |
+|---|---|---|---|
+| Devanagari display | Tiro Devanagari Marathi | 400 | Wordmark `न्यायसाक्ष्य`, section headings, Marathi statements. Resolves inside `--brand-font-record`. |
+| Latin display | IBM Plex Serif | 500 | English half of the lockup and of section titles. First in `--brand-font-record`, so Latin glyphs use it and Devanagari falls through to Tiro. |
+| Marathi body | IBM Plex Sans Devanagari | 400 | Marathi running text. Second in `--brand-font-ui`, after IBM Plex Sans. |
+| UI and body | IBM Plex Sans | existing | `--brand-font-ui`. Unchanged. |
+| Data | IBM Plex Mono | existing | `--brand-font-data`: hashes, file names, assessment IDs. |
+
+No `size-adjust` is shipped. Mixed-script lines were tested at 100 to 108%; below 3% is not perceptible, and 103 to 106% is the tested range if a context ever needs it. Declare it for that context, never globally. Noto Serif Devanagari is the unshipped fallback if Tiro is ever withdrawn.
+
+### 7.2 Colour
+
+| Token | Value | Use |
+|---|---|---|
+| `--brand-gold` | `#d4a84c` | The Devanagari wordmark and the nav active underline. 8.47:1 on canvas. |
+| `--brand-gold-dim` | `#b8863a` | Hairlines and rules (hero, section rule, process line, menu active underline). 5.8:1. |
+| `--brand-gold-light` | `#f3d27a` | Reserved. Currently unused. |
+| `--brand-action` | `#2563eb` | The one primary action ("Upload a capture"). White on it is 5.17:1; hover `#1d4ed8`, active `#1e40af`. Solid fill, no gradient, no glow. |
+| `--brand-ground`, `--brand-canvas`, `--brand-ink`, `--brand-ink-2` | reference `theme.css` | `--brand-ink-2` (`#94a3b8`, 7.77:1) is the minimum for body copy. `--sms-text-muted` (`#64748b`, 4.19:1 on ground) fails and is not used on the landing. |
+
+**Gold budget.** Gold appears in exactly five places: the Devanagari wordmark, the hero hairline, the nav active underline, the 48px rule above each section heading, and the process line in How it works. The chain in the closing section, the margin line and every record border are neutral. Gold hue (about 40.6 degrees) sits within about 3 degrees of the severity amber, so it never appears in a severity, posture or evidence-state context, and never as a button fill. Saffron is deliberately absent for the same reason against HIGH orange.
+
+**Status colour** is never defined by the brand layer. `SeverityBadge`, `PosturePill`, `EvidenceBadge` and `ForensicHash` supply all of it, and the landing reuses them unchanged. Every status also carries text, so colour is never the only signal.
+
+### 7.3 Marathi typography rules
+
+- Marathi is opt-in through the `.sms-mr` class (`letter-spacing: 0`, no faux bold, manual hyphenation). There is deliberately no global `[lang="mr"]` rule, so the workbench's language toggle is unaffected.
+- Every Marathi node carries `lang="mr"`; every Latin node inside a Marathi block carries `lang="en"` where it helps shaping or screen readers.
+- Devanagari is never tracked, never set below 15px, never given gradient text, and keeps `line-height` of at least 1.2 (headings 1.4) so upper and lower matras are not clipped.
+- Sizes on the landing are in px: `html { font-size: .875rem }` makes `1rem` 14px, so rem clamps render 12.5% small.
+- Every Marathi string lives in `components/landing/copy.ts` as a `CopyEntry { id, en, mr, needsReview }`. All are `needsReview: true`: they are drafts that no native speaker has reviewed, and they stay that way until someone does. New Marathi needs the same entry, the same flag and a line in the review list.
+- The sample report's Marathi is a machine draft. It says so at the top, and the English report is the authoritative copy.
+
+### 7.4 Bilingual hierarchy
+
+Marathi leads, English explains. A heading is the Marathi line in display type with the English title beneath it in the Latin display face; the detail below is plain English. The hero lockup follows the same order (Devanagari wordmark over the Latin name). The navbar shows the Latin name only, with the logo mark, because the Devanagari wordmark is for display sizes. Marathi is kept to headings and a few statements; the landing is not a translated page.
+
+### 7.5 Unbroken Line
+
+The line is the single structural idea. It appears as: the hairline under the hero lockup; the gold rule that opens each section; a neutral margin line down the left of the story on wide screens, with a node where each heading meets it; the process line through How it works; and, at the end, the chain Capture, Analysis, Evidence, Finding, Posture, Report. Sections change layout on purpose (memo, process line, classification, boundaries, document, specification sheet, closing) so the line is the only repeated element. Do not add a second decorative concept.
+
+### 7.6 Evidence-first visual language
+
+- Everything shown as evidence is a real record: values come from the fixtures (`buildSampleRecord`, `buildHonestyExample`) or from the sample report file, never typed in by hand.
+- Hashes are shown whole, in groups of 8, in the data face. They wrap; they are never truncated.
+- Two analysis runs of one capture appear on the page and are labelled as such: the hero record is the fixture run of 24 Sep 2026, the sample report is a run of 3 Oct 2026. Both yield assessment `09532eed458ad3a6`, which is the determinism result. The dates are not normalised.
+- Limits are stated with the same weight as capabilities. "Not observable" is not "invalid".
+- No cultural imagery, flags, crests, government marks or certification claims.
+
+### 7.7 Contracts to preserve
+
+- **Sections registry.** `components/landing/sections.ts` lists navigable sections (`landing-how`, `landing-evidence`, `landing-limits`, `landing-reports`, `landing-scope`). A section is a nav destination only if it carries `id` and `data-landing-section`. Link visibility is pure CSS (`:has()` in `landing-nav.css`), so the ids are repeated there. The closing section (`landing-start`) is deliberately not navigable.
+- **Primary action.** One label ("Upload a capture") and one behaviour (`enterApplication()` in `components/home/openIngestion.ts`, with its `is-leaving`, `sms-depart` and `sms-pass` transition) across the navbar, the menu, the hero and the closing section.
+- **Scrolling.** The landing scrolls inside `.sms-landing`; the document stays locked. Navigation uses `scrollIntoView` and focuses the target; the URL does not change.
+- **Class names.** Landing classes are prefixed `sms-sec`, `sms-problem`, `sms-how`, `sms-states`, `sms-limits`, `sms-rep`, `sms-samplereport`, `sms-scope`, `sms-close`, `sms-foot`. Check a new name against every stylesheet first (`.sms-doc` already belongs to the workbench report).
+- **Sample report.** `frontend/public/samples/deepdive_cross_session_control_endpoint.both.html` is a byte-identical copy of `demo/i18n-samples/`. Do not edit the copy; regenerate it from the source.
+
+### 7.8 Known limits
+
+- Marathi on the landing is draft and needs native review before anything is presented as final.
+- The two scripts share one line in the display stack, and mixed lines are accepted at their natural relative size.
+- The landing is long on phones (about 13,000px at 375px wide). Spacing was reviewed rather than compressed; any reduction should be a separate content and spacing pass.
