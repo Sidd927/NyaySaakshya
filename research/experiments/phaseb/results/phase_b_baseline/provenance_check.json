@@ -1,0 +1,9 @@
+{
+ "single_session_findings_checked": 8966,
+ "frames_checked": 13857,
+ "frame_stream_mismatches": 0,
+ "p2_violations": [],
+ "observed_issue_findings_citing_no_frame": {
+  "SEC-PLAIN-002": 5
+ }
+}

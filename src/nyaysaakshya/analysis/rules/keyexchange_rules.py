@@ -31,6 +31,30 @@ NIST_FS = ("NIST SP 800-52r2 SS3.3.1: servers shall be configured to use ephemer
            "key establishment")
 
 
+#: Shared by the rules that conclude from the ServerHello alone (SEC-TLS-001, SEC-FS-001).
+NEGOTIATED_ONLY_LIMIT = (
+    "This concerns the parameters the server selected in its ServerHello. The handshake is "
+    "not shown to have completed (see SEC-TLS-002), so it does not establish the security of "
+    "the complete session.")
+
+#: States in which a field has NO value to read. Each is a refusal to conclude, whatever the
+#: reason (never seen, cut off, structurally hidden); none may fall through to a rule branch
+#: that reads `.value`, because `None`/falsy would then be reported as a weakness.
+_UNRESOLVED = (EvidenceState.UNKNOWN, EvidenceState.INCOMPLETE, EvidenceState.NOT_OBSERVABLE)
+
+
+def _unfinished_handshake_limit(session: SessionEvidence):
+    """Scope note for a conclusion drawn from NEGOTIATED parameters (the ServerHello).
+
+    The ServerHello establishes what the server selected. It does not establish that the
+    handshake completed, so a finding built on it must not read as a statement about the
+    security of the whole session. Empty when the session is shown to be established.
+    """
+    if session.tls_state is TlsState.ESTABLISHED:
+        return ()
+    return (NEGOTIATED_ONLY_LIMIT,)
+
+
 class KeyExchangeRule(SecurityRule):
     """SEC-KEX-001 -- identify the negotiated key-exchange mechanism (D-09)."""
 
@@ -48,7 +72,7 @@ class KeyExchangeRule(SecurityRule):
         refs = [ref("tls_key_exchange", kex), ref("tls_named_group", session.tls_named_group),
                 ref("tls_cipher_suite_name", session.tls_cipher_suite_name)]
 
-        if kex.state is EvidenceState.UNKNOWN:
+        if kex.state in _UNRESOLVED:
             return [self.finding(
                 session,
                 status=FindingStatus.INSUFFICIENT_EVIDENCE, severity=Severity.INFO,
@@ -99,7 +123,7 @@ class ForwardSecrecyRule(SecurityRule):
                 ref("tls_key_exchange", session.tls_key_exchange),
                 ref("tls_negotiated_version", session.tls_negotiated_version)]
 
-        if fs.state is EvidenceState.UNKNOWN:
+        if fs.state in _UNRESOLVED:
             return [self.finding(
                 session,
                 status=FindingStatus.INSUFFICIENT_EVIDENCE, severity=Severity.INFO,
@@ -125,9 +149,10 @@ class ForwardSecrecyRule(SecurityRule):
             return [self.finding(
                 session,
                 status=FindingStatus.COMPLIANT, severity=Severity.INFO,
-                conclusion="The session provides forward secrecy.",
+                conclusion="The negotiated key exchange provides forward secrecy.",
                 explanation=fs.basis + ".",
-                evidence_refs=refs)]
+                evidence_refs=refs,
+                limitations=_unfinished_handshake_limit(session))]
 
         # Observed absence of forward secrecy: a real, evidenced security condition.
         return [self.finding(

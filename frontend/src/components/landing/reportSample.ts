@@ -8,9 +8,9 @@
 export const SAMPLE_REPORT = {
   href: 'samples/deepdive_cross_session_control_endpoint.both.html',
   title: 'Cryptographic Security Posture Assessment',
-  assessmentId: '09532eed458ad3a6',
+  assessmentId: 'afa30ff290742813',
   captureSha256: '97b2b61aa870b74861c606e604f3ecf6f77d8818241817bd22beb814f3dcbe83',
-  analysedIso: '2026-10-03T06:00:26Z',
+  analysedIso: '2026-10-08T08:58:45Z',
   posture: 'CRITICAL',
   scoreText: '22.15 / 100',
   coverage: '100.0% (12 of 12 sessions assessed)',

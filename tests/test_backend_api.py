@@ -57,7 +57,8 @@ def test_health(tmp_path):
     assert body["status"] == "ok"
     assert body["database"] == "ok"
     assert body["backend_schema_version"] == "1.0"
-    assert body["posture_schema_version"] == "1.0"
+    # Phase B.3: the posture schema moved 1.0 -> 1.1 (explicit `scored`, `value: null` when withheld).
+    assert body["posture_schema_version"] == "1.1"
     # Asserted against the canonical constant rather than a literal: the risk this
     # guards is the endpoint reporting a STALE version, which a literal cannot catch
     # once the constant moves (Phase 11 bumped it 0.7.0 -> 0.8.0).

@@ -3,7 +3,7 @@ import { EvidenceBadge } from '../common/EvidenceBadge';
 import { PosturePill } from '../common/PosturePill';
 import { FileName } from './FileName';
 import {
-  EVIDENCE_CALLOUT_BODY, EVIDENCE_EXAMPLE_NOTE, EVIDENCE_EXAMPLE_TITLE, EVIDENCE_STANDFIRST,
+  EVIDENCE_CALLOUT_BODY, EVIDENCE_EXAMPLE_NOTE, EVIDENCE_EXAMPLE_SCORE_NOTE, EVIDENCE_EXAMPLE_TITLE, EVIDENCE_STANDFIRST,
   EVIDENCE_STATE_MEANINGS, SECTION_STATEMENTS, SECTION_TITLES,
 } from './copy';
 import type { HonestyExample } from './recordData';
@@ -61,6 +61,9 @@ export const EvidenceStates: React.FC<{ example: HonestyExample | null }> = ({ e
             <PosturePill band={example.posture.band} size="md" />
             <span className="sms-example__score">{example.posture.scoreText}</span>
             {example.certificateWhy && <p className="sms-example__why">{example.certificateWhy}</p>}
+            {example.rows.some((r) => r.state === 'NOT_OBSERVABLE') && (
+              <p className="sms-example__why">{EVIDENCE_EXAMPLE_SCORE_NOTE}</p>
+            )}
           </footer>
         </aside>
       )}

@@ -81,6 +81,14 @@ class SecurityAnalysisEngine:
 
     def analyse_session(self, session: SessionEvidence) -> List[SecurityFinding]:
         findings: List[SecurityFinding] = []
+        if session.protocol is None:
+            # Supported-protocol scope. The rules below are SMTP/IMAP/POP3 rules, and a
+            # stream with no identified mail protocol has no evidence they could read.
+            # Running them anyway produced mail-specific abstentions about traffic that
+            # is not mail and let an unreadable session look "assessed". The cross-session
+            # and ML lanes already refuse such sessions; the single-session lane now does
+            # too. The session stays in the evidence record and in coverage.
+            return findings
         for rule in self.registry.rules:
             try:
                 if not rule.applies_to(session):

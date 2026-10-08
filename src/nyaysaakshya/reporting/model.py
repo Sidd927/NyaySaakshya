@@ -138,6 +138,9 @@ class ReportDocument:
     overall_posture_label: str = ""
     score_text: str = ""
     coverage_text: str = ""
+    #: Why the band is withheld, in the same words everywhere it is shown (masthead and
+    #: executive summary). Empty unless the posture is INSUFFICIENT_EVIDENCE.
+    withheld_note: str = ""
     sections: List[Section] = field(default_factory=list)
     #: Recorded when a limit in doc 22 §15 truncated content. Always surfaced.
     truncations: List[str] = field(default_factory=list)

@@ -167,6 +167,19 @@ class StartTlsAdvertisementRule(SecurityRule):
                 conclusion="No capability response was captured for this session.",
                 explanation="Whether an upgrade was offered cannot be established.",
                 evidence_refs=refs, standards=standards)]
+        if advertised.state is EvidenceState.INCOMPLETE:
+            # INCOMPLETE is not UNKNOWN: the request was seen and the capture is cut off
+            # before the reply. Same refusal to conclude, but it must not be dropped, and
+            # its wording says why.
+            return [self.finding(
+                session,
+                status=FindingStatus.INSUFFICIENT_EVIDENCE, severity=Severity.INFO,
+                conclusion=("The capture ends before the capability response to a request "
+                            "that was observed."),
+                explanation=("The client's capability request is in the capture but the "
+                             "server's reply is not, so whether an upgrade was offered "
+                             "cannot be established."),
+                evidence_refs=refs, standards=standards)]
 
         return []
 

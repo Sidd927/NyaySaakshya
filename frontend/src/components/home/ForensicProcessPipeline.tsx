@@ -11,14 +11,14 @@ interface Step {
 const STEPS: Step[] = [
   {
     id: 'upload',
-    name: 'Upload a recording',
+    name: 'Upload a capture',
     detail: 'Select a .pcap, .pcapng or .cap file.',
     icon: FileUp,
   },
   {
     id: 'check',
     name: 'Check security',
-    detail: 'We analyse the recording locally.',
+    detail: 'We analyse the capture locally.',
     icon: Search,
   },
   {

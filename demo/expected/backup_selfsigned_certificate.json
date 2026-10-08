@@ -6,8 +6,8 @@
   "purpose": "Backup: generated TLS 1.2, self-signed leaf",
   "runs": {
     "ai_false": {
-      "elapsed_ms": 120.6,
-      "run_id": "8c9d2deeaf244774b7a701428fcd9ad0",
+      "elapsed_ms": 119.0,
+      "run_id": "00f298fdc04146ebb109a3d2e3b712b2",
       "summary": {
         "abstention_count": 2,
         "abstention_reasons": [
@@ -27,7 +27,7 @@
           "INSECURE_CONFIGURATION",
           "KEY_EXCHANGE_MECHANISM"
         ],
-        "assessment_id": "2cdc8de7905088ec",
+        "assessment_id": "f9fb3657950455c0",
         "capture_id": "c08508835713a7485fc8456a58b93c226786f7f46b6da483706f586240ac2caa",
         "coverage": {
           "assessed_fraction": 1.0,

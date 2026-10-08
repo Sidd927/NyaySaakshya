@@ -28,7 +28,7 @@
     }
   ],
   "ai_enabled": false,
-  "assessment_id": "d2aa0d9898616dfe",
+  "assessment_id": "cdacd977c5b11ad2",
   "capture_id": "1f9863aef21f602c7093c980750b13afb4f63262c94c978512bd0047779f04f0",
   "coverage": {
     "assessed_fraction": 1.0,
@@ -50,7 +50,7 @@
     "sessions_assessed": 1,
     "sessions_total": 1
   },
-  "generated_at": "2026-10-03T04:36:38Z",
+  "generated_at": "2026-10-08T08:58:46Z",
   "issue_groups": [
     {
       "affected_stream_keys": [
@@ -140,7 +140,7 @@
         }
       ],
       "dimension": "CRYPTO_CONFIGURATION",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "INSECURE_CONFIGURATION",
       "penalising": false,
@@ -166,7 +166,7 @@
         }
       ],
       "dimension": "UPGRADE_INTEGRITY",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "STARTTLS_ADVERTISEMENT",
       "penalising": false,
@@ -228,7 +228,7 @@
         "conclusion": "The mail session carried no TLS protection.",
         "contradictions": [],
         "dimension": "PLAINTEXT_EXPOSURE",
-        "explanation": "No TLS records were observed in this stream, so message and command content travelled in cleartext. This states what was observed. It does not attribute a cause: a session may be unprotected through client choice, server configuration, or interference, and this capture alone cannot distinguish those.",
+        "explanation": "No TLS records were observed in this stream, so the commands and any message content it carried travelled in cleartext. This states what was observed. It does not attribute a cause: a session may be unprotected through client choice, server configuration, or interference, and this capture alone cannot distinguish those.",
         "frames": [
           8
         ],
@@ -351,6 +351,7 @@
           }
         ],
         "formula_id": "F2-group-damped",
+        "scored": true,
         "starting_value": 100.0,
         "total_penalty": 12.0,
         "value": 88.0
@@ -377,8 +378,8 @@
       "ml_results": 0
     },
     "versions": {
-      "posture_engine": "0.8.0",
-      "posture_schema": "1.0",
+      "posture_engine": "0.10.0",
+      "posture_schema": "1.1",
       "scoring_formula": "F2-group-damped"
     }
   },
@@ -431,7 +432,7 @@
     },
     "by_fact_kind": {
       "BASE_SECURITY_ISSUE": 1,
-      "POSITIVE_EVIDENCE": 2
+      "INFORMATIONAL": 2
     },
     "by_severity": {
       "MEDIUM": 1
@@ -439,9 +440,9 @@
     "highest_severity": "MEDIUM",
     "issue_groups": 1,
     "note": "a behavioural deviation is a difference from a baseline, not a vulnerability; an anomaly signal is a prioritisation input and neither asserts nor implies an attack",
-    "positive_evidence": 2
+    "positive_evidence": 0
   },
-  "run_id": "d326303c0cd5487cacf246d6e742f99b",
+  "run_id": "e511c73b005341a2b8dcfb2b37933324",
   "score": {
     "band": "ADEQUATE",
     "basis": "100 minus 12.00 across 1 issue group(s) under F2-group-damped",
@@ -457,6 +458,7 @@
       }
     ],
     "formula_id": "F2-group-damped",
+    "scored": true,
     "starting_value": 100.0,
     "total_penalty": 12.0,
     "value": 88.0
@@ -484,7 +486,7 @@
     ]
   },
   "versions": {
-    "engine": "0.8.0",
-    "schema": "1.0"
+    "engine": "0.10.0",
+    "schema": "1.1"
   }
 }

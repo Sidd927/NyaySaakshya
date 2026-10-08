@@ -17,7 +17,9 @@
   "posture.with-no-established-security-issue-657d": "100 with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
   "remediation.rule-guidance-8933": "Require TLS for this service, preferring implicit TLS on the dedicated port, or enforce STARTTLS/STLS for the cleartext port. Rule guidance: Require TLS for this service, preferring implicit TLS on the dedicated ports (RFC 8314) or enforced STARTTLS/STLS.",
   "report.issue-group-s-penalise-the-b8da": "2 issue group(s) penalise the posture score. The highest severity recorded is HIGH.",
+  "report.n-num-session-s-carried-e828": "12 session(s) carried no identified SMTP, IMAP or POP3 dialogue. They are outside what this system assesses, were not assessed and are not counted in the coverage above.",
   "report.of-sessions-assessed-cbad": "100.0% (1 of 1 sessions assessed)",
+  "report.pct-assessed-of-supported-supported-76b3": "100.0% (12 of 12 supported sessions assessed)",
   "report.session-s-were-reconstructed-from-cc5b": "1 session(s) were reconstructed from the capture; 1 were assessed and 0 were abstained from.",
   "report.the-score-starts-at-and-5d1b": "The score starts at 100 and each penalty above is subtracted from it. Only observed issues penalise; compliant observations earn no credit, and missing evidence neither penalises nor rewards.",
   "report.total-penalising-the-score-1779": "5 total · 2 penalising the score"

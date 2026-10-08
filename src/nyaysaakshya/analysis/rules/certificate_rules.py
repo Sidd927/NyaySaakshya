@@ -215,14 +215,27 @@ class CertificateExpiryRule(SecurityRule):
                 explanation="No validity window could be decoded from the captured bytes.",
                 evidence_refs=refs)]
 
+        if unknown:
+            # PARTIAL: the readable certificates are in date, but others in the chain could
+            # not be read. "All observed certificates were valid" would be true only of the
+            # ones that happened to decode; the property (a chain that is in date) is not
+            # established, so this is an abstention that says what WAS checked.
+            return [self.finding(
+                session,
+                status=FindingStatus.INSUFFICIENT_EVIDENCE, severity=Severity.INFO,
+                conclusion="Certificate validity could be established for only part of the chain.",
+                explanation=(f"The certificates whose dates could be read were valid at {when}, "
+                             "but at least one certificate carried no readable validity window, "
+                             "so the validity of the chain as a whole is not established."),
+                evidence_refs=refs,
+                limitations=("Some certificates carried no readable validity window.",))]
+
         return [self.finding(
             session,
             status=FindingStatus.COMPLIANT, severity=Severity.INFO,
             conclusion="All observed certificates were within their validity period.",
             explanation=f"Every extracted certificate was valid at {when}.",
-            evidence_refs=refs,
-            limitations=(("Some certificates carried no readable validity window."
-                          ,) if unknown else ()))]
+            evidence_refs=refs)]
 
 
 class CertificateKeyStrengthRule(SecurityRule):
@@ -270,14 +283,32 @@ class CertificateKeyStrengthRule(SecurityRule):
                              "not reported as weak: an unread key is not a small key."),
                 evidence_refs=refs)]
 
+        if unknown:
+            return [self.finding(
+                session,
+                status=FindingStatus.INSUFFICIENT_EVIDENCE, severity=Severity.INFO,
+                conclusion="Certificate key strength could be established for only part of the chain.",
+                explanation=("; ".join(described) + f". Minimum required: RSA {MIN_RSA_BITS} "
+                             "bits. At least one certificate carried no readable public key "
+                             "parameters, so the key strength of the chain as a whole is not "
+                             "established. An unread key is not a small key."),
+                evidence_refs=refs,
+                limitations=("Some certificates carried no readable public key parameters.",))]
+
         return [self.finding(
             session,
             status=FindingStatus.COMPLIANT, severity=Severity.INFO,
             conclusion="Observed certificate keys meet the minimum length.",
             explanation="; ".join(described) + f". Minimum required: RSA {MIN_RSA_BITS} bits.",
-            evidence_refs=refs,
-            limitations=(("Some certificates carried no readable public key parameters."
-                          ,) if unknown else ()))]
+            evidence_refs=refs)]
+
+
+#: Shared by both outcomes of SEC-CERT-004. The compliant outcome carries it too (B.4): the rule
+#: sees one chain-wide list of OIDs from a closed table, so it cannot say that EVERY certificate
+#: was covered, and the finding should not read as if it could.
+_CHAIN_LEVEL_SIGNATURES = ("Signature algorithms are reported for the chain as a whole: the "
+                           "dissector does not attribute them to individual certificates "
+                           "reliably.")
 
 
 class CertificateSignatureRule(SecurityRule):
@@ -299,6 +330,9 @@ class CertificateSignatureRule(SecurityRule):
         for oid in session.chain_signature_oids:
             entry = oids.signature_algorithm(oid)
             if entry is None:
+                # Not an error and not a gap: the dissector also reports public-key
+                # algorithm identifiers (e.g. rsaEncryption) in this list, so an
+                # unrecognised entry is not evidence of an unread signature.
                 continue
             name, _key_algorithm, hash_name = entry
             if name not in names:
@@ -318,9 +352,7 @@ class CertificateSignatureRule(SecurityRule):
                 evidence_refs=refs,
                 remediation=("Reissue the affected certificates with SHA-256 or stronger, "
                              "and confirm the issuing CA no longer signs with SHA-1."),
-                limitations=("Signature algorithms are reported for the chain as a whole: "
-                             "the dissector does not attribute them to individual "
-                             "certificates reliably.",))]
+                limitations=(_CHAIN_LEVEL_SIGNATURES,))]
 
         if not names:
             return [self.finding(
@@ -336,7 +368,8 @@ class CertificateSignatureRule(SecurityRule):
             status=FindingStatus.COMPLIANT, severity=Severity.INFO,
             conclusion="Certificate signature algorithms are current.",
             explanation=f"Signature algorithms observed: {', '.join(names)}.",
-            evidence_refs=refs)]
+            evidence_refs=refs,
+            limitations=(_CHAIN_LEVEL_SIGNATURES,))]
 
 
 class CertificateChainRule(SecurityRule):

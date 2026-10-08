@@ -103,7 +103,7 @@ export const CaptureUpload: React.FC<CaptureUploadProps> = ({
     } catch (err: any) {
       setPhase({
         kind: 'error',
-        message: 'This recording could not be checked.',
+        message: 'This capture could not be checked.',
         technicalDetail: err?.message || String(err),
         file,
       });
@@ -174,7 +174,7 @@ export const CaptureUpload: React.FC<CaptureUploadProps> = ({
           onDragLeave={onDragLeave}
           onDrop={onDrop}
           role="region"
-          aria-label="Upload a saved email recording"
+          aria-label="Upload a saved email capture"
         >
           <div className="sms-ingest-drop__body">
             <div className="sms-ingest-drop__icon-wrap" aria-hidden="true">
@@ -183,7 +183,7 @@ export const CaptureUpload: React.FC<CaptureUploadProps> = ({
 
             <div className="sms-ingest-drop__content">
               <h2 id="sms-ingest-title" className="sms-ingest-drop__title">
-                Check a recording
+                Check a capture
               </h2>
               <p className="sms-ingest-drop__desc">
                 Upload a saved email capture. You get a score and a short report.
@@ -314,7 +314,7 @@ export const CaptureUpload: React.FC<CaptureUploadProps> = ({
           <div className="sms-ingest-error__head">
             <div className="sms-ingest-error__title-wrap">
               <AlertCircle size={20} className="sms-crimson-icon" aria-hidden="true" />
-              <span className="sms-ingest-error__title">This recording could not be checked</span>
+              <span className="sms-ingest-error__title">This capture could not be checked</span>
             </div>
             <button
               type="button"

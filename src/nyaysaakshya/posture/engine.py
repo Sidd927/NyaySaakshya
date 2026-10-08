@@ -28,7 +28,7 @@ from __future__ import annotations
 import hashlib
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Dict, List, Optional, Sequence
+from typing import Dict, List, Optional, Sequence, Tuple
 
 from nyaysaakshya.analysis.model import SecurityFinding
 from nyaysaakshya.crosssession.model import CrossSessionFinding
@@ -113,7 +113,9 @@ class PostureEngine:
         limitations = BASE_LIMITATIONS + (ML_LIMITATIONS if ml_in else ())
 
         return PostureAssessment(
-            assessment_id=self._assessment_id(capture, groups),
+            assessment_id=self._assessment_id(capture, groups, score, coverage,
+                                              self._analyser_versions(findings, cross_findings),
+                                              self.config.ai_enabled),
             capture_id=capture,
             run_id=run_id,
             generated_at=generated_at or datetime.now(timezone.utc).strftime(
@@ -149,16 +151,50 @@ class PostureEngine:
                 return finding.capture_id
         return ""
 
-    def _assessment_id(self, capture_id, groups) -> str:
-        """Content-addressed: the same evidence always yields the same id.
+    @staticmethod
+    def _analyser_versions(findings, cross_findings) -> Tuple[str, ...]:
+        """The versions of the rule sets that produced the findings this assessment rests on."""
+        found = {f"rules={f.rules_version}/engine={f.engine_version}" for f in findings}
+        found |= {f"cross={f.rules_version}/engine={f.engine_version}" for f in cross_findings}
+        return tuple(sorted(found))
 
-        Deliberately excludes `run_id`. A run id is a fresh uuid per invocation, so
-        folding it in would make two analyses of the same capture produce different
-        assessment ids and defeat the reproducibility property the pipeline is built
-        around. The run id stays on the assessment as its own field for traceability.
+    def _assessment_id(self, capture_id, groups, score, coverage, analyser_versions,
+                       ai_enabled=False) -> str:
+        """Identity of ONE analysis outcome: this capture, under this analyser, with this result.
+
+        The id is a pure function of its inputs, so the same capture analysed by the same
+        software with the same configuration always yields the same id. It deliberately
+        excludes `run_id` (a fresh uuid per invocation) and `generated_at`.
+
+        What it covers, and why:
+          * the capture hash;
+          * the schema, posture-engine and rule-set versions: the id names an analysis made
+            by specific software. Before schema 1.1 these were absent, so an engine upgrade
+            that left every issue group unchanged reproduced the OLD id for a NEW document,
+            and the store then rejected the re-analysis as an identity conflict (HTTP 409);
+          * the outcome: formula, band, and the session counts behind it. Two assessments of
+            one capture that differ in band or coverage are not the same assessment, even
+            when their issue groups happen to be equal (for example when only the coverage
+            floor changed);
+          * the issue groups (class, kind, severity, recurrence);
+          * the analysis configuration that changes the document: whether the ML lane was on.
+            The AI-on document differs from the AI-off one (flag, model summary, provenance)
+            even when the model flags nothing, and two different documents must not share an
+            id: with the flag outside the hash, analysing a capture with the lane on after
+            analysing it with the lane off returned HTTP 409 whenever no session was anomalous.
+
+        What it does not cover: the TShark version (a documented limitation: the pipeline
+        records it, the id does not), finding wording, and evidence-state detail below the
+        level of the groups and coverage counts.
         """
         digest = hashlib.sha256()
-        digest.update(f"{capture_id}|{POSTURE_SCHEMA_VERSION}".encode())
+        digest.update(f"{capture_id}|{POSTURE_SCHEMA_VERSION}|{POSTURE_ENGINE_VERSION}".encode())
+        for version in analyser_versions:
+            digest.update(f"|{version}".encode())
+        digest.update(f"|ai={bool(ai_enabled)}".encode())
+        digest.update(f"|{score.formula_id}:{score.band.value}"
+                      f":{coverage.sessions_total}/{coverage.sessions_assessed}"
+                      f"/{coverage.sessions_unsupported}".encode())
         for group in groups:
             digest.update(f"|{group.issue_class.value}:{group.fact_kind.value}"
                           f":{group.severity.value}:{group.recurrence}".encode())

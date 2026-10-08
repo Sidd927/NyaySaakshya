@@ -33,7 +33,7 @@
     }
   ],
   "ai_enabled": false,
-  "assessment_id": "645090e0bc44ba9d",
+  "assessment_id": "0a189316f53b2767",
   "capture_id": "ce5377348e22ad92c33d705e31388944bad8224534d478c38b57a75d3ba4a501",
   "coverage": {
     "assessed_fraction": 1.0,
@@ -57,7 +57,7 @@
     "sessions_assessed": 1,
     "sessions_total": 1
   },
-  "generated_at": "2026-10-03T04:36:38Z",
+  "generated_at": "2026-10-08T08:58:46Z",
   "issue_groups": [
     {
       "affected_stream_keys": [
@@ -143,7 +143,7 @@
         }
       ],
       "dimension": "CERTIFICATE_TRUST",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "CERTIFICATE_CHAIN_STRUCTURE",
       "penalising": false,
@@ -175,7 +175,7 @@
         }
       ],
       "dimension": "CERTIFICATE_TRUST",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "CERTIFICATE_EXTRACTION",
       "penalising": false,
@@ -291,7 +291,7 @@
         }
       ],
       "dimension": "CRYPTO_CONFIGURATION",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "IMPLICIT_TLS_SESSION",
       "penalising": false,
@@ -335,7 +335,7 @@
         }
       ],
       "dimension": "CRYPTO_CONFIGURATION",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "INSECURE_CONFIGURATION",
       "penalising": false,
@@ -361,7 +361,7 @@
         }
       ],
       "dimension": "CRYPTO_CONFIGURATION",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "KEY_EXCHANGE_MECHANISM",
       "penalising": false,
@@ -617,6 +617,7 @@
           }
         ],
         "formula_id": "F2-group-damped",
+        "scored": true,
         "starting_value": 100.0,
         "total_penalty": 56.0,
         "value": 44.0
@@ -650,8 +651,8 @@
       "ml_results": 0
     },
     "versions": {
-      "posture_engine": "0.8.0",
-      "posture_schema": "1.0",
+      "posture_engine": "0.10.0",
+      "posture_schema": "1.1",
       "scoring_formula": "F2-group-damped"
     }
   },
@@ -681,7 +682,8 @@
     },
     "by_fact_kind": {
       "BASE_SECURITY_ISSUE": 2,
-      "POSITIVE_EVIDENCE": 8
+      "INFORMATIONAL": 5,
+      "POSITIVE_EVIDENCE": 3
     },
     "by_severity": {
       "HIGH": 2
@@ -689,9 +691,9 @@
     "highest_severity": "HIGH",
     "issue_groups": 2,
     "note": "a behavioural deviation is a difference from a baseline, not a vulnerability; an anomaly signal is a prioritisation input and neither asserts nor implies an attack",
-    "positive_evidence": 8
+    "positive_evidence": 3
   },
-  "run_id": "73ef94a35c4a442d8ed7d0f762175c8f",
+  "run_id": "7f4825bc57ee41109e03ad3cbce8eae9",
   "score": {
     "band": "CRITICAL",
     "basis": "100 minus 56.00 across 2 issue group(s) under F2-group-damped",
@@ -716,6 +718,7 @@
       }
     ],
     "formula_id": "F2-group-damped",
+    "scored": true,
     "starting_value": 100.0,
     "total_penalty": 56.0,
     "value": 44.0
@@ -749,7 +752,7 @@
     ]
   },
   "versions": {
-    "engine": "0.8.0",
-    "schema": "1.0"
+    "engine": "0.10.0",
+    "schema": "1.1"
   }
 }

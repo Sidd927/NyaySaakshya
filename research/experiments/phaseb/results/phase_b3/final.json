@@ -1,0 +1,925 @@
+{
+ "D7_E_cut_during_handshake": {
+  "api_list": {
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "score_value": null
+  },
+  "assessment_id": "1d4780b09c1307da",
+  "assessment_score": {
+   "band": "INSUFFICIENT_EVIDENCE",
+   "basis": "no session could be assessed; posture is not graded rather than graded well, because absence of evidence is not evidence of security",
+   "scored": false,
+   "value": null
+  },
+  "capture": "E_cut_during_handshake.pcap",
+  "coverage": {
+   "assessed_fraction": 0.0,
+   "sessions_abstained": 1,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "0.0% (0 of 1 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "Not scored",
+   "score_value": null,
+   "scored": null,
+   "value": "INSUFFICIENT_EVIDENCE",
+   "withheld": true,
+   "withheld_note": "Posture withheld: no session in this capture could be assessed, so no conclusion about the supported traffic was reached. A withheld band is not a pass, and sessions that were not assessed are not shown to be secure."
+  },
+  "html_contains_id": true,
+  "issue_groups": [],
+  "not_scored_wording": {
+   "html": true,
+   "pdf": true
+  },
+  "numeric_score_strings": {
+   "html": [],
+   "html_both": [],
+   "html_mr": [],
+   "pdf": []
+  },
+  "overall_posture": "INSUFFICIENT_EVIDENCE",
+  "report_json_equals_assessment": true
+ },
+ "clienthello_incomplete_E_incomplete": {
+  "api_list": {
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "score_value": null
+  },
+  "assessment_id": "00db4c3b3f0e690d",
+  "assessment_score": {
+   "band": "INSUFFICIENT_EVIDENCE",
+   "basis": "only 20% of sessions yielded any conclusion (floor 50%); no score is given and no band is certified over a capture this sparsely assessed",
+   "scored": false,
+   "value": null
+  },
+  "capture": "E_incomplete.pcap",
+  "coverage": {
+   "assessed_fraction": 0.2,
+   "sessions_abstained": 4,
+   "sessions_assessed": 1,
+   "sessions_total": 5,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "20.0% (1 of 5 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "Not scored",
+   "score_value": null,
+   "scored": null,
+   "value": "INSUFFICIENT_EVIDENCE",
+   "withheld": true,
+   "withheld_note": "band withheld: evidence coverage below the assessment floor"
+  },
+  "html_contains_id": true,
+  "issue_groups": [
+   [
+    "DEPRECATED_TLS_VERSION",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "FORWARD_SECRECY",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "INSECURE_CONFIGURATION",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "KEY_EXCHANGE_MECHANISM",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "STARTTLS_ADVERTISEMENT",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ]
+  ],
+  "not_scored_wording": {
+   "html": true,
+   "pdf": true
+  },
+  "numeric_score_strings": {
+   "html": [],
+   "html_both": [],
+   "html_mr": [],
+   "pdf": []
+  },
+  "overall_posture": "INSUFFICIENT_EVIDENCE",
+  "report_json_equals_assessment": true
+ },
+ "complete_cleartext": {
+  "api_list": {
+   "overall_posture": "ADEQUATE",
+   "score_value": 88.0
+  },
+  "assessment_id": "cc18c89c80329dcd",
+  "assessment_score": {
+   "band": "ADEQUATE",
+   "basis": "100 minus 12.00 across 1 issue group(s) under F2-group-damped",
+   "scored": true,
+   "value": 88.0
+  },
+  "capture": "postfix_smtp_plaintext_session.pcap",
+  "coverage": {
+   "assessed_fraction": 1.0,
+   "sessions_abstained": 0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "100.0% (1 of 1 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "88 / 100",
+   "score_value": 88.0,
+   "scored": null,
+   "value": "ADEQUATE",
+   "withheld": false,
+   "withheld_note": ""
+  },
+  "html_contains_id": true,
+  "issue_groups": [
+   [
+    "NO_TLS_PROTECTION",
+    "BASE_SECURITY_ISSUE",
+    "MEDIUM",
+    1,
+    true
+   ],
+   [
+    "INSECURE_CONFIGURATION",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "STARTTLS_ADVERTISEMENT",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ]
+  ],
+  "not_scored_wording": {
+   "html": false,
+   "pdf": false
+  },
+  "numeric_score_strings": {
+   "html": [
+    "88 / 100"
+   ],
+   "html_both": [
+    "88 / 100"
+   ],
+   "html_mr": [
+    "88 / 100"
+   ],
+   "pdf": [
+    "88 / 100"
+   ]
+  },
+  "overall_posture": "ADEQUATE",
+  "report_json_equals_assessment": true
+ },
+ "cut_mid_dialogue_C": {
+  "api_list": {
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "score_value": null
+  },
+  "assessment_id": "a7ddbee85156cfde",
+  "assessment_score": {
+   "band": "INSUFFICIENT_EVIDENCE",
+   "basis": "no session could be assessed; posture is not graded rather than graded well, because absence of evidence is not evidence of security",
+   "scored": false,
+   "value": null
+  },
+  "capture": "C_cut_mid_dialogue.pcap",
+  "coverage": {
+   "assessed_fraction": 0.0,
+   "sessions_abstained": 1,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "0.0% (0 of 1 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "Not scored",
+   "score_value": null,
+   "scored": null,
+   "value": "INSUFFICIENT_EVIDENCE",
+   "withheld": true,
+   "withheld_note": "Posture withheld: no session in this capture could be assessed, so no conclusion about the supported traffic was reached. A withheld band is not a pass, and sessions that were not assessed are not shown to be secure."
+  },
+  "html_contains_id": true,
+  "issue_groups": [
+   [
+    "STARTTLS_ADVERTISEMENT",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ]
+  ],
+  "not_scored_wording": {
+   "html": true,
+   "pdf": true
+  },
+  "numeric_score_strings": {
+   "html": [],
+   "html_both": [],
+   "html_mr": [],
+   "pdf": []
+  },
+  "overall_posture": "INSUFFICIENT_EVIDENCE",
+  "report_json_equals_assessment": true
+ },
+ "flagship_deepdive": {
+  "api_list": {
+   "overall_posture": "CRITICAL",
+   "score_value": 22.15
+  },
+  "assessment_id": "7244e05a96af7c85",
+  "assessment_score": {
+   "band": "CRITICAL",
+   "basis": "100 minus 77.85 across 3 issue group(s) under F2-group-damped",
+   "scored": true,
+   "value": 22.15
+  },
+  "capture": "deepdive_cross_session_control_endpoint.pcap",
+  "coverage": {
+   "assessed_fraction": 1.0,
+   "sessions_abstained": 0,
+   "sessions_assessed": 12,
+   "sessions_total": 12,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "100.0% (12 of 12 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "22.15 / 100",
+   "score_value": 22.15,
+   "scored": null,
+   "value": "CRITICAL",
+   "withheld": false,
+   "withheld_note": ""
+  },
+  "html_contains_id": true,
+  "issue_groups": [
+   [
+    "PLAINTEXT_AUTH_EXPOSURE",
+    "BASE_SECURITY_ISSUE",
+    "HIGH",
+    6,
+    true
+   ],
+   [
+    "NO_TLS_PROTECTION",
+    "BASE_SECURITY_ISSUE",
+    "MEDIUM",
+    6,
+    true
+   ],
+   [
+    "STARTTLS_BEHAVIOUR_DEVIATION",
+    "BEHAVIOURAL_DEVIATION",
+    "MEDIUM",
+    1,
+    true
+   ],
+   [
+    "INSECURE_CONFIGURATION",
+    "INFORMATIONAL",
+    "INFO",
+    12,
+    false
+   ],
+   [
+    "DEPRECATED_TLS_VERSION",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    6,
+    false
+   ],
+   [
+    "FORWARD_SECRECY",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    6,
+    false
+   ],
+   [
+    "KEY_EXCHANGE_MECHANISM",
+    "INFORMATIONAL",
+    "INFO",
+    6,
+    false
+   ],
+   [
+    "STARTTLS_UPGRADE_FAILURE",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    6,
+    false
+   ],
+   [
+    "TLS_HANDSHAKE_EVIDENCE",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    6,
+    false
+   ],
+   [
+    "STARTTLS_BEHAVIOUR_DEVIATION",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ]
+  ],
+  "not_scored_wording": {
+   "html": false,
+   "pdf": false
+  },
+  "numeric_score_strings": {
+   "html": [
+    "22.15 / 100"
+   ],
+   "html_both": [
+    "22.15 / 100"
+   ],
+   "html_mr": [
+    "22.15 / 100"
+   ],
+   "pdf": [
+    "22.15 / 100"
+   ]
+  },
+  "overall_posture": "CRITICAL",
+  "report_json_equals_assessment": true
+ },
+ "missing_setup_F": {
+  "api_list": {
+   "overall_posture": "ADEQUATE",
+   "score_value": 88.0
+  },
+  "assessment_id": "a4589c7769977b29",
+  "assessment_score": {
+   "band": "ADEQUATE",
+   "basis": "100 minus 12.00 across 1 issue group(s) under F2-group-damped",
+   "scored": true,
+   "value": 88.0
+  },
+  "capture": "F_missing_setup.pcap",
+  "coverage": {
+   "assessed_fraction": 1.0,
+   "sessions_abstained": 0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "100.0% (1 of 1 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "88 / 100",
+   "score_value": 88.0,
+   "scored": null,
+   "value": "ADEQUATE",
+   "withheld": false,
+   "withheld_note": ""
+  },
+  "html_contains_id": true,
+  "issue_groups": [
+   [
+    "NO_TLS_PROTECTION",
+    "BASE_SECURITY_ISSUE",
+    "MEDIUM",
+    1,
+    true
+   ],
+   [
+    "INSECURE_CONFIGURATION",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "STARTTLS_ADVERTISEMENT",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ]
+  ],
+  "not_scored_wording": {
+   "html": false,
+   "pdf": false
+  },
+  "numeric_score_strings": {
+   "html": [
+    "88 / 100"
+   ],
+   "html_both": [
+    "88 / 100"
+   ],
+   "html_mr": [
+    "88 / 100"
+   ],
+   "pdf": [
+    "88 / 100"
+   ]
+  },
+  "overall_posture": "ADEQUATE",
+  "report_json_equals_assessment": true
+ },
+ "quiet_stream_H": {
+  "api_list": {
+   "overall_posture": "STRONG",
+   "score_value": 100.0
+  },
+  "assessment_id": "876afc43b77a75f3",
+  "assessment_score": {
+   "band": "STRONG",
+   "basis": "100 with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
+   "scored": true,
+   "value": 100.0
+  },
+  "capture": "H_quiet_stream_then_more_traffic.pcap",
+  "coverage": {
+   "assessed_fraction": 0.5,
+   "sessions_abstained": 1,
+   "sessions_assessed": 1,
+   "sessions_total": 2,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "50.0% (1 of 2 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "100 / 100",
+   "score_value": 100.0,
+   "scored": null,
+   "value": "STRONG",
+   "withheld": false,
+   "withheld_note": ""
+  },
+  "html_contains_id": true,
+  "issue_groups": [
+   [
+    "DEPRECATED_TLS_VERSION",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "FORWARD_SECRECY",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "INSECURE_CONFIGURATION",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "KEY_EXCHANGE_MECHANISM",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "STARTTLS_ADVERTISEMENT",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "TLS_HANDSHAKE_EVIDENCE",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ]
+  ],
+  "not_scored_wording": {
+   "html": false,
+   "pdf": false
+  },
+  "numeric_score_strings": {
+   "html": [
+    "100 / 100"
+   ],
+   "html_both": [
+    "100 / 100"
+   ],
+   "html_mr": [
+    "100 / 100"
+   ],
+   "pdf": [
+    "100 / 100"
+   ]
+  },
+  "overall_posture": "STRONG",
+  "report_json_equals_assessment": true
+ },
+ "starttls_accepted_then_cut": {
+  "api_list": {
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "score_value": null
+  },
+  "assessment_id": "4af697a0280a2bb0",
+  "assessment_score": {
+   "band": "INSUFFICIENT_EVIDENCE",
+   "basis": "no session could be assessed; posture is not graded rather than graded well, because absence of evidence is not evidence of security",
+   "scored": false,
+   "value": null
+  },
+  "capture": "C19_truncated.pcap",
+  "coverage": {
+   "assessed_fraction": 0.0,
+   "sessions_abstained": 30,
+   "sessions_assessed": 0,
+   "sessions_total": 30,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "0.0% (0 of 30 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "Not scored",
+   "score_value": null,
+   "scored": null,
+   "value": "INSUFFICIENT_EVIDENCE",
+   "withheld": true,
+   "withheld_note": "Posture withheld: no session in this capture could be assessed, so no conclusion about the supported traffic was reached. A withheld band is not a pass, and sessions that were not assessed are not shown to be secure."
+  },
+  "html_contains_id": true,
+  "issue_groups": [
+   [
+    "STARTTLS_BEHAVIOUR_DEVIATION",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    14,
+    false
+   ],
+   [
+    "STARTTLS_ADVERTISEMENT",
+    "INFORMATIONAL",
+    "INFO",
+    13,
+    false
+   ]
+  ],
+  "not_scored_wording": {
+   "html": true,
+   "pdf": true
+  },
+  "numeric_score_strings": {
+   "html": [],
+   "html_both": [],
+   "html_mr": [],
+   "pdf": []
+  },
+  "overall_posture": "INSUFFICIENT_EVIDENCE",
+  "report_json_equals_assessment": true
+ },
+ "starttls_requested_then_cut": {
+  "api_list": {
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "score_value": null
+  },
+  "assessment_id": "5c8a136456e42d92",
+  "assessment_score": {
+   "band": "INSUFFICIENT_EVIDENCE",
+   "basis": "no session could be assessed; posture is not graded rather than graded well, because absence of evidence is not evidence of security",
+   "scored": false,
+   "value": null
+  },
+  "capture": "D_cut_during_starttls.pcap",
+  "coverage": {
+   "assessed_fraction": 0.0,
+   "sessions_abstained": 1,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "0.0% (0 of 1 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "Not scored",
+   "score_value": null,
+   "scored": null,
+   "value": "INSUFFICIENT_EVIDENCE",
+   "withheld": true,
+   "withheld_note": "Posture withheld: no session in this capture could be assessed, so no conclusion about the supported traffic was reached. A withheld band is not a pass, and sessions that were not assessed are not shown to be secure."
+  },
+  "html_contains_id": true,
+  "issue_groups": [],
+  "not_scored_wording": {
+   "html": true,
+   "pdf": true
+  },
+  "numeric_score_strings": {
+   "html": [],
+   "html_both": [],
+   "html_mr": [],
+   "pdf": []
+  },
+  "overall_posture": "INSUFFICIENT_EVIDENCE",
+  "report_json_equals_assessment": true
+ },
+ "tiny_probe_scene_C": {
+  "api_list": {
+   "overall_posture": "STRONG",
+   "score_value": 100.0
+  },
+  "assessment_id": "b768a9893f826a94",
+  "assessment_score": {
+   "band": "STRONG",
+   "basis": "100 with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
+   "scored": true,
+   "value": 100.0
+  },
+  "capture": "postfix_smtp_starttls_upgrade.pcap",
+  "coverage": {
+   "assessed_fraction": 0.5,
+   "sessions_abstained": 1,
+   "sessions_assessed": 1,
+   "sessions_total": 2,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "50.0% (1 of 2 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "100 / 100",
+   "score_value": 100.0,
+   "scored": null,
+   "value": "STRONG",
+   "withheld": false,
+   "withheld_note": ""
+  },
+  "html_contains_id": true,
+  "issue_groups": [
+   [
+    "DEPRECATED_TLS_VERSION",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "FORWARD_SECRECY",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "INSECURE_CONFIGURATION",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "KEY_EXCHANGE_MECHANISM",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "STARTTLS_UPGRADE_FAILURE",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "TLS_HANDSHAKE_EVIDENCE",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ]
+  ],
+  "not_scored_wording": {
+   "html": false,
+   "pdf": false
+  },
+  "numeric_score_strings": {
+   "html": [
+    "100 / 100"
+   ],
+   "html_both": [
+    "100 / 100"
+   ],
+   "html_mr": [
+    "100 / 100"
+   ],
+   "pdf": [
+    "100 / 100"
+   ]
+  },
+  "overall_posture": "STRONG",
+  "report_json_equals_assessment": true
+ },
+ "tls13_implicit_scene_B": {
+  "api_list": {
+   "overall_posture": "STRONG",
+   "score_value": 100.0
+  },
+  "assessment_id": "0b3fc8cb93a0f904",
+  "assessment_score": {
+   "band": "STRONG",
+   "basis": "100 with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
+   "scored": true,
+   "value": 100.0
+  },
+  "capture": "scene_b_certificate_honesty.pcap",
+  "coverage": {
+   "assessed_fraction": 1.0,
+   "sessions_abstained": 0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "100.0% (1 of 1 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "100 / 100",
+   "score_value": 100.0,
+   "scored": null,
+   "value": "STRONG",
+   "withheld": false,
+   "withheld_note": ""
+  },
+  "html_contains_id": true,
+  "issue_groups": [
+   [
+    "DEPRECATED_TLS_VERSION",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "FORWARD_SECRECY",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "IMPLICIT_TLS_SESSION",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "INSECURE_CONFIGURATION",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "KEY_EXCHANGE_MECHANISM",
+    "INFORMATIONAL",
+    "INFO",
+    1,
+    false
+   ],
+   [
+    "TLS_HANDSHAKE_EVIDENCE",
+    "POSITIVE_EVIDENCE",
+    "INFO",
+    1,
+    false
+   ]
+  ],
+  "not_scored_wording": {
+   "html": false,
+   "pdf": false
+  },
+  "numeric_score_strings": {
+   "html": [
+    "100 / 100"
+   ],
+   "html_both": [
+    "100 / 100"
+   ],
+   "html_mr": [
+    "100 / 100"
+   ],
+   "pdf": [
+    "100 / 100"
+   ]
+  },
+  "overall_posture": "STRONG",
+  "report_json_equals_assessment": true
+ },
+ "unanswered_capability_G": {
+  "api_list": {
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "score_value": null
+  },
+  "assessment_id": "298b0c67073f930a",
+  "assessment_score": {
+   "band": "INSUFFICIENT_EVIDENCE",
+   "basis": "no session could be assessed; posture is not graded rather than graded well, because absence of evidence is not evidence of security",
+   "scored": false,
+   "value": null
+  },
+  "capture": "G_incomplete_exchange.pcap",
+  "coverage": {
+   "assessed_fraction": 0.0,
+   "sessions_abstained": 1,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sessions_unsupported": null
+  },
+  "dashboard_coverage_summary": "0.0% (0 of 1 sessions assessed)",
+  "dashboard_posture": {
+   "score_text": "Not scored",
+   "score_value": null,
+   "scored": null,
+   "value": "INSUFFICIENT_EVIDENCE",
+   "withheld": true,
+   "withheld_note": "Posture withheld: no session in this capture could be assessed, so no conclusion about the supported traffic was reached. A withheld band is not a pass, and sessions that were not assessed are not shown to be secure."
+  },
+  "html_contains_id": true,
+  "issue_groups": [],
+  "not_scored_wording": {
+   "html": true,
+   "pdf": true
+  },
+  "numeric_score_strings": {
+   "html": [],
+   "html_both": [],
+   "html_mr": [],
+   "pdf": []
+  },
+  "overall_posture": "INSUFFICIENT_EVIDENCE",
+  "report_json_equals_assessment": true
+ },
+ "unsupported_raw_tls": {
+  "api_list": {
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "score_value": null
+  },
+  "assessment_id": "96d3e4aa4cc618ad",
+  "assessment_score": {
+   "band": "INSUFFICIENT_EVIDENCE",
+   "basis": "no session could be assessed; posture is not graded rather than graded well, because absence of evidence is not evidence of security",
+   "scored": false,
+   "value": null
+  },
+  "capture": "tls12_weak_sha1_rsa1024.pcap",
+  "coverage": {
+   "assessed_fraction": 0.0,
+   "sessions_abstained": 0,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sessions_unsupported": 1
+  },
+  "dashboard_coverage_summary": "No supported sessions to assess (1 session(s) carried no identified SMTP, IMAP or POP3 dialogue)",
+  "dashboard_posture": {
+   "score_text": "Not scored",
+   "score_value": null,
+   "scored": null,
+   "value": "INSUFFICIENT_EVIDENCE",
+   "withheld": true,
+   "withheld_note": "Posture withheld: no SMTP, IMAP or POP3 dialogue was identified in this capture, so there was no supported evidence to assess. A withheld band is not a pass, and traffic that was not assessed is not shown to be secure."
+  },
+  "html_contains_id": true,
+  "issue_groups": [],
+  "not_scored_wording": {
+   "html": true,
+   "pdf": true
+  },
+  "numeric_score_strings": {
+   "html": [],
+   "html_both": [],
+   "html_mr": [],
+   "pdf": []
+  },
+  "overall_posture": "INSUFFICIENT_EVIDENCE",
+  "report_json_equals_assessment": true
+ }
+}

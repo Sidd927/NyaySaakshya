@@ -55,6 +55,7 @@ _KIND_FACTOR: Dict[FactKind, float] = {
     FactKind.BEHAVIOURAL_DEVIATION: 2.0,
     FactKind.ANOMALY_SIGNAL: 0.0,
     FactKind.POSITIVE_EVIDENCE: 0.0,
+    FactKind.INFORMATIONAL: 0.0,
     FactKind.ABSTENTION: 0.0,
 }
 

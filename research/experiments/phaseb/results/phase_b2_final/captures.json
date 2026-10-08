@@ -1,0 +1,2971 @@
+{
+ "captures": [
+  {
+   "assessment_id": "454f74917a675952",
+   "capture": "dovecot_imap_imaps_implicit_tls.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "INFERRED": 1,
+    "NOT_OBSERVABLE": 5,
+    "OBSERVED": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-003|INFORMATIONAL": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "d257ec482cd486432e510f8ddb9cf9e46747c237e743036c977b67b76cc51f65"
+  },
+  {
+   "assessment_id": "2b1c2c6d261a8e5b",
+   "capture": "dovecot_imap_plaintext_login.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 6,
+    "UNKNOWN": 5
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 1,
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "WEAK",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|INFORMATIONAL": 1
+   },
+   "score_value": 60.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "98a6d6dd94471bb4315fbd2d09d3f19707eca6458074545e47979568dc738560"
+  },
+  {
+   "assessment_id": "b67adb5d81e55315",
+   "capture": "dovecot_imap_starttls_upgrade.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "INFERRED": 1,
+    "NOT_OBSERVABLE": 2,
+    "OBSERVED": 13,
+    "UNKNOWN": 8
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 2,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-CFG-001|NOT_OBSERVABLE": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|COMPLIANT": 1,
+    "SEC-STLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 2,
+   "sha256": "40ea40241d28c68378a0e58bc269e9a738bb56adc472f0c74313f7be8bb467b9"
+  },
+  {
+   "assessment_id": "09eb51791f3e6fe0",
+   "capture": "dovecot_pop3_plaintext_login.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 5,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 1,
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "WEAK",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|INFORMATIONAL": 1
+   },
+   "score_value": 60.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "2fef26f8bf34a0c2df28a957cb6de2fb5e0bd60788bfc8a604e8ef4648662285"
+  },
+  {
+   "assessment_id": "06847aebe91d9a4b",
+   "capture": "dovecot_pop3_pop3s_implicit_tls.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "INFERRED": 1,
+    "NOT_OBSERVABLE": 5,
+    "OBSERVED": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-003|INFORMATIONAL": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "7cc4f7c97ba626668c834f4e168134394de212f5fd8eaaf25702c553380e4368"
+  },
+  {
+   "assessment_id": "5611937dd4a44084",
+   "capture": "dovecot_pop3_stls_upgrade.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "INFERRED": 1,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 10
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|COMPLIANT": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "0de89766cc83d39964ab9777f1f64a22c8643c04710fa9fe19816af635e789b2"
+  },
+  {
+   "assessment_id": "6cfd539269da63a3",
+   "capture": "postfix_smtp_client_declines.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 5,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "ADEQUATE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|INFORMATIONAL": 1
+   },
+   "score_value": 88.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "1f9863aef21f602c7093c980750b13afb4f63262c94c978512bd0047779f04f0"
+  },
+  {
+   "assessment_id": "1b51c446ac26887f",
+   "capture": "postfix_smtp_no_starttls_offered.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "AMBIGUOUS": 1,
+    "NOT_OBSERVABLE": 2,
+    "OBSERVED": 7,
+    "UNKNOWN": 14
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "ADEQUATE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 2,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-CFG-001|NOT_OBSERVABLE": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|AMBIGUOUS": 1,
+    "SEC-STLS-002|INSUFFICIENT_EVIDENCE": 1
+   },
+   "score_value": 88.0,
+   "sessions_assessed": 1,
+   "sessions_total": 2,
+   "sha256": "eacbc065c3427acf406ec8f2059ded8b6e77162a60a3c1497b8fbd805a941e20"
+  },
+  {
+   "assessment_id": "c0a02646a9302e19",
+   "capture": "postfix_smtp_plaintext_session.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 5,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "ADEQUATE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|INFORMATIONAL": 1
+   },
+   "score_value": 88.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "5223798d5c5bcad85672c093482a3c4eda1b325802231958f5a0fb99081ba48e"
+  },
+  {
+   "assessment_id": "ff6063f96efa39e2",
+   "capture": "postfix_smtp_starttls_upgrade.pcap",
+   "corpus": "oq33r",
+   "observation_states": {
+    "INFERRED": 1,
+    "NOT_OBSERVABLE": 2,
+    "OBSERVED": 13,
+    "UNKNOWN": 8
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 2,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-CFG-001|NOT_OBSERVABLE": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|COMPLIANT": 1,
+    "SEC-STLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 2,
+   "sha256": "c2a84bf4ed973fcdff29bc5dd8ea24791d195fa186be3bbe7a359f68a3201fff"
+  },
+  {
+   "assessment_id": "8b1b4c28e02136f8",
+   "capture": "A_legit_decline.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 30,
+    "UNKNOWN": 36
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 6,
+    "SEC-PLAIN-002": 6
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CFG-001|INFORMATIONAL": 6,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 6,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 6,
+    "SEC-STLS-002|INFORMATIONAL": 6
+   },
+   "score_value": 34.15,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "ba420f353ac7c2d2f380436d2918effe98a946c88bc0a5a4293764a1499f49b7"
+  },
+  {
+   "assessment_id": "8247bed87753f182",
+   "capture": "B_strip_advert.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 6,
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 24,
+    "UNKNOWN": 36
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 6,
+    "SEC-PLAIN-002": 6
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CFG-001|INFORMATIONAL": 6,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 6,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 6,
+    "SEC-STLS-002|AMBIGUOUS": 6
+   },
+   "score_value": 34.15,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "c85fbd55425e61187b91a59342cde2849d5bc4e83522dc8fe186a29fd64b83fc"
+  },
+  {
+   "assessment_id": "9ea2b40fd38b0b08",
+   "capture": "C_normal_tls.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 48,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CERT-001|NOT_OBSERVABLE": 6,
+    "SEC-CFG-001|COMPLIANT": 6,
+    "SEC-FS-001|COMPLIANT": 6,
+    "SEC-KEX-001|INFORMATIONAL": 6,
+    "SEC-STLS-001|COMPLIANT": 6,
+    "SEC-TLS-001|COMPLIANT": 6,
+    "SEC-TLS-002|COMPLIANT": 6,
+    "SEC-TLS-003|NOT_OBSERVABLE": 6
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "bc1295613c5ff3db306da1c10011b4b88abc93f35d99821b42e1950862fcb17c"
+  },
+  {
+   "assessment_id": "dde6fa26438b9632",
+   "capture": "D_failed_upgrade.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 2,
+    "INFERRED": 10,
+    "NOT_OBSERVABLE": 7,
+    "OBSERVED": 50,
+    "UNKNOWN": 15
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 2,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|AMBIGUOUS": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CERT-001|NOT_OBSERVABLE": 7,
+    "SEC-CFG-001|COMPLIANT": 7,
+    "SEC-FS-001|COMPLIANT": 5,
+    "SEC-FS-001|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-KEX-001|INFORMATIONAL": 5,
+    "SEC-KEX-001|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-STLS-001|COMPLIANT": 5,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-TLS-001|COMPLIANT": 5,
+    "SEC-TLS-001|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-TLS-002|COMPLIANT": 5,
+    "SEC-TLS-002|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-TLS-003|NOT_OBSERVABLE": 7
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 7,
+   "sessions_total": 7,
+   "sha256": "ead512ea148f2a399a677c839f8fbe383d9b840e862416afdf4fdce4b385faa9"
+  },
+  {
+   "assessment_id": "77486fcba2c2f153",
+   "capture": "E_incomplete.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 2,
+    "INCOMPLETE": 5,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 5,
+    "OBSERVED": 23,
+    "UNKNOWN": 23
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CERT-001|NOT_OBSERVABLE": 2,
+    "SEC-CFG-001|COMPLIANT": 2,
+    "SEC-CFG-001|NOT_OBSERVABLE": 3,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-FS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-KEX-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 3,
+    "SEC-STLS-002|INFORMATIONAL": 1,
+    "SEC-STLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-002|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-TLS-003|NOT_OBSERVABLE": 2
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 2,
+   "sessions_total": 5,
+   "sha256": "ff12bbc09b9b95c1fb5ed5d832414b79099395493678cae70045b6c6e28b69ab"
+  },
+  {
+   "assessment_id": "412c52d6b614a4a3",
+   "capture": "F_shared_identity.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "INFERRED": 10,
+    "NOT_OBSERVABLE": 10,
+    "OBSERVED": 65,
+    "UNKNOWN": 35
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 5,
+    "SEC-PLAIN-002": 5
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 5,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|AMBIGUOUS": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CERT-001|NOT_OBSERVABLE": 5,
+    "SEC-CFG-001|COMPLIANT": 5,
+    "SEC-CFG-001|INFORMATIONAL": 5,
+    "SEC-FS-001|COMPLIANT": 5,
+    "SEC-KEX-001|INFORMATIONAL": 5,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 5,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 5,
+    "SEC-STLS-001|COMPLIANT": 5,
+    "SEC-STLS-002|INFORMATIONAL": 5,
+    "SEC-TLS-001|COMPLIANT": 5,
+    "SEC-TLS-002|COMPLIANT": 5,
+    "SEC-TLS-003|NOT_OBSERVABLE": 5
+   },
+   "score_value": 36.78,
+   "sessions_assessed": 10,
+   "sessions_total": 10,
+   "sha256": "206b7dc43a8126f6168cff26a32b458fdef6abe4f845a3140376a4b1009c035c"
+  },
+  {
+   "assessment_id": "c4f670cef9e846ef",
+   "capture": "G_control_endpoint.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 6,
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 12,
+    "OBSERVED": 72,
+    "UNKNOWN": 42
+   },
+   "observed_issue_by_rule": {
+    "CS-STARTTLS-001": 1,
+    "SEC-PLAIN-001": 6,
+    "SEC-PLAIN-002": 6
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 10,
+    "CS-STARTTLS-001|OBSERVED_ISSUE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-CERT-001|NOT_OBSERVABLE": 6,
+    "SEC-CFG-001|COMPLIANT": 6,
+    "SEC-CFG-001|INFORMATIONAL": 6,
+    "SEC-FS-001|COMPLIANT": 6,
+    "SEC-KEX-001|INFORMATIONAL": 6,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 6,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 6,
+    "SEC-STLS-001|COMPLIANT": 6,
+    "SEC-STLS-002|AMBIGUOUS": 6,
+    "SEC-TLS-001|COMPLIANT": 6,
+    "SEC-TLS-002|COMPLIANT": 6,
+    "SEC-TLS-003|NOT_OBSERVABLE": 6
+   },
+   "score_value": 22.15,
+   "sessions_assessed": 12,
+   "sessions_total": 12,
+   "sha256": "97b2b61aa870b74861c606e604f3ecf6f77d8818241817bd22beb814f3dcbe83"
+  },
+  {
+   "assessment_id": "e86200bd82f4fef6",
+   "capture": "H_no_control.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 6,
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 24,
+    "UNKNOWN": 36
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 6,
+    "SEC-PLAIN-002": 6
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CFG-001|INFORMATIONAL": 6,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 6,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 6,
+    "SEC-STLS-002|AMBIGUOUS": 6
+   },
+   "score_value": 34.15,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "adfb4628c131baf4c33f46c6f565ba048aa4e0b8c4eece92ac6d38a609339d37"
+  },
+  {
+   "assessment_id": "621e29d64cf0eedc",
+   "capture": "I_no_support.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 6,
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 24,
+    "UNKNOWN": 36
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 6,
+    "SEC-PLAIN-002": 6
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CFG-001|INFORMATIONAL": 6,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 6,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 6,
+    "SEC-STLS-002|AMBIGUOUS": 6
+   },
+   "score_value": 34.15,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "fc104188bc908c92b7f38897406747a21a32aa2fc7ea9df0de935c35c68ab4f3"
+  },
+  {
+   "assessment_id": "94ff55609230fd39",
+   "capture": "J_strip_command.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "INFERRED": 10,
+    "NOT_OBSERVABLE": 7,
+    "OBSERVED": 52,
+    "UNKNOWN": 15
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 2,
+    "SEC-PLAIN-002": 2,
+    "SEC-STLS-001": 2
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 2,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|AMBIGUOUS": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CERT-001|NOT_OBSERVABLE": 5,
+    "SEC-CFG-001|COMPLIANT": 5,
+    "SEC-CFG-001|INFORMATIONAL": 2,
+    "SEC-FS-001|COMPLIANT": 5,
+    "SEC-KEX-001|INFORMATIONAL": 5,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 2,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 2,
+    "SEC-STLS-001|COMPLIANT": 5,
+    "SEC-STLS-001|OBSERVED_ISSUE": 2,
+    "SEC-TLS-001|COMPLIANT": 5,
+    "SEC-TLS-002|COMPLIANT": 5,
+    "SEC-TLS-003|NOT_OBSERVABLE": 5
+   },
+   "score_value": 35.0,
+   "sessions_assessed": 7,
+   "sessions_total": 7,
+   "sha256": "9b9228a1acfdaf53f7347be747ad4e128ea587f9aca4f553b35dcdb7a848d467"
+  },
+  {
+   "assessment_id": "a5af30851d8a4df7",
+   "capture": "K_network_cond.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 3,
+    "INCOMPLETE": 1,
+    "INFERRED": 6,
+    "NOT_OBSERVABLE": 3,
+    "OBSERVED": 20,
+    "UNKNOWN": 3
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 3,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 3,
+    "SEC-CERT-001|NOT_OBSERVABLE": 3,
+    "SEC-CFG-001|COMPLIANT": 3,
+    "SEC-FS-001|COMPLIANT": 3,
+    "SEC-KEX-001|INFORMATIONAL": 3,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 3,
+    "SEC-STLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 3,
+    "SEC-TLS-002|INSUFFICIENT_EVIDENCE": 3,
+    "SEC-TLS-003|NOT_OBSERVABLE": 3
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 3,
+   "sessions_total": 3,
+   "sha256": "057ee4dcfcc0b524bbb9784e31382c3a294cd00dae06096f6db90db9f0ebd348"
+  },
+  {
+   "assessment_id": "e8e329c60e997bab",
+   "capture": "P_imap_decline.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 36,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 6,
+    "SEC-PLAIN-002": 6
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CFG-001|INFORMATIONAL": 6,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 6,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 6,
+    "SEC-STLS-002|INFORMATIONAL": 6
+   },
+   "score_value": 34.15,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "92067e43fa77daf9a50873f8216762e98c9331717d341ceae2ca6186d408e9ad"
+  },
+  {
+   "assessment_id": "9517ff230b5ee08f",
+   "capture": "P_imap_strip.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 6,
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 24,
+    "UNKNOWN": 36
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 6,
+    "SEC-PLAIN-002": 6
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CFG-001|INFORMATIONAL": 6,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 6,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 6,
+    "SEC-STLS-002|AMBIGUOUS": 6
+   },
+   "score_value": 34.15,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "2d547c9113d688f9ccfdcc35a55b9883fde0d77b0d0df2d59f917942ca737e29"
+  },
+  {
+   "assessment_id": "e0788bf5baab356f",
+   "capture": "P_imap_tls.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 48,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CERT-001|NOT_OBSERVABLE": 6,
+    "SEC-CFG-001|COMPLIANT": 6,
+    "SEC-FS-001|COMPLIANT": 6,
+    "SEC-KEX-001|INFORMATIONAL": 6,
+    "SEC-STLS-001|COMPLIANT": 6,
+    "SEC-TLS-001|COMPLIANT": 6,
+    "SEC-TLS-002|COMPLIANT": 6,
+    "SEC-TLS-003|NOT_OBSERVABLE": 6
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "693083921ec52bb51e4167761729856b7eab6c639b32d546c3e9414678f9de44"
+  },
+  {
+   "assessment_id": "f2a5f6d6f2d25580",
+   "capture": "P_pop3_decline.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 30,
+    "UNKNOWN": 36
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 6,
+    "SEC-PLAIN-002": 6
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CFG-001|INFORMATIONAL": 6,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 6,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 6,
+    "SEC-STLS-002|INFORMATIONAL": 6
+   },
+   "score_value": 34.15,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "384076293475dd80ce92abfbbf9aedba815ec60f938f020928dd03bd4157e780"
+  },
+  {
+   "assessment_id": "5e79a69d061f1bc6",
+   "capture": "P_pop3_strip.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 6,
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 24,
+    "UNKNOWN": 36
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 6,
+    "SEC-PLAIN-002": 6
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CFG-001|INFORMATIONAL": 6,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 6,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 6,
+    "SEC-STLS-002|AMBIGUOUS": 6
+   },
+   "score_value": 34.15,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "7d7ac0685d993e28c31367984bb16e9774d76fa5a32bb637f639fae3516a412e"
+  },
+  {
+   "assessment_id": "1ac93ece402460a7",
+   "capture": "P_pop3_tls.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 6,
+    "OBSERVED": 48,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 1,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-CERT-001|NOT_OBSERVABLE": 6,
+    "SEC-CFG-001|COMPLIANT": 6,
+    "SEC-FS-001|COMPLIANT": 6,
+    "SEC-KEX-001|INFORMATIONAL": 6,
+    "SEC-STLS-001|COMPLIANT": 6,
+    "SEC-TLS-001|COMPLIANT": 6,
+    "SEC-TLS-002|COMPLIANT": 6,
+    "SEC-TLS-003|NOT_OBSERVABLE": 6
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "f2812b0ed704a41a3dbd7dc863d0bd524be3d3ce9a13b379b44f70912eee6407"
+  },
+  {
+   "assessment_id": "52dfe29eeafb2563",
+   "capture": "S_striptls_real.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "AMBIGUOUS": 1,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 4,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 1,
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "WEAK",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|AMBIGUOUS": 1
+   },
+   "score_value": 60.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "b69cd2970231bb4faba4bd02e788a0106aa66028a88ad67c9a168def69d2cdab"
+  },
+  {
+   "assessment_id": "7ec709fd2c3590f1",
+   "capture": "T_IMAPS_implicit.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 24,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|NOT_OBSERVABLE": 6,
+    "SEC-CFG-001|COMPLIANT": 6,
+    "SEC-FS-001|COMPLIANT": 6,
+    "SEC-KEX-001|INFORMATIONAL": 6,
+    "SEC-STLS-003|INFORMATIONAL": 6,
+    "SEC-TLS-001|COMPLIANT": 6,
+    "SEC-TLS-002|COMPLIANT": 6,
+    "SEC-TLS-003|NOT_OBSERVABLE": 6
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "990819fe37f7fef3176c3b2469b5e9f91e662fdee86beeb2a2747739dcfeda5f"
+  },
+  {
+   "assessment_id": "414436222c707762",
+   "capture": "T_POP3S_implicit.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 24,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|NOT_OBSERVABLE": 6,
+    "SEC-CFG-001|COMPLIANT": 6,
+    "SEC-FS-001|COMPLIANT": 6,
+    "SEC-KEX-001|INFORMATIONAL": 6,
+    "SEC-STLS-003|INFORMATIONAL": 6,
+    "SEC-TLS-001|COMPLIANT": 6,
+    "SEC-TLS-002|COMPLIANT": 6,
+    "SEC-TLS-003|NOT_OBSERVABLE": 6
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "5114519902e50b084cacde82ac2462fc9875ad0bab6231e0e6f5381d7c214864"
+  },
+  {
+   "assessment_id": "f5878b36ed82c849",
+   "capture": "T_SMTPS_implicit.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 24,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|NOT_OBSERVABLE": 6,
+    "SEC-CFG-001|COMPLIANT": 6,
+    "SEC-FS-001|COMPLIANT": 6,
+    "SEC-KEX-001|INFORMATIONAL": 6,
+    "SEC-STLS-003|INFORMATIONAL": 6,
+    "SEC-TLS-001|COMPLIANT": 6,
+    "SEC-TLS-002|COMPLIANT": 6,
+    "SEC-TLS-003|NOT_OBSERVABLE": 6
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 6,
+   "sessions_total": 6,
+   "sha256": "9a3d436f5d94bdece51e3b3728b656b36a5168a97be1e2c72f638695597c567d"
+  },
+  {
+   "assessment_id": "e1f99237a0657e53",
+   "capture": "T_TLS10.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "NOT_OBSERVABLE": 4,
+    "OBSERVED": 40,
+    "UNKNOWN": 4
+   },
+   "observed_issue_by_rule": {
+    "SEC-TLS-001": 4
+   },
+   "overall_posture": "WEAK",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 4,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 4,
+    "SEC-CERT-001|NOT_OBSERVABLE": 4,
+    "SEC-CFG-001|INFORMATIONAL": 4,
+    "SEC-FS-001|COMPLIANT": 4,
+    "SEC-KEX-001|INFORMATIONAL": 4,
+    "SEC-STLS-001|COMPLIANT": 4,
+    "SEC-TLS-001|OBSERVED_ISSUE": 4,
+    "SEC-TLS-002|COMPLIANT": 4,
+    "SEC-TLS-003|NOT_OBSERVABLE": 4
+   },
+   "score_value": 58.0,
+   "sessions_assessed": 4,
+   "sessions_total": 4,
+   "sha256": "927930414fd0d1d470e6b19ed4a30bf700da9d5ad284885cbb4975cfe65e8fca"
+  },
+  {
+   "assessment_id": "4ee1d07b59e22809",
+   "capture": "T_TLS11.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "NOT_OBSERVABLE": 4,
+    "OBSERVED": 40,
+    "UNKNOWN": 4
+   },
+   "observed_issue_by_rule": {
+    "SEC-TLS-001": 4
+   },
+   "overall_posture": "WEAK",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 4,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 4,
+    "SEC-CERT-001|NOT_OBSERVABLE": 4,
+    "SEC-CFG-001|INFORMATIONAL": 4,
+    "SEC-FS-001|COMPLIANT": 4,
+    "SEC-KEX-001|INFORMATIONAL": 4,
+    "SEC-STLS-001|COMPLIANT": 4,
+    "SEC-TLS-001|OBSERVED_ISSUE": 4,
+    "SEC-TLS-002|COMPLIANT": 4,
+    "SEC-TLS-003|NOT_OBSERVABLE": 4
+   },
+   "score_value": 58.0,
+   "sessions_assessed": 4,
+   "sessions_total": 4,
+   "sha256": "0c5a0125025193ee67eac927bfd24be42bf1e73e25261099834e4e0636f68e72"
+  },
+  {
+   "assessment_id": "1f5c627f20cf222e",
+   "capture": "T_TLS12.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "NOT_OBSERVABLE": 4,
+    "OBSERVED": 40,
+    "UNKNOWN": 4
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 4,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 4,
+    "SEC-CERT-001|NOT_OBSERVABLE": 4,
+    "SEC-CFG-001|COMPLIANT": 4,
+    "SEC-FS-001|COMPLIANT": 4,
+    "SEC-KEX-001|INFORMATIONAL": 4,
+    "SEC-STLS-001|COMPLIANT": 4,
+    "SEC-TLS-001|COMPLIANT": 4,
+    "SEC-TLS-002|COMPLIANT": 4,
+    "SEC-TLS-003|NOT_OBSERVABLE": 4
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 4,
+   "sessions_total": 4,
+   "sha256": "c295a124e8152d85d07b66c85972921fd93d97c08ce12b68898fb37b824d4250"
+  },
+  {
+   "assessment_id": "8f397926a9a1d367",
+   "capture": "X_prompt_injection.pcap",
+   "corpus": "oq28",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 5,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "ADEQUATE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|INFORMATIONAL": 1
+   },
+   "score_value": 88.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "b6cb31bd9275310613b7707743b4d5970fdd947f2682f5904c1666bcc8e9bca7"
+  },
+  {
+   "assessment_id": "275f94dc83c40a7a",
+   "capture": "A_clean_teardown.pcap",
+   "corpus": "oq46",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "746c2976d6caa1ba057a7906ee66db02f2011add777ed18f26d3ba0332fd0df4"
+  },
+  {
+   "assessment_id": "cd908d022846d16e",
+   "capture": "B_reset_teardown.pcap",
+   "corpus": "oq46",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "1aaae5140dc4af6c1583569196d29f25ed06befc00d29c12ab6685e4756f629d"
+  },
+  {
+   "assessment_id": "0d8ff814edf77d36",
+   "capture": "C_cut_mid_dialogue.pcap",
+   "corpus": "oq46",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 4,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|NOT_OBSERVABLE": 1,
+    "SEC-STLS-002|INFORMATIONAL": 1
+   },
+   "score_value": 0.0,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sha256": "58c21faf4a29799f53dcf37a2b953c41a57ff742969a7d0ba9d6e53d43f09829"
+  },
+  {
+   "assessment_id": "5a0f18b588f8281b",
+   "capture": "D_cut_during_starttls.pcap",
+   "corpus": "oq46",
+   "observation_states": {
+    "INCOMPLETE": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 4,
+    "UNKNOWN": 5
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|NOT_OBSERVABLE": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1
+   },
+   "score_value": 0.0,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sha256": "1f74e25c34c5803fd43ee0dbe1701e517b0fef1bf27e47905616cbb5d6aac4fa"
+  },
+  {
+   "assessment_id": "fad418b845058513",
+   "capture": "E_cut_during_handshake.pcap",
+   "corpus": "oq46",
+   "observation_states": {
+    "AMBIGUOUS": 1,
+    "INCOMPLETE": 1,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 4,
+    "UNKNOWN": 5
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-KEX-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "7a4a82bb1ab7615fee260b2437f3e0ab43cbb25e36a5f0a17b3f0434d079d3b9"
+  },
+  {
+   "assessment_id": "aed63c84ab0e851b",
+   "capture": "F_missing_setup.pcap",
+   "corpus": "oq46",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 5,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "ADEQUATE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|INFORMATIONAL": 1
+   },
+   "score_value": 88.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "cdd0c529bce77249fedac1127f63d08413f44ee6c2dd49102b08e3e080ebfea4"
+  },
+  {
+   "assessment_id": "2c2f75178666605a",
+   "capture": "G_incomplete_exchange.pcap",
+   "corpus": "oq46",
+   "observation_states": {
+    "INCOMPLETE": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 3,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|NOT_OBSERVABLE": 1,
+    "SEC-STLS-002|INSUFFICIENT_EVIDENCE": 1
+   },
+   "score_value": 0.0,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sha256": "f1a36692b992728631dab2695b6d57921d09477a2a39776e50d2d4cceefe66e7"
+  },
+  {
+   "assessment_id": "338ae1aecf8aa71d",
+   "capture": "H_quiet_stream_then_more_traffic.pcap",
+   "corpus": "oq46",
+   "observation_states": {
+    "INCOMPLETE": 2,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 2,
+    "OBSERVED": 11,
+    "UNKNOWN": 7
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 2,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 2,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-CFG-001|NOT_OBSERVABLE": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-STLS-002|INFORMATIONAL": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 2,
+   "sha256": "94ae93ec60df311e72a110391580d31667e6e318f02584e1e85cf23afda3f2eb"
+  },
+  {
+   "assessment_id": "fd218df99d36cfbc",
+   "capture": "A_whole_in_one_segment.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "d4c932e6605cd226ead86aba630ee3627918e9d70c600a690f657d408bacfd82"
+  },
+  {
+   "assessment_id": "2c712c281fd09fb8",
+   "capture": "B_split_before_capability.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "fe5680aac0fb4d79dc20fc5bd75bdc53d59756c70da83683e3847247d113e607"
+  },
+  {
+   "assessment_id": "87690c17ee773d1e",
+   "capture": "C_split_inside_token.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "3f42e469b6f17d879a37c1c65a3e34dd0848cd21009e7b1501899d024328898d"
+  },
+  {
+   "assessment_id": "182c3a9a6ea0dabd",
+   "capture": "D_split_before_final_letter.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "56f8d00e8c4bdb1ff3fa3ff31349fa51202edb9d3b9f9daf2f22a18ed3c0062d"
+  },
+  {
+   "assessment_id": "9091111281ef7c2c",
+   "capture": "E_split_between_cr_and_lf.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "c362bf07ff521bcd8d8d223f5b8ec2870bcd9cb3e6843ee8e017acbc7df4fbc3"
+  },
+  {
+   "assessment_id": "8237650653f6823d",
+   "capture": "F_split_many_segments.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "53a3de853b9c029310204ab3dc3d97e87462c6358b71a89779edbe145678ffa5"
+  },
+  {
+   "assessment_id": "eb36dcf7ef72aaec",
+   "capture": "G_split_mid_numeric.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "615247d3c82bbef9058de1638d29ee22cdde73c8867859a2e81ee7a9ae39f04e"
+  },
+  {
+   "assessment_id": "e062eb348d69f024",
+   "capture": "H_retransmitted_segment.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "484c415d1d931dd1d0c377e686f65c03009522793c956408715393c5ebf0afff"
+  },
+  {
+   "assessment_id": "dc6709fadf531897",
+   "capture": "I_reordered_segments.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 7,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "f61bf131036c610e9e2a1499a4a3f3c0f151b6b0fc1f8c6dbb4d287c2169afec"
+  },
+  {
+   "assessment_id": "31b57fae71ae7589",
+   "capture": "J_absent_whole.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "AMBIGUOUS": 1,
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 6,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-STLS-002|AMBIGUOUS": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "f1dbeb4d5b45991361dc67e04eae30ba75f96c7d32819ea1296ef7a42e3a0ef6"
+  },
+  {
+   "assessment_id": "88537892f765c5b5",
+   "capture": "K_absent_split.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "AMBIGUOUS": 1,
+    "INCOMPLETE": 1,
+    "INFERRED": 2,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 6,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CERT-001|NOT_OBSERVABLE": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-STLS-002|AMBIGUOUS": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|COMPLIANT": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "4d84049789f9630392e8e9bed351ef4c336ad0b85e94fa10575e08ae59b24502"
+  },
+  {
+   "assessment_id": "cdb3763fc314b9df",
+   "capture": "L_advertised_never_used.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 5,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 1,
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "WEAK",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|INFORMATIONAL": 1
+   },
+   "score_value": 60.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "1ba092f3a34f7bee1955fbb0ce49de893cc178577b6a485ff2c5577c411f80df"
+  },
+  {
+   "assessment_id": "498e4b36357dc84d",
+   "capture": "M_server_refuses.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 6,
+    "UNKNOWN": 5
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-002": 1,
+    "SEC-STLS-001": 1
+   },
+   "overall_posture": "ADEQUATE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-001|OBSERVED_ISSUE": 1
+   },
+   "score_value": 76.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "f25050c6c0684f505c3f2cefc3389f97c7eede82cf7d9b48b9919fe0ad9e6c7b"
+  },
+  {
+   "assessment_id": "d9e05ff337643377",
+   "capture": "N_forged_capability_in_message_body.pcap",
+   "corpus": "oq47",
+   "observation_states": {
+    "AMBIGUOUS": 1,
+    "NOT_OBSERVABLE": 1,
+    "OBSERVED": 4,
+    "UNKNOWN": 6
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-002": 1
+   },
+   "overall_posture": "ADEQUATE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 1,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 1,
+    "SEC-STLS-002|AMBIGUOUS": 1
+   },
+   "score_value": 88.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "2382fcd12d155946f831ac92cd91f102deab7a5292d2c51daab5f221944c5623"
+  },
+  {
+   "assessment_id": "1069385419f76780",
+   "capture": "smtps_tls12_chain_rsa2048.pcap",
+   "corpus": "p11cert",
+   "observation_states": {
+    "AMBIGUOUS": 1,
+    "NOT_OBSERVABLE": 4,
+    "OBSERVED": 6,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|INFORMATIONAL": 1,
+    "SEC-CERT-002|COMPLIANT": 1,
+    "SEC-CERT-003|COMPLIANT": 1,
+    "SEC-CERT-004|COMPLIANT": 1,
+    "SEC-CERT-005|INFORMATIONAL": 1,
+    "SEC-CFG-001|COMPLIANT": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-003|INFORMATIONAL": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "43ee75d5eae7b523dcc051b6e92a200a8d171342ddecf24ce32e3a0f140e216d"
+  },
+  {
+   "assessment_id": "278738ab54358878",
+   "capture": "smtps_tls12_selfsigned_rsa2048.pcap",
+   "corpus": "p11cert",
+   "observation_states": {
+    "AMBIGUOUS": 1,
+    "NOT_OBSERVABLE": 4,
+    "OBSERVED": 6,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {
+    "SEC-CERT-005": 1
+   },
+   "overall_posture": "ADEQUATE",
+   "rule_status_counts": {
+    "SEC-CERT-001|INFORMATIONAL": 1,
+    "SEC-CERT-002|COMPLIANT": 1,
+    "SEC-CERT-003|COMPLIANT": 1,
+    "SEC-CERT-004|COMPLIANT": 1,
+    "SEC-CERT-005|OBSERVED_ISSUE": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-003|INFORMATIONAL": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 88.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "c08508835713a7485fc8456a58b93c226786f7f46b6da483706f586240ac2caa"
+  },
+  {
+   "assessment_id": "17000a71cd8ed362",
+   "capture": "smtps_tls12_weak_sha1_rsa1024.pcap",
+   "corpus": "p11cert",
+   "observation_states": {
+    "AMBIGUOUS": 1,
+    "NOT_OBSERVABLE": 4,
+    "OBSERVED": 6,
+    "UNKNOWN": 1
+   },
+   "observed_issue_by_rule": {
+    "SEC-CERT-003": 1,
+    "SEC-CERT-004": 1
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "SEC-CERT-001|INFORMATIONAL": 1,
+    "SEC-CERT-002|COMPLIANT": 1,
+    "SEC-CERT-003|OBSERVED_ISSUE": 1,
+    "SEC-CERT-004|OBSERVED_ISSUE": 1,
+    "SEC-CERT-005|INFORMATIONAL": 1,
+    "SEC-CFG-001|INFORMATIONAL": 1,
+    "SEC-FS-001|COMPLIANT": 1,
+    "SEC-KEX-001|INFORMATIONAL": 1,
+    "SEC-STLS-003|INFORMATIONAL": 1,
+    "SEC-TLS-001|COMPLIANT": 1,
+    "SEC-TLS-002|INSUFFICIENT_EVIDENCE": 1,
+    "SEC-TLS-003|NOT_OBSERVABLE": 1
+   },
+   "score_value": 44.0,
+   "sessions_assessed": 1,
+   "sessions_total": 1,
+   "sha256": "ce5377348e22ad92c33d705e31388944bad8224534d478c38b57a75d3ba4a501"
+  },
+  {
+   "assessment_id": "ae8ea6dc3b686525",
+   "capture": "tls12_chain_rsa2048.pcap",
+   "corpus": "p11cert",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "UNKNOWN": 11
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "rule_status_counts": {},
+   "score_value": 0.0,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sha256": "61f12fe87a0dcb61268b3a157bad972f65989cc4b52f1f254a5c4f887408ba29"
+  },
+  {
+   "assessment_id": "b5b9338c10b91242",
+   "capture": "tls12_selfsigned_rsa2048.pcap",
+   "corpus": "p11cert",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "UNKNOWN": 11
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "rule_status_counts": {},
+   "score_value": 0.0,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sha256": "22c24adffdfaeaf93cfff16ce97c1c5789dacf0dac3f86e35682f0e9716c61ea"
+  },
+  {
+   "assessment_id": "e21c8a8bfb1f786f",
+   "capture": "tls12_weak_sha1_rsa1024.pcap",
+   "corpus": "p11cert",
+   "observation_states": {
+    "NOT_OBSERVABLE": 1,
+    "UNKNOWN": 11
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "rule_status_counts": {},
+   "score_value": 0.0,
+   "sessions_assessed": 0,
+   "sessions_total": 1,
+   "sha256": "76975dd38cd43decc94f9f9e3f31a9bcf8cf65f571479c05ad6f8d53df69539b"
+  },
+  {
+   "assessment_id": "8c1c09e9cba9179d",
+   "capture": "B01_all_upgrade.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "INCOMPLETE": 40,
+    "INFERRED": 80,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 280,
+    "UNKNOWN": 40
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 40,
+    "SEC-CFG-001|COMPLIANT": 40,
+    "SEC-FS-001|COMPLIANT": 40,
+    "SEC-KEX-001|INFORMATIONAL": 40,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 40,
+    "SEC-TLS-001|COMPLIANT": 40,
+    "SEC-TLS-002|COMPLIANT": 40,
+    "SEC-TLS-003|NOT_OBSERVABLE": 40
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "0af4407920a49e0680e06d18cf3670da69cfdc9ce4b9624c6df7de5d4e292ed5"
+  },
+  {
+   "assessment_id": "9be582ef77b036a4",
+   "capture": "B02_legit_decline.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 200,
+    "UNKNOWN": 240
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 40,
+    "SEC-PLAIN-002": 40
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CFG-001|INFORMATIONAL": 40,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 40,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 40,
+    "SEC-STLS-002|INFORMATIONAL": 40
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "67c992069bad05fac7e222241aba6c03ecd276577bec2c9a2fb25010df3d2b30"
+  },
+  {
+   "assessment_id": "930d4c344ab5addd",
+   "capture": "B03_no_support.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "AMBIGUOUS": 40,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 161,
+    "UNKNOWN": 239
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 40,
+    "SEC-PLAIN-002": 40
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CFG-001|INFORMATIONAL": 40,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 40,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 40,
+    "SEC-STLS-002|AMBIGUOUS": 40
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "582bf63b9a75a27d6891e9e76835ab788e6232c35387404f7d85198080839bdc"
+  },
+  {
+   "assessment_id": "b24125bb39df82c2",
+   "capture": "B04_strip_with_control.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "AMBIGUOUS": 10,
+    "INCOMPLETE": 30,
+    "INFERRED": 60,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 250,
+    "UNKNOWN": 90
+   },
+   "observed_issue_by_rule": {
+    "CS-STARTTLS-001": 5,
+    "SEC-PLAIN-001": 10,
+    "SEC-PLAIN-002": 10
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-001|OBSERVED_ISSUE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-CFG-001|INFORMATIONAL": 10,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 10,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 10,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 30,
+    "SEC-STLS-002|AMBIGUOUS": 10,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 7.81,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "39de4044876bf6523f133026bf90775e6a3806bd3fa7772c47ce99a1d4af8fe1"
+  },
+  {
+   "assessment_id": "a1f249efc77cf401",
+   "capture": "B05_strip_blind.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "AMBIGUOUS": 40,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 160,
+    "UNKNOWN": 240
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 40,
+    "SEC-PLAIN-002": 40
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CFG-001|INFORMATIONAL": 40,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 40,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 40,
+    "SEC-STLS-002|AMBIGUOUS": 40
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "ccf42a95b5a7ca5ba5292cc37b35c436c1ce0676667eb36d920a8b387aad374c"
+  },
+  {
+   "assessment_id": "f4596fca81c792d3",
+   "capture": "B06_strip_command.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "INCOMPLETE": 30,
+    "INFERRED": 60,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 260,
+    "UNKNOWN": 90
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 10,
+    "SEC-PLAIN-002": 10
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-CFG-001|INFORMATIONAL": 10,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 10,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 10,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 30,
+    "SEC-STLS-002|INFORMATIONAL": 10,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 26.78,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "ede21a126335e73f862f05bba219c6e785977045a9d50668d705f678caa72424"
+  },
+  {
+   "assessment_id": "0abd6def5c83990c",
+   "capture": "B07_failed_upgrade.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "AMBIGUOUS": 10,
+    "INCOMPLETE": 30,
+    "INFERRED": 40,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 180,
+    "UNKNOWN": 70
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-FS-001|COMPLIANT": 20,
+    "SEC-FS-001|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-KEX-001|INFORMATIONAL": 20,
+    "SEC-KEX-001|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 30,
+    "SEC-TLS-001|COMPLIANT": 20,
+    "SEC-TLS-001|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-TLS-002|COMPLIANT": 20,
+    "SEC-TLS-002|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "52beb364c536491998e0f60063cef80e2f14d486a2e3be79593614138df99fe4"
+  },
+  {
+   "assessment_id": "48fdaf59e0b9a393",
+   "capture": "B08_config_change.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "AMBIGUOUS": 18,
+    "INCOMPLETE": 18,
+    "INFERRED": 36,
+    "NOT_OBSERVABLE": 36,
+    "OBSERVED": 198,
+    "UNKNOWN": 126
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 18,
+    "SEC-PLAIN-002": 18
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|AMBIGUOUS": 18,
+    "CS-STARTTLS-001|COMPLIANT": 3,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|AMBIGUOUS": 3,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CERT-001|NOT_OBSERVABLE": 18,
+    "SEC-CFG-001|COMPLIANT": 18,
+    "SEC-CFG-001|INFORMATIONAL": 18,
+    "SEC-FS-001|COMPLIANT": 18,
+    "SEC-KEX-001|INFORMATIONAL": 18,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 18,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 18,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 18,
+    "SEC-STLS-002|AMBIGUOUS": 18,
+    "SEC-TLS-001|COMPLIANT": 18,
+    "SEC-TLS-002|COMPLIANT": 18,
+    "SEC-TLS-003|NOT_OBSERVABLE": 18
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 36,
+   "sessions_total": 36,
+   "sha256": "98e7bde7490633514618f5c74b41f66ce91e909d581f7456ca0e7e9b41cc346a"
+  },
+  {
+   "assessment_id": "8717f03054aeb760",
+   "capture": "B09_mixed_legit.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "INCOMPLETE": 20,
+    "INFERRED": 40,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 240,
+    "UNKNOWN": 140
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 20,
+    "SEC-PLAIN-002": 20
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 20,
+    "SEC-CFG-001|COMPLIANT": 20,
+    "SEC-CFG-001|INFORMATIONAL": 20,
+    "SEC-FS-001|COMPLIANT": 20,
+    "SEC-KEX-001|INFORMATIONAL": 20,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 20,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 20,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-STLS-002|INFORMATIONAL": 20,
+    "SEC-TLS-001|COMPLIANT": 20,
+    "SEC-TLS-002|COMPLIANT": 20,
+    "SEC-TLS-003|NOT_OBSERVABLE": 20
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "2b740221a62ff6dc65da7ec230d370a6fad263bb96b74d7b4462ecd6d093c9f8"
+  },
+  {
+   "assessment_id": "46fd7862c284f4dd",
+   "capture": "B10_imap_strip_control.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "AMBIGUOUS": 10,
+    "INFERRED": 60,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 280,
+    "UNKNOWN": 90
+   },
+   "observed_issue_by_rule": {
+    "CS-STARTTLS-001": 5,
+    "SEC-PLAIN-001": 10,
+    "SEC-PLAIN-002": 10
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-001|OBSERVED_ISSUE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-CFG-001|INFORMATIONAL": 10,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 10,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 10,
+    "SEC-STLS-001|COMPLIANT": 30,
+    "SEC-STLS-002|AMBIGUOUS": 10,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 7.81,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "61f96932c847e35631e77bccffd3ae570b6efdf59640a89116235a2a34ca3c82"
+  },
+  {
+   "assessment_id": "36feeb03593eddb8",
+   "capture": "B11_imap_legit.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "INFERRED": 60,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 240,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-STLS-001|COMPLIANT": 30,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "f9c5ca8deb136cac9fdf7ad48892ecf587d2b4fa46cbc60636d71b6ce26025f0"
+  },
+  {
+   "assessment_id": "628b8817698bbe6d",
+   "capture": "B12_pop3_strip_control.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "AMBIGUOUS": 10,
+    "INCOMPLETE": 5,
+    "INFERRED": 60,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 275,
+    "UNKNOWN": 90
+   },
+   "observed_issue_by_rule": {
+    "CS-STARTTLS-001": 5,
+    "SEC-PLAIN-001": 10,
+    "SEC-PLAIN-002": 10
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-001|OBSERVED_ISSUE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-CFG-001|INFORMATIONAL": 10,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 10,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 10,
+    "SEC-STLS-001|COMPLIANT": 25,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 5,
+    "SEC-STLS-002|AMBIGUOUS": 10,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 7.81,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "32e52b575e364fe7cbf38ab3d53a6b4e09bead21e9bcaf6018bf8b7d366b43ca"
+  },
+  {
+   "assessment_id": "8e9360bc1fd4872b",
+   "capture": "B13_pop3_legit.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 150,
+    "UNKNOWN": 180
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 30,
+    "SEC-PLAIN-002": 30
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CFG-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 30,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 30,
+    "SEC-STLS-002|INFORMATIONAL": 30
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "13d2e22e15623e5660129c7770faa8555c951d241da7cb778ea25ac901a1fade"
+  },
+  {
+   "assessment_id": "8067a34545e32e48",
+   "capture": "B14_implicit.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "INFERRED": 60,
+    "NOT_OBSERVABLE": 150,
+    "OBSERVED": 120,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-STLS-003|INFORMATIONAL": 30,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "0a53808fab626b415eaed46740b00f3c08d88dd69706b84c8fc2a69310256fdf"
+  },
+  {
+   "assessment_id": "afb64742e053b0f7",
+   "capture": "B15_implicit_imaps.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "INFERRED": 60,
+    "NOT_OBSERVABLE": 150,
+    "OBSERVED": 120,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-STLS-003|INFORMATIONAL": 30,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "31a919b2857061950cd75c283c109b84f13f47d99463e6730665a9e525be2dab"
+  },
+  {
+   "assessment_id": "f384389f9196a990",
+   "capture": "B16_legacy_tls.pcap",
+   "corpus": "oq36-genB",
+   "observation_states": {
+    "INCOMPLETE": 30,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 270,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {
+    "SEC-TLS-001": 20
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 10,
+    "SEC-CFG-001|INFORMATIONAL": 20,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 30,
+    "SEC-TLS-001|COMPLIANT": 10,
+    "SEC-TLS-001|OBSERVED_ISSUE": 20,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 44.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "6f25eb7990a357d626728e1ce988ca68cdfb594ca3a847cab07e7add7066bebe"
+  },
+  {
+   "assessment_id": "7bdf6be40a747033",
+   "capture": "C01_upgrade_smtp.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "INFERRED": 24,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 376,
+    "UNKNOWN": 40
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 40,
+    "SEC-CFG-001|COMPLIANT": 40,
+    "SEC-FS-001|COMPLIANT": 40,
+    "SEC-KEX-001|INFORMATIONAL": 40,
+    "SEC-STLS-001|COMPLIANT": 40,
+    "SEC-TLS-001|COMPLIANT": 40,
+    "SEC-TLS-002|COMPLIANT": 40,
+    "SEC-TLS-003|NOT_OBSERVABLE": 40
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "a2bee3e72b5016c9e83382f7418f10a8fe85129db31f18590b31bd3e64ac4751"
+  },
+  {
+   "assessment_id": "a6405f6a71da71e3",
+   "capture": "C02_decline_smtp.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 200,
+    "UNKNOWN": 240
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 40,
+    "SEC-PLAIN-002": 40
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CFG-001|INFORMATIONAL": 40,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 40,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 40,
+    "SEC-STLS-002|INFORMATIONAL": 40
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "925c6d874c484db477e121310869f47231bf95d55496bde5b411cd46d2f13681"
+  },
+  {
+   "assessment_id": "ed2705b9b5d96e52",
+   "capture": "C03_no_support_smtp.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "AMBIGUOUS": 40,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 160,
+    "UNKNOWN": 240
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 40,
+    "SEC-PLAIN-002": 40
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CFG-001|INFORMATIONAL": 40,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 40,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 40,
+    "SEC-STLS-002|AMBIGUOUS": 40
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "e8bb2c0e807017c7f8fb5347ac453f9a644b6800fd9a103fb5ed8d21023ac97e"
+  },
+  {
+   "assessment_id": "9b7c5b064054fd39",
+   "capture": "C04_strip_control.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "AMBIGUOUS": 10,
+    "INFERRED": 18,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 322,
+    "UNKNOWN": 90
+   },
+   "observed_issue_by_rule": {
+    "CS-STARTTLS-001": 5,
+    "SEC-PLAIN-001": 10,
+    "SEC-PLAIN-002": 10
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-001|OBSERVED_ISSUE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-CFG-001|INFORMATIONAL": 10,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 10,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 10,
+    "SEC-STLS-001|COMPLIANT": 30,
+    "SEC-STLS-002|AMBIGUOUS": 10,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 7.81,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "6f35c7cb92adcacf305f9c246b92a4d0c95113763bb163a3ad9fa6da7cebe30d"
+  },
+  {
+   "assessment_id": "c8bb05a808951523",
+   "capture": "C05_strip_blind.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "AMBIGUOUS": 40,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 160,
+    "UNKNOWN": 240
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 40,
+    "SEC-PLAIN-002": 40
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CFG-001|INFORMATIONAL": 40,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 40,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 40,
+    "SEC-STLS-002|AMBIGUOUS": 40
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "e4f6a5b65c18ed87867d2604259b69391bbccbe6bbacaadff56e251365633471"
+  },
+  {
+   "assessment_id": "9404e15681ce8c27",
+   "capture": "C06_strip_command.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "INFERRED": 18,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 332,
+    "UNKNOWN": 90
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 10,
+    "SEC-PLAIN-002": 10
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-CFG-001|INFORMATIONAL": 10,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 10,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 10,
+    "SEC-STLS-001|COMPLIANT": 30,
+    "SEC-STLS-002|INFORMATIONAL": 10,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 26.78,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "f98463ede56a9a47fb28b70784284cfcef9aaa02983508674df01404e06267cf"
+  },
+  {
+   "assessment_id": "45153d5354961a7a",
+   "capture": "C07_reject_upgrade.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 180,
+    "UNKNOWN": 150
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 30,
+    "SEC-PLAIN-002": 30,
+    "SEC-STLS-001": 30
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CFG-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 30,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 30,
+    "SEC-STLS-001|OBSERVED_ISSUE": 30
+   },
+   "score_value": 0.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "00b7a03796a98110eac446830b7afa6b97bd344db8cbc7ee4aac33fd920984f3"
+  },
+  {
+   "assessment_id": "71bf4506a5102c55",
+   "capture": "C08_failed_upgrade.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "AMBIGUOUS": 10,
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 238,
+    "UNKNOWN": 70
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-FS-001|COMPLIANT": 20,
+    "SEC-FS-001|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-KEX-001|INFORMATIONAL": 20,
+    "SEC-KEX-001|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-STLS-001|COMPLIANT": 20,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-TLS-001|COMPLIANT": 20,
+    "SEC-TLS-001|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-TLS-002|COMPLIANT": 20,
+    "SEC-TLS-002|INSUFFICIENT_EVIDENCE": 10,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "2ef6777e4c0b3e43adb9e937f97cdef59a0f763f4bd511bb8d26b0e2507d8178"
+  },
+  {
+   "assessment_id": "0627e23ba2c3fb87",
+   "capture": "C09_mixed_legit.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 288,
+    "UNKNOWN": 140
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 20,
+    "SEC-PLAIN-002": 20
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 20,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 20,
+    "SEC-CFG-001|COMPLIANT": 20,
+    "SEC-CFG-001|INFORMATIONAL": 20,
+    "SEC-FS-001|COMPLIANT": 20,
+    "SEC-KEX-001|INFORMATIONAL": 20,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 20,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 20,
+    "SEC-STLS-001|COMPLIANT": 20,
+    "SEC-STLS-002|INFORMATIONAL": 20,
+    "SEC-TLS-001|COMPLIANT": 20,
+    "SEC-TLS-002|COMPLIANT": 20,
+    "SEC-TLS-003|NOT_OBSERVABLE": 20
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "3590b60a4f3e33bb536cbc1475699e3011a735de7ea3eeb512346759b668df35"
+  },
+  {
+   "assessment_id": "44f37b258685f55b",
+   "capture": "C10_config_change.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "INFERRED": 12,
+    "NOT_OBSERVABLE": 36,
+    "OBSERVED": 258,
+    "UNKNOWN": 126
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 18,
+    "SEC-PLAIN-002": 18
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 21,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|AMBIGUOUS": 3,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CERT-001|NOT_OBSERVABLE": 18,
+    "SEC-CFG-001|COMPLIANT": 18,
+    "SEC-CFG-001|INFORMATIONAL": 18,
+    "SEC-FS-001|COMPLIANT": 18,
+    "SEC-KEX-001|INFORMATIONAL": 18,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 18,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 18,
+    "SEC-STLS-001|COMPLIANT": 18,
+    "SEC-STLS-002|INFORMATIONAL": 18,
+    "SEC-TLS-001|COMPLIANT": 18,
+    "SEC-TLS-002|COMPLIANT": 18,
+    "SEC-TLS-003|NOT_OBSERVABLE": 18
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 36,
+   "sessions_total": 36,
+   "sha256": "95de81a9136716674f123e164b2213874c9f146b01b34b2ec954c4f211ac729d"
+  },
+  {
+   "assessment_id": "3182e682a35873bd",
+   "capture": "C11_imap_strip_control.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "AMBIGUOUS": 10,
+    "INFERRED": 18,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 322,
+    "UNKNOWN": 90
+   },
+   "observed_issue_by_rule": {
+    "CS-STARTTLS-001": 5,
+    "SEC-PLAIN-001": 10,
+    "SEC-PLAIN-002": 10
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-001|OBSERVED_ISSUE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-CFG-001|INFORMATIONAL": 10,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 10,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 10,
+    "SEC-STLS-001|COMPLIANT": 30,
+    "SEC-STLS-002|AMBIGUOUS": 10,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 7.81,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "4be9ef434629d822260dba734c53c866bea792b837c53323a30a650af68385d7"
+  },
+  {
+   "assessment_id": "7891091c87a034fa",
+   "capture": "C12_imap_upgrade.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "INFERRED": 18,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 282,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-STLS-001|COMPLIANT": 30,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "19a85759cca86784e7ebfd92a1e0ffa39e2cdadd69000905de3026ae62ed62f4"
+  },
+  {
+   "assessment_id": "034d716dfc8c2810",
+   "capture": "C13_pop3_strip_control.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "AMBIGUOUS": 10,
+    "INFERRED": 18,
+    "NOT_OBSERVABLE": 40,
+    "OBSERVED": 322,
+    "UNKNOWN": 90
+   },
+   "observed_issue_by_rule": {
+    "CS-STARTTLS-001": 5,
+    "SEC-PLAIN-001": 10,
+    "SEC-PLAIN-002": 10
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 20,
+    "CS-STARTTLS-001|OBSERVED_ISSUE": 5,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 20,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-CFG-001|INFORMATIONAL": 10,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 10,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 10,
+    "SEC-STLS-001|COMPLIANT": 30,
+    "SEC-STLS-002|AMBIGUOUS": 10,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 7.81,
+   "sessions_assessed": 40,
+   "sessions_total": 40,
+   "sha256": "95b8d1006408f866ff437d8f224842b61ab425c60e038d1b889182c266e9d51f"
+  },
+  {
+   "assessment_id": "6784bd0a66f1d8a6",
+   "capture": "C14_pop3_no_support.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "AMBIGUOUS": 30,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 120,
+    "UNKNOWN": 180
+   },
+   "observed_issue_by_rule": {
+    "SEC-PLAIN-001": 30,
+    "SEC-PLAIN-002": 30
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CFG-001|INFORMATIONAL": 30,
+    "SEC-PLAIN-001|OBSERVED_ISSUE": 30,
+    "SEC-PLAIN-002|OBSERVED_ISSUE": 30,
+    "SEC-STLS-002|AMBIGUOUS": 30
+   },
+   "score_value": 20.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "c8e6d9e81adca8eb141b4ae5f6883e98f62f689f6738e0a0d800463554a2fc79"
+  },
+  {
+   "assessment_id": "22fe77edbb27b96c",
+   "capture": "C15_implicit_smtps.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "INFERRED": 18,
+    "NOT_OBSERVABLE": 150,
+    "OBSERVED": 162,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-STLS-003|INFORMATIONAL": 30,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "e7ee11f0a7ec8f2c2031058f2c5e9bf16428d250aa47286e7cf74c4e0288510f"
+  },
+  {
+   "assessment_id": "733a0cb680601108",
+   "capture": "C16_implicit_pop3s.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "INFERRED": 18,
+    "NOT_OBSERVABLE": 150,
+    "OBSERVED": 162,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-STLS-003|INFORMATIONAL": 30,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "1593692194f867f853772f2a7d0f7bb89159d1e5f63f9aa846667638b249f75e"
+  },
+  {
+   "assessment_id": "6c3ec85c50971ecb",
+   "capture": "C17_legacy_tls.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 300,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {
+    "SEC-TLS-001": 21
+   },
+   "overall_posture": "CRITICAL",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 9,
+    "SEC-CFG-001|INFORMATIONAL": 21,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-STLS-001|COMPLIANT": 30,
+    "SEC-TLS-001|COMPLIANT": 9,
+    "SEC-TLS-001|OBSERVED_ISSUE": 21,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 44.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "4a53469290ec43bfec849bdedd9a64a2ef4fd1519f57d606c2ab587c7e6c464a"
+  },
+  {
+   "assessment_id": "df7c13550f4864a5",
+   "capture": "C18_reset_teardown.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "INFERRED": 18,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 282,
+    "UNKNOWN": 30
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "STRONG",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 15,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 15,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 15,
+    "SEC-CERT-001|NOT_OBSERVABLE": 30,
+    "SEC-CFG-001|COMPLIANT": 30,
+    "SEC-FS-001|COMPLIANT": 30,
+    "SEC-KEX-001|INFORMATIONAL": 30,
+    "SEC-STLS-001|COMPLIANT": 30,
+    "SEC-TLS-001|COMPLIANT": 30,
+    "SEC-TLS-002|COMPLIANT": 30,
+    "SEC-TLS-003|NOT_OBSERVABLE": 30
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 30,
+   "sessions_total": 30,
+   "sha256": "0343dad7bba48702230a102f2580367af2bd3556af45866b67afb7e3257bf9ea"
+  },
+  {
+   "assessment_id": "3ce0401321773fe8",
+   "capture": "C19_truncated.pcap",
+   "corpus": "oq36-genC",
+   "observation_states": {
+    "INCOMPLETE": 37,
+    "NOT_OBSERVABLE": 30,
+    "OBSERVED": 130,
+    "UNKNOWN": 163
+   },
+   "observed_issue_by_rule": {},
+   "overall_posture": "INSUFFICIENT_EVIDENCE",
+   "rule_status_counts": {
+    "CS-STARTTLS-001|COMPLIANT": 14,
+    "CS-STARTTLS-001|INSUFFICIENT_EVIDENCE": 16,
+    "CS-STARTTLS-002|INSUFFICIENT_EVIDENCE": 16,
+    "SEC-CFG-001|NOT_OBSERVABLE": 30,
+    "SEC-STLS-001|INSUFFICIENT_EVIDENCE": 17,
+    "SEC-STLS-002|INFORMATIONAL": 13
+   },
+   "score_value": 100.0,
+   "sessions_assessed": 14,
+   "sessions_total": 30,
+   "sha256": "07605ae15c92cb71eb4c918dc932f108e1fb722d0b0dea6e15eacdac764668ef"
+  }
+ ],
+ "note": "Phase B.2 final per-capture state (engine posture 0.9.0 / analysis 0.6.0 / rules 1.2), derived from the B.2 run_corpus.py output; the starting point of Phase B.3."
+}

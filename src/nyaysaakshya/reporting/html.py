@@ -289,7 +289,8 @@ def _wrap(document: ReportDocument, t: Callable[[str], str], id_prefix: str = ""
                '<div class="v" style="color:%s">%s</div>%s</div>'
                % (t("Overall posture"), esc(posture_colour), esc(document.overall_posture_label),
                   '<div class="note">%s</div>'
-                  % t("band withheld: coverage below the assessment floor") if withheld else ""))
+                  % t(document.withheld_note or "band withheld: coverage below the assessment floor")
+                  if withheld else ""))
     out.append('<div><div class="k">%s</div>'
                '<div class="v small">%s</div></div>' % (t("Posture score"), esc(document.score_text)))
     out.append('<div><div class="k">%s</div>'

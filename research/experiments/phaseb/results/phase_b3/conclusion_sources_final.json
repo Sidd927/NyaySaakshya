@@ -1,0 +1,369 @@
+{
+ "rule_sets": [
+  {
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "sessions": 26,
+   "example": "D_failed_upgrade.pcap#5"
+  },
+  {
+   "rules": [
+    "CS-STARTTLS-001",
+    "SEC-FS-001",
+    "SEC-STLS-001",
+    "SEC-TLS-001",
+    "SEC-TLS-002"
+   ],
+   "sessions": 210,
+   "example": "C_normal_tls.pcap#5"
+  },
+  {
+   "rules": [
+    "CS-STARTTLS-001",
+    "SEC-FS-001",
+    "SEC-TLS-001",
+    "SEC-TLS-002"
+   ],
+   "sessions": 90,
+   "example": "B01_all_upgrade.pcap#5"
+  },
+  {
+   "rules": [
+    "CS-STARTTLS-001",
+    "SEC-PLAIN-001",
+    "SEC-PLAIN-002"
+   ],
+   "sessions": 227,
+   "example": "A_legit_decline.pcap#5"
+  },
+  {
+   "rules": [
+    "CS-STARTTLS-001",
+    "SEC-PLAIN-001",
+    "SEC-PLAIN-002",
+    "SEC-STLS-001"
+   ],
+   "sessions": 17,
+   "example": "J_strip_command.pcap#5"
+  },
+  {
+   "rules": [
+    "SEC-CERT-002",
+    "SEC-CERT-003",
+    "SEC-CERT-004",
+    "SEC-CERT-005",
+    "SEC-FS-001",
+    "SEC-TLS-001"
+   ],
+   "sessions": 1,
+   "example": "smtps_tls12_selfsigned_rsa2048.pcap#0"
+  },
+  {
+   "rules": [
+    "SEC-CERT-002",
+    "SEC-CERT-003",
+    "SEC-CERT-004",
+    "SEC-FS-001",
+    "SEC-TLS-001"
+   ],
+   "sessions": 2,
+   "example": "smtps_tls12_chain_rsa2048.pcap#0"
+  },
+  {
+   "rules": [
+    "SEC-FS-001",
+    "SEC-STLS-001",
+    "SEC-TLS-001",
+    "SEC-TLS-002"
+   ],
+   "sessions": 237,
+   "example": "dovecot_imap_starttls_upgrade.pcap#1"
+  },
+  {
+   "rules": [
+    "SEC-FS-001",
+    "SEC-TLS-001"
+   ],
+   "sessions": 4,
+   "example": "E_incomplete.pcap#4"
+  },
+  {
+   "rules": [
+    "SEC-FS-001",
+    "SEC-TLS-001",
+    "SEC-TLS-002"
+   ],
+   "sessions": 257,
+   "example": "dovecot_imap_imaps_implicit_tls.pcap#0"
+  },
+  {
+   "rules": [
+    "SEC-PLAIN-001",
+    "SEC-PLAIN-002"
+   ],
+   "sessions": 292,
+   "example": "dovecot_imap_plaintext_login.pcap#0"
+  },
+  {
+   "rules": [
+    "SEC-PLAIN-001",
+    "SEC-PLAIN-002",
+    "SEC-STLS-001"
+   ],
+   "sessions": 15,
+   "example": "C07_reject_upgrade.pcap#0"
+  },
+  {
+   "rules": [
+    "SEC-PLAIN-002"
+   ],
+   "sessions": 6,
+   "example": "postfix_smtp_client_declines.pcap#0"
+  },
+  {
+   "rules": [
+    "SEC-PLAIN-002",
+    "SEC-STLS-001"
+   ],
+   "sessions": 1,
+   "example": "M_server_refuses.pcap#0"
+  }
+ ],
+ "sessions_assessed_only_by_checklist_or_consistency_rules": [
+  {
+   "capture": "D_failed_upgrade.pcap",
+   "stream": 5,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "D_failed_upgrade.pcap",
+   "stream": 6,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "B07_failed_upgrade.pcap",
+   "stream": 5,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "B07_failed_upgrade.pcap",
+   "stream": 6,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "B07_failed_upgrade.pcap",
+   "stream": 7,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "B07_failed_upgrade.pcap",
+   "stream": 8,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "B07_failed_upgrade.pcap",
+   "stream": 9,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "C08_failed_upgrade.pcap",
+   "stream": 5,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "C08_failed_upgrade.pcap",
+   "stream": 6,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "C08_failed_upgrade.pcap",
+   "stream": 7,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "C08_failed_upgrade.pcap",
+   "stream": 8,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "C08_failed_upgrade.pcap",
+   "stream": 9,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "COMPLETE",
+   "tls_state": "CLIENT_HELLO_OBSERVED"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 5,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 6,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 7,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 8,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 9,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 15,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 16,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 17,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 18,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 19,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 25,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 26,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 27,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "stream": 28,
+   "rules": [
+    "CS-STARTTLS-001"
+   ],
+   "completeness": "INCOMPLETE",
+   "tls_state": "NONE"
+  }
+ ]
+}

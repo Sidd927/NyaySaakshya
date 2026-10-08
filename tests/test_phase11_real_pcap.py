@@ -52,6 +52,38 @@ PHASE_10_BASELINE = {
     "postfix_smtp_starttls_upgrade.pcap": ("ADEQUATE", 88.0),
 }
 
+#: PHASE B.2 RE-BASELINE. Three of the ten pins above moved, and each movement is a
+#: CORRECTION, not a regression. These captures were recorded with the capture harness's own
+#: readiness probe at the front of the file: stream 0 is a 2-frame fragment (a server banner
+#: followed by a reset, or a bare FIN/ACK) with no client dialogue at all. Phase 10 read that
+#: fragment as "a mail session that carried no TLS" and deducted a MEDIUM NO_TLS_PROTECTION
+#: group for it. The rule's own description is "a mail session that COMPLETED without any
+#: TLS protection", and nothing was established about the fragment. The three values below
+#: are the Phase-10 value, the corrected value and the reason; the arithmetic that ties the
+#: old value to exactly one false finding is asserted in
+#: `test_rebaselined_scores_differ_by_exactly_the_probe_fragment`.
+PHASE_B2_REBASELINE = {
+    "dovecot_imap_starttls_upgrade.pcap": {
+        "was": ("ADEQUATE", 88.0), "now": ("STRONG", 100.0),
+        "why": "stream 0 is a 2-frame FIN/ACK probe fragment; it carried no NO_TLS group once "
+               "no longer read as plaintext; the real session (stream 1) is a clean TLS 1.3 "
+               "STARTTLS upgrade"},
+    "postfix_smtp_starttls_upgrade.pcap": {
+        "was": ("ADEQUATE", 88.0), "now": ("STRONG", 100.0),
+        "why": "stream 0 is a 2-frame banner+RST probe fragment; the real session (stream 1) "
+               "is a clean TLS 1.3 STARTTLS upgrade"},
+    "postfix_smtp_no_starttls_offered.pcap": {
+        "was": ("ADEQUATE", 85.0), "now": ("ADEQUATE", 88.0),
+        "why": "one genuine cleartext session remains (-12.00); the probe fragment no longer "
+               "raises the NO_TLS recurrence from 1 to 2 (multiplier 1.25 -> 1.00)"},
+}
+
+#: What the suite now asserts: the Phase-10 value, except where Phase B.2 re-baselined it.
+EXPECTED_NOW = {
+    name: PHASE_B2_REBASELINE[name]["now"] if name in PHASE_B2_REBASELINE else value
+    for name, value in PHASE_10_BASELINE.items()
+}
+
 
 @pytest.fixture(scope="module")
 def service():
@@ -78,10 +110,56 @@ def test_real_capture_scores_are_unchanged_from_phase_10(service, name, request)
     new rule is emitting OBSERVED_ISSUE where it should abstain, or an issue class is
     colliding with an existing one and inflating recurrence damping.
     """
-    expected_band, expected_score = PHASE_10_BASELINE[name]
+    expected_band, expected_score = EXPECTED_NOW[name]
     a = assess(service, os.path.join(REAL_DIR, name))
     assert a["overall_posture"] == expected_band, name
     assert (a["score"] or {}).get("value") == expected_score, name
+
+
+@needs_tshark
+@needs_backend
+@pytest.mark.parametrize("name", sorted(PHASE_B2_REBASELINE))
+def test_rebaselined_scores_differ_by_exactly_the_probe_fragment(name):
+    """Each re-baselined value is justified, not merely replaced.
+
+    1. The capture contains a fragment: a session of at most 3 packets with no client
+       dialogue, whose TLS-transition evidence is UNKNOWN and which carries no plaintext
+       finding.
+    2. The Phase-10 score is reproduced EXACTLY by adding that one fragment back as an extra
+       affected session of the MEDIUM NO_TLS_PROTECTION group, using the published scoring
+       constants (weight 12, recurrence multiplier min(2, 1 + log2(n)/4)). So the whole
+       movement is that one false finding, and nothing else changed.
+    """
+    import math
+
+    from nyaysaakshya.backend.pipeline import run_pipeline
+    from nyaysaakshya.evidence.states import EvidenceState
+    from nyaysaakshya.posture import SEVERITY_WEIGHT
+    from nyaysaakshya.analysis.model import Severity
+
+    result = run_pipeline(os.path.join(REAL_DIR, name))
+    fragments = [s for s in result.sessions if s.packet_count <= 3]
+    assert len(fragments) == 1, name
+    fragment = fragments[0]
+    assert fragment.tls_transition.state is EvidenceState.UNKNOWN
+    assert not [f for f in result.findings
+                if f.rule_id == "SEC-PLAIN-002" and f.tcp_stream_id == fragment.tcp_stream_id]
+
+    def mult(n):
+        return 1.0 if n <= 1 else min(2.0, 1.0 + math.log2(n) / 4.0)
+
+    groups = [g for g in result.assessment.issue_groups
+              if g.penalising and g.issue_class.value == "NO_TLS_PROTECTION"]
+    now_recurrence = groups[0].recurrence if groups else 0
+    other_penalty = sum(c.penalty for c in result.assessment.score.components
+                        if c.issue_class.value != "NO_TLS_PROTECTION")
+    assert other_penalty == 0.0, "the movement must not hide any other deduction"
+    weight = SEVERITY_WEIGHT[Severity.MEDIUM]
+    old_score = 100.0 - weight * mult(now_recurrence + 1)
+    assert round(old_score, 2) == PHASE_B2_REBASELINE[name]["was"][1], name
+    new_score = 100.0 - (weight * mult(now_recurrence) if now_recurrence else 0.0)
+    assert round(new_score, 2) == PHASE_B2_REBASELINE[name]["now"][1], name
+    assert round(result.assessment.score.value, 2) == PHASE_B2_REBASELINE[name]["now"][1]
 
 
 @needs_tshark

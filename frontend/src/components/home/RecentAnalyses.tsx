@@ -32,7 +32,7 @@ const VALIDATED_SCENARIOS = [
     runId: DEFAULT_FALLBACK_RUNS[2]?.run_id || '9aaefe1d93f046faac255dfe67c86c18',
     filename: 'scene_b_certificate_honesty.pcap',
     title: 'Not enough to judge',
-    summary: 'This recording does not show the certificate, so no fault is claimed.',
+    summary: 'This capture does not show the certificate, so no fault is claimed.',
     posture: 'STRONG' as const,
     score: 100.0,
     tone: 'strong' as const,
@@ -81,19 +81,18 @@ export const RecentAnalyses: React.FC = () => {
             <Database size={22} className="sms-muted" aria-hidden="true" />
             <p className="sms-ledger__empty-title">No checks yet</p>
             <p className="sms-muted" style={{ fontSize: 'var(--ds-text-13)', maxWidth: '42ch' }}>
-              Upload a recording above. Finished checks will appear here.
+              Upload a capture above. Finished checks will appear here.
             </p>
           </div>
         ) : (
           <ul className="sms-ledger__list" role="list" aria-label="Recent checks">
             {rows.map((run) => {
               const isLoadedActive = run.run_id === activeRunId;
-              const sessionCount = (isLoadedActive && dashboard?.coverage?.sessions_total)
-                ? dashboard.coverage.sessions_total
-                : (run.source_filename.includes('cross_session') ? 12 : 1);
-              const findingsCount = (isLoadedActive && dashboard?.findings)
-                ? dashboard.findings.length
-                : (run.source_filename.includes('cross_session') ? 3 : (run.source_filename.includes('weak') ? 1 : 0));
+              // Session and finding counts are shown only when the loaded assessment supplies them.
+              // The run list does not carry them, and a count guessed from the file name would be a
+              // claim the assessment never made.
+              const sessionCount = isLoadedActive ? dashboard?.coverage?.sessions_total ?? null : null;
+              const findingsCount = isLoadedActive && dashboard?.findings ? dashboard.findings.length : null;
 
               return (
                 <li key={run.run_id} className="sms-ledger__item">
@@ -121,9 +120,13 @@ export const RecentAnalyses: React.FC = () => {
                       <span>{relativeTime(run.created_at)}</span>
                     </time>
                     <span className="sms-ledger__scope">
-                      {sessionCount} session{sessionCount === 1 ? '' : 's'}
-                      <span aria-hidden="true"> · </span>
-                      {findingsCount} finding{findingsCount === 1 ? '' : 's'}
+                      {sessionCount != null && findingsCount != null ? (
+                        <>
+                          {sessionCount} session{sessionCount === 1 ? '' : 's'}
+                          <span aria-hidden="true"> · </span>
+                          {findingsCount} finding{findingsCount === 1 ? '' : 's'}
+                        </>
+                      ) : null}
                     </span>
                     <span className="sms-ledger__open" aria-hidden="true">
                       <span>Open</span>

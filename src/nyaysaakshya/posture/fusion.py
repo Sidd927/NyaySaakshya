@@ -93,7 +93,11 @@ def _fact_kind(status: FindingStatus, lane: SourceLane) -> FactKind:
     if status in _ABSTAINING_STATUS:
         return FactKind.ABSTENTION
     if status is FindingStatus.INFORMATIONAL:
-        return FactKind.POSITIVE_EVIDENCE
+        # A neutral, notable observation (`FindingStatus.INFORMATIONAL`: "neutral, notable
+        # observation"). It is NOT "observed good state": mapping it to POSITIVE_EVIDENCE
+        # made a checklist note such as "1 item(s) failed" count as a conclusion, so a
+        # session with nothing established was "assessed" and could be graded STRONG.
+        return FactKind.INFORMATIONAL
     # OBSERVED_ISSUE: a cross-session lane issue is a behavioural fact, not a
     # standards-bound weakness, and the two must never share a key.
     return (FactKind.BEHAVIOURAL_DEVIATION if lane is SourceLane.CROSS_SESSION

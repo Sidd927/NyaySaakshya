@@ -1432,8 +1432,8 @@
    "shown_in": "Methodology"
   },
   {
-   "id": "report.withheld-evidence-coverage-below-the-6537",
-   "en": "withheld: evidence coverage below the assessment floor",
+   "id": "report.band-withheld-evidence-coverage-below-2252",
+   "en": "band withheld: evidence coverage below the assessment floor",
    "mr": "रोखून ठेवले: पुराव्याची व्याप्ती मूल्यांकनाच्या किमान मर्यादेपेक्षा कमी",
    "needs_review": true,
    "area": "Report structure",
@@ -1637,6 +1637,69 @@
    "area": "Security checks",
    "kind": "Sentence part (shared wording or a reason given inside a finding)",
    "shown_in": "Detailed findings"
+  },
+  {
+   "id": "report.pct-assessed-of-supported-supported-76b3",
+   "en": "{pct} ({assessed} of {supported} supported sessions assessed)",
+   "mr": "{pct} ({supported} समर्थित सत्रांपैकी {assessed} सत्रांचे मूल्यांकन झाले)",
+   "needs_review": true,
+   "area": "Report structure",
+   "kind": "Short wording in the report",
+   "shown_in": "Various sections"
+  },
+  {
+   "id": "report.no-supported-sessions-to-assess-4c56",
+   "en": "No supported sessions to assess",
+   "mr": "मूल्यांकन करण्यासाठी कोणतेही समर्थित सत्र नाही",
+   "needs_review": true,
+   "area": "Report structure",
+   "kind": "Short wording in the report",
+   "shown_in": "Various sections"
+  },
+  {
+   "id": "report.band-withheld-no-supported-session-45d6",
+   "en": "band withheld: no supported session was assessed",
+   "mr": "रोखून ठेवले: कोणत्याही समर्थित सत्राचे मूल्यांकन झाले नाही",
+   "needs_review": true,
+   "area": "Report structure",
+   "kind": "Short wording in the report",
+   "shown_in": "Various sections"
+  },
+  {
+   "id": "report.n-num-session-s-carried-e828",
+   "en": "{n:num} session(s) carried no identified SMTP, IMAP or POP3 dialogue. They are outside what this system assesses, were not assessed and are not counted in the coverage above.",
+   "mr": "{n} सत्रांमध्ये SMTP, IMAP किंवा POP3 संवाद ओळखला गेला नाही. ती या प्रणाली जे मूल्यांकन करते त्याच्या कक्षेबाहेर आहेत, त्यांचे मूल्यांकन झाले नाही आणि वरील व्याप्तीमध्ये ती मोजलेली नाहीत.",
+   "needs_review": true,
+   "area": "Standing explanations",
+   "kind": "Explanatory paragraph or notice",
+   "shown_in": "Executive summary"
+  },
+  {
+   "id": "report.the-posture-band-is-withheld-aeae",
+   "en": "The posture band is withheld. No SMTP, IMAP or POP3 dialogue was identified in this capture, so there was no supported evidence to assess. A withheld band is not a passing result and must not be read as one.",
+   "mr": "सुरक्षा स्थिती श्रेणी रोखून ठेवली आहे. या कॅप्चरमध्ये SMTP, IMAP किंवा POP3 संवाद ओळखला गेला नाही, त्यामुळे मूल्यांकनासाठी कोणताही समर्थित पुरावा उपलब्ध नव्हता. रोखून ठेवलेली श्रेणी म्हणजे उत्तीर्ण निकाल नव्हे आणि तसा तिचा अर्थ लावू नये.",
+   "needs_review": true,
+   "area": "Standing explanations",
+   "kind": "Explanatory paragraph or notice",
+   "shown_in": "Various sections"
+  },
+  {
+   "id": "report.band-withheld-no-session-could-79c1",
+   "en": "band withheld: no session could be assessed",
+   "mr": "राखून ठेवले: कोणतेही सत्र तपासता आले नाही",
+   "needs_review": true,
+   "area": "Report structure",
+   "kind": "Short wording in the report",
+   "shown_in": "Various sections"
+  },
+  {
+   "id": "report.the-posture-band-is-withheld-1ba4",
+   "en": "The posture band is withheld. No session in this capture could be assessed: the capture does not establish the security properties the rules examine, for example because an exchange is cut off or a reply is missing. A withheld band is not a passing result and must not be read as one.",
+   "mr": "सुरक्षा स्थिती श्रेणी राखून ठेवली आहे. या कॅप्चरमधील कोणतेही सत्र तपासता आले नाही: नियम तपासत असलेले सुरक्षा गुणधर्म कॅप्चरमधून निश्चित होत नाहीत, उदाहरणार्थ एखादा संवाद मधेच तुटलेला असतो किंवा उत्तर उपलब्ध नसते. राखून ठेवलेली श्रेणी म्हणजे उत्तीर्ण निकाल नव्हे आणि तसे समजू नये.",
+   "needs_review": true,
+   "area": "Report structure",
+   "kind": "Explanatory paragraph or notice",
+   "shown_in": "Various sections"
   }
  ]
 }

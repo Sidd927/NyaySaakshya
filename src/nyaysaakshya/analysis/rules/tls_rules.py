@@ -21,6 +21,7 @@ from typing import List
 
 from nyaysaakshya.analysis.model import FindingStatus, SecurityFinding, Severity
 from nyaysaakshya.analysis.registry import SecurityRule, ref
+from nyaysaakshya.analysis.rules.keyexchange_rules import _unfinished_handshake_limit
 from nyaysaakshya.evidence.states import EvidenceState
 from nyaysaakshya.session.model import SessionEvidence, TlsState
 
@@ -64,7 +65,8 @@ class DeprecatedTlsVersionRule(SecurityRule):
 
         # No ServerHello -> the negotiated version simply cannot be established.
         # Absence of a visible version is NOT evidence of a weak version (Phase-4 SS7).
-        if version.state is EvidenceState.UNKNOWN:
+        if version.state in (EvidenceState.UNKNOWN, EvidenceState.INCOMPLETE,
+                             EvidenceState.NOT_OBSERVABLE):
             return [self.finding(
                 session,
                 status=FindingStatus.INSUFFICIENT_EVIDENCE, severity=Severity.INFO,
@@ -106,7 +108,8 @@ class DeprecatedTlsVersionRule(SecurityRule):
                 status=FindingStatus.COMPLIANT, severity=Severity.INFO,
                 conclusion=f"The session negotiated {name}, which meets current guidance.",
                 explanation=_ACCEPTABLE[name],
-                evidence_refs=refs)]
+                evidence_refs=refs,
+                limitations=_unfinished_handshake_limit(session))]
 
         return [self.finding(
             session,

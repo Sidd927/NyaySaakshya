@@ -123,8 +123,7 @@ class ProtocolSessionReconstructor(ABC):
         self._apply_crypto(session, group)
 
         if tls_state is TlsState.NONE:
-            session.tls_transition = EvidenceField.observed(
-                False, "no TLS records in this stream", frames=[])
+            session.tls_transition = _absence_of_tls_evidence(session)
         elif tls_state is TlsState.ESTABLISHED:
             session.tls_transition = EvidenceField.observed(
                 True, "ClientHello, ServerHello and encrypted application data observed",
@@ -505,6 +504,57 @@ def _bool_evidence(events: Sequence[ProtocolEvent], kind: str, *, yes: str,
     return EvidenceField.observed(False, no)
 
 
+#: Application events that only the CLIENT originates. Their presence is the evidence that a
+#: client actually took part in the dialogue (a server banner alone proves nothing about
+#: what the client did, so a banner-plus-reset fragment has no client dialogue).
+_CLIENT_DIALOGUE_EVENTS = ("capability_request", "starttls_command",
+                           "auth_command", "plaintext_command")
+
+
+def _absence_of_tls_evidence(session: SessionEvidence) -> EvidenceField:
+    """What the capture establishes about TLS when it contains no TLS record at all.
+
+    "No TLS records in this stream" is only a statement about the bytes that were
+    captured. It becomes an OBSERVED absence of TLS protection only when the capture
+    shows the whole decisive part of the session; otherwise the honest state is one of
+    the two refusals the evidence model already has:
+
+      UNKNOWN     no client took part in the dialogue (a bare banner, a connect/close
+                  probe): there is nothing to read, so nothing is concluded.
+      INCOMPLETE  the exchange is cut off before the state is resolved, either because the
+                  client asked to upgrade and no TLS negotiation follows, or because the
+                  stream is still open when the capture ends or goes quiet, so TLS could
+                  still have followed.
+      OBSERVED    a client spoke and the stream was seen to close with no TLS record and
+                  no outstanding upgrade: cleartext was observed to the end.
+
+    The previous behaviour stamped OBSERVED False on every TLS-less stream, which let a
+    truncated or fragmentary stream be reported as a plaintext session.
+    """
+    if not any(e.kind in _CLIENT_DIALOGUE_EVENTS for e in session.events):
+        return EvidenceField.unknown(
+            "no client dialogue was captured for this stream, so whether TLS was ever "
+            "negotiated cannot be determined")
+
+    requested = session.starttls_requested.value is True
+    rejected = (session.starttls_accepted.state is EvidenceState.OBSERVED
+                and session.starttls_accepted.value is False)
+    if requested and not rejected:
+        return EvidenceField.incomplete(
+            "the client requested the TLS upgrade and the capture shows no TLS "
+            "negotiation after it; the exchange is cut off before the outcome is known")
+
+    flags = session.transport_flags
+    closed = (TransportRole.TEARDOWN_OBSERVED in flags
+              or TransportRole.RESET_OBSERVED in flags)
+    if not closed:
+        return EvidenceField.incomplete(
+            "the stream is still open when the capture ends or goes quiet, so TLS could "
+            "still follow; the absence of TLS is not established")
+
+    return EvidenceField.observed(False, "no TLS records in this stream", frames=[])
+
+
 def _acceptance_evidence(events: Sequence[ProtocolEvent]) -> EvidenceField:
     accepted = [e for e in events if e.kind == "starttls_accepted"]
     rejected = [e for e in events if e.kind == "starttls_rejected"]
@@ -527,8 +577,10 @@ def _acceptance_evidence(events: Sequence[ProtocolEvent]) -> EvidenceField:
             False, "server rejected the upgrade command",
             frames=[e.frame_number for e in rejected if e.frame_number])
     if requested:
-        return EvidenceField.unknown(
-            "upgrade command observed but no server response captured")
+        # The decisive reply is exactly what the capture does not contain: the exchange is
+        # cut off before the state is resolved. That is INCOMPLETE, not merely UNKNOWN.
+        return EvidenceField.incomplete(
+            "upgrade command observed but the capture contains no server response to it")
     return EvidenceField.unknown("no upgrade command observed")
 
 

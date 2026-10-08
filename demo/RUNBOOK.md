@@ -8,7 +8,7 @@ Presenter-facing steps for the demonstration — what to actually do, in order.
    against 4.6.8; a materially different version is the single most likely failure point.
 2. Install the optional extras once: `python3 -m pip install 'fastapi>=0.110' 'pydantic>=2'
    'uvicorn>=0.27' 'python-multipart>=0.0.9' 'reportlab>=4'`.
-3. `PYTHONPATH=src python3 -m pytest -q` — confirm the environment is sound (expect `1234 passed`).
+3. `PYTHONPATH=src python3 -m pytest -q` — confirm the environment is sound (expect `1521 passed`).
 4. Start the real system, two terminals (see the main README for the full recipe):
    - Terminal 1: `PYTHONPATH=src python3 -m nyaysaakshya.backend --host 127.0.0.1 --port 8001`
      — confirm `http://127.0.0.1:8001/api/v1/health` returns `"tshark":"available"`.

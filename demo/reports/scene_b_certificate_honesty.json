@@ -28,7 +28,7 @@
     }
   ],
   "ai_enabled": false,
-  "assessment_id": "7575e6bf983af6ae",
+  "assessment_id": "9511e428c0b36140",
   "capture_id": "d257ec482cd486432e510f8ddb9cf9e46747c237e743036c977b67b76cc51f65",
   "coverage": {
     "assessed_fraction": 1.0,
@@ -50,7 +50,7 @@
     "sessions_assessed": 1,
     "sessions_total": 1
   },
-  "generated_at": "2026-10-03T04:36:38Z",
+  "generated_at": "2026-10-08T08:58:46Z",
   "issue_groups": [
     {
       "affected_stream_keys": [
@@ -130,7 +130,7 @@
         }
       ],
       "dimension": "CRYPTO_CONFIGURATION",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "IMPLICIT_TLS_SESSION",
       "penalising": false,
@@ -174,7 +174,7 @@
         }
       ],
       "dimension": "CRYPTO_CONFIGURATION",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "INSECURE_CONFIGURATION",
       "penalising": false,
@@ -200,7 +200,7 @@
         }
       ],
       "dimension": "CRYPTO_CONFIGURATION",
-      "fact_kind": "POSITIVE_EVIDENCE",
+      "fact_kind": "INFORMATIONAL",
       "finding_count": 1,
       "issue_class": "KEY_EXCHANGE_MECHANISM",
       "penalising": false,
@@ -267,6 +267,7 @@
         "basis": "100 with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
         "components": [],
         "formula_id": "F2-group-damped",
+        "scored": true,
         "starting_value": 100.0,
         "total_penalty": 0,
         "value": 100.0
@@ -296,8 +297,8 @@
       "ml_results": 0
     },
     "versions": {
-      "posture_engine": "0.8.0",
-      "posture_schema": "1.0",
+      "posture_engine": "0.10.0",
+      "posture_schema": "1.1",
       "scoring_formula": "F2-group-damped"
     }
   },
@@ -322,20 +323,22 @@
     "behavioural_deviations": 0,
     "by_dimension": {},
     "by_fact_kind": {
-      "POSITIVE_EVIDENCE": 6
+      "INFORMATIONAL": 3,
+      "POSITIVE_EVIDENCE": 3
     },
     "by_severity": {},
     "highest_severity": null,
     "issue_groups": 0,
     "note": "a behavioural deviation is a difference from a baseline, not a vulnerability; an anomaly signal is a prioritisation input and neither asserts nor implies an attack",
-    "positive_evidence": 6
+    "positive_evidence": 3
   },
-  "run_id": "84f9c8e9a99e4672981d7e2f4403fe40",
+  "run_id": "f733eb2e14fd46f990392216f5aff048",
   "score": {
     "band": "STRONG",
     "basis": "100 with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
     "components": [],
     "formula_id": "F2-group-damped",
+    "scored": true,
     "starting_value": 100.0,
     "total_penalty": 0,
     "value": 100.0
@@ -363,7 +366,7 @@
     ]
   },
   "versions": {
-    "engine": "0.8.0",
-    "schema": "1.0"
+    "engine": "0.10.0",
+    "schema": "1.1"
   }
 }

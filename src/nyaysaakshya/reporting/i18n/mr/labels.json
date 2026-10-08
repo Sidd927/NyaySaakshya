@@ -683,6 +683,15 @@
    "area": "Provenance and standards tables",
    "kind": "Label in a table",
    "shown_in": "Evidence and provenance / Standards basis"
+  },
+  {
+   "id": "labels.informational-eeec",
+   "en": "Informational",
+   "mr": "माहितीपर",
+   "needs_review": true,
+   "area": "Kind of finding",
+   "kind": "Short label",
+   "shown_in": "Tables throughout the report"
   }
  ]
 }

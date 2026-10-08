@@ -1,0 +1,41 @@
+[
+ {
+  "capture": "postfix_smtp_starttls_upgrade",
+  "original": [
+   "ADEQUATE",
+   88.0,
+   2
+  ],
+  "with_probe_frames_1_2_removed": [
+   "STRONG",
+   100.0,
+   1
+  ]
+ },
+ {
+  "capture": "dovecot_imap_starttls_upgrade",
+  "original": [
+   "ADEQUATE",
+   88.0,
+   2
+  ],
+  "with_probe_frames_1_2_removed": [
+   "STRONG",
+   100.0,
+   1
+  ]
+ },
+ {
+  "capture": "postfix_smtp_no_starttls_offered",
+  "original": [
+   "ADEQUATE",
+   85.0,
+   2
+  ],
+  "with_probe_frames_1_2_removed": [
+   "ADEQUATE",
+   88.0,
+   1
+  ]
+ }
+]

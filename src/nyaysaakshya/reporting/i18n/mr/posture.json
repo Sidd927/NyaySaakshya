@@ -244,9 +244,9 @@
    "shown_in": "Overall security posture"
   },
   {
-   "id": "posture.score-computed-but-only-of-64a3",
-   "en": "score {value:num} computed, but only {fraction} of sessions yielded any conclusion (floor {floor}); a band is not certified over a capture this sparsely assessed",
-   "mr": "गुण {value} काढले, परंतु केवळ {fraction} सत्रांतून काही निष्कर्ष मिळाला (किमान मर्यादा {floor}); इतक्या कमी प्रमाणात मूल्यांकन झालेल्या कॅप्चरवर श्रेणी प्रमाणित केली जात नाही",
+   "id": "posture.only-of-sessions-yielded-any-4594",
+   "en": "only {fraction} of sessions yielded any conclusion (floor {floor}); no score is given and no band is certified over a capture this sparsely assessed",
+   "mr": "केवळ {fraction} सत्रांतून कोणताही निष्कर्ष मिळाला (किमान मर्यादा {floor}); गुण दिलेला नाही आणि इतक्या कमी तपासलेल्या कॅप्चरवर कोणतीही श्रेणी प्रमाणित केली जात नाही",
    "needs_review": true,
    "area": "Overall score and limitations",
    "kind": "Sentence explaining the score",

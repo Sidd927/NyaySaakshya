@@ -30,7 +30,7 @@ export const EvidenceCoverageCard: React.FC<EvidenceCoverageCardProps> = ({ cove
           <span className="sms-label">Evidence Coverage</span>
         </div>
         <span className="sms-mono sms-badge sms-badge--muted">
-          {coverage.sessions_assessed ?? 0} / {coverage.sessions_total ?? 0} sessions
+          {coverage.sessions_assessed ?? 0} / {(coverage.sessions_total ?? 0) - (coverage.sessions_unsupported ?? 0)} {coverage.sessions_unsupported ? 'supported sessions' : 'sessions'}
         </span>
       </div>
 

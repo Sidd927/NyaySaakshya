@@ -30,7 +30,7 @@ export const HomeView: React.FC = () => {
           <div className="sms-case-desk__alert" role="alert">
             <span className="sms-dot" style={{ background: 'var(--ds-crimson-rail)' }} aria-hidden="true" />
             <span>
-              The analysis service is unavailable. Saved checks can still be opened. New recordings cannot be checked until it is back.
+              The analysis service is unavailable. Saved checks can still be opened. New captures cannot be checked until it is back.
             </span>
           </div>
         )}

@@ -1,0 +1,107 @@
+{
+ "captures": 10,
+ "main_session_expectations_met": 10,
+ "rows": [
+  {
+   "capture": "postfix_smtp_starttls_upgrade.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 1,
+   "issues_on_fragments": [
+    "SEC-PLAIN-002"
+   ],
+   "band": "ADEQUATE",
+   "score": 88.0
+  },
+  {
+   "capture": "postfix_smtp_client_declines.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 0,
+   "issues_on_fragments": [],
+   "band": "ADEQUATE",
+   "score": 88.0
+  },
+  {
+   "capture": "postfix_smtp_plaintext_session.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 0,
+   "issues_on_fragments": [],
+   "band": "ADEQUATE",
+   "score": 88.0
+  },
+  {
+   "capture": "postfix_smtp_no_starttls_offered.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 1,
+   "issues_on_fragments": [
+    "SEC-PLAIN-002"
+   ],
+   "band": "ADEQUATE",
+   "score": 85.0
+  },
+  {
+   "capture": "dovecot_imap_starttls_upgrade.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 1,
+   "issues_on_fragments": [
+    "SEC-PLAIN-002"
+   ],
+   "band": "ADEQUATE",
+   "score": 88.0
+  },
+  {
+   "capture": "dovecot_imap_plaintext_login.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 0,
+   "issues_on_fragments": [],
+   "band": "WEAK",
+   "score": 60.0
+  },
+  {
+   "capture": "dovecot_pop3_stls_upgrade.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 0,
+   "issues_on_fragments": [],
+   "band": "STRONG",
+   "score": 100.0
+  },
+  {
+   "capture": "dovecot_pop3_plaintext_login.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 0,
+   "issues_on_fragments": [],
+   "band": "WEAK",
+   "score": 60.0
+  },
+  {
+   "capture": "dovecot_imap_imaps_implicit_tls.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 0,
+   "issues_on_fragments": [],
+   "band": "STRONG",
+   "score": 100.0
+  },
+  {
+   "capture": "dovecot_pop3_pop3s_implicit_tls.pcap",
+   "main_session_ok": true,
+   "failed": [],
+   "fragment_streams(<=3 packets)": 0,
+   "issues_on_fragments": [],
+   "band": "STRONG",
+   "score": 100.0
+  }
+ ],
+ "captures_whose_band_is_affected_by_fragment_findings": [
+  "postfix_smtp_starttls_upgrade.pcap",
+  "postfix_smtp_no_starttls_offered.pcap",
+  "dovecot_imap_starttls_upgrade.pcap"
+ ]
+}

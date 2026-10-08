@@ -19,7 +19,14 @@ export const ProofCard: React.FC<ProofCardProps> = ({
   onOpenProvenance,
   onOpenEvidence,
 }) => {
-  const isClean = dashboard.findings.length === 0 && dashboard.posture.value === 'STRONG';
+  // "Every observed session had TLS and no credentials were exposed" is only a statement about
+  // sessions that were assessed. It is made only when EVERY session was (none unsupported, none
+  // unanswered or cut off); otherwise the card says nothing rather than speak for the rest.
+  const cov = dashboard.coverage;
+  const allAssessed = !!cov && cov.sessions_total != null && cov.sessions_assessed === cov.sessions_total
+    && (cov.sessions_unsupported ?? 0) === 0;
+  const unfinished = sessions.some((s) => s.tls_state !== 'ESTABLISHED' && s.tls_state !== 'NONE');
+  const isClean = dashboard.findings.length === 0 && dashboard.posture.value === 'STRONG' && allAssessed && !unfinished;
 
   if (isClean) {
     const session = sessions[0];
@@ -89,20 +96,6 @@ export const ProofCard: React.FC<ProofCardProps> = ({
     facts = [
       { key: 'AUTH_ACTIVITY', val: 'TRUE', status: 'bad' },
       { key: 'TLS_TRANSITION', val: 'FALSE', status: 'bad' },
-      { key: 'FRAME', val: `#${frame}`, status: 'neutral' },
-      { key: 'STREAM', val: `#${streamId}`, status: 'neutral' },
-    ];
-  } else if (title.includes('rsa') || title.includes('sha-1') || title.includes('cert') || title.includes('weak')) {
-    facts = [
-      { key: 'PUBLIC_KEY', val: 'RSA 1024-bit', status: 'bad' },
-      { key: 'SIGNATURE_ALGORITHM', val: 'SHA-1', status: 'bad' },
-      { key: 'FRAME', val: `#${frame}`, status: 'neutral' },
-      { key: 'STREAM', val: `#${streamId}`, status: 'neutral' },
-    ];
-  } else if (title.includes('starttls') || title.includes('deviation')) {
-    facts = [
-      { key: 'STARTTLS_ADVERTISED', val: 'FALSE (Subject: 10.0.0.6)', status: 'bad' },
-      { key: 'CONTROL_ENDPOINT', val: 'TRUE (Control: 10.0.0.7)', status: 'good' },
       { key: 'FRAME', val: `#${frame}`, status: 'neutral' },
       { key: 'STREAM', val: `#${streamId}`, status: 'neutral' },
     ];

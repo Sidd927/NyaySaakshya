@@ -1,0 +1,1804 @@
+{
+ "INV-1_failures": [],
+ "INV-2_failures": [],
+ "INV-3_failures": [],
+ "INV-4_unique_hits": [
+  {
+   "capture": "dovecot_imap_imaps_implicit_tls.pcap",
+   "context": "e is expected and is not a failure, a lack of support, or evidence of stripping.",
+   "field": "explanation",
+   "rule": "SEC-STLS-003",
+   "status": "INFORMATIONAL"
+  },
+  {
+   "capture": "dovecot_imap_plaintext_login.pcap",
+   "context": " not request it. This is a client behaviour observation. It is not an attack, and passive single-session evidence cannot establish why the client ",
+   "field": "explanation",
+   "rule": "SEC-STLS-002",
+   "status": "INFORMATIONAL"
+  },
+  {
+   "capture": "postfix_smtp_no_starttls_offered.pcap",
+   "context": "No upgrade capability was advertised; stripping and genuine non-support cannot be distinguished.",
+   "field": "conclusion",
+   "rule": "SEC-STLS-002",
+   "status": "AMBIGUOUS"
+  },
+  {
+   "capture": "D_failed_upgrade.pcap",
+   "context": "oural difference is reported as a difference; it is not treated as an attack.",
+   "field": "explanation",
+   "rule": "CS-STARTTLS-002",
+   "status": "AMBIGUOUS"
+  },
+  {
+   "capture": "J_strip_command.pcap",
+   "context": "ration and availability condition; it is not by itself evidence of an attack.",
+   "field": "explanation",
+   "rule": "SEC-STLS-001",
+   "status": "OBSERVED_ISSUE"
+  },
+  {
+   "capture": "smtps_tls12_selfsigned_rsa2048.pcap",
+   "context": "is a structural observation about configuration, not an indication of malicious activity.",
+   "field": "explanation",
+   "rule": "SEC-CERT-005",
+   "status": "OBSERVED_ISSUE"
+  }
+ ],
+ "INV-5_signatures": {
+  "ATTACK_STRIP_ADVERT": {
+   "[\"AMBIGUOUS\", false, \"COMPLETE\", [[\"SEC-CFG-001\", \"INFORMATIONAL\"], [\"SEC-PLAIN-001\", \"OBSERVED_ISSUE\"], [\"SEC-PLAIN-002\", \"OBSERVED_ISSUE\"], [\"SEC-STLS-002\", \"AMBIGUOUS\"]]]": 118
+  },
+  "BENIGN_CONFIG_CHANGE": {
+   "[\"AMBIGUOUS\", false, \"COMPLETE\", [[\"SEC-CFG-001\", \"INFORMATIONAL\"], [\"SEC-PLAIN-001\", \"OBSERVED_ISSUE\"], [\"SEC-PLAIN-002\", \"OBSERVED_ISSUE\"], [\"SEC-STLS-002\", \"AMBIGUOUS\"]]]": 18,
+   "[\"OBSERVED\", true, \"COMPLETE\", [[\"SEC-CERT-001\", \"NOT_OBSERVABLE\"], [\"SEC-CFG-001\", \"INFORMATIONAL\"], [\"SEC-FS-001\", \"COMPLIANT\"], [\"SEC-KEX-001\", \"INFORMATIONAL\"], [\"SEC-STLS-001\", \"COMPLIANT\"], [\"SEC-TLS-001\", \"COMPLIANT\"], [\"SEC-TLS-002\", \"COMPLIANT\"], [\"SEC-TLS-003\", \"NOT_OBSERVABLE\"]]]": 18
+  },
+  "BENIGN_NO_SUPPORT": {
+   "[\"AMBIGUOUS\", false, \"COMPLETE\", [[\"SEC-CFG-001\", \"INFORMATIONAL\"], [\"SEC-PLAIN-001\", \"OBSERVED_ISSUE\"], [\"SEC-PLAIN-002\", \"OBSERVED_ISSUE\"], [\"SEC-STLS-002\", \"AMBIGUOUS\"]]]": 80
+  },
+  "LEGIT_PLAINTEXT_CFG": {
+   "[\"AMBIGUOUS\", false, \"COMPLETE\", [[\"SEC-CFG-001\", \"INFORMATIONAL\"], [\"SEC-PLAIN-001\", \"OBSERVED_ISSUE\"], [\"SEC-PLAIN-002\", \"OBSERVED_ISSUE\"], [\"SEC-STLS-002\", \"AMBIGUOUS\"]]]": 6
+  }
+ },
+ "INV-5b_strip_command_vs_decline": {
+  "decline": {
+   "('OBSERVED', True, False, 'NONE', True)": 138
+  },
+  "legit_decline": {
+   "('OBSERVED', True, False, 'NONE', True)": 11
+  },
+  "strip_command": {
+   "('OBSERVED', True, False, 'NONE', True)": 20,
+   "('OBSERVED', True, True, 'NONE', True)": 2
+  }
+ },
+ "INV-6_by_subtype": {
+  "fail: missing setup, dialogue+teardown observed (arguable)": 1,
+  "pass": 43
+ },
+ "INV-6_failures": [
+  {
+   "capture": "F_missing_setup.pcap",
+   "completeness": "INCOMPLETE",
+   "issues": [
+    [
+     "SEC-PLAIN-002",
+     "MEDIUM"
+    ]
+   ],
+   "label": null,
+   "ok": false,
+   "packets": 8,
+   "stream": 0
+  }
+ ],
+ "INV-7_8_capture_rows": [
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "A_legit_decline.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 34.15,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "B01_all_upgrade.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "B02_legit_decline.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "B03_no_support.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 10,
+   "band": "CRITICAL",
+   "capture": "B04_strip_with_control.pcap",
+   "control_streams": 30,
+   "cs001_issue_count": 5,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ],
+    [
+     "OBSERVED_ISSUE",
+     5
+    ]
+   ],
+   "expect_cs": true,
+   "got_cs_deviation": true,
+   "score": 7.81,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 40,
+   "band": "CRITICAL",
+   "capture": "B05_strip_blind.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "B06_strip_command.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 26.78,
+   "strip_command_streams": 10
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "B07_failed_upgrade.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "B08_config_change.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "AMBIGUOUS",
+     18
+    ],
+    [
+     "COMPLIANT",
+     3
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": true,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "B09_mixed_legit.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 10,
+   "band": "CRITICAL",
+   "capture": "B10_imap_strip_control.pcap",
+   "control_streams": 30,
+   "cs001_issue_count": 5,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ],
+    [
+     "OBSERVED_ISSUE",
+     5
+    ]
+   ],
+   "expect_cs": true,
+   "got_cs_deviation": true,
+   "score": 7.81,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "B11_imap_legit.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 10,
+   "band": "CRITICAL",
+   "capture": "B12_pop3_strip_control.pcap",
+   "control_streams": 30,
+   "cs001_issue_count": 5,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ],
+    [
+     "OBSERVED_ISSUE",
+     5
+    ]
+   ],
+   "expect_cs": true,
+   "got_cs_deviation": true,
+   "score": 7.81,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "B13_pop3_legit.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "B14_implicit.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "B15_implicit_imaps.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "B16_legacy_tls.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 44.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 6,
+   "band": "CRITICAL",
+   "capture": "B_strip_advert.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 34.15,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "C01_upgrade_smtp.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "C02_decline_smtp.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "C03_no_support_smtp.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 10,
+   "band": "CRITICAL",
+   "capture": "C04_strip_control.pcap",
+   "control_streams": 30,
+   "cs001_issue_count": 5,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ],
+    [
+     "OBSERVED_ISSUE",
+     5
+    ]
+   ],
+   "expect_cs": true,
+   "got_cs_deviation": true,
+   "score": 7.81,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 40,
+   "band": "CRITICAL",
+   "capture": "C05_strip_blind.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "C06_strip_command.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 26.78,
+   "strip_command_streams": 10
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "C07_reject_upgrade.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 0.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "C08_failed_upgrade.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "C09_mixed_legit.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     20
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "C10_config_change.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     21
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 10,
+   "band": "CRITICAL",
+   "capture": "C11_imap_strip_control.pcap",
+   "control_streams": 30,
+   "cs001_issue_count": 5,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ],
+    [
+     "OBSERVED_ISSUE",
+     5
+    ]
+   ],
+   "expect_cs": true,
+   "got_cs_deviation": true,
+   "score": 7.81,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "C12_imap_upgrade.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 10,
+   "band": "CRITICAL",
+   "capture": "C13_pop3_strip_control.pcap",
+   "control_streams": 30,
+   "cs001_issue_count": 5,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     20
+    ],
+    [
+     "OBSERVED_ISSUE",
+     5
+    ]
+   ],
+   "expect_cs": true,
+   "got_cs_deviation": true,
+   "score": 7.81,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "C14_pop3_no_support.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 20.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "C15_implicit_smtps.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "C16_implicit_pop3s.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "C17_legacy_tls.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 44.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "C18_reset_teardown.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     15
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     15
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "INSUFFICIENT_EVIDENCE",
+   "capture": "C19_truncated.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     14
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     16
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": null,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "C_normal_tls.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "D_failed_upgrade.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     2
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "INSUFFICIENT_EVIDENCE",
+   "capture": "E_incomplete.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": null,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "F_shared_identity.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     5
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 36.78,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 6,
+   "band": "CRITICAL",
+   "capture": "G_control_endpoint.pcap",
+   "control_streams": 6,
+   "cs001_issue_count": 1,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     10
+    ],
+    [
+     "OBSERVED_ISSUE",
+     1
+    ]
+   ],
+   "expect_cs": true,
+   "got_cs_deviation": true,
+   "score": 22.15,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 6,
+   "band": "CRITICAL",
+   "capture": "H_no_control.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 34.15,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "I_no_support.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 34.15,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "J_strip_command.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     2
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 35.0,
+   "strip_command_streams": 2
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "K_network_cond.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "INSUFFICIENT_EVIDENCE",
+     3
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "P_imap_decline.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 34.15,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 6,
+   "band": "CRITICAL",
+   "capture": "P_imap_strip.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 34.15,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "P_imap_tls.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "CRITICAL",
+   "capture": "P_pop3_decline.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 34.15,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": true,
+   "attack_streams": 6,
+   "band": "CRITICAL",
+   "capture": "P_pop3_strip.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 34.15,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "P_pop3_tls.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "COMPLIANT",
+     1
+    ],
+    [
+     "INSUFFICIENT_EVIDENCE",
+     5
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "T_IMAPS_implicit.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "T_POP3S_implicit.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "T_SMTPS_implicit.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "WEAK",
+   "capture": "T_TLS10.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "INSUFFICIENT_EVIDENCE",
+     4
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 58.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "WEAK",
+   "capture": "T_TLS11.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "INSUFFICIENT_EVIDENCE",
+     4
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 58.0,
+   "strip_command_streams": 0
+  },
+  {
+   "any_attack_label": false,
+   "attack_streams": 0,
+   "band": "STRONG",
+   "capture": "T_TLS12.pcap",
+   "control_streams": 0,
+   "cs001_issue_count": 0,
+   "cs_statuses": [
+    [
+     "INSUFFICIENT_EVIDENCE",
+     4
+    ]
+   ],
+   "expect_cs": false,
+   "got_cs_deviation": false,
+   "score": 100.0,
+   "strip_command_streams": 0
+  }
+ ],
+ "INV-9": [
+  {
+   "capture": "A_legit_decline.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B01_all_upgrade.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B02_legit_decline.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B03_no_support.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B06_strip_command.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B07_failed_upgrade.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B08_config_change.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B09_mixed_legit.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B11_imap_legit.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B13_pop3_legit.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B14_implicit.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B15_implicit_imaps.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "B16_legacy_tls.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C01_upgrade_smtp.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C02_decline_smtp.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C03_no_support_smtp.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C06_strip_command.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C07_reject_upgrade.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C08_failed_upgrade.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C09_mixed_legit.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C10_config_change.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C12_imap_upgrade.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C14_pop3_no_support.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C15_implicit_smtps.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C16_implicit_pop3s.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C17_legacy_tls.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C18_reset_teardown.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C19_truncated.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "C_normal_tls.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "D_failed_upgrade.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "E_incomplete.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "F_shared_identity.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "I_no_support.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "J_strip_command.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "K_network_cond.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "P_imap_decline.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "P_imap_tls.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "P_pop3_decline.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "P_pop3_tls.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "T_IMAPS_implicit.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "T_POP3S_implicit.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "T_SMTPS_implicit.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "T_TLS10.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "T_TLS11.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  },
+  {
+   "capture": "T_TLS12.pcap",
+   "cs001_observed_issue": 0,
+   "ok": true
+  }
+ ],
+ "OQ46": [
+  {
+   "case": "A_clean_teardown",
+   "expected": "COMPLETE",
+   "got": "COMPLETE",
+   "ok": true
+  },
+  {
+   "case": "B_reset_teardown",
+   "expected": "COMPLETE",
+   "got": "COMPLETE",
+   "ok": true
+  },
+  {
+   "case": "C_cut_mid_dialogue",
+   "expected": "TRUNCATED",
+   "got": "TRUNCATED",
+   "ok": true
+  },
+  {
+   "case": "D_cut_during_starttls",
+   "expected": "TRUNCATED",
+   "got": "TRUNCATED",
+   "ok": true
+  },
+  {
+   "case": "E_cut_during_handshake",
+   "expected": "TRUNCATED",
+   "got": "TRUNCATED",
+   "ok": true
+  },
+  {
+   "case": "F_missing_setup",
+   "expected": "INCOMPLETE",
+   "got": "INCOMPLETE",
+   "ok": true
+  },
+  {
+   "case": "G_incomplete_exchange",
+   "expected": "TRUNCATED",
+   "got": "TRUNCATED",
+   "ok": true
+  },
+  {
+   "case": "H_quiet_stream_then_more_traffic",
+   "expected": "INCOMPLETE",
+   "got": "INCOMPLETE",
+   "ok": true
+  }
+ ],
+ "OQ47": [
+  {
+   "case": "A_whole_in_one_segment",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true
+  },
+  {
+   "case": "B_split_before_capability",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true,
+   "twin_equal": true
+  },
+  {
+   "case": "C_split_inside_token",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true,
+   "twin_equal": true
+  },
+  {
+   "case": "D_split_before_final_letter",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true,
+   "twin_equal": true
+  },
+  {
+   "case": "E_split_between_cr_and_lf",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true,
+   "twin_equal": true
+  },
+  {
+   "case": "F_split_many_segments",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true,
+   "twin_equal": true
+  },
+  {
+   "case": "G_split_mid_numeric",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true,
+   "twin_equal": true
+  },
+  {
+   "case": "H_retransmitted_segment",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true,
+   "twin_equal": true
+  },
+  {
+   "case": "I_reordered_segments",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true,
+   "twin_equal": true
+  },
+  {
+   "case": "J_absent_whole",
+   "expected": [
+    "AMBIGUOUS",
+    false
+   ],
+   "got": [
+    "AMBIGUOUS",
+    false
+   ],
+   "ok_state": true
+  },
+  {
+   "case": "K_absent_split",
+   "expected": [
+    "AMBIGUOUS",
+    false
+   ],
+   "got": [
+    "AMBIGUOUS",
+    false
+   ],
+   "ok_state": true,
+   "twin_equal": true
+  },
+  {
+   "case": "L_advertised_never_used",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true
+  },
+  {
+   "case": "M_server_refuses",
+   "expected": [
+    "OBSERVED",
+    true
+   ],
+   "got": [
+    "OBSERVED",
+    true
+   ],
+   "ok_state": true
+  },
+  {
+   "case": "N_forged_capability_in_message_body",
+   "expected": [
+    "AMBIGUOUS",
+    false
+   ],
+   "got": [
+    "AMBIGUOUS",
+    false
+   ],
+   "ok_state": true
+  }
+ ],
+ "summary": {
+  "INV-1": {
+   "fail": 0,
+   "n": 711,
+   "ok": 711
+  },
+  "INV-2": {
+   "fail": 0,
+   "n": 49,
+   "ok": 49
+  },
+  "INV-3": {
+   "fail": 0,
+   "n": 1094,
+   "ok": 1094
+  },
+  "INV-6": {
+   "fail": 1,
+   "n": 44,
+   "ok": 43
+  },
+  "labelled_streams": 1382,
+  "matched_to_engine_session": 1382,
+  "unmatched": 0
+ }
+}

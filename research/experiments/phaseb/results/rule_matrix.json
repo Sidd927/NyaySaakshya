@@ -1,0 +1,128 @@
+{
+ "CS-STARTTLS-001": {
+  "captures_with_OBSERVED_ISSUE": 7,
+  "statuses": {
+   "AMBIGUOUS": 18,
+   "COMPLIANT": 539,
+   "INSUFFICIENT_EVIDENCE": 692,
+   "OBSERVED_ISSUE": 31
+  }
+ },
+ "CS-STARTTLS-002": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "AMBIGUOUS": 9,
+   "INSUFFICIENT_EVIDENCE": 692
+  }
+ },
+ "SEC-CERT-001": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "INFORMATIONAL": 3,
+   "NOT_OBSERVABLE": 822
+  }
+ },
+ "SEC-CERT-002": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "COMPLIANT": 3
+  }
+ },
+ "SEC-CERT-003": {
+  "captures_with_OBSERVED_ISSUE": 1,
+  "statuses": {
+   "COMPLIANT": 2,
+   "OBSERVED_ISSUE": 1
+  }
+ },
+ "SEC-CERT-004": {
+  "captures_with_OBSERVED_ISSUE": 1,
+  "statuses": {
+   "COMPLIANT": 2,
+   "OBSERVED_ISSUE": 1
+  }
+ },
+ "SEC-CERT-005": {
+  "captures_with_OBSERVED_ISSUE": 1,
+  "statuses": {
+   "INFORMATIONAL": 2,
+   "OBSERVED_ISSUE": 1
+  }
+ },
+ "SEC-CFG-001": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "INFORMATIONAL": 1359,
+   "NOT_OBSERVABLE": 64
+  }
+ },
+ "SEC-FS-001": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "COMPLIANT": 801,
+   "INSUFFICIENT_EVIDENCE": 24
+  }
+ },
+ "SEC-KEX-001": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "INFORMATIONAL": 801,
+   "INSUFFICIENT_EVIDENCE": 24
+  }
+ },
+ "SEC-PLAIN-001": {
+  "captures_with_OBSERVED_ISSUE": 36,
+  "statuses": {
+   "OBSERVED_ISSUE": 551
+  }
+ },
+ "SEC-PLAIN-002": {
+  "captures_with_OBSERVED_ISSUE": 43,
+  "statuses": {
+   "OBSERVED_ISSUE": 558
+  }
+ },
+ "SEC-STLS-001": {
+  "captures_with_OBSERVED_ISSUE": 3,
+  "statuses": {
+   "COMPLIANT": 447,
+   "INSUFFICIENT_EVIDENCE": 254,
+   "OBSERVED_ISSUE": 33
+  }
+ },
+ "SEC-STLS-002": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "AMBIGUOUS": 309,
+   "INFORMATIONAL": 234,
+   "INSUFFICIENT_EVIDENCE": 6
+  }
+ },
+ "SEC-STLS-003": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "INFORMATIONAL": 143
+  }
+ },
+ "SEC-TLS-001": {
+  "captures_with_OBSERVED_ISSUE": 4,
+  "statuses": {
+   "COMPLIANT": 752,
+   "INSUFFICIENT_EVIDENCE": 24,
+   "OBSERVED_ISSUE": 49
+  }
+ },
+ "SEC-TLS-002": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "COMPLIANT": 794,
+   "INSUFFICIENT_EVIDENCE": 31
+  }
+ },
+ "SEC-TLS-003": {
+  "captures_with_OBSERVED_ISSUE": 0,
+  "statuses": {
+   "NOT_OBSERVABLE": 825
+  }
+ }
+}

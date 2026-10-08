@@ -1,0 +1,193 @@
+[
+ {
+  "assessed": "1/1",
+  "band": "STRONG",
+  "case": "http_plaintext_port80",
+  "issue_groups": [],
+  "obs": {
+   "UNKNOWN": 8
+  },
+  "packets": 9,
+  "protocols": [
+   "unidentified"
+  ],
+  "score": 100.0,
+  "sessions": 1,
+  "status": "COMPLETED"
+ },
+ {
+  "assessed": "1/1",
+  "band": "STRONG",
+  "case": "dns_udp_only",
+  "issue_groups": [],
+  "obs": {
+   "UNKNOWN": 8
+  },
+  "packets": 1,
+  "protocols": [
+   "unidentified"
+  ],
+  "score": 100.0,
+  "sessions": 1,
+  "status": "COMPLETED"
+ },
+ {
+  "assessed": "1/1",
+  "band": "STRONG",
+  "case": "ftp_cleartext_login_port21",
+  "issue_groups": [],
+  "obs": {
+   "UNKNOWN": 8
+  },
+  "packets": 12,
+  "protocols": [
+   "unidentified"
+  ],
+  "score": 100.0,
+  "sessions": 1,
+  "status": "COMPLETED"
+ },
+ {
+  "assessed": "1/1",
+  "band": "WEAK",
+  "case": "smtp_ipv6_cleartext_auth",
+  "issue_groups": [
+   [
+    "NO_TLS_PROTECTION",
+    "MEDIUM",
+    1
+   ],
+   [
+    "PLAINTEXT_AUTH_EXPOSURE",
+    "HIGH",
+    1
+   ]
+  ],
+  "obs": {
+   "AMBIGUOUS": 1,
+   "OBSERVED": 4,
+   "UNKNOWN": 3
+  },
+  "packets": 12,
+  "protocols": [
+   "smtp"
+  ],
+  "score": 60.0,
+  "sessions": 1,
+  "status": "COMPLETED"
+ },
+ {
+  "assessed": "1/1",
+  "band": "WEAK",
+  "case": "smtp_ipv4_cleartext_auth",
+  "issue_groups": [
+   [
+    "NO_TLS_PROTECTION",
+    "MEDIUM",
+    1
+   ],
+   [
+    "PLAINTEXT_AUTH_EXPOSURE",
+    "HIGH",
+    1
+   ]
+  ],
+  "obs": {
+   "AMBIGUOUS": 1,
+   "OBSERVED": 4,
+   "UNKNOWN": 3
+  },
+  "packets": 12,
+  "protocols": [
+   "smtp"
+  ],
+  "score": 60.0,
+  "sessions": 1,
+  "status": "COMPLETED"
+ },
+ {
+  "assessed": "1/1",
+  "band": "STRONG",
+  "case": "smtp_nonstandard_port_2626",
+  "issue_groups": [],
+  "obs": {
+   "UNKNOWN": 8
+  },
+  "packets": 12,
+  "protocols": [
+   "unidentified"
+  ],
+  "score": 100.0,
+  "sessions": 1,
+  "status": "COMPLETED"
+ },
+ {
+  "assessed": "12/12",
+  "band": "CRITICAL",
+  "case": "ref: deepdive .pcap",
+  "issue_groups": [
+   [
+    "NO_TLS_PROTECTION",
+    "MEDIUM",
+    6
+   ],
+   [
+    "PLAINTEXT_AUTH_EXPOSURE",
+    "HIGH",
+    6
+   ],
+   [
+    "STARTTLS_BEHAVIOUR_DEVIATION",
+    "MEDIUM",
+    1
+   ]
+  ],
+  "obs": {
+   "AMBIGUOUS": 6,
+   "OBSERVED": 72,
+   "UNKNOWN": 18
+  },
+  "packets": 144,
+  "protocols": [
+   "smtp"
+  ],
+  "score": 22.15,
+  "sessions": 12,
+  "status": "COMPLETED"
+ },
+ {
+  "assessed": "12/12",
+  "band": "CRITICAL",
+  "case": "deepdive converted to .pcapng",
+  "issue_groups": [
+   [
+    "NO_TLS_PROTECTION",
+    "MEDIUM",
+    6
+   ],
+   [
+    "PLAINTEXT_AUTH_EXPOSURE",
+    "HIGH",
+    6
+   ],
+   [
+    "STARTTLS_BEHAVIOUR_DEVIATION",
+    "MEDIUM",
+    1
+   ]
+  ],
+  "obs": {
+   "AMBIGUOUS": 6,
+   "OBSERVED": 72,
+   "UNKNOWN": 18
+  },
+  "packets": 144,
+  "protocols": [
+   "smtp"
+  ],
+  "same_score_band_findings_as_pcap": true,
+  "score": 22.15,
+  "sessions": 12,
+  "status": "COMPLETED"
+ }
+]

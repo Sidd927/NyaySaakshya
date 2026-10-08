@@ -6,42 +6,43 @@
   "purpose": "STARTTLS inversion: genuine server non-support",
   "runs": {
     "ai_false": {
-      "elapsed_ms": 117.9,
-      "run_id": "9771adde58d84d329a050fd25a1f995f",
+      "elapsed_ms": 118.6,
+      "run_id": "c9ff17f10d4a481b9c74275ff42ea5ed",
       "summary": {
-        "abstention_count": 6,
+        "abstention_count": 7,
         "abstention_reasons": [
           "AMBIGUOUS_EVIDENCE",
-          "INSUFFICIENT_CAPTURE"
+          "INSUFFICIENT_CAPTURE",
+          "NOT_OBSERVABLE"
         ],
         "ai_enabled": false,
         "all_issue_classes": [
           "INSECURE_CONFIGURATION",
           "NO_TLS_PROTECTION"
         ],
-        "assessment_id": "0fb7067846c4cd02",
+        "assessment_id": "716c9cf8483c3530",
         "capture_id": "eacbc065c3427acf406ec8f2059ded8b6e77162a60a3c1497b8fbd805a941e20",
         "coverage": {
-          "assessed_fraction": 1.0,
+          "assessed_fraction": 0.5,
           "completeness_counts": {
             "COMPLETE": 1,
             "INCOMPLETE": 1
           },
           "observation_counts": {
             "AMBIGUOUS": 1,
-            "OBSERVED": 8,
-            "UNKNOWN": 7
+            "OBSERVED": 7,
+            "UNKNOWN": 8
           },
           "observation_fractions": {
             "AMBIGUOUS": 0.0625,
-            "OBSERVED": 0.5,
-            "UNKNOWN": 0.4375
+            "OBSERVED": 0.4375,
+            "UNKNOWN": 0.5
           },
           "protocol_counts": {
             "smtp": 2
           },
-          "sessions_abstained": 0,
-          "sessions_assessed": 2,
+          "sessions_abstained": 1,
+          "sessions_assessed": 1,
           "sessions_total": 2
         },
         "issue_group_count": 2,
@@ -51,7 +52,7 @@
           "NO_TLS_PROTECTION"
         ],
         "score_band": "ADEQUATE",
-        "score_value": 85.0
+        "score_value": 88.0
       }
     }
   },

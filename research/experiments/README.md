@@ -87,3 +87,28 @@ Needs Docker. See the scripts in `oq33r/` for the command sequence. The captures
 committed (64 KB); the per-run test certificate and key are git-ignored, and the pcaps
 are deliberately NOT byte-reproducible because packet timings and TLS randoms differ
 between runs.
+
+
+## Reproducing Phase B (technical validation)
+
+Scripts in `phaseb/` run every capture in this directory through the production pipeline and
+check the result against independent expectations (raw-byte tshark oracle, generator labels,
+manifests, published scoring constants). The write-up is `VALIDATION.md` at the repository root.
+
+```bash
+PYTHONPATH=src python3 research/experiments/phaseb/run_corpus.py        # first: 98 captures
+python3        research/experiments/phaseb/oracle_check.py              # then, in any order:
+python3        research/experiments/phaseb/label_check.py
+PYTHONPATH=src python3 research/experiments/phaseb/score_check.py
+python3        research/experiments/phaseb/provenance_check.py
+python3        research/experiments/phaseb/oq33r_check.py
+PYTHONPATH=src python3 research/experiments/phaseb/api_check.py         # starts its own backend on :8011
+PYTHONPATH=src python3 research/experiments/phaseb/edge_cases.py
+PYTHONPATH=src python3 research/experiments/phaseb/supplement_check.py
+PYTHONPATH=src python3 research/experiments/phaseb/report_tables.py
+PYTHONPATH=src python3 research/experiments/phaseb/probe_counterfactual.py
+```
+
+Outputs land in `phaseb/results/`. Needs `tshark` (validated on 4.6.8), `editcap` for the
+counterfactual, and the project's test dependencies (`fastapi`, `httpx`, `pypdf`, `reportlab`,
+`scapy`, `scikit-learn`). No script modifies product code, fixtures or committed result files.

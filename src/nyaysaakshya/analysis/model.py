@@ -22,8 +22,10 @@ from typing import Any, Dict, List, Optional, Tuple
 from nyaysaakshya.evidence.states import EvidenceState
 
 #: Bumped when rule semantics change, so stored findings stay interpretable.
-RULES_VERSION = "1.1"      # Phase 11: +8 rules, SEC-TLS-003 narrowed
-ENGINE_VERSION = "0.5.0"
+RULES_VERSION = "1.4"      # Phase B.4: SEC-TLS-001 / SEC-FS-001 say they concern the negotiated parameters when the handshake is not shown to complete
+# (1.3, Phase B.3: a partial checklist / partial chain is not COMPLIANT (SEC-CFG-001, SEC-CERT-002/003))
+# (1.2, Phase B.2: SEC-PLAIN-002 / SEC-CFG-001 need established absence of TLS; SEC-STLS-002 handles INCOMPLETE)
+ENGINE_VERSION = "0.6.0"   # Phase B.2: single-session rules run only on identified SMTP/IMAP/POP3 sessions
 
 
 class Severity(str, Enum):

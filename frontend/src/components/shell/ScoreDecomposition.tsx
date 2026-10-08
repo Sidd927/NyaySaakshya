@@ -54,7 +54,7 @@ export const ScoreDecomposition: React.FC<{ posture: Posture; onClose: () => voi
             )}
             <tr>
               <td className="sms-cell-title" colSpan={5}>Final posture score{posture.formula_id ? ` (${posture.formula_id})` : ''}</td>
-              <td className="sms-mono" style={{ textAlign: 'right', color: 'var(--ds-ink-primary)', fontWeight: 600 }}>{final ?? '—'}</td>
+              <td className="sms-mono" style={{ textAlign: 'right', color: 'var(--ds-ink-primary)', fontWeight: 600 }}>{final ?? (posture.withheld ? 'Not scored' : '—')}</td>
             </tr>
           </tbody>
         </table>

@@ -30,7 +30,7 @@ from nyaysaakshya.evidence.states import EvidenceState
 from nyaysaakshya.session.model import SessionEvidence, TlsState
 
 #: Bumped whenever an item is added, removed or re-specified.
-CHECKLIST_VERSION = "1.0"
+CHECKLIST_VERSION = "1.1"   # B.3: "transport protection" passes only when TLS is established; COMPLIANT needs all 7 items
 
 
 @dataclass(frozen=True)
@@ -55,12 +55,14 @@ def _deprecated_version(session: SessionEvidence) -> CheckOutcome:
 
 def _no_forward_secrecy(session: SessionEvidence) -> CheckOutcome:
     fs = session.tls_forward_secrecy
-    if fs.state is EvidenceState.UNKNOWN:
-        return CheckOutcome("forward secrecy", FindingStatus.NOT_OBSERVABLE,
-                            "no handshake was observed")
     if fs.state is EvidenceState.AMBIGUOUS:
         return CheckOutcome("forward secrecy", FindingStatus.AMBIGUOUS,
                             "the cipher suite was not recognised")
+    if not fs.is_conclusive:
+        # UNKNOWN, INCOMPLETE or NOT_OBSERVABLE: there is no value to judge, and a missing
+        # value must never read as "forward secrecy not provided".
+        return CheckOutcome("forward secrecy", FindingStatus.NOT_OBSERVABLE,
+                            "no handshake was observed")
     return CheckOutcome(
         "forward secrecy",
         FindingStatus.COMPLIANT if fs.value else FindingStatus.OBSERVED_ISSUE,
@@ -81,6 +83,11 @@ def _weak_rsa_key(session: SessionEvidence) -> CheckOutcome:
     if weak:
         return CheckOutcome("RSA key length", FindingStatus.OBSERVED_ISSUE,
                             f"{weak[0].key_bits}-bit RSA key below the {MIN_RSA_BITS}-bit minimum")
+    if len(sized) < len(session.certificates):
+        # Follows its delegate (SEC-CERT-003): a chain in which some key could not be read is
+        # not shown to meet the minimum, so the item was not fully evaluated.
+        return CheckOutcome("RSA key length", FindingStatus.NOT_OBSERVABLE,
+                            "the public key could not be read for every certificate")
     return CheckOutcome("RSA key length", FindingStatus.COMPLIANT,
                         f"all observed keys meet the {MIN_RSA_BITS}-bit minimum")
 
@@ -125,6 +132,10 @@ def _certificate_validity(session: SessionEvidence) -> CheckOutcome:
         if reference < cert.not_before_epoch:
             return CheckOutcome("certificate validity window", FindingStatus.OBSERVED_ISSUE,
                                 "a certificate was not yet valid at capture time")
+    if len(dated) < len(session.certificates):
+        # Follows its delegate (SEC-CERT-002), as above.
+        return CheckOutcome("certificate validity window", FindingStatus.NOT_OBSERVABLE,
+                            "the validity window could not be read for every certificate")
     return CheckOutcome("certificate validity window", FindingStatus.COMPLIANT,
                         "all observed certificates were valid at capture time")
 
@@ -146,11 +157,28 @@ def _self_signed_leaf(session: SessionEvidence) -> CheckOutcome:
 
 def _plaintext_transport(session: SessionEvidence) -> CheckOutcome:
     if session.tls_state is TlsState.NONE:
-        return CheckOutcome("transport protection", FindingStatus.OBSERVED_ISSUE,
-                            "no TLS records were observed in this session "
-                            "(reported by SEC-PLAIN-002)")
-    return CheckOutcome("transport protection", FindingStatus.COMPLIANT,
-                        "TLS records were observed")
+        # This item is DELEGATED to SEC-PLAIN-002, so it may only fail when that rule has
+        # the evidence to report it: an observed absence of TLS. A stream that is cut off
+        # or has no client dialogue does not establish an absence, so the item was not
+        # tested rather than failed.
+        transition = session.tls_transition
+        if transition.state is EvidenceState.OBSERVED and transition.value is False:
+            return CheckOutcome("transport protection", FindingStatus.OBSERVED_ISSUE,
+                                "no TLS records were observed in this session "
+                                "(reported by SEC-PLAIN-002)")
+        return CheckOutcome("transport protection", FindingStatus.NOT_OBSERVABLE,
+                            "the capture does not establish whether this session was "
+                            "protected by TLS")
+    # TLS records exist. That is "protected" only if the negotiation is shown to have
+    # completed; a ClientHello (or both hellos) with no encrypted data after it is a
+    # negotiation in progress, and SEC-TLS-002 reports it as incomplete. Passing the item
+    # on a hello alone would be the same over-claim in the opposite direction.
+    if session.tls_state is TlsState.ESTABLISHED:
+        return CheckOutcome("transport protection", FindingStatus.COMPLIANT,
+                            "TLS was established and encrypted application data was observed")
+    return CheckOutcome("transport protection", FindingStatus.NOT_OBSERVABLE,
+                        "TLS records were observed but the negotiation is not shown to have "
+                        "completed")
 
 
 #: THE CHECKLIST. Closed, ordered, and versioned; order is part of deterministic output.
@@ -186,7 +214,8 @@ class InsecureConfigurationRule(SecurityRule):
     def evaluate(self, session: SessionEvidence) -> List[SecurityFinding]:
         outcomes = [check(session) for _name, check in CHECKLIST]
         issues = [o for o in outcomes if o.status is FindingStatus.OBSERVED_ISSUE]
-        unobservable = [o for o in outcomes if o.status is FindingStatus.NOT_OBSERVABLE]
+        unobservable = [o for o in outcomes
+                        if o.status in (FindingStatus.NOT_OBSERVABLE, FindingStatus.AMBIGUOUS)]
         passed = [o for o in outcomes if o.status is FindingStatus.COMPLIANT]
 
         refs = [ref("tls_negotiated_version", session.tls_negotiated_version),
@@ -225,6 +254,29 @@ class InsecureConfigurationRule(SecurityRule):
                 evidence_refs=refs,
                 limitations=coverage)]
 
+        if unobservable:
+            items = "; ".join(f"{o.item} ({o.detail})" for o in passed)
+            # PARTIAL OBSERVATION. Some items passed and none failed, but the closed checklist
+            # was not fully evaluated. "Compliant" would claim the property (no insecure
+            # configuration among the declared items) for a session in which part of it was
+            # never tested. That is a coverage note, not a conclusion, so it is INFORMATIONAL
+            # exactly as the "some items failed" branch is. The properties that WERE
+            # established are still concluded by their own rules (SEC-TLS-001, SEC-FS-001,
+            # SEC-CERT-*), each of which is COMPLIANT only on its own evidence.
+            return [self.finding(
+                session,
+                status=FindingStatus.INFORMATIONAL, severity=Severity.INFO,
+                conclusion=(f"Configuration checklist: {len(passed)} of {len(CHECKLIST)} "
+                            "items passed; the rest could not be evaluated."),
+                explanation=(f"{summary}. No item failed, but the checklist was not fully "
+                             f"evaluated, so no overall compliance is claimed. Items that passed: "
+                             f"{items}. This entry records checklist coverage; each established "
+                             f"property is concluded by its own rule."),
+                evidence_refs=refs,
+                limitations=coverage + (
+                    f"The checklist is closed at version {CHECKLIST_VERSION}: conditions "
+                    "outside it were not assessed and are not claimed to be absent.",))]
+
         return [self.finding(
             session,
             status=FindingStatus.COMPLIANT, severity=Severity.INFO,
@@ -232,6 +284,6 @@ class InsecureConfigurationRule(SecurityRule):
             explanation=(f"{summary}. Items evaluated: "
                          + "; ".join(f"{o.item} ({o.detail})" for o in passed) + "."),
             evidence_refs=refs,
-            limitations=coverage + (
+            limitations=(
                 f"The checklist is closed at version {CHECKLIST_VERSION}: conditions "
                 "outside it were not assessed and are not claimed to be absent.",))]

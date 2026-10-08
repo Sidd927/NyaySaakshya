@@ -1,0 +1,99 @@
+{
+ "captures": 98,
+ "census": {
+  "AMBIGUOUS": 340,
+  "INCOMPLETE": 267,
+  "INFERRED": 975,
+  "NOT_OBSERVABLE": 1995,
+  "OBSERVED": 9052,
+  "UNKNOWN": 4483
+ },
+ "examples": {
+  "AMBIGUOUS": {
+   "basis": "capability response observed without the upgrade capability; genuine non-support and upstream stripping are indistinguishable here",
+   "capture": "postfix_smtp_no_starttls_offered.pcap",
+   "field": "starttls_advertised",
+   "frames": [
+    10,
+    12,
+    14
+   ],
+   "provenance": "none",
+   "state": "AMBIGUOUS",
+   "stream": 1,
+   "value": false
+  },
+  "INCOMPLETE": {
+   "basis": "the client requested the TLS upgrade and the capture shows no TLS negotiation after it; the exchange is cut off before the outcome is known",
+   "capture": "D_cut_during_starttls.pcap",
+   "field": "tls_transition",
+   "frames": [],
+   "provenance": "none",
+   "state": "INCOMPLETE",
+   "stream": 0,
+   "value": null
+  },
+  "INFERRED": {
+   "basis": "RFC 8446 SS1.2 and App. D.5: TLS 1.3 removed static RSA and static Diffie-Hellman key exchange, so every TLS 1.3 suite is forward secret",
+   "capture": "scene_b_certificate_honesty.pcap",
+   "field": "tls_forward_secrecy",
+   "frames": [
+    6
+   ],
+   "provenance": "none",
+   "state": "INFERRED",
+   "stream": 0,
+   "value": true
+  },
+  "NOT_OBSERVABLE": {
+   "basis": "no cleartext Certificate message is present in this stream",
+   "capture": "scene_b_certificate_honesty.pcap",
+   "field": "tls_certificate_chain",
+   "frames": [],
+   "provenance": "none",
+   "state": "NOT_OBSERVABLE",
+   "stream": 0,
+   "value": null
+  },
+  "OBSERVED": {
+   "basis": "ServerHello supported_versions extension (authoritative for TLS 1.3)",
+   "capture": "scene_b_certificate_honesty.pcap",
+   "field": "tls_negotiated_version",
+   "frames": [
+    6
+   ],
+   "provenance": "observed",
+   "state": "OBSERVED",
+   "stream": 0,
+   "value": "TLS1.3"
+  },
+  "UNKNOWN": {
+   "basis": "no ServerHello observed",
+   "capture": "dovecot_imap_plaintext_login.pcap",
+   "field": "tls_cipher_suite_name",
+   "frames": [],
+   "provenance": "none",
+   "state": "UNKNOWN",
+   "stream": 0,
+   "value": null
+  }
+ },
+ "field_observations": 17112,
+ "not_observable_findings": {
+  "by_severity": {
+   "INFO": 1711
+  },
+  "captures_with_NOT_OBSERVABLE_and_no_OBSERVED_ISSUE_but_penalised": [],
+  "count": 1711,
+  "texts_containing_invalid_untrusted_etc": []
+ },
+ "scene_b_like_example": {
+  "band": "STRONG",
+  "capture": "dovecot_imap_imaps_implicit_tls.pcap",
+  "observation_counts": {
+   "NOT_OBSERVABLE": 4,
+   "OBSERVED": 4
+  },
+  "score": 100.0
+ }
+}

@@ -8,7 +8,7 @@ A public-facing overview of how the system is built. It describes what is implem
 2. **Never claim more than the capture supports.** Facts carry an evidence state; absence of evidence is never converted into safety or into an attack.
 3. **One canonical answer.** `PostureAssessment` is produced once; the API, dashboard and reports consume it and recompute nothing.
 4. **ML is a bounded, secondary lane** that can influence ordering only.
-5. **Passive and reproducible.** The same capture analysed with the same versions yields the same evidence, findings and `assessment_id`. Report bytes are stable for a given *stored assessment* (see [Reports and identity](#reports-and-identity)).
+5. **Passive and reproducible.** The same capture analysed with the same software versions yields the same evidence, findings and `assessment_id`; a different engine or rule-set version yields a different `assessment_id`. Report bytes are stable for a given *stored assessment* (see [Reports and identity](#reports-and-identity)).
 
 ## 2. The journey, end to end
 
@@ -127,7 +127,7 @@ PCAP SHA-256
   → report_sha256                    (hash of a rendered report)
 ```
 
-`run_id` (one execution) is a separate identity. `assessment_id` hashes `capture_id`, the schema version and each issue group's class, fact kind, severity and recurrence, and deliberately excludes `run_id` and timestamps. The Provenance view renders `capture → stream → frame → wire evidence → rule → standard → finding → score`.
+`run_id` (one execution) is a separate identity. `assessment_id` identifies one analysis outcome: it hashes `capture_id`, the posture schema and engine versions, the versions of the rule sets that produced the findings, whether the ML lane was on, the scoring formula, the band and the session counts behind it, and each issue group's class, fact kind, severity and recurrence. It deliberately excludes `run_id` and timestamps, and it does not cover the TShark version or finding wording. A withheld posture serialises `score.scored = false` and `score.value = null`; the arithmetic value is never published as a score. The Provenance view renders `capture → stream → frame → wire evidence → rule → standard → finding → score`.
 
 ## 5. Security boundaries
 

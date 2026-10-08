@@ -38,8 +38,8 @@ export const PosturePanel: React.FC<{ dashboard: DashboardViewModel }> = ({ dash
         <div>
           <span className="sms-label">Posture score</span>
           <p className="sms-score" style={{ marginTop: 'var(--ds-space-4)' }}>
-            {posture.withheld || posture.score_value === null ? '—' : posture.score_value.toFixed(2)}
-            <span className="sms-score__max">/ 100</span>
+            {posture.withheld || posture.score_value === null ? 'Not scored' : posture.score_value.toFixed(2)}
+            {!(posture.withheld || posture.score_value === null) && <span className="sms-score__max">/ 100</span>}
           </p>
           {posture.formula_id && <p className="sms-mono sms-muted" style={{ fontSize: 'var(--ds-text-12)' }}>{posture.formula_id}</p>}
           {posture.withheld && posture.withheld_note && <p className="sms-prose" style={{ marginTop: 'var(--ds-space-8)' }}>{posture.withheld_note}</p>}

@@ -6,8 +6,8 @@
       "source_filename": "backup_weak_certificate.pcap",
       "overall_posture": "CRITICAL",
       "score_value": 44.0,
-      "created_at": "2026-09-24T10:18:22Z",
-      "duration_ms": 138
+      "created_at": "2026-10-08T08:58:39Z",
+      "duration_ms": 116
     },
     "assessment": {
       "abstentions": [
@@ -44,7 +44,7 @@
         }
       ],
       "ai_enabled": false,
-      "assessment_id": "645090e0bc44ba9d",
+      "assessment_id": "0a189316f53b2767",
       "capture_id": "ce5377348e22ad92c33d705e31388944bad8224534d478c38b57a75d3ba4a501",
       "coverage": {
         "assessed_fraction": 1.0,
@@ -68,7 +68,7 @@
         "sessions_assessed": 1,
         "sessions_total": 1
       },
-      "generated_at": "2026-09-24T10:18:22Z",
+      "generated_at": "2026-10-08T08:58:39Z",
       "issue_groups": [
         {
           "affected_stream_keys": [
@@ -154,7 +154,7 @@
             }
           ],
           "dimension": "CERTIFICATE_TRUST",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 1,
           "issue_class": "CERTIFICATE_CHAIN_STRUCTURE",
           "penalising": false,
@@ -186,7 +186,7 @@
             }
           ],
           "dimension": "CERTIFICATE_TRUST",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 1,
           "issue_class": "CERTIFICATE_EXTRACTION",
           "penalising": false,
@@ -302,7 +302,7 @@
             }
           ],
           "dimension": "CRYPTO_CONFIGURATION",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 1,
           "issue_class": "IMPLICIT_TLS_SESSION",
           "penalising": false,
@@ -346,7 +346,7 @@
             }
           ],
           "dimension": "CRYPTO_CONFIGURATION",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 1,
           "issue_class": "INSECURE_CONFIGURATION",
           "penalising": false,
@@ -372,7 +372,7 @@
             }
           ],
           "dimension": "CRYPTO_CONFIGURATION",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 1,
           "issue_class": "KEY_EXCHANGE_MECHANISM",
           "penalising": false,
@@ -628,6 +628,7 @@
               }
             ],
             "formula_id": "F2-group-damped",
+            "scored": true,
             "starting_value": 100.0,
             "total_penalty": 56.0,
             "value": 44.0
@@ -661,8 +662,8 @@
           "ml_results": 0
         },
         "versions": {
-          "posture_engine": "0.8.0",
-          "posture_schema": "1.0",
+          "posture_engine": "0.10.0",
+          "posture_schema": "1.1",
           "scoring_formula": "F2-group-damped"
         }
       },
@@ -692,7 +693,8 @@
         },
         "by_fact_kind": {
           "BASE_SECURITY_ISSUE": 2,
-          "POSITIVE_EVIDENCE": 8
+          "INFORMATIONAL": 5,
+          "POSITIVE_EVIDENCE": 3
         },
         "by_severity": {
           "HIGH": 2
@@ -700,7 +702,7 @@
         "highest_severity": "HIGH",
         "issue_groups": 2,
         "note": "a behavioural deviation is a difference from a baseline, not a vulnerability; an anomaly signal is a prioritisation input and neither asserts nor implies an attack",
-        "positive_evidence": 8
+        "positive_evidence": 3
       },
       "run_id": "58d5f74ba5024c83ad6e62dae6dd06b6",
       "score": {
@@ -727,6 +729,7 @@
           }
         ],
         "formula_id": "F2-group-damped",
+        "scored": true,
         "starting_value": 100.0,
         "total_penalty": 56.0,
         "value": 44.0
@@ -760,18 +763,18 @@
         ]
       },
       "versions": {
-        "engine": "0.8.0",
-        "schema": "1.0"
+        "engine": "0.10.0",
+        "schema": "1.1"
       }
     },
     "dashboard": {
       "identity": {
-        "assessment_id": "645090e0bc44ba9d",
+        "assessment_id": "0a189316f53b2767",
         "capture_id": "ce5377348e22ad92c33d705e31388944bad8224534d478c38b57a75d3ba4a501",
         "run_id": "58d5f74ba5024c83ad6e62dae6dd06b6",
-        "generated_at": "2026-09-24T10:18:22Z",
-        "posture_schema_version": "1.0",
-        "posture_engine_version": "0.8.0",
+        "generated_at": "2026-10-08T08:58:39Z",
+        "posture_schema_version": "1.1",
+        "posture_engine_version": "0.10.0",
         "ai_enabled": false,
         "dashboard_schema_version": "1.0",
         "projection_version": "0.10.0"
@@ -837,7 +840,8 @@
         "protocol_counts": {
           "smtp": 1
         },
-        "present": true
+        "present": true,
+        "sessions_unsupported": 0
       },
       "distributions": [
         {
@@ -879,16 +883,24 @@
               "key": "BASE_SECURITY_ISSUE",
               "label": "Security issue",
               "value": 2.0,
-              "max_value": 8.0,
+              "max_value": 5.0,
               "value_text": "2",
+              "tone": "neutral"
+            },
+            {
+              "key": "INFORMATIONAL",
+              "label": "Informational",
+              "value": 5.0,
+              "max_value": 5.0,
+              "value_text": "5",
               "tone": "neutral"
             },
             {
               "key": "POSITIVE_EVIDENCE",
               "label": "Positive evidence",
-              "value": 8.0,
-              "max_value": 8.0,
-              "value_text": "8",
+              "value": 3.0,
+              "max_value": 5.0,
+              "value_text": "3",
               "tone": "neutral"
             }
           ]
@@ -1158,8 +1170,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CERTIFICATE_TRUST",
           "dimension_label": "Certificate trust",
           "certainty": "CONFIRMED",
@@ -1203,8 +1215,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CERTIFICATE_TRUST",
           "dimension_label": "Certificate trust",
           "certainty": "CONFIRMED",
@@ -1353,8 +1365,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CRYPTO_CONFIGURATION",
           "dimension_label": "Crypto configuration",
           "certainty": "UNCERTAIN",
@@ -1386,8 +1398,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CRYPTO_CONFIGURATION",
           "dimension_label": "Crypto configuration",
           "certainty": "CONFIRMED",
@@ -1437,8 +1449,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CRYPTO_CONFIGURATION",
           "dimension_label": "Crypto configuration",
           "certainty": "CONFIRMED",
@@ -1575,8 +1587,8 @@
           "contradictions_recorded": 0,
           "duplicate_sources_merged": 0,
           "versions": {
-            "posture_engine": "0.8.0",
-            "posture_schema": "1.0",
+            "posture_engine": "0.10.0",
+            "posture_schema": "1.1",
             "scoring_formula": "F2-group-damped"
           }
         },
@@ -1857,8 +1869,8 @@
       "source_filename": "scene_b_certificate_honesty.pcap",
       "overall_posture": "STRONG",
       "score_value": 100.0,
-      "created_at": "2026-09-24T09:59:20Z",
-      "duration_ms": 136
+      "created_at": "2026-10-08T08:58:39Z",
+      "duration_ms": 115
     },
     "assessment": {
       "abstentions": [
@@ -1890,7 +1902,7 @@
         }
       ],
       "ai_enabled": false,
-      "assessment_id": "7575e6bf983af6ae",
+      "assessment_id": "9511e428c0b36140",
       "capture_id": "d257ec482cd486432e510f8ddb9cf9e46747c237e743036c977b67b76cc51f65",
       "coverage": {
         "assessed_fraction": 1.0,
@@ -1912,7 +1924,7 @@
         "sessions_assessed": 1,
         "sessions_total": 1
       },
-      "generated_at": "2026-09-24T09:59:20Z",
+      "generated_at": "2026-10-08T08:58:39Z",
       "issue_groups": [
         {
           "affected_stream_keys": [
@@ -1992,7 +2004,7 @@
             }
           ],
           "dimension": "CRYPTO_CONFIGURATION",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 1,
           "issue_class": "IMPLICIT_TLS_SESSION",
           "penalising": false,
@@ -2036,7 +2048,7 @@
             }
           ],
           "dimension": "CRYPTO_CONFIGURATION",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 1,
           "issue_class": "INSECURE_CONFIGURATION",
           "penalising": false,
@@ -2062,7 +2074,7 @@
             }
           ],
           "dimension": "CRYPTO_CONFIGURATION",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 1,
           "issue_class": "KEY_EXCHANGE_MECHANISM",
           "penalising": false,
@@ -2129,6 +2141,7 @@
             "basis": "100 with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
             "components": [],
             "formula_id": "F2-group-damped",
+            "scored": true,
             "starting_value": 100.0,
             "total_penalty": 0,
             "value": 100.0
@@ -2158,8 +2171,8 @@
           "ml_results": 0
         },
         "versions": {
-          "posture_engine": "0.8.0",
-          "posture_schema": "1.0",
+          "posture_engine": "0.10.0",
+          "posture_schema": "1.1",
           "scoring_formula": "F2-group-damped"
         }
       },
@@ -2184,13 +2197,14 @@
         "behavioural_deviations": 0,
         "by_dimension": {},
         "by_fact_kind": {
-          "POSITIVE_EVIDENCE": 6
+          "INFORMATIONAL": 3,
+          "POSITIVE_EVIDENCE": 3
         },
         "by_severity": {},
         "highest_severity": null,
         "issue_groups": 0,
         "note": "a behavioural deviation is a difference from a baseline, not a vulnerability; an anomaly signal is a prioritisation input and neither asserts nor implies an attack",
-        "positive_evidence": 6
+        "positive_evidence": 3
       },
       "run_id": "9aaefe1d93f046faac255dfe67c86c18",
       "score": {
@@ -2198,6 +2212,7 @@
         "basis": "100 with no established security issue to penalise; see evidence coverage for how much of the traffic this conclusion rests on",
         "components": [],
         "formula_id": "F2-group-damped",
+        "scored": true,
         "starting_value": 100.0,
         "total_penalty": 0,
         "value": 100.0
@@ -2225,18 +2240,18 @@
         ]
       },
       "versions": {
-        "engine": "0.8.0",
-        "schema": "1.0"
+        "engine": "0.10.0",
+        "schema": "1.1"
       }
     },
     "dashboard": {
       "identity": {
-        "assessment_id": "7575e6bf983af6ae",
+        "assessment_id": "9511e428c0b36140",
         "capture_id": "d257ec482cd486432e510f8ddb9cf9e46747c237e743036c977b67b76cc51f65",
         "run_id": "9aaefe1d93f046faac255dfe67c86c18",
-        "generated_at": "2026-09-24T09:59:20Z",
-        "posture_schema_version": "1.0",
-        "posture_engine_version": "0.8.0",
+        "generated_at": "2026-10-08T08:58:39Z",
+        "posture_schema_version": "1.1",
+        "posture_engine_version": "0.10.0",
         "ai_enabled": false,
         "dashboard_schema_version": "1.0",
         "projection_version": "0.10.0"
@@ -2277,7 +2292,8 @@
         "protocol_counts": {
           "imap": 1
         },
-        "present": true
+        "present": true,
+        "sessions_unsupported": 0
       },
       "distributions": [
         {
@@ -2286,11 +2302,19 @@
           "note": "Security issues, behavioural deviations, anomaly signals and positive evidence are different kinds of fact and are never merged.",
           "bars": [
             {
+              "key": "INFORMATIONAL",
+              "label": "Informational",
+              "value": 3.0,
+              "max_value": 3.0,
+              "value_text": "3",
+              "tone": "neutral"
+            },
+            {
               "key": "POSITIVE_EVIDENCE",
               "label": "Positive evidence",
-              "value": 6.0,
-              "max_value": 6.0,
-              "value_text": "6",
+              "value": 3.0,
+              "max_value": 3.0,
+              "value_text": "3",
               "tone": "neutral"
             }
           ]
@@ -2417,8 +2441,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CRYPTO_CONFIGURATION",
           "dimension_label": "Crypto configuration",
           "certainty": "CONFIRMED",
@@ -2450,8 +2474,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CRYPTO_CONFIGURATION",
           "dimension_label": "Crypto configuration",
           "certainty": "PROBABLE",
@@ -2501,8 +2525,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CRYPTO_CONFIGURATION",
           "dimension_label": "Crypto configuration",
           "certainty": "CONFIRMED",
@@ -2657,8 +2681,8 @@
           "contradictions_recorded": 0,
           "duplicate_sources_merged": 0,
           "versions": {
-            "posture_engine": "0.8.0",
-            "posture_schema": "1.0",
+            "posture_engine": "0.10.0",
+            "posture_schema": "1.1",
             "scoring_formula": "F2-group-damped"
           }
         },
@@ -2881,8 +2905,8 @@
       "source_filename": "deepdive_cross_session_control_endpoint.pcap",
       "overall_posture": "CRITICAL",
       "score_value": 22.15,
-      "created_at": "2026-09-24T10:18:22Z",
-      "duration_ms": 141
+      "created_at": "2026-10-08T08:58:39Z",
+      "duration_ms": 128
     },
     "assessment": {
       "abstentions": [
@@ -3382,7 +3406,7 @@
         }
       ],
       "ai_enabled": false,
-      "assessment_id": "09532eed458ad3a6",
+      "assessment_id": "afa30ff290742813",
       "capture_id": "97b2b61aa870b74861c606e604f3ecf6f77d8818241817bd22beb814f3dcbe83",
       "coverage": {
         "assessed_fraction": 1.0,
@@ -3406,7 +3430,7 @@
         "sessions_assessed": 12,
         "sessions_total": 12
       },
-      "generated_at": "2026-09-24T10:18:22Z",
+      "generated_at": "2026-10-08T08:58:39Z",
       "issue_groups": [
         {
           "affected_stream_keys": [
@@ -3617,7 +3641,7 @@
             }
           ],
           "dimension": "CRYPTO_CONFIGURATION",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 12,
           "issue_class": "INSECURE_CONFIGURATION",
           "penalising": false,
@@ -3722,7 +3746,7 @@
             }
           ],
           "dimension": "CRYPTO_CONFIGURATION",
-          "fact_kind": "POSITIVE_EVIDENCE",
+          "fact_kind": "INFORMATIONAL",
           "finding_count": 6,
           "issue_class": "KEY_EXCHANGE_MECHANISM",
           "penalising": false,
@@ -4013,7 +4037,7 @@
             "conclusion": "The mail session carried no TLS protection.",
             "contradictions": [],
             "dimension": "PLAINTEXT_EXPOSURE",
-            "explanation": "No TLS records were observed in this stream, so message and command content travelled in cleartext. This states what was observed. It does not attribute a cause: a session may be unprotected through client choice, server configuration, or interference, and this capture alone cannot distinguish those.",
+            "explanation": "No TLS records were observed in this stream, so the commands and any message content it carried travelled in cleartext. This states what was observed. It does not attribute a cause: a session may be unprotected through client choice, server configuration, or interference, and this capture alone cannot distinguish those.",
             "frames": [
               6
             ],
@@ -4268,6 +4292,7 @@
               }
             ],
             "formula_id": "F2-group-damped",
+            "scored": true,
             "starting_value": 100.0,
             "total_penalty": 77.8496,
             "value": 22.15
@@ -4302,8 +4327,8 @@
           "ml_results": 0
         },
         "versions": {
-          "posture_engine": "0.8.0",
-          "posture_schema": "1.0",
+          "posture_engine": "0.10.0",
+          "posture_schema": "1.1",
           "scoring_formula": "F2-group-damped"
         }
       },
@@ -4409,7 +4434,8 @@
         "by_fact_kind": {
           "BASE_SECURITY_ISSUE": 2,
           "BEHAVIOURAL_DEVIATION": 1,
-          "POSITIVE_EVIDENCE": 7
+          "INFORMATIONAL": 2,
+          "POSITIVE_EVIDENCE": 5
         },
         "by_severity": {
           "HIGH": 1,
@@ -4418,7 +4444,7 @@
         "highest_severity": "HIGH",
         "issue_groups": 3,
         "note": "a behavioural deviation is a difference from a baseline, not a vulnerability; an anomaly signal is a prioritisation input and neither asserts nor implies an attack",
-        "positive_evidence": 43
+        "positive_evidence": 25
       },
       "run_id": "871ea0c739b246098ff481c887afcc0f",
       "score": {
@@ -4454,6 +4480,7 @@
           }
         ],
         "formula_id": "F2-group-damped",
+        "scored": true,
         "starting_value": 100.0,
         "total_penalty": 77.8496,
         "value": 22.15
@@ -4484,18 +4511,18 @@
         ]
       },
       "versions": {
-        "engine": "0.8.0",
-        "schema": "1.0"
+        "engine": "0.10.0",
+        "schema": "1.1"
       }
     },
     "dashboard": {
       "identity": {
-        "assessment_id": "09532eed458ad3a6",
+        "assessment_id": "afa30ff290742813",
         "capture_id": "97b2b61aa870b74861c606e604f3ecf6f77d8818241817bd22beb814f3dcbe83",
         "run_id": "871ea0c739b246098ff481c887afcc0f",
-        "generated_at": "2026-09-24T10:18:22Z",
-        "posture_schema_version": "1.0",
-        "posture_engine_version": "0.8.0",
+        "generated_at": "2026-10-08T08:58:39Z",
+        "posture_schema_version": "1.1",
+        "posture_engine_version": "0.10.0",
         "ai_enabled": false,
         "dashboard_schema_version": "1.0",
         "projection_version": "0.10.0"
@@ -4572,7 +4599,8 @@
         "protocol_counts": {
           "smtp": 12
         },
-        "present": true
+        "present": true,
+        "sessions_unsupported": 0
       },
       "distributions": [
         {
@@ -4630,7 +4658,7 @@
               "key": "BASE_SECURITY_ISSUE",
               "label": "Security issue",
               "value": 2.0,
-              "max_value": 7.0,
+              "max_value": 5.0,
               "value_text": "2",
               "tone": "neutral"
             },
@@ -4638,16 +4666,24 @@
               "key": "BEHAVIOURAL_DEVIATION",
               "label": "Behavioural deviation",
               "value": 1.0,
-              "max_value": 7.0,
+              "max_value": 5.0,
               "value_text": "1",
+              "tone": "neutral"
+            },
+            {
+              "key": "INFORMATIONAL",
+              "label": "Informational",
+              "value": 2.0,
+              "max_value": 5.0,
+              "value_text": "2",
               "tone": "neutral"
             },
             {
               "key": "POSITIVE_EVIDENCE",
               "label": "Positive evidence",
-              "value": 7.0,
-              "max_value": 7.0,
-              "value_text": "7",
+              "value": 5.0,
+              "max_value": 5.0,
+              "value_text": "5",
               "tone": "neutral"
             }
           ]
@@ -4845,7 +4881,7 @@
           "protocol_label": "smtp",
           "title": "Mail session carried no TLS",
           "conclusion": "The mail session carried no TLS protection.",
-          "explanation": "No TLS records were observed in this stream, so message and command content travelled in cleartext. This states what was observed. It does not attribute a cause: a session may be unprotected through client choice, server configuration, or interference, and this capture alone cannot distinguish those.",
+          "explanation": "No TLS records were observed in this stream, so the commands and any message content it carried travelled in cleartext. This states what was observed. It does not attribute a cause: a session may be unprotected through client choice, server configuration, or interference, and this capture alone cannot distinguish those.",
           "penalising": true,
           "stream_key": "97b2b61aa870b74861c606e604f3ecf6f77d8818241817bd22beb814f3dcbe83:0",
           "tcp_stream_id": 0,
@@ -5189,8 +5225,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CRYPTO_CONFIGURATION",
           "dimension_label": "Crypto configuration",
           "certainty": "UNDETERMINED",
@@ -5339,8 +5375,8 @@
           "severity_label": "INFO",
           "severity_marker": "[i  ]",
           "severity_tone": "info",
-          "fact_kind": "POSITIVE_EVIDENCE",
-          "fact_kind_label": "Positive evidence",
+          "fact_kind": "INFORMATIONAL",
+          "fact_kind_label": "Informational",
           "dimension": "CRYPTO_CONFIGURATION",
           "dimension_label": "Crypto configuration",
           "certainty": "PROBABLE",
@@ -6233,8 +6269,8 @@
           "contradictions_recorded": 0,
           "duplicate_sources_merged": 0,
           "versions": {
-            "posture_engine": "0.8.0",
-            "posture_schema": "1.0",
+            "posture_engine": "0.10.0",
+            "posture_schema": "1.1",
             "scoring_formula": "F2-group-damped"
           }
         },

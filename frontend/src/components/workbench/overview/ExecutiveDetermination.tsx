@@ -22,12 +22,29 @@ export const ExecutiveDetermination: React.FC<ExecutiveDeterminationProps> = ({
   onTraceProvenance,
 }) => {
   const { posture } = dashboard;
-  const isClean = dashboard.findings.length === 0 && posture.value === 'STRONG';
+  const unsupported = dashboard.coverage?.sessions_unsupported ?? 0;
+  const cov = dashboard.coverage;
+  const allAssessed = !!cov && cov.sessions_total != null && cov.sessions_assessed === cov.sessions_total;
+  // "TLS on every observed session" is a statement about completed sessions. A session whose handshake
+  // is not shown to have completed was assessed only on the parameters the server selected.
+  const unfinished = sessions.filter((s) => s.tls_state !== 'ESTABLISHED' && s.tls_state !== 'NONE').length;
+  const isClean = dashboard.findings.length === 0 && posture.value === 'STRONG' && unsupported === 0 && allAssessed && unfinished === 0;
+  const partlyAssessed = dashboard.findings.length === 0 && posture.value === 'STRONG' && !isClean && !!cov && (!allAssessed || unsupported > 0);
+  const paramsOnly = dashboard.findings.length === 0 && posture.value === 'STRONG' && !isClean && !partlyAssessed && unfinished > 0;
 
   // Deterministically synthesize the forensic verdict headline
   const getVerdictHeadline = (): string => {
+    if (posture.withheld && posture.withheld_note) {
+      return posture.withheld_note;
+    }
     if (isClean) {
       return 'TLS on every observed session. No plaintext credentials on the wire.';
+    }
+    if (paramsOnly) {
+      return `No issue was established in the TLS parameters the server selected. The handshake was not shown to complete in ${unfinished} of ${sessions.length} session${sessions.length === 1 ? '' : 's'}, so the security of the complete session is not established.`;
+    }
+    if (partlyAssessed) {
+      return `No issue was established in the ${cov!.sessions_assessed} of ${cov!.sessions_total} sessions that could be assessed. The others were not assessed and are not shown to be secure.`;
     }
 
     if (!primaryFinding) {
@@ -42,7 +59,7 @@ export const ExecutiveDetermination: React.FC<ExecutiveDeterminationProps> = ({
       return `Authentication activity was observed without TLS protection${sessionCountText}.`;
     }
     if (title.includes('rsa') || title.includes('sha-1') || title.includes('weak algorithm')) {
-      return 'Cryptographic weaknesses detected in X.509 certificate (RSA-1024 / SHA-1) on SMTPS :465.';
+      return primaryFinding.conclusion || 'A cryptographic weakness was established in the server certificate.';
     }
     if (title.includes('starttls') && title.includes('deviation')) {
       return `STARTTLS baseline deviation detected between subject and control endpoints${sessionCountText}.`;
@@ -106,7 +123,8 @@ export const ExecutiveDetermination: React.FC<ExecutiveDeterminationProps> = ({
 
   const tone = getPostureTone();
   const Icon = tone.Icon;
-  const scoreText = posture.withheld || posture.score_value === null ? '—' : posture.score_value.toFixed(2);
+  const notScored = posture.withheld || posture.score_value === null;
+  const scoreText = notScored ? 'Not scored' : posture.score_value!.toFixed(2);
   const others = dashboard.findings.filter((f) => f !== primaryFinding);
   const sevColor = (severity: string | null) => {
     if (severity === 'CRITICAL') return 'var(--ds-sev-critical-rule)';
@@ -136,7 +154,7 @@ export const ExecutiveDetermination: React.FC<ExecutiveDeterminationProps> = ({
           </div>
           <div className="sms-verdict__score">
             <span style={{ color: tone.color }}>{scoreText}</span>
-            <span className="sms-verdict__max">/ 100</span>
+            {!notScored && <span className="sms-verdict__max">/ 100</span>}
           </div>
           <h2 className="sms-verdict__headline">{headline}</h2>
           <div className="sms-verdict__anchors">
@@ -151,7 +169,7 @@ export const ExecutiveDetermination: React.FC<ExecutiveDeterminationProps> = ({
             )}
             {isClean && (
               <span className="sms-badge sms-badge--muted">
-                {sessions.length} session{sessions.length === 1 ? '' : 's'} assessed · Compliant
+                {sessions.length} session{sessions.length === 1 ? '' : 's'} assessed · no issue established
               </span>
             )}
           </div>

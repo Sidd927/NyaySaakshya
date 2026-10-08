@@ -1027,15 +1027,6 @@
    "shown_in": "Detailed findings"
   },
   {
-   "id": "finding.the-session-provides-forward-secrecy-aedc",
-   "en": "The session provides forward secrecy.",
-   "mr": "हे सत्र फॉरवर्ड सिक्रेसी देते.",
-   "needs_review": true,
-   "area": "Key exchange and forward-secrecy checks",
-   "kind": "Finding — what was found",
-   "shown_in": "Detailed findings"
-  },
-  {
    "id": "finding.the-negotiated-key-exchange-does-db92",
    "en": "The negotiated key exchange does not provide forward secrecy.",
    "mr": "वाटाघाटी झालेले की एक्सचेंज फॉरवर्ड सिक्रेसी देत नाही.",
@@ -1162,9 +1153,9 @@
    "shown_in": "Detailed findings"
   },
   {
-   "id": "finding.no-tls-records-were-observed-7dad",
-   "en": "No TLS records were observed in this stream, so message and command content travelled in cleartext. This states what was observed. It does not attribute a cause: a session may be unprotected through client choice, server configuration, or interference, and this capture alone cannot distinguish those.",
-   "mr": "या स्ट्रीममध्ये कोणतेही TLS रेकॉर्ड आढळले नाहीत, त्यामुळे संदेश आणि आज्ञांची सामग्री क्लिअरटेक्स्टमध्ये प्रवास करत होती. हे काय आढळले ते सांगते. यामागचे कारण ठरवत नाही: सत्र असंरक्षित असण्यामागे क्लायंटची निवड, सर्व्हरची संरचना किंवा हस्तक्षेप असू शकतो आणि केवळ या कॅप्चरवरून त्यातील फरक ओळखता येत नाही.",
+   "id": "finding.no-tls-records-were-observed-01e2",
+   "en": "No TLS records were observed in this stream, so the commands and any message content it carried travelled in cleartext. This states what was observed. It does not attribute a cause: a session may be unprotected through client choice, server configuration, or interference, and this capture alone cannot distinguish those.",
+   "mr": "या स्ट्रीममध्ये कोणतेही TLS रेकॉर्ड आढळले नाहीत, त्यामुळे त्यातील आज्ञा आणि कोणतीही संदेश सामग्री क्लिअरटेक्स्टमध्ये प्रवास करत होती. हे काय आढळले ते सांगते. यामागचे कारण ठरवत नाही: सत्र असंरक्षित असण्यामागे क्लायंटची निवड, सर्व्हरची संरचना किंवा हस्तक्षेप असू शकतो आणि केवळ या कॅप्चरवरून त्यातील फरक ओळखता येत नाही.",
    "needs_review": true,
    "area": "Unencrypted login and session checks",
    "kind": "Finding — explanation",
@@ -1754,6 +1745,141 @@
    "area": "TLS version and handshake checks",
    "kind": "Finding — caveat",
    "shown_in": "Abstentions and assessment limitations"
+  },
+  {
+   "id": "finding.the-capture-ends-before-the-2c93",
+   "en": "The capture ends before the capability response to a request that was observed.",
+   "mr": "निरीक्षित केलेल्या विनंतीला क्षमता प्रतिसाद मिळण्यापूर्वीच कॅप्चर संपते.",
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.the-client-s-capability-request-7c76",
+   "en": "The client's capability request is in the capture but the server's reply is not, so whether an upgrade was offered cannot be established.",
+   "mr": "क्लायंटची क्षमता विनंती कॅप्चरमध्ये आहे परंतु सर्व्हरचे उत्तर नाही, त्यामुळे अपग्रेड देऊ केले गेले होते का हे निश्चित करता येत नाही.",
+   "needs_review": true,
+   "area": "STARTTLS upgrade checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.the-capture-does-not-establish-ee5f",
+   "en": "the capture does not establish whether this session was protected by TLS",
+   "mr": "हे सत्र TLS ने संरक्षित होते की नाही हे कॅप्चरवरून निश्चित होत नाही",
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.tls-was-established-and-encrypted-aad1",
+   "en": "TLS was established and encrypted application data was observed",
+   "mr": "TLS स्थापित झाले आणि एन्क्रिप्टेड अ‍ॅप्लिकेशन डेटा दिसला",
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.tls-records-were-observed-but-6b0d",
+   "en": "TLS records were observed but the negotiation is not shown to have completed",
+   "mr": "TLS रेकॉर्ड्स दिसले, परंतु वाटाघाटी पूर्ण झाल्याचे दिसत नाही",
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.configuration-checklist-of-items-passed-5f19",
+   "en": "Configuration checklist: {passed:num} of {total:num} items passed; the rest could not be evaluated.",
+   "mr": "संरचना तपासणी यादी: {total} पैकी {passed} बाबी उत्तीर्ण; उर्वरित बाबी तपासता आल्या नाहीत.",
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.no-item-failed-but-the-e6a3",
+   "en": "{summary:tr}. No item failed, but the checklist was not fully evaluated, so no overall compliance is claimed. Items that passed: {items:tr}. This entry records checklist coverage; each established property is concluded by its own rule.",
+   "mr": "{summary}. कोणतीही बाब अयशस्वी झाली नाही, परंतु तपासणी यादी पूर्णपणे तपासली गेली नाही, म्हणून एकूण अनुपालनाचा दावा केलेला नाही. उत्तीर्ण बाबी: {items}. ही नोंद तपासणी यादीची व्याप्ती दर्शवते; प्रत्येक निश्चित झालेला गुणधर्म त्याच्या स्वतःच्या नियमाने ठरवला जातो.",
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.certificate-validity-could-be-established-2421",
+   "en": "Certificate validity could be established for only part of the chain.",
+   "mr": "प्रमाणपत्र साखळीच्या केवळ काही भागासाठी वैधता निश्चित करता आली.",
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.the-certificates-whose-dates-could-fc81",
+   "en": "The certificates whose dates could be read were valid at {when:tr}, but at least one certificate carried no readable validity window, so the validity of the chain as a whole is not established.",
+   "mr": "ज्या प्रमाणपत्रांच्या तारखा वाचता आल्या ते {when} रोजी वैध होते, परंतु किमान एका प्रमाणपत्रात वाचता येणारी वैधता मुदत नव्हती, म्हणून संपूर्ण साखळीची वैधता निश्चित झालेली नाही.",
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.certificate-key-strength-could-be-46b1",
+   "en": "Certificate key strength could be established for only part of the chain.",
+   "mr": "प्रमाणपत्र साखळीच्या केवळ काही भागासाठी कळ-क्षमता निश्चित करता आली.",
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.minimum-required-rsa-bits-at-0e18",
+   "en": "{described:tr}. Minimum required: RSA {bits:num} bits. At least one certificate carried no readable public key parameters, so the key strength of the chain as a whole is not established. An unread key is not a small key.",
+   "mr": "{described}. आवश्यक किमान: RSA {bits} बिट. किमान एका प्रमाणपत्रात वाचता येणारे सार्वजनिक कळ-मापदंड नव्हते, म्हणून संपूर्ण साखळीची कळ-क्षमता निश्चित झालेली नाही. न वाचलेली कळ म्हणजे लहान कळ नव्हे.",
+   "needs_review": true,
+   "area": "Certificate checks",
+   "kind": "Finding — explanation",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.the-public-key-could-not-5a62",
+   "en": "the public key could not be read for every certificate",
+   "mr": "प्रत्येक प्रमाणपत्रासाठी सार्वजनिक कळ वाचता आली नाही",
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.the-validity-window-could-not-f826",
+   "en": "the validity window could not be read for every certificate",
+   "mr": "प्रत्येक प्रमाणपत्रासाठी वैधता मुदत वाचता आली नाही",
+   "needs_review": true,
+   "area": "Insecure-configuration checklist",
+   "kind": "Sentence part (shared wording or a reason given inside a finding)",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.the-negotiated-key-exchange-provides-59d1",
+   "en": "The negotiated key exchange provides forward secrecy.",
+   "mr": "वाटाघाटी केलेली कळ-देवाणघेवाण फॉरवर्ड सिक्रसी देते.",
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — what was found",
+   "shown_in": "Detailed findings"
+  },
+  {
+   "id": "finding.this-concerns-the-parameters-the-14cd",
+   "en": "This concerns the parameters the server selected in its ServerHello. The handshake is not shown to have completed (see SEC-TLS-002), so it does not establish the security of the complete session.",
+   "mr": "हे सर्व्हरने आपल्या ServerHello मध्ये निवडलेल्या मापदंडांबद्दल आहे. हँडशेक पूर्ण झाल्याचे दिसत नाही (SEC-TLS-002 पाहा), म्हणून यातून संपूर्ण सत्राची सुरक्षा निश्चित होत नाही.",
+   "needs_review": true,
+   "area": "TLS version and handshake checks",
+   "kind": "Finding — caveat",
+   "shown_in": "Detailed findings"
   }
  ]
 }

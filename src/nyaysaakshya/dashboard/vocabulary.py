@@ -73,6 +73,7 @@ FACT_KIND: Dict[str, str] = {
     "BEHAVIOURAL_DEVIATION": "Behavioural deviation",
     "ANOMALY_SIGNAL": "Anomaly signal",
     "POSITIVE_EVIDENCE": "Positive evidence",
+    "INFORMATIONAL": "Informational",
     "ABSTENTION": "Abstention",
 }
 

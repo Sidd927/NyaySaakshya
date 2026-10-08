@@ -92,6 +92,8 @@ class Coverage:
     completeness_counts: Dict[str, int] = field(default_factory=dict)
     protocol_counts: Dict[str, int] = field(default_factory=dict)
     present: bool = True
+    #: Sessions with no identified SMTP/IMAP/POP3 dialogue: counted, shown, not assessed.
+    sessions_unsupported: int = 0
 
 
 @dataclass(frozen=True)

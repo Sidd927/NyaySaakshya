@@ -6,8 +6,8 @@
   "purpose": "Backup: generated TLS 1.2, RSA-1024 + SHA-1",
   "runs": {
     "ai_false": {
-      "elapsed_ms": 120.4,
-      "run_id": "73ef94a35c4a442d8ed7d0f762175c8f",
+      "elapsed_ms": 119.9,
+      "run_id": "7f4825bc57ee41109e03ad3cbce8eae9",
       "summary": {
         "abstention_count": 2,
         "abstention_reasons": [
@@ -27,7 +27,7 @@
           "INSECURE_CONFIGURATION",
           "KEY_EXCHANGE_MECHANISM"
         ],
-        "assessment_id": "645090e0bc44ba9d",
+        "assessment_id": "0a189316f53b2767",
         "capture_id": "ce5377348e22ad92c33d705e31388944bad8224534d478c38b57a75d3ba4a501",
         "coverage": {
           "assessed_fraction": 1.0,

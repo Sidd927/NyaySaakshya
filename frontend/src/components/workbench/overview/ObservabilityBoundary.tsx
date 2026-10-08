@@ -10,6 +10,9 @@ export const ObservabilityBoundary: React.FC<ObservabilityBoundaryProps> = ({ da
   const [expanded, setExpanded] = useState(false);
   const limitations = dashboard.limitations ?? [];
   const abstentions = dashboard.abstentions ?? [];
+  // When nothing at all was assessed (for example no SMTP, IMAP or POP3 dialogue), the lane
+  // below must not list what the system can establish in general as if this capture had.
+  const nothingAssessed = dashboard.posture.withheld && (dashboard.coverage?.sessions_assessed ?? 0) === 0;
 
   return (
     <section className="sms-observability-boundary" aria-label="Forensic Observability Boundary">
@@ -31,6 +34,14 @@ export const ObservabilityBoundary: React.FC<ObservabilityBoundaryProps> = ({ da
             <span className="sms-boundary-lane__label">ESTABLISHED</span>
           </div>
 
+          {nothingAssessed ? (
+            <ul className="sms-boundary-lane__checklist">
+              <li>
+                <span className="sms-boundary-mark sms-boundary-mark--no">—</span>
+                <span>Nothing was established from this capture</span>
+              </li>
+            </ul>
+          ) : (
           <ul className="sms-boundary-lane__checklist">
             <li>
               <span className="sms-boundary-mark sms-boundary-mark--yes">✓</span>
@@ -49,6 +60,7 @@ export const ObservabilityBoundary: React.FC<ObservabilityBoundaryProps> = ({ da
               <span>Cross-session deviations</span>
             </li>
           </ul>
+          )}
         </div>
 
         {/* Lane 2: NOT OBSERVABLE */}

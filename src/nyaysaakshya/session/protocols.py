@@ -213,6 +213,9 @@ class SMTPReconstructor(ProtocolSessionReconstructor):
             return EvidenceField.ambiguous(
                 False, _AMBIGUOUS_ABSENCE,
                 frames=[e.frame_number for e in capability if e.frame_number])
+        if any(e.kind == "capability_request" for e in events):
+            return EvidenceField.incomplete(
+                "the EHLO request was observed but the capture contains no response to it")
         return EvidenceField.unknown("no EHLO capability response observed in this capture")
 
 
@@ -364,6 +367,9 @@ class IMAPReconstructor(ProtocolSessionReconstructor):
             return EvidenceField.ambiguous(
                 False, _AMBIGUOUS_ABSENCE,
                 frames=[e.frame_number for e in capability if e.frame_number])
+        if any(e.kind == "capability_request" for e in events):
+            return EvidenceField.incomplete(
+                "the CAPABILITY request was observed but the capture contains no response to it")
         return EvidenceField.unknown("no IMAP CAPABILITY response observed in this capture")
 
 
@@ -519,6 +525,9 @@ class POP3Reconstructor(ProtocolSessionReconstructor):
             return EvidenceField.ambiguous(
                 False, _AMBIGUOUS_ABSENCE,
                 frames=[e.frame_number for e in capability if e.frame_number])
+        if any(e.kind == "capability_request" for e in events):
+            return EvidenceField.incomplete(
+                "the CAPA request was observed but the capture contains no response to it")
         return EvidenceField.unknown("no POP3 CAPA response observed in this capture")
 
 

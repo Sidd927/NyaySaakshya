@@ -18,16 +18,18 @@ export const CrossSessionPreviewCard: React.FC<CrossSessionPreviewCardProps> = (
     (f) => f.source_rule_ids?.some((r) => r.startsWith('CS-')) || f.dimension === 'cross_session' || f.title.toLowerCase().includes('deviation')
   );
 
-  // Derive distinct client/server endpoints from sessions
-  const clientIps = Array.from(new Set(sessions.map((s) => s.client.ip).filter(Boolean))) as string[];
-  const isMultiEndpoint = clientIps.length >= 2;
-
-  if (!csFinding && !isMultiEndpoint) {
+  // The "subject vs control" comparison below states a STARTTLS difference between two
+  // endpoints. That is a claim only a cross-session deviation finding makes, so without one
+  // there is nothing to show; two client addresses alone are not a comparison.
+  if (!csFinding) {
     return null;
   }
 
-  const subjectIp = clientIps[0] || '10.0.0.6';
-  const controlIp = clientIps[1] || '10.0.0.7';
+  // Subject = the client of the session the finding names; control = another client address
+  // seen in the capture. Neither is guessed: an address that cannot be derived shows as a dash.
+  const clientIps = Array.from(new Set(sessions.map((s) => s.client.ip).filter(Boolean))) as string[];
+  const subjectIp = sessions.find((s) => s.stream_key === csFinding.stream_key)?.client.ip ?? null;
+  const controlIp = clientIps.find((ip) => ip !== subjectIp) ?? null;
 
   return (
     <div className="sms-context-card" aria-label="Cross-Session Baseline Comparison">
@@ -44,7 +46,7 @@ export const CrossSessionPreviewCard: React.FC<CrossSessionPreviewCardProps> = (
           <div className="sms-cs-comparison__item">
             <span className="sms-label" style={{ fontSize: '10px' }}>Subject Endpoint</span>
             <span className="sms-mono" style={{ color: 'var(--ds-sev-critical-text)', fontWeight: 600 }}>
-              {subjectIp}
+              {subjectIp ?? '—'}
             </span>
             <span className="sms-badge sms-badge--muted" style={{ marginTop: '2px', alignSelf: 'flex-start' }}>
               STARTTLS: NOT OBSERVED
@@ -58,7 +60,7 @@ export const CrossSessionPreviewCard: React.FC<CrossSessionPreviewCardProps> = (
           <div className="sms-cs-comparison__item">
             <span className="sms-label" style={{ fontSize: '10px' }}>Control Endpoint</span>
             <span className="sms-mono" style={{ color: 'var(--ds-sev-low-text)', fontWeight: 600 }}>
-              {controlIp}
+              {controlIp ?? '—'}
             </span>
             <span className="sms-badge sms-badge--muted" style={{ marginTop: '2px', alignSelf: 'flex-start' }}>
               STARTTLS: OBSERVED
@@ -68,7 +70,7 @@ export const CrossSessionPreviewCard: React.FC<CrossSessionPreviewCardProps> = (
 
         {csFinding && (
           <p className="sms-prose sms-text-xs" style={{ margin: '4px 0 0 0', color: 'var(--sms-text-secondary)' }}>
-            Deviation supported by rule <strong className="sms-mono" style={{ color: 'var(--ds-sev-high-text)' }}>{csFinding.source_rule_ids?.[0] || 'CS-STARTTLS-001'}</strong>. Subject endpoint consistently lacks upgrade capability.
+            Deviation supported by rule <strong className="sms-mono" style={{ color: 'var(--ds-sev-high-text)' }}>{csFinding.source_rule_ids?.[0] || 'CS-STARTTLS-001'}</strong>. This is a difference from the endpoint's own history, not proof of stripping.
           </p>
         )}
 

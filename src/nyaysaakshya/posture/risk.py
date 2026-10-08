@@ -28,7 +28,7 @@ from nyaysaakshya.posture import remediation as remediation_templates
 from nyaysaakshya.posture import scoring
 from nyaysaakshya.posture.model import (
     Abstention, EvidenceCertainty, EvidenceCoverage, FactKind, FusedFinding, IssueClass,
-    IssueGroup, ProtocolPosture, RiskDimension, StandardCitation,
+    IssueGroup, ProtocolPosture, RiskDimension, SourceLane, StandardCitation,
 )
 from nyaysaakshya.session.model import SessionEvidence
 
@@ -149,18 +149,36 @@ def risk_summary(groups: Sequence[IssueGroup],
     }
 
 
+def _is_conclusion(finding: FusedFinding) -> bool:
+    kind = finding.key.fact_kind
+    if kind in (FactKind.BASE_SECURITY_ISSUE, FactKind.BEHAVIOURAL_DEVIATION):
+        return True
+    if kind is FactKind.POSITIVE_EVIDENCE:
+        return any(source.lane is SourceLane.DETERMINISTIC for source in finding.sources)
+    return False
+
+
 def build_coverage(sessions: Sequence[SessionEvidence],
                    fused: Sequence[FusedFinding],
                    abstentions: Sequence[Abstention]) -> EvidenceCoverage:
     """How much of the traffic the analysis could actually see.
 
-    `sessions_assessed` counts sessions for which at least one conclusion (issue,
-    positive evidence or deviation) was reached -- not sessions that merely existed.
+    `sessions_assessed` counts sessions for which a CONCLUSION about the supported security
+    posture was reached -- not sessions that merely existed. A conclusion is:
+
+      * an established issue or behavioural deviation (it names the session), or
+      * positive evidence from a single-session rule, i.e. a property that rule actually
+        established for that session (SEC-TLS-001 on an observed version, SEC-STLS-001 on a
+        completed upgrade, ...).
+
+    Deliberately NOT conclusions: an INFORMATIONAL note (something was noticed, nothing was
+    established), every abstention, and positive evidence that comes ONLY from the
+    cross-session lane. A cross-session "matches the established baseline" says the session
+    resembles other sessions; it says nothing about whether this one is secure, and it is
+    reachable on a stream cut off mid-handshake. If it counted, a session whose security
+    properties were all unresolved would be "assessed" and could contribute to a graded band.
     """
-    concluded = {f.stream_key for f in fused
-                 if f.key.fact_kind in (FactKind.BASE_SECURITY_ISSUE,
-                                        FactKind.BEHAVIOURAL_DEVIATION,
-                                        FactKind.POSITIVE_EVIDENCE)}
+    concluded = {f.stream_key for f in fused if _is_conclusion(f)}
     abstained_only = {a.stream_key for a in abstentions} - concluded
 
     observation_counts: Counter = Counter()
@@ -175,6 +193,7 @@ def build_coverage(sessions: Sequence[SessionEvidence],
         sessions_total=len(sessions),
         sessions_assessed=len([s for s in sessions if s.stream_key in concluded]),
         sessions_abstained=len([s for s in sessions if s.stream_key in abstained_only]),
+        sessions_unsupported=len([s for s in sessions if s.protocol is None]),
         observation_counts=dict(observation_counts),
         completeness_counts=dict(Counter(s.completeness.value for s in sessions)),
         protocol_counts=dict(Counter(s.protocol or "unidentified" for s in sessions)),

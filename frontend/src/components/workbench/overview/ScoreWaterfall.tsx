@@ -24,6 +24,26 @@ export const ScoreWaterfall: React.FC<ScoreWaterfallProps> = ({ posture, onInspe
     }
   };
 
+  // A withheld band is a refusal to grade. A table that ends "Final score 0.00" or "100.00"
+  // beside it would read as a grade, so the card says "Not scored" and why.
+  if (posture.withheld) {
+    return (
+      <section className="sms-score-waterfall" aria-label="Why this score" style={{ minHeight: 0 }}>
+        <div className="sms-score-waterfall__head">
+          <div className="sms-score-waterfall__title-wrap">
+            <BarChart3 size={16} aria-hidden="true" />
+            <div>
+              <span className="sms-score-waterfall__title">Why this score</span>
+            </div>
+          </div>
+        </div>
+        <p className="sms-score-waterfall__note" style={{ marginTop: 0 }}>
+          Not scored. {posture.withheld_note || 'The posture band is withheld.'}
+        </p>
+      </section>
+    );
+  }
+
   const finalColor =
     posture.value === 'CRITICAL'
       ? 'var(--ds-sev-critical-text)'

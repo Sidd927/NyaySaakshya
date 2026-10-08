@@ -6,8 +6,8 @@
   "purpose": "Backup: generated TLS 1.2, healthy chain (negative control)",
   "runs": {
     "ai_false": {
-      "elapsed_ms": 125.8,
-      "run_id": "a359790c085844199641de63ca103f79",
+      "elapsed_ms": 125.7,
+      "run_id": "32199487738c48f8948af111e8b15a45",
       "summary": {
         "abstention_count": 2,
         "abstention_reasons": [
@@ -27,7 +27,7 @@
           "INSECURE_CONFIGURATION",
           "KEY_EXCHANGE_MECHANISM"
         ],
-        "assessment_id": "9290b1d722b89411",
+        "assessment_id": "51c582103f74b435",
         "capture_id": "43ee75d5eae7b523dcc051b6e92a200a8d171342ddecf24ce32e3a0f140e216d",
         "coverage": {
           "assessed_fraction": 1.0,

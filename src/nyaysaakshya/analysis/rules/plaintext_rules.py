@@ -99,8 +99,9 @@ class PlaintextSessionRule(SecurityRule):
             session,
             status=FindingStatus.OBSERVED_ISSUE, severity=Severity.MEDIUM,
             conclusion="The mail session carried no TLS protection.",
-            explanation=("No TLS records were observed in this stream, so message and command "
-                         "content travelled in cleartext. This states what was observed. It does "
+            explanation=("No TLS records were observed in this stream, so the commands and any "
+                         "message content it carried travelled in cleartext. This states what "
+                         "was observed. It does "
                          "not attribute a cause: a session may be unprotected through client "
                          "choice, server configuration, or interference, and this capture alone "
                          "cannot distinguish those."),

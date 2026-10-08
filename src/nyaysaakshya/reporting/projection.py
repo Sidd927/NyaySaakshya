@@ -95,6 +95,11 @@ def project(assessment: Dict[str, Any]) -> ReportDocument:
     coverage = assessment.get("coverage") or {}
     score_text = (_text(score.get("value")) + " / 100") if score.get("value") is not None \
         else "Not scored"
+    if posture == "INSUFFICIENT_EVIDENCE":
+        # A withheld band is a refusal to grade. The engine keeps the arithmetic value in the
+        # assessment (it is not zero and not a grade), but no report surface may print it
+        # as one: "100 / 100" or "0 / 100" beside a withheld band reads as a verdict.
+        score_text = "Not scored"
     coverage_text = _coverage_text(coverage)
 
     doc = ReportDocument(
@@ -103,6 +108,7 @@ def project(assessment: Dict[str, Any]) -> ReportDocument:
         overall_posture_label=styles.posture_label(posture),
         score_text=score_text,
         coverage_text=coverage_text,
+        withheld_note=_withheld_note(posture, coverage),
     )
 
     builders = (
@@ -130,8 +136,29 @@ def _coverage_text(coverage: Dict[str, Any]) -> str:
     total = coverage.get("sessions_total")
     if fraction is None and total is None:
         return NOT_PRESENT
+    unsupported = coverage.get("sessions_unsupported") or 0
+    if unsupported:
+        supported = max(0, (total or 0) - unsupported)
+        if not supported:
+            return "No supported sessions to assess"
+        # Unsupported sessions are reported separately and are not in this denominator.
+        return "{0} ({1} of {2} supported sessions assessed)".format(
+            _pct(fraction), _text(assessed, "?"), _text(supported, "?"))
     return "{0} ({1} of {2} sessions assessed)".format(
         _pct(fraction), _text(assessed, "?"), _text(total, "?"))
+
+
+def _withheld_note(posture: str, coverage: Dict[str, Any]) -> str:
+    """The one-line reason a band is withheld; shared by the masthead and the summary table."""
+    if posture != "INSUFFICIENT_EVIDENCE":
+        return ""
+    unsupported = coverage.get("sessions_unsupported") or 0
+    nothing_supported = bool(unsupported) and unsupported >= (coverage.get("sessions_total") or 0)
+    if nothing_supported:
+        return "band withheld: no supported session was assessed"
+    if not (coverage.get("sessions_assessed") or 0):
+        return "band withheld: no session could be assessed"
+    return "band withheld: evidence coverage below the assessment floor"
 
 
 # ------------------------------------------------------------------- sections
@@ -144,13 +171,16 @@ def _executive_summary(a: Dict[str, Any], doc: ReportDocument,
     groups = a.get("issue_groups") or []
     penalising = [g for g in groups if g.get("penalising")]
 
+    unsupported = coverage.get("sessions_unsupported") or 0
+    nothing_supported = bool(unsupported) and unsupported >= (
+        coverage.get("sessions_total") or 0)
+    withheld_note = doc.withheld_note
+
     section = Section(
         section_id="executive-summary",
         title="Executive summary",
         facts=[
-            KeyValue("Overall posture", doc.overall_posture_label,
-                     "withheld: evidence coverage below the assessment floor"
-                     if doc.overall_posture == "INSUFFICIENT_EVIDENCE" else ""),
+            KeyValue("Overall posture", doc.overall_posture_label, withheld_note),
             KeyValue("Posture score", doc.score_text,
                      _text(score.get("formula_id"), "")),
             KeyValue("Evidence coverage", doc.coverage_text),
@@ -171,6 +201,11 @@ def _executive_summary(a: Dict[str, Any], doc: ReportDocument,
             "{2} were abstained from.".format(
                 _text(total), _text(assessed, "0"),
                 _text(coverage.get("sessions_abstained"), "0")))
+    if unsupported:
+        section.paragraphs.append(
+            "{0} session(s) carried no identified SMTP, IMAP or POP3 dialogue. They are "
+            "outside what this system assesses, were not assessed and are not counted in "
+            "the coverage above.".format(_text(unsupported)))
     if penalising:
         worst = min(penalising, key=lambda g: styles.severity_rank(
             _text(g.get("severity"))))
@@ -185,7 +220,19 @@ def _executive_summary(a: Dict[str, Any], doc: ReportDocument,
         section.paragraphs.append(
             "No issue groups were produced for this capture.")
 
-    if doc.overall_posture == "INSUFFICIENT_EVIDENCE":
+    if doc.overall_posture == "INSUFFICIENT_EVIDENCE" and nothing_supported:
+        section.notices.append(
+            "The posture band is withheld. No SMTP, IMAP or POP3 dialogue was identified "
+            "in this capture, so there was no supported evidence to assess. A withheld "
+            "band is not a passing result and must not be read as one.")
+    elif doc.overall_posture == "INSUFFICIENT_EVIDENCE" and not (
+            coverage.get("sessions_assessed") or 0):
+        section.notices.append(
+            "The posture band is withheld. No session in this capture could be assessed: "
+            "the capture does not establish the security properties the rules examine, for "
+            "example because an exchange is cut off or a reply is missing. A withheld band "
+            "is not a passing result and must not be read as one.")
+    elif doc.overall_posture == "INSUFFICIENT_EVIDENCE":
         section.notices.append(
             "The posture band is withheld. Evidence coverage is below the threshold at "
             "which this system is willing to grade a capture. A withheld band is not a "
@@ -684,8 +731,11 @@ def _provenance(a: Dict[str, Any], doc: ReportDocument, trunc: List[str]) -> Sec
     rows = []
     for key, value in sorted(provenance.items()):
         if isinstance(value, (dict, list)):
+            # An empty list (for example no rule produced a finding) is shown as the
+            # report's usual placeholder, not as the literal "[]".
             rows.append((styles.humanise(str(key)),
-                         _clip(_text(value), 400, trunc, "provenance entry")))
+                         _clip(_text(value), 400, trunc, "provenance entry")
+                         if value else "—"))
         else:
             rows.append((styles.humanise(str(key)), _text(value)))
     if rows:

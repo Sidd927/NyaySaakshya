@@ -1,0 +1,168 @@
+{
+ "S1_recompute": {
+  "captures": 98,
+  "mismatches": []
+ },
+ "S2_components_vs_groups": {
+  "captures": 98,
+  "mismatches": []
+ },
+ "S3_penalty_iff_observed_issue": {
+  "captures": 98,
+  "violations": []
+ },
+ "S4_determinism": {
+  "captures": 98,
+  "non_identical": [],
+  "runs_per_capture": 2
+ },
+ "S5_properties": {
+  "base": {
+   "band": "CRITICAL",
+   "components": 3,
+   "score": 22.1504
+  },
+  "capture": "deepdive_cross_session_control_endpoint.pcap",
+  "observation_counts_changed_identical": true,
+  "observation_counts_changed_score": 22.1504,
+  "recurrence_scaling_first_group": [
+   {
+    "multiplier": 1.0,
+    "penalty": 28.0,
+    "recurrence_proxy": 1
+   },
+   {
+    "multiplier": 1.25,
+    "penalty": 35.0,
+    "recurrence_proxy": 2
+   },
+   {
+    "multiplier": 1.3962,
+    "penalty": 39.0947,
+    "recurrence_proxy": 3
+   },
+   {
+    "multiplier": 1.6462,
+    "penalty": 46.0947,
+    "recurrence_proxy": 6
+   },
+   {
+    "multiplier": 1.8962,
+    "penalty": 53.0947,
+    "recurrence_proxy": 12
+   },
+   {
+    "multiplier": 2.0,
+    "penalty": 56.0,
+    "recurrence_proxy": 50
+   },
+   {
+    "multiplier": 2.0,
+    "penalty": 56.0,
+    "recurrence_proxy": 1000
+   }
+  ],
+  "remove_one_group": [
+   {
+    "component_penalty": 46.0947,
+    "exact": true,
+    "remove": "PLAINTEXT_AUTH_EXPOSURE",
+    "score_delta": 46.0947
+   },
+   {
+    "component_penalty": 19.7549,
+    "exact": true,
+    "remove": "NO_TLS_PROTECTION",
+    "score_delta": 19.7549
+   },
+   {
+    "component_penalty": 12.0,
+    "exact": true,
+    "remove": "STARTTLS_BEHAVIOUR_DEVIATION",
+    "score_delta": 12.0
+   }
+  ]
+ },
+ "S6_ai_on_off": [
+  {
+   "assessment_id_equal": false,
+   "band_equal": true,
+   "capture": "scene_c_no_ai_equivalence.pcap",
+   "findings_equal": true,
+   "ml_results": 2,
+   "off": [
+    "2647f6ab59fca5e9",
+    88.0
+   ],
+   "on": [
+    "e59f38982ac55d9d",
+    88.0
+   ],
+   "score_equal": true
+  },
+  {
+   "assessment_id_equal": false,
+   "band_equal": true,
+   "capture": "deepdive_cross_session_control_endpoint.pcap",
+   "findings_equal": true,
+   "ml_results": 12,
+   "off": [
+    "09532eed458ad3a6",
+    22.15
+   ],
+   "on": [
+    "79655e2c60e9ab9e",
+    22.15
+   ],
+   "score_equal": true
+  },
+  {
+   "assessment_id_equal": false,
+   "band_equal": true,
+   "capture": "backup_weak_certificate.pcap",
+   "findings_equal": true,
+   "ml_results": 1,
+   "off": [
+    "645090e0bc44ba9d",
+    44.0
+   ],
+   "on": [
+    "717481a725758f47",
+    44.0
+   ],
+   "score_equal": true
+  },
+  {
+   "assessment_id_equal": false,
+   "band_equal": true,
+   "capture": "C04_strip_control.pcap",
+   "findings_equal": true,
+   "ml_results": 40,
+   "off": [
+    "5825decaf76b8ee5",
+    7.81
+   ],
+   "on": [
+    "663f4d7c2bddb2dc",
+    7.81
+   ],
+   "score_equal": true
+  },
+  {
+   "assessment_id_equal": false,
+   "band_equal": true,
+   "capture": "B01_all_upgrade.pcap",
+   "findings_equal": true,
+   "ml_results": 40,
+   "off": [
+    "0d3f0096a68d303f",
+    100.0
+   ],
+   "on": [
+    "1a399c7c756a02d7",
+    100.0
+   ],
+   "score_equal": true
+  }
+ ]
+}

@@ -202,16 +202,18 @@ def compute_score(groups: Sequence[IssueGroup],
                    "declines to certify a band"))
 
     if coverage is not None and coverage.assessed_fraction < MIN_ASSESSED_FRACTION:
-        # The score stands; the certification does not. Reporting STRONG over a capture
-        # in which most sessions yielded no conclusion would be the misleading part.
+        # Neither the band nor a number is published: the arithmetic is kept on the object
+        # (`value`, `total_penalty`, `components` describe the issues that WERE found) but
+        # `PostureScore.to_dict` reports `scored: false` and `value: null`. Reporting
+        # STRONG over a capture in which most sessions yielded no conclusion would be the
+        # misleading part, and so would a bare number beside a withheld band.
         return PostureScore(
             value=value, band=PostureBand.INSUFFICIENT_EVIDENCE, formula_id=formula_id,
             starting_value=STARTING_VALUE, total_penalty=penalty,
             components=tuple(components),
-            basis=(f"score {value:.2f} computed, but only "
-                   f"{coverage.assessed_fraction:.0%} of sessions yielded any "
-                   f"conclusion (floor {MIN_ASSESSED_FRACTION:.0%}); a band is not "
-                   "certified over a capture this sparsely assessed"))
+            basis=(f"only {coverage.assessed_fraction:.0%} of sessions yielded any "
+                   f"conclusion (floor {MIN_ASSESSED_FRACTION:.0%}); no score is given and "
+                   "no band is certified over a capture this sparsely assessed"))
 
     if not components:
         basis = (f"{STARTING_VALUE:g} with no established security issue to penalise; "

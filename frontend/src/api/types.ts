@@ -171,6 +171,8 @@ export interface Coverage {
   completeness_counts: Record<string, number>;
   protocol_counts: Record<string, number>;
   present: boolean;
+  /** Sessions with no identified SMTP/IMAP/POP3 dialogue: shown, not assessed, not in the fraction. */
+  sessions_unsupported?: number;
 }
 
 export interface FindingRow {
@@ -450,7 +452,8 @@ export interface AssessmentResponse {
     score?: {
       starting_value: number;
       total_penalty: number;
-      score_value: number;
+      /** null when the posture is withheld (INSUFFICIENT_EVIDENCE): there is no score to show. */
+      score_value: number | null;
       formula_id: string;
       basis: string;
     };
@@ -530,7 +533,7 @@ export interface ReportDocument {
   generated_at: string;
   overall_posture: PostureBand;
   ai_enabled: boolean;
-  score?: { band: string; value: number | null; basis: string; formula_id: string | null; starting_value: number | null; total_penalty: number | null };
+  score?: { scored?: boolean; band: string; value: number | null; basis: string; formula_id: string | null; starting_value: number | null; total_penalty: number | null };
   issue_groups?: Array<{ title: string; severity: string | null; certainty: string | null; recurrence: number | null; issue_class: string; penalising: boolean; citations: Citation[] }>;
   remediation_summary?: Remediation[];
   limitations?: string[];

@@ -151,7 +151,8 @@ def _verdict_block(document: ReportDocument, sheet, mm) -> Any:
                                  _pdf_escape(document.overall_posture_label)), value)]
     if withheld:
         posture_cell.append(
-            Paragraph("band withheld: coverage below the assessment floor", key))
+            Paragraph(_pdf_escape(document.withheld_note
+                                  or "band withheld: coverage below the assessment floor"), key))
 
     rows = [[posture_cell,
              [Paragraph("POSTURE SCORE", key),

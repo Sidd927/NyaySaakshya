@@ -35,9 +35,9 @@ bash commands/run_scene.sh scene_a_1_benign_decline
 | Scene | Capture | Expected posture | Expected score |
 |---|---|---|---|
 | A.1 — benign STARTTLS decline | `scene_a_1_benign_decline.pcap` | ADEQUATE | 88.0 |
-| A.2 — genuine STARTTLS non-support | `scene_a_2_genuine_nonsupport.pcap` | ADEQUATE | 85.0 |
+| A.2 — genuine STARTTLS non-support | `scene_a_2_genuine_nonsupport.pcap` | ADEQUATE | 88.0 |
 | B — certificate/evidence honesty (TLS 1.3) | `scene_b_certificate_honesty.pcap` | STRONG | 100.0 |
-| C — `--no-ai` equivalence | `scene_c_no_ai_equivalence.pcap` | ADEQUATE (identical with AI on/off) | 88.0 |
+| C — `--no-ai` equivalence | `scene_c_no_ai_equivalence.pcap` | STRONG (identical with AI on/off) | 100.0 |
 | Backup — weak certificate (generated fixture) | `backup_weak_certificate.pcap` | CRITICAL | 44.0 |
 | Backup — self-signed certificate (generated fixture) | `backup_selfsigned_certificate.pcap` | ADEQUATE | 88.0 |
 | Backup — healthy chain, negative control (generated fixture) | `backup_healthy_chain.pcap` | STRONG | 100.0 |
@@ -48,3 +48,16 @@ Presenter-facing steps and fresh-machine setup are in [`RUNBOOK.md`](RUNBOOK.md)
 
 **Regenerating this bundle:** run `PYTHONPATH=src python3 demo/commands/generate_bundle.py` from
 the repository root. It is read-only with respect to `src/` and only writes into `demo/`.
+
+The landing page, the evidence pack and the shipped sample reports embed pipeline results that this
+script does not write. After any change that alters an assessment, also run
+`PYTHONPATH=src python3 demo/commands/refresh_derived_artifacts.py` (it rebuilds
+`frontend/src/fixtures/real_fixtures.json`, `demo/evidence/real_pcap_evidence_pack.json`, the i18n
+sample reports and the bundled deep-dive sample from the real pipeline), then copy the printed
+assessment ID and analysis time into `frontend/src/components/landing/reportSample.ts` and the fallback
+runs in `frontend/src/context/InvestigationContext.tsx`.
+
+**Scores changed in Phase B.2.** Scene A.2 moved 85.0 → 88.0 and Scene C moved 88.0 → 100.0 (STRONG).
+Both captures begin with a two-frame fragment from the capture harness's own port-readiness probe; it
+was being reported as a cleartext mail session and is no longer. The reason and the arithmetic are in
+`VALIDATION.md` §6 (D1) and `tests/test_phase11_real_pcap.py`.

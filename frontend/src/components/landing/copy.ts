@@ -117,10 +117,12 @@ export const EVIDENCE_STATE_MEANINGS: Array<{ state: string; text: string }> = [
 ];
 
 export const EVIDENCE_CALLOUT_BODY =
-  'A certificate that encryption hides is reported as not observable, never as invalid. A capture that shows too little is reported as insufficient evidence, never as a good grade.';
+  'A certificate that encryption hides is reported as not observable, never as invalid. A capture in which nothing, or too little of the traffic, could be assessed is reported as insufficient evidence, never as a good grade.';
 
 export const EVIDENCE_EXAMPLE_TITLE = 'One capture, three states';
-export const EVIDENCE_EXAMPLE_NOTE = 'A TLS 1.3 session from a lab-generated capture. The words beside each row are the engine\'s own.';
+export const EVIDENCE_EXAMPLE_SCORE_NOTE =
+  'The certificate was not observable in this TLS 1.3 session; no certificate fault was therefore established.';
+export const EVIDENCE_EXAMPLE_NOTE ='A TLS 1.3 session from a lab-generated capture. The words beside each row are the engine\'s own.';
 
 export const LIMITS_STANDFIRST =
   'Each limit is a boundary of the method, so a result never claims more than the capture shows.';
@@ -139,7 +141,7 @@ export const REPORT_STANDFIRST = 'The last step of the chain: the assessment wri
 export const REPORT_FACTS: Array<{ term: string; text: string }> = [
   { term: 'Capture identity', text: 'The SHA-256 of the uploaded file.' },
   { term: 'Analysis time', text: 'When the analysis ran, recorded in the report.' },
-  { term: 'Assessment ID', text: 'Derived from the evidence, so the same capture and software versions give the same ID.' },
+  { term: 'Assessment ID', text: 'Derived from the capture, the analyser versions and the result, so the same capture analysed by the same software gives the same ID.' },
   { term: 'Deterministic bytes', text: 'A stored assessment always renders to the same report bytes, and each report carries its own hash.' },
 ];
 
@@ -152,7 +154,7 @@ export const REPORT_FORMATS: Array<{ id: string; name: string; text: string; lan
 ];
 
 export const REPORT_DETERMINISM_NOTE =
-  'The sample capture was analysed on 24 Sep 2026 (the record at the top of this page) and again on 3 Oct 2026 (the sample report). Both runs produced assessment 09532eed458ad3a6.';
+  'The sample capture was analysed twice on 8 Oct 2026, in two separate databases: the record at the top of this page, then the sample report. Both runs produced assessment afa30ff290742813.';
 
 export const REPORT_DRAFT_EN_EXTRA = 'Every Marathi report says so at the top. PDF and JSON stay English.';
 
@@ -179,7 +181,7 @@ export const SCOPE_GROUPS: Array<{ id: string; title: string; lines: string[] }>
       'TLS 1.3 certificates are encrypted, so they are reported as not observable.',
       'Certificate chain trust and revocation are not assessed: a capture has no trust anchor and no OCSP or CRL access.',
       'Anything outside email protocols. It is not a general-purpose fraud detector.',
-      'A capture too thin to show anything is reported as insufficient evidence, not as a good grade.',
+      'A capture in which nothing, or too little of the traffic, could be assessed is reported as insufficient evidence, not as a good grade.',
     ],
   },
   {

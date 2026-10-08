@@ -66,7 +66,7 @@ export const NextInvestigations: React.FC<NextInvestigationsProps> = ({
       count: sessionCount,
       countLabel: 'endpoint',
       desc: hasDeviations
-        ? 'Active behavioral deviation: Subject 10.0.0.6 lacks STARTTLS capability advertised by Control 10.0.0.7.'
+        ? 'A behavioural deviation was found: a subject endpoint differs from its own history in the STARTTLS capability it advertises.'
         : 'Same service, compared across TCP sessions.',
       icon: Layers,
       action: 'Compare Sessions',

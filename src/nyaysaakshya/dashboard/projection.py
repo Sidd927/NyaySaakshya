@@ -177,13 +177,40 @@ def _identity(a: Dict[str, Any]) -> Identity:
         ai_enabled=bool(a.get("ai_enabled")))
 
 
+def _unsupported_counts(a: Dict[str, Any]) -> "tuple":
+    """(sessions with no identified mail protocol, supported sessions). Read from the
+    assessment's own coverage; nothing is recomputed here."""
+    c = _dict(a.get("coverage"))
+    unsupported = _int(c.get("sessions_unsupported")) or 0
+    total = _int(c.get("sessions_total")) or 0
+    return unsupported, max(0, total - unsupported)
+
+
 def _posture(a: Dict[str, Any], notices: List[str]) -> Posture:
     value = _str(a.get("overall_posture"))
     score = _dict(a.get("score"))
-    score_value = _num(score.get("value"))
     withheld = value == "INSUFFICIENT_EVIDENCE"
+    # A withheld posture has no score. Schema 1.1 already serialises `value: null`; an
+    # assessment stored under schema 1.0 may still carry the arithmetic value, which must
+    # not surface as a score here.
+    score_value = None if withheld else _num(score.get("value"))
+    unsupported, supported = _unsupported_counts(a)
+    nothing_supported = unsupported > 0 and supported == 0
 
-    if withheld:
+    if withheld and nothing_supported:
+        # Distinct from "too little evidence": there was no SMTP, IMAP or POP3 evidence at
+        # all, so nothing could be assessed. Neither state is a pass.
+        notices.append(
+            "The posture band is withheld. No SMTP, IMAP or POP3 dialogue was identified "
+            "in this capture, so there was no supported evidence to assess. A withheld "
+            "band is not a passing result and must not be read as one.")
+    elif withheld and not (_int(_dict(a.get("coverage")).get("sessions_assessed")) or 0):
+        notices.append(
+            "The posture band is withheld. No session in this capture could be assessed: "
+            "the capture does not establish the security properties the rules examine, for "
+            "example because an exchange is cut off or a reply is missing. A withheld band "
+            "is not a passing result and must not be read as one.")
+    elif withheld:
         notices.append(
             "The posture band is withheld. Evidence coverage is below the threshold at "
             "which this system is willing to grade a capture. A withheld band is not a "
@@ -211,10 +238,19 @@ def _posture(a: Dict[str, Any], notices: List[str]) -> Posture:
         tone=vocab.posture_tone(value),
         known=vocab.is_known("posture", value),
         withheld=withheld,
-        withheld_note=("band withheld: evidence coverage below the assessment floor"
-                       if withheld else ""),
+        withheld_note=(
+            "Posture withheld: no SMTP, IMAP or POP3 dialogue was identified in this "
+            "capture, so there was no supported evidence to assess. A withheld band is "
+            "not a pass, and traffic that was not assessed is not shown to be secure."
+            if withheld and nothing_supported else
+            "Posture withheld: no session in this capture could be assessed, so no "
+            "conclusion about the supported traffic was reached. A withheld band is not a "
+            "pass, and sessions that were not assessed are not shown to be secure."
+            if withheld and not (_int(_dict(a.get("coverage")).get("sessions_assessed")) or 0) else
+            "band withheld: evidence coverage below the assessment floor"
+            if withheld else ""),
         score_value=score_value,
-        score_text=("%s / 100" % _str(score_value)) if score_value is not None
+        score_text=("%s / 100" % _str(score_value)) if score_value is not None and not withheld
                    else "Not scored",
         formula_id=score.get("formula_id"),
         starting_value=_num(score.get("starting_value")),
@@ -238,14 +274,32 @@ def _coverage(a: Dict[str, Any], notices: List[str]) -> Coverage:
     fraction = _num(c.get("assessed_fraction"))
     total = _int(c.get("sessions_total"))
     assessed = _int(c.get("sessions_assessed"))
+    unsupported, supported = _unsupported_counts(a)
+    if unsupported and supported:
+        summary_text = (
+            "%s (%s of %s supported sessions assessed; %s other session(s) carried no "
+            "identified SMTP, IMAP or POP3 dialogue)" % (
+                _percent(fraction), _str(assessed, "?"), supported, unsupported))
+        notices.append(
+            "%s of %s session(s) carried no identified SMTP, IMAP or POP3 dialogue. They "
+            "are outside what this system assesses and are not counted in the coverage "
+            "above. That is not a finding about them, and it does not mean they are "
+            "secure." % (unsupported, _str(total, "?")))
+    elif unsupported:
+        summary_text = (
+            "No supported sessions to assess (%s session(s) carried no identified SMTP, "
+            "IMAP or POP3 dialogue)" % unsupported)
+    else:
+        summary_text = "%s (%s of %s sessions assessed)" % (
+            _percent(fraction), _str(assessed, "?"), _str(total, "?"))
     return Coverage(
         sessions_total=total,
         sessions_assessed=assessed,
         sessions_abstained=_int(c.get("sessions_abstained")),
         assessed_fraction=fraction,
         percent_text=_percent(fraction),
-        summary_text="%s (%s of %s sessions assessed)" % (
-            _percent(fraction), _str(assessed, "?"), _str(total, "?")),
+        sessions_unsupported=unsupported,
+        summary_text=summary_text,
         observation_counts=_dict(c.get("observation_counts")),
         observation_fractions=_dict(c.get("observation_fractions")),
         completeness_counts=_dict(c.get("completeness_counts")),
@@ -321,7 +375,7 @@ def _protocols(a: Dict[str, Any]) -> List[ProtocolRow]:
         d = _dict(raw)
         score = _dict(d.get("score"))
         band = score.get("band")
-        score_value = _num(score.get("value"))
+        score_value = None if band == "INSUFFICIENT_EVIDENCE" else _num(score.get("value"))
         out.append(ProtocolRow(
             protocol=_str(d.get("protocol")),
             sessions=_int(d.get("sessions")),

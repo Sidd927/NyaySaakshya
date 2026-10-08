@@ -42,8 +42,9 @@ from nyaysaakshya.evidence.states import EvidenceState
 from nyaysaakshya.ml.contract import AnomalyBand, MLAnomalyResult
 
 #: Bumped when the posture contract shape changes.
-POSTURE_SCHEMA_VERSION = "1.0"
-POSTURE_ENGINE_VERSION = "0.8.0"
+POSTURE_SCHEMA_VERSION = "1.1"
+POSTURE_ENGINE_VERSION = "0.10.0"  # Phase B.3: score contract (scored/value:null), cross-session positives are not conclusions, ID covers outcome
+# (0.9.0, Phase B.2: INFORMATIONAL is not a conclusion; unsupported sessions leave the coverage denominator)
 
 
 # --------------------------------------------------------------------- kinds
@@ -53,6 +54,7 @@ class FactKind(str, Enum):
     BEHAVIOURAL_DEVIATION = "BEHAVIOURAL_DEVIATION"    # differs from a baseline
     ANOMALY_SIGNAL = "ANOMALY_SIGNAL"                  # statistically unlike normal
     POSITIVE_EVIDENCE = "POSITIVE_EVIDENCE"            # observed good state
+    INFORMATIONAL = "INFORMATIONAL"                    # neutral note; not a conclusion
     ABSTENTION = "ABSTENTION"                          # could not conclude
 
 
@@ -552,10 +554,22 @@ class EvidenceCoverage:
     observation_counts: Dict[str, int] = field(default_factory=dict)
     completeness_counts: Dict[str, int] = field(default_factory=dict)
     protocol_counts: Dict[str, int] = field(default_factory=dict)
+    #: Sessions in which no SMTP, IMAP or POP3 dialogue was identified. They are outside
+    #: what the analysis rules read, so they are neither "assessed" nor "unassessed
+    #: supported evidence": they are counted here, shown to the reader, and excluded from
+    #: the denominator of `assessed_fraction`. Without that exclusion, background traffic
+    #: (DNS, HTTPS) in a capture would dilute genuinely assessed mail sessions below the
+    #: certification floor and withhold a band the evidence supports.
+    sessions_unsupported: int = 0
+
+    @property
+    def sessions_supported(self) -> int:
+        return max(0, self.sessions_total - self.sessions_unsupported)
 
     @property
     def assessed_fraction(self) -> float:
-        return self.sessions_assessed / self.sessions_total if self.sessions_total else 0.0
+        supported = self.sessions_supported
+        return self.sessions_assessed / supported if supported else 0.0
 
     @property
     def observation_fractions(self) -> Dict[str, float]:
@@ -565,7 +579,7 @@ class EvidenceCoverage:
         return {k: round(v / total, 4) for k, v in sorted(self.observation_counts.items())}
 
     def to_dict(self) -> Dict[str, Any]:
-        return {
+        out: Dict[str, Any] = {
             "sessions_total": self.sessions_total,
             "sessions_assessed": self.sessions_assessed,
             "sessions_abstained": self.sessions_abstained,
@@ -575,6 +589,11 @@ class EvidenceCoverage:
             "completeness_counts": dict(sorted(self.completeness_counts.items())),
             "protocol_counts": dict(sorted(self.protocol_counts.items())),
         }
+        if self.sessions_unsupported:
+            # Emitted only when non-zero, so an assessment of a fully supported capture
+            # is byte-for-byte what it was before this field existed.
+            out["sessions_unsupported"] = self.sessions_unsupported
+        return out
 
 
 # ------------------------------------------------------------------ posture
@@ -612,7 +631,14 @@ class ScoreComponent:
 
 @dataclass(frozen=True)
 class PostureScore:
-    """A number an analyst can take apart. Never a mysterious 0-100."""
+    """A number an analyst can take apart. Never a mysterious 0-100.
+
+    `value` is the arithmetic result `starting_value - total_penalty` and is only a GRADE
+    when `scored` is true. When the band is INSUFFICIENT_EVIDENCE the posture was withheld:
+    nothing (or too little) was assessed, so the arithmetic carries no meaning, and the
+    serialised form says so explicitly instead of publishing a number that a machine
+    consumer could take for a score (see `to_dict`).
+    """
     value: float
     band: PostureBand
     formula_id: str
@@ -621,8 +647,20 @@ class PostureScore:
     components: Tuple[ScoreComponent, ...] = ()
     basis: str = ""
 
+    @property
+    def scored(self) -> bool:
+        """True only when a band was actually certified."""
+        return self.band is not PostureBand.INSUFFICIENT_EVIDENCE
+
     def to_dict(self) -> Dict[str, Any]:
-        return {"value": round(self.value, 2), "band": self.band.value,
+        # Machine-readable score contract (schema 1.1): `scored` is the explicit status and
+        # `value` is null whenever it is false. A sentinel such as 0.0 or 100.0 would be
+        # indistinguishable from a real score to any consumer that does not special-case
+        # the band. `total_penalty` and `components` stay: they describe the issues that
+        # WERE established, which is true whether or not a band could be certified.
+        return {"scored": self.scored,
+                "value": round(self.value, 2) if self.scored else None,
+                "band": self.band.value,
                 "formula_id": self.formula_id,
                 "starting_value": self.starting_value,
                 "total_penalty": round(self.total_penalty, 4),

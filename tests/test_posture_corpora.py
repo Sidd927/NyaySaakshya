@@ -81,7 +81,7 @@ def test_oq28_capture_produces_a_serialisable_assessment(name):
     payload = assessment.to_dict()
     json.dumps(payload)
     assert payload["overall_posture"] in {b.value for b in PostureBand}
-    assert payload["versions"]["schema"] == "1.0"
+    assert payload["versions"]["schema"] == "1.1"   # Phase B.3: scored / value:null contract
     assert payload["limitations"]
 
 

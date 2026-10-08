@@ -20,7 +20,7 @@ NyaySaakshya is a triage tool that a non-specialist can operate. An officer uplo
 
 - **Upload and read.** No protocol expertise is needed to operate it: you upload a capture file in the browser and read the result.
 - **Automated analysis that shows its work.** Every finding is linked to the packets, the rule and the published standard behind it, so a specialist can later verify it instead of trusting it.
-- **Honest about limits.** What a capture cannot establish is reported as such — never guessed and never silently upgraded to "safe". A thin capture yields "insufficient evidence", not a good grade.
+- **Honest about limits.** What a capture cannot establish is reported as such — never guessed and never silently upgraded to "safe". A capture in which nothing, or too little of the traffic, could be assessed yields "insufficient evidence", not a good grade.
 - **Timestamped and hash-verified.** Each capture is identified by its SHA-256; each assessment and each rendered report carries its own hash; the analysis time is recorded. The same capture and software versions always produce the same evidence, findings and assessment ID, and a stored assessment always renders to the same report bytes.
 - **Reports in JSON, HTML and PDF.** HTML and PDF open offline from disk.
 - **Marathi reports (draft).** The HTML report can be produced in Marathi, or as Marathi followed by the unmodified English original (`?lang=mr` / `?lang=both`), with a "how to read this report" block for non-specialist readers. **The Marathi text is a machine draft that no person has reviewed yet**; every Marathi report says so at the top, and the English report is the authoritative one. PDF and JSON stay English. See [Reports](#reports).
@@ -91,7 +91,7 @@ NyaySaakshya separates **what the capture establishes** from **what it cannot**.
 | `INCOMPLETE` | the capture is truncated at the relevant point |
 | `NOT_OBSERVABLE` | structurally impossible to see passively (e.g. a TLS 1.3 certificate, RFC 8446 §2) |
 
-Silent conversions such as `UNKNOWN → SECURE` or `NOT_OBSERVABLE → FALSE` are forbidden by the evidence wrapper. `UNKNOWN` never improves a score, and a capture that shows too little yields `INSUFFICIENT_EVIDENCE`, not a good grade.
+Silent conversions such as `UNKNOWN → SECURE` or `NOT_OBSERVABLE → FALSE` are forbidden by the evidence wrapper. `UNKNOWN` never improves a score, and a capture in which nothing, or too little of the traffic, could be assessed yields `INSUFFICIENT_EVIDENCE`, not a good grade. This includes a capture with no SMTP, IMAP or POP3 dialogue in it (HTTP, FTP, DNS, raw TLS, a mail server on an unrecognised port): nothing is assessed, no band is given, and the report says why. A session cut off before the outcome is known is `INCOMPLETE`, not "no TLS".
 
 **Traceability** — each assessment can be followed from its source:
 
@@ -100,7 +100,7 @@ capture SHA-256 (= capture_id) → TCP stream / frame / timestamp → evidence (
    → rule + standard → finding → posture score → assessment_id → report_sha256
 ```
 
-This is forensic provenance and assessment traceability — **not** a legal chain-of-custody claim. The same capture and versions yield identical evidence and findings; reports are deterministic, so the same assessment always renders to the same bytes.
+This is forensic provenance and assessment traceability — **not** a legal chain-of-custody claim. The same capture and versions yield identical evidence and findings; reports are deterministic, so the same stored assessment always renders to the same bytes.
 
 ## Reports
 
@@ -134,9 +134,9 @@ The spreadsheet has one row per piece of report text — where it appears, the E
 
 ## AI/ML: bounded by design
 
-The **deterministic security lane** (rules, cross-session reasoning, scoring) is the single source of every fact, finding and score. A **secondary ML lane** — an unsupervised robust-z-score anomaly model — emits only an anomaly score, band and feature attribution. By construction it can re-order findings *within* a severity tier and can never create, raise or lower a security finding or change the posture score. Score and band are identical with the lane on or off.
+The **deterministic security lane** (rules, cross-session reasoning, scoring) is the single source of every fact, finding and score. A **secondary ML lane** — an unsupervised robust-z-score anomaly model — emits only an anomaly score, band and feature attribution. By construction it can re-order findings *within* a severity tier and can never create, raise or lower a security finding or change the posture score. Score and band are identical with the lane on or off (re-checked in Phase B.3 on all 98 controlled captures: findings, band, score, coverage and abstentions identical; only the assessment ID, the ranked order and the anomaly notes differ).
 
-It was evaluated honestly and the result is reported here: across every held-out split and every capture the project holds, the lane currently shows **no independent detection value**. It is off by default (`POST /api/v1/analyses?ai=true` enables it). NyaySaakshya makes no claim that AI detects attacks or produces the score.
+It was evaluated honestly and the result is reported here: across every held-out split and every capture the project holds, the lane currently shows **no detection that the deterministic lane did not already make**. It is off by default (`POST /api/v1/analyses?ai=true` enables it). NyaySaakshya makes no claim that AI detects attacks or produces the score.
 
 ## Key capabilities
 
@@ -191,7 +191,7 @@ A component-by-component description is in [`docs/ARCHITECTURE.md`](docs/ARCHITE
 
 | Check | Result |
 |---|---|
-| Backend test suite (`PYTHONPATH=src python3 -m pytest -q`) | **1228 passed, 0 failed** (Python 3.9; TShark 4.6.x) — includes golden, adversarial, report-integrity, path-traversal and report-injection tests |
+| Backend test suite (`PYTHONPATH=src python3 -m pytest -q`) | **1521 passed, 0 failed** (Python 3.9; TShark 4.6.x) — includes golden, adversarial, report-integrity, path-traversal and report-injection tests |
 | Frontend `npm run build` / `npm run lint` | build succeeds · lint reports warnings only, no errors |
 | Golden case B — `deepdive_cross_session_control_endpoint.pcap` | 22.15 · CRITICAL |
 | Golden case A — `backup_weak_certificate.pcap` | 44.0 · CRITICAL (RSA-1024 / SHA-1 certificate) |
@@ -310,8 +310,9 @@ Dockerfile, render.yaml   backend container and Render blueprint
 
 ## Limitations
 
+- **A cut-off handshake is assessed only on what the server selected.** Negotiated TLS parameters observed in a ServerHello may be assessed even when later handshake evidence is unavailable; this does not establish the security of the complete session, and each such finding says so.
 - **Passive evidence has hard limits.** TLS 1.3 encrypts certificates, so they are reported `NOT_OBSERVABLE`. Certificate *chain structure* is validated; *trust* and *revocation* are not (no trust anchor or OCSP/CRL in a capture).
-- **Scope is email-protocol captures.** The engine analyses SMTP, IMAP and POP3 traffic. It is not a general-purpose fraud detector and does not examine other evidence types.
+- **Scope is email-protocol captures.** The engine analyses SMTP, IMAP and POP3 traffic. It is not a general-purpose fraud detector and does not examine other evidence types. Protocol identification is by the TShark dissector verdict with the seven standard mail ports (25, 587, 465, 143, 993, 110, 995) as a fallback, so mail on an unrecognised port with no dissector verdict is not analysed; it is reported as unsupported and withheld, never graded.
 - **Reports are technical, and the Marathi is an unreviewed draft.** The report text is written for an analyst. A Marathi rendering exists for HTML only; it is machine-drafted, marked as a draft in every copy, and the English report is authoritative. Marathi PDF is not available (the PDF renderer embeds no Devanagari font).
 - **Cross-session reasoning needs context.** It requires comparable prior history (default ≥ 5 sessions) and, for a stronger signal, a control endpoint; otherwise it abstains. Consistent stripping at every client is passively indistinguishable from server policy.
 - **The ML lane adds no demonstrated detection value** on the data this project holds; it is a bounded prioritisation signal only.
