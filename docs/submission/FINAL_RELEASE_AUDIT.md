@@ -1,118 +1,105 @@
-# Final release audit: Seva First Innovation Challenge 2026
+# Final release audit
 
-Audited 15 October 2026 on branch `design/landing-redesign`, from `e24cae7`. Validation tag `v1.1.0-validation-baseline` still points at `c0f77b9`. No frontend, scoring, rules, test or validation file was changed. No portal action was taken: the portal was not opened, logged into or modified, and nothing was uploaded or submitted.
+Phase H gate, 15 October 2026, on branch `design/landing-redesign` (starting commit `f798d8d`). Validation tag `v1.1.0-validation-baseline` still points at `c0f77b9`. I did not touch the portal: no login, no edit, no upload, no submission. No public deployment. No change to the frontend, backend, scoring, rules, evidence semantics or tests.
 
-## Decision
+## Verdict
 
-**BLOCKED** for submission readiness, **only on items that need you** (section 5). Everything that can be finished without you is finished and verified. Once you clear the MUST items in section 5, the PPTX is ready to upload.
+**READY WITH EXPLICIT APPLICANT INPUTS.**
+
+All safe work is finished and verified. What remains is yours: factual answers about the IP/contributor position, the personal declarations, a PowerPoint check of the deck, and a few choices. None of these is a release defect. One repository item (a failing code-freeze test) is disclosed in section 5 and does not affect the submission.
 
 ## 1. Deliverables
 
-| File | Size | Notes |
+| File | Size | Note |
 |---|---|---|
-| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026.pptx` | 125,082 bytes (0.12 MB) | **Primary submission file.** Built from the official template by `build_deck.py` |
-| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026_PREVIEW.pdf` | 347,111 bytes (0.33 MB) | LibreOffice render. Preview only, do not upload |
-| `submission/seva-innovation-challenge-2026/build_deck.py` | | Reproducible build; optional `APPLICANT` block |
-| `submission/seva-innovation-challenge-2026/SLIDE_CLAIM_AUDIT.md` | | Claim-by-claim evidence map for the final deck |
-| `docs/submission/PORTAL_APPLICATION_ANSWERS.md` | | Final paste-ready answers and declaration table |
-| `docs/submission/PROFILE_FINAL_COPY.md` | | Replacement project profile text |
-| `docs/submission/USER_INPUT_REQUIRED.md` (copy in the submission folder) | | What only you can supply |
-| `docs/submission/DEPLOYMENT_GO_NO_GO.md`, `FINAL_SUBMISSION_CHECKLIST.md` | | Phase F, still valid |
+| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026.pptx` | 226,978 bytes (0.22 MB) | **Submission file.** Six slides, official template, built from source by `build_deck.py` |
+| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026_PREVIEW.pdf` | 408,019 bytes (0.39 MB) | LibreOffice render, review only |
+| `submission/seva-innovation-challenge-2026/build_deck.py`, `assets/screen_scored.png`, `assets/screen_withheld.png`, `reference/` (official template, unmodified) | | Reproducible build; screenshots are 2x crops of the real console |
+| `docs/submission/PORTAL_APPLICATION_ANSWERS.md` | | Final, with character counts, short versions, checkbox choices, evidence, warnings |
+| `docs/submission/PROFILE_FINAL_COPY.md` | | One-liner 113 characters (limit 140) |
+| `docs/submission/PHASE_H_RESEARCH_AND_EVALUATION.md`, `PHASE_H_CLAIM_AUDIT.md`, `PHASE_H_RED_TEAM_REVIEW.md`, `PHASE_H_BASELINE.md` | | Research, 36 deck claims audited, three-reviewer critique, baseline |
+| `docs/submission/FINAL_SUBMISSION_CHECKLIST.md`, `USER_INPUT_REQUIRED.md`, `DEPLOYMENT_GO_NO_GO.md` | | Ordered checklist; applicant-only items; NO-GO re-confirmed |
 
-Limit: the portal accepts up to 15 MB. Both files are far below it. The earlier `_DRAFT.pptx` was removed from the tree (still in git history).
+Both files are far below the 15 MB limit reported for the portal.
 
-## 2. Six-slide verification
+## 2. Deck verification
 
-- `python-pptx` reports **6 slides**; the PDF has **6 pages**, 16:9 (720 x 405 pt). Order: title and snapshot; problem; solution and innovation; feasibility; impact and scalability; team and support.
-- A text scan of every slide, table and speaker note found **0 placeholders**: no `[…]` markers, DRAFT, TODO, REQUIRED, template guidance, "SecureMailScope", Marathi, AI, device-data or suspect-activity wording, and no "about 50 district cyber police stations".
-- Orange text remaining on the slides is template design colour (kicker, big numbers, labels), not placeholders.
-- **Visual inspection:** all six slides were rendered to PNG at 110 dpi and viewed, including a wider-font stress render (Arial in place of Nirmala UI) of slides 1 to 6. Slide 4's Technology box and slide 2's Evidence box were tight in the stress render and were shortened. Final renders of slides 1 to 5 are byte-identical to the viewed renders; slide 6 was re-rendered and viewed after its last text edit.
-- **Not verified:** the deck has **not** been opened in PowerPoint. Nirmala UI is not installed on this Mac, so the renders use fallback fonts. Open it in PowerPoint and check each slide.
+- **Six slides**, in the official order, confirmed with `python-pptx` and the 6-page PDF; 16:9, 10 x 5.625 in.
+- **No placeholders, DRAFT marks, template guidance, repo file names or internal notes**: a text scan of every shape and speaker note found 0 hits. Speaker notes now cite public sources only.
+- **Text size:** body 9 to 12.5 pt, captions 8.5 pt, the template's footer 8 pt, headings 13.5 to 28 pt.
+- **Rendering:** all six slides were rendered to PNG at 130 dpi in LibreOffice and viewed, in the default fallback font and in a wider-font stress render (Arial in place of Nirmala UI). Layout problems found (overlapping caption on slide 3, a wrapped ask on slide 6, tight boxes on slides 4 and 5, the kicker overlapped by the panel on slide 1) were fixed and re-rendered. A second renderer, macOS Quick Look, rendered slide 1 only. Keynote could not be driven by script, so there is no Keynote check.
+- **Not done:** the deck was **never opened in Microsoft PowerPoint**. Nirmala UI is not installed on the build Mac. A PowerPoint check by you is required (checklist step 2).
+- **Design:** official template header, footer, colours and font kept. Each slide has one message line, one visual structure, real product evidence (two enlarged real screen crops, a worked provenance example in native text), and limitations in labelled boxes.
 
-## 3. Claim audit results
+## 3. Claims and research
 
-`SLIDE_CLAIM_AUDIT.md` maps every statement to evidence or labels it target, estimate, portal or no-claim.
+- 36 deck claims audited in `PHASE_H_CLAIM_AUDIT.md`: 29 verified, 6 partially verified (qualified in the wording), 1 the applicant's own choice (support asks), 0 unsupported remaining.
+- Official requirements established from the organiser's pages, the public page source and timeline graphic (`PHASE_H_RESEARCH_AND_EVALUATION.md`). New verified facts: Law and Order sub-theme 2 is exactly "Cyber-Fraud, Digital Extortion and Financial-Crime Intelligence"; demo and website links are optional; no live deployment is required; the final presentations are on **9 Dec at Nagpur** (press said 7 Dec); online presentations are 16 to 25 Nov; the one-line profile field is 140 characters; stage options carry TRL labels.
+- Statistic: **17.82 lakh** re-read in the PIB PDF; period not stated; stated as non-email-specific. Removed: Maharashtra 5.16 lakh and ₹7,592 crore, 24,02,579, 29.44 lakh, "41,405 servers", "about 50 district cyber police stations", hosting prices, any AI/ML, Marathi, speed, cost and impact claims.
+- "Open source" versus licence: resolved. Components are open source (licences read); NyaySaakshya's own licence is not chosen, and the deck says so.
+- Differentiation is stated as a design strength, with the comparison limited to what Wireshark, Zeek and NetworkMiner documentation shows. Competitors not researched (commercial forensic suites, Suricata, Internet.nl) are marked UNKNOWN.
 
-- **17.82 lakh (slide 2):** re-verified at the primary source today. The PIB PDF *Curbing Cyber Frauds in Digital India* (7 Oct 2025) says financial institutions "have been able to save more than ₹5,489 crore in over 17.82 lakh complaints" through CFCFRMS. The period is not stated. The deck says "PIB cites", "period not stated" and "not email-specific", and states that the email share is unpublished.
-- **Removed:** Maharashtra 5.16 lakh / ₹7,592 crore, 24,02,579, CERT-In 29.44 lakh, "41,405 servers", "about 50 district cyber police stations". Nothing replaced them.
-- **Retained limitations on slides:** internal validation only; no external pilot; no real-world accuracy benchmark; no government approval; not production-ready; missing login, audit log, encrypted storage, backups, concurrency fix.
-- **Absent from the deck:** AI or ML claims, speed or cost claims, measured impact, Marathi, a live URL, contact details, mentor, qualification, partners, pilots, revenue.
-- **Internal validation wording:** 1,521 tests and 98 controlled captures are labelled "internal validation" on slides 4 and 6.
-
-### Cross-document consistency
+## 4. Cross-document consistency
 
 | Check | Result |
 |---|---|
-| Name, sector and sub-theme: deck, answers, profile | Consistent: Siddhant Hiralal Patil; Law and Order; "Cyber-fraud, digital extortion and financial-crime intelligence" (deck states it does not itself provide intelligence). Spelling vs the portal not checked by me |
-| Stage: deck, answers, profile, DEPLOYMENT.md | Working Prototype everywhere |
-| 17.82 lakh wording: deck, answers, audit, SUBMISSION_EVIDENCE.md | Consistent ("cites", national, period not stated, not email-specific) |
-| Test and capture counts | 1,521 and 98, labelled internal validation, in all |
-| AI/ML | Not selected in answers; not claimed in deck or profile |
-| Marathi | Not claimed in the deck. Profile and answers say "unreviewed" and untested |
-| Deployment | All say no public deployment, no live URL; `DEPLOYMENT_GO_NO_GO.md` records NO-GO |
-| Estimated number affected | Deck gives no count; answers say "no verified estimate" |
-| Stale references | `_DRAFT` file name and "about 50" updated or flagged as removed in the checklist, answers and audit. The Phase C/E1 blueprint carries supersession notes |
+| Name, sector, sub-theme, team size | Same in deck, answers, profile (portal not accessed; spelling to be checked by you) |
+| Stage | "Working Prototype, lab-validated, no external pilot" everywhere; TRL option choice left to you |
+| 17.82 lakh | Same wording and qualifiers in deck, answers, audit, evidence file |
+| Test and capture counts | 1,521 tests (labelled "tests", never "passing"), 98 captures (10 + 6 + 82), 13,822 frames; internal validation everywhere |
+| AI/ML | Not selected, not claimed |
+| Marathi | Not claimed anywhere |
+| Deployment | NO-GO and no live URL everywhere; demo and website links blank |
+| Finals date | 9 Dec in `SUBMISSION_EVIDENCE.md` and `DEPLOYMENT_GO_NO_GO.md`; the older blueprint is marked fully superseded |
+| Estimated number affected | None in the deck; "no verified estimate" in the answers |
+| `build_deck.py`, deck notes, audit | Reference the same files |
 
-## 4. Contributor flag (new, needs your decision)
+## 5. Validation suite
 
-While checking the claim "built by one developer" I found that git history outside this branch has other authors. In the earlier `pre-rebrand-main` history, `Dishita0526` (dishita.5260@gmail.com) authored a 29 Sep 2026 commit "feat: finalize frontend polish and theme updates" touching 48 files (4,330 insertions), and `Sidd_927` authored the very first commit. This branch's root commit (3 Oct 2026, "Initial commit: NyaySaakshya") is under your name, and the current `frontend/src` differs from that commit's tree in only about ten files. I do not know who this person is or what the arrangement is.
+`PYTHONPATH=src python3 -m pytest -q` on the committed baseline: **1,520 passed, 1 failed** (95 s). The failing test is `tests/test_backend_architecture.py::test_phase_seven_source_changes_only_where_declared`, a code-freeze guard that diffs `HEAD` against the old tag `v1.0.0-nyaysaakshya`. It passed in Phase B.4 only because the validated fixes were still uncommitted; once committed (`c0f77b9`) it fails. Every behaviour, semantic-contract, reproducibility and ML-isolation test passes. I did not suppress or weaken any test and did not edit the file. On a scratch copy in `/tmp`, re-pointing the guard's baseline tag to `v1.1.0-validation-baseline` made all 22 architecture tests pass. `README.md` and `VALIDATION.md` still say "1521 passed, 0 failed", which is not true for the committed baseline; flagged, not edited.
 
-Consequences, none of which I have decided for you:
+Local demo re-run: flagship capture CRITICAL 22.15 (`afa30ff290742813`), cut-handshake capture INSUFFICIENT_EVIDENCE (`870e1edcae99f7da`), identical IDs to 14 Oct; JSON, HTML and PDF reports exported for both.
 
-- The IP declaration and team-composition statement must be true. Ownership of that frontend work is for you to confirm.
-- The deck says only "Applicant and team lead" and "No other team member, mentor, partner or funder is named". It makes **no** claim of sole authorship. I removed "developer of the prototype" and "built by one developer" for this reason.
-- If that person is a collaborator, ask the helpdesk whether team composition can change; the team lead cannot (FAQ).
+## 6. Personal inputs, declarations and decisions (yours)
 
-## 5. Remaining personal inputs (in one place)
+Full list: `USER_INPUT_REQUIRED.md`. In short:
 
-**MUST (block submission)**
-
-1. Contributor and IP position (section 4).
-2. Conflict-of-interest declaration.
-3. Consent to verification and due diligence.
-4. Domicile confirmation (state) and certificate upload if the portal asks.
-5. IP status and regulatory-dependency statements.
-6. Single-submission declaration; final accuracy declaration.
-7. Confirm the stored team-name spelling and your name spelling against the portal.
-8. Open the PPTX in PowerPoint and check all six slides.
-9. Decide: Citizens tick (optional, indirect) and AI/ML (recommended unticked).
-
-**OPTIONAL:** contact line, qualification, mentor, photo, a demo video link. All are left out of the deck; see `USER_INPUT_REQUIRED.md`.
-
-## 6. Portal answers for you to enter and declarations only you can make
-
-- Enter the answers in `PORTAL_APPLICATION_ANSWERS.md` fields 1 to 14 after reading each field's limit. Key choices: stage Working Prototype; technology Mobile/web platform and Data analytics; advantages "New process/service model" plus an "Other" text; tested internally, not piloted; estimated number "no verified estimate" (numeric fallback `1`, your call); demo and website links blank.
-- Replace the project profile with `PROFILE_FINAL_COPY.md`.
-- **Declarations I did not and will not answer:** consent, conflict of interest, domicile, IP, regulatory dependencies, originality/single submission, accuracy, identity.
+1. **IP and contributor facts**: Dishita's frontend help (permission, assignment or licence, acknowledgement, any employer or college claim, whether `Sidd_927` is yours). She is **not** added as a team member.
+2. **Declarations, never answered by me:** consent to verification, conflict of interest, domicile, IP status, regulatory dependencies, originality and single submission, final accuracy.
+3. Domicile certificate in hand; name and team-name spelling checked against the portal.
+4. Choices: stage label, estimated-number entry, Citizens tick, AI/ML unticked, funding ask.
+5. Open the PPTX in PowerPoint; read each portal field's limit and mandatory flag.
+6. Optional credibility: qualification, real mentor, contact line, photo.
 
 ## 7. Deployment decision
 
-**NO-GO** for public deployment (`DEPLOYMENT_GO_NO_GO.md`). Re-verified in source on 14 Oct: no authentication, shared SQLite connection, analysis time limit never enforced, no delete or audit route, container runs as root, Docker image unbuilt, fixture fallback and stale version labels present. The old Vercel site is a stale "SecureMailScope" build with no backend. A live URL is optional per the FAQ. Use a local demo and, optionally, a recorded synthetic demo.
+**NO-GO** for public deployment. `src/` is unchanged since the 14 Oct check; blockers stand: no authentication or case isolation, shared SQLite connection, analysis time limit never enforced, no delete or audit route, no encryption at rest, container runs as root, TShark not sandboxed, Docker image unbuilt, fixture fallback and stale version labels. A live URL is optional per the official FAQ and no deployment is required. The old Vercel site is stale and has no backend; the repository is private. Use a local synthetic demo for the presentation stages (16 to 25 Nov and 9 Dec). **No demo video exists**; a storyboard and recording plan are in `DEPLOYMENT_GO_NO_GO.md`.
 
-## 8. Residual limitations that could affect evaluation
+## 8. Git and `main`
 
-- Prototype only; no authentication, audit trail, encrypted storage or backups. Stated on slide 4.
-- Validation is internal on controlled and mostly synthetic captures. No real-world accuracy figure and no external pilot.
-- No live demo link, and the repository is private, so evaluators cannot open the code.
-- Fit to the sub-theme "financial-crime intelligence" is partial: the tool supports the evidence-handling step and does not detect fraud or provide intelligence.
-- Slide 2's premise that investigators "often" hold cut-off or encrypted captures is reasoned, not interviewed.
-- The national 17.82 lakh figure is context, not a user count or email-specific.
-- Estimated number affected: none, by design.
-- Marathi reporting is an unreviewed machine draft and is untested; it is not claimed.
-- Rendering checked in LibreOffice only; Nirmala UI absent.
-- Speaker notes in the PPTX cite repository file names (for example `VALIDATION.md`); delete the notes in PowerPoint if you prefer.
-- Novelty is not claimed as absolute.
+- Work is on `design/landing-redesign`; commits are normal and pushed without force; no Claude co-author trailer; the validation tag is untouched.
+- **`main` was not updated.** `main` (`22bcd7d`) is an ancestor of the branch, so a fast-forward is technically possible, and a scan of the 183 changed files found no secrets or private keys. I stopped at the gate because: (a) the full test suite is not green on the branch (the freeze guard above), so a fast-forward would give `main` a failing test; (b) the diff is +65,436 / -1,200 lines across validation fixes, research experiments, the landing redesign and submission files, far wider than finalisation, and making `main` carry all of it is your decision; (c) fixing the guard means editing a test, which I will not do without your approval.
+- Option: approve a one-line commit re-pointing the guard's baseline tag to `v1.1.0-validation-baseline`, re-run the suite, and then fast-forward `main`.
+- Privacy note: the Phase G version of this file (commit `f798d8d`, already pushed to the private remote) quoted a third party's email address. It is removed here; the remote history keeps it unless rewritten, which I will not do without force-pushing.
 
-## 9. Gate result
+## 9. Residual limitations that could affect evaluation
+
+Weak fit to a sub-theme that names "intelligence"; the premise that investigators face these captures is a hypothesis and no investigator was consulted; validation is internal and mostly in-project synthetic (82 of 98); no real-world accuracy, no pilot, no partner; no estimated number affected; a solo applicant with no stated qualification; no live link and a private repository; the prototype lacks authentication, audit, encryption and backups; one freeze-guard test fails; inconsistent version labels in the UI and reports; Marathi report unreviewed; rendering not checked in PowerPoint.
+
+## 10. Gate result
 
 | Gate | Result |
 |---|---|
-| Exactly six slides, official template structure | PASS |
-| No placeholders, DRAFT marks or guidance text | PASS |
-| File non-empty, under 15 MB | PASS |
-| Claims traceable; unverified statistics removed | PASS |
-| Documents mutually consistent | PASS |
-| Visual inspection (LibreOffice, plus wide-font stress) | PASS, **not in PowerPoint** |
-| No frontend, scoring, rules or test changes | PASS |
-| Personal declarations and contributor/IP position | **OPEN: needs you** |
-| **Overall submission readiness** | **BLOCKED on personal inputs only** |
+| Official template and six slides | PASS |
+| Portal answers complete and consistent with the deck | PASS |
+| Statistics and technical claims evidenced or qualified | PASS |
+| Identity, individual status, sector, sub-theme | PASS against the applicant's transcription (portal not accessed) |
+| No placeholder, draft mark or invented claim | PASS |
+| Licensing and open-source wording | PASS |
+| Deployment recommendation explicit | PASS (NO-GO) |
+| Personal declarations and inputs listed | PASS |
+| PPTX and PDF generated and inspected | PASS (LibreOffice; slide 1 also Quick Look; **not PowerPoint**) |
+| Validation suite | PARTIAL: 1,520 of 1,521, one stale freeze guard, diagnosed |
+| Git: committed and pushed | See the final report |
+| `main` updated | **NO** (section 8) |
+| **Overall** | **READY WITH EXPLICIT APPLICANT INPUTS** |
