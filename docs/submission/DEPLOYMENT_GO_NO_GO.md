@@ -13,12 +13,16 @@ Reasons, in short:
 3. The application that would be exposed accepts arbitrary file uploads, has no authentication and lists every run to anyone who can reach it. No small change makes that safe in the 2.5 days left, and the brief rules out exposing an unauthenticated analysis API.
 4. A public instance adds risk (a defaced or crashed demo, a stray real capture uploaded by someone) and no marked benefit: the evaluators' stated criteria and the FAQ treat links as optional.
 
+## Phase H re-confirmation (15 Oct 2026)
+
+**Still NO-GO.** `src/` is unchanged since the 14 Oct check (`git log` shows no source commits after `c0f77b9`), so every blocker below stands. Re-run today on the local console and backend (127.0.0.1, scratch data directory, synthetic captures): flagship CRITICAL 22.15 (assessment ID `afa30ff290742813`) and the cut-handshake capture INSUFFICIENT_EVIDENCE (`870e1edcae99f7da`), identical IDs to 14 Oct; JSON, HTML and PDF reports exported for both. No live URL is required by any official page (FAQ: demo and website links are optional). The official timeline shows online presentations of selected applications on 16 to 25 Nov 2026 and final presentations at Nagpur on 9 Dec 2026 (press says 7 Dec): a reliable **local** synthetic demo is the right preparation for those stages. The repository is private and the old Vercel site is stale. No video exists. Test-suite caveat: a clean run gives 1,520 passed and 1 failed (a code-freeze guard), see `PHASE_H_BASELINE.md`.
+
 ## 1. Answers to the ten questions
 
 | # | Question | Answer | Evidence |
 |---|---|---|---|
 | 1 | Is a live URL required by the portal? | **No, optional.** | Public FAQ: "You can provide a prototype/demo link or website/product link, where available. These links are listed as optional in the applicant manual." The Phase F brief's screenshot transcription lists both fields without a mandatory marker; **the portal's own required-field markers were not seen**, so confirm on the form. |
-| 2 | Is a demo video or local demo enough? | **Yes for submission.** The pitch deck is the mandatory item (FAQ: "Is uploading a pitch presentation mandatory? Yes"). A local demo is enough for finals interaction, which is later and in person (finals in Nagpur, 7 Dec 2026, per the organiser pages and press). | FAQ, guidelines. |
+| 2 | Is a demo video or local demo enough? | **Yes for submission.** The pitch deck is the mandatory item (FAQ: "Is uploading a pitch presentation mandatory? Yes"). A local demo is enough for the later stages: the official timeline graphic shows online presentations of selected applications on 16 to 25 Nov 2026 and final presentations at Nagpur on 9 Dec 2026 (the earlier "7 Dec" came from press and is superseded). | FAQ, guidelines. |
 | 3 | Risks of public deployment now? | See section 3. | Source inspection, below. |
 | 4 | Smallest safe demo configuration? | **Local only**: backend bound to `127.0.0.1`, local frontend, synthetic captures only. This is what was run today. | Section 6. |
 | 5 | Can it be limited to synthetic captures and fixed test cases? | **Locally, yes, by procedure** (bundled `demo/captures/*`). **Publicly, no**: nothing in the service restricts uploads to those files. The API accepts any file up to 256 MB (default `max_upload_bytes` 268,435,456 in `/health` today). | Health output, `limits.py`. |

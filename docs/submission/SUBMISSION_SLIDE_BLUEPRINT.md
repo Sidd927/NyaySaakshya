@@ -3,6 +3,8 @@
 > **Superseded in part (Phase E2, 14 Oct 2026).** The Maharashtra statistic (5.16 lakh cases, ₹7,592 crore) is press-reported and unverified, so the draft deck does not use it. Slide 2 uses the PIB backgrounder figure (over 17.82 lakh CFCFRMS complaints, 7 Oct 2025) instead. Read this blueprint together with `SUBMISSION_EVIDENCE.md` (correction log) and `submission/seva-innovation-challenge-2026/SLIDE_CLAIM_AUDIT.md`.
 >
 > **Further superseded (Phase G, 15 Oct 2026).** The built deck is `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026.pptx`. Sector is Law and Order (portal). Slide 6 is a single-applicant slide. This file's slide copy, placeholders and the 60-second pitch are not final; use the deck, `PORTAL_APPLICATION_ANSWERS.md` and `PROFILE_FINAL_COPY.md`.
+>
+> **Fully superseded in Phase H (15 Oct 2026).** The deck was redesigned inside the official template (problem led by three failure modes; worked provenance example; pilot path and ask). Slide copy and the 60-second pitch in this file are obsolete; the Maharashtra figures and the 7 Dec finals date it contains are withdrawn or corrected. Use the deck, `PORTAL_APPLICATION_ANSWERS.md`, `PROFILE_FINAL_COPY.md` and `PHASE_H_CLAIM_AUDIT.md`.
 
 
 Prepared 14 October 2026 on branch `design/landing-redesign` (base commit `ec689ee`, validation tag `v1.1.0-validation-baseline` = `c0f77b9`). This is a plan and copy bank, not the deck. The final PowerPoint is built in Phase E2.

@@ -1,6 +1,6 @@
 # NyaySaakshya — Submission Evidence Package
 
-Seva First Innovation Challenge, Maharashtra Zone. Application deadline **17 October 2026**; finals in Nagpur on 7 December 2026 (organiser's site and press, see section 14). Prepared 14 October 2026 against branch `design/landing-redesign`, commit `c7accff`; forensic baseline tag `v1.1.0-validation-baseline` (`c0f77b9`).
+Seva First Innovation Challenge, Maharashtra Zone. Application deadline **17 October 2026**; final presentations in Nagpur on 9 December 2026 (official timeline graphic on the organiser's home page, read 15 Oct 2026; an earlier draft said 7 December from press). Prepared 14 October 2026 against branch `design/landing-redesign`, commit `c7accff`; forensic baseline tag `v1.1.0-validation-baseline` (`c0f77b9`).
 
 This is an evidence package, not the slide deck. The official template has six slides: (1) title and applicant snapshot, (2) problem, (3) solution and innovation, (4) feasibility and implementation, (5) impact and scalability, (6) team and support required. Each section below says which slide it feeds. Facts are tagged **[verified]** (read in the repository or by running it), **[sourced]** (public source, section 14), **[hypothesis]** (our reasoning, to be tested) or **[proposed]** (not built). Nothing proposed is presented as implemented.
 
@@ -103,7 +103,7 @@ From `DEPLOYMENT.md` (classification **B: validated prototype with a credible pi
 
 | Item | Cost | Source / assumption |
 |---|---|---|
-| Local run on an existing laptop (recommended for the 7 December jury demo) | ₹0 incremental | no network needed to analyse |
+| Local run on an existing laptop (recommended for the 9 December Nagpur presentations) | ₹0 incremental | no network needed to analyse |
 | Hosted backend, Render **Free** | $0 | **Spins down after 15 min idle, takes about a minute to wake, wipes local files (uploads, SQLite) on spin-down, no persistent disk** (Render docs). A judge's analysis can vanish |
 | Hosted backend, Render Standard (1 CPU, 2 GB) | **Price not verified** (an earlier draft stated $25/month from third-party summaries; Render's own pages I opened list CPU/RAM per plan but no prices) | Get a vendor quotation; paid services can attach disks (Render docs) |
 | Persistent disk | **Price not verified** (earlier draft: from $0.25/GB/month, third-party summary) | Render docs confirm free instances cannot attach disks |
@@ -120,7 +120,7 @@ Cost = one-time + recurring, from this formula; no price below is a quotation.
 | Server or forensic workstation | hardware purchase | power, rack/space, warranty | obtain ≥3 vendor quotations for a multi-core machine; sizing from a measured pilot run (we have none) |
 | Encrypted storage | SSD capacity | replacement | capacity = captures per month × average size × retention months × (1 + backup copies) |
 | Backup target | media or appliance | media rotation | same formula; restore drill each quarter |
-| Software licences | none expected, **licences to be confirmed** | none | stack is open source (Wireshark, Python, FastAPI, SQLite, React); confirm each licence before procurement |
+| Software licences | none expected for components (read 15 Oct 2026: TShark/Wireshark GPL-2.0-or-later, used as a separate program; FastAPI, pydantic, React MIT; Uvicorn BSD-3; python-multipart Apache-2.0; ReportLab BSD; lucide-react ISC; bundled IBM Plex and Tiro Devanagari fonts OFL-1.1). **NyaySaakshya's own licence is not yet chosen** (README: "No license has been selected") | none | the components are open source; the project itself is unlicensed; choose a licence and re-check GPL implications for any redistribution that bundles TShark |
 | P0 engineering (identity, roles, case isolation, audit, retention, concurrency fix, worker isolation, TLS proxy, fixtures off, TShark check) | engineer time | maintenance | **our judgement: on the order of one to three engineer-months, to be re-estimated after a short spike**; not a measurement |
 | Security review and policy work | external or internal review | annual | per organisation's rates |
 | Operations and support | training, runbook | staff time for patching, release re-validation, incidents | person-days per quarter × local rate |
