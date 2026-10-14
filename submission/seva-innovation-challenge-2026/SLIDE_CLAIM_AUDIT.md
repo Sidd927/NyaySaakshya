@@ -1,110 +1,102 @@
-# Slide claim audit: Seva Innovation Challenge 2026 draft deck
+# Slide claim audit: Seva Innovation Challenge 2026 deck
 
-Deck: `NyaySaakshya_Seva_Innovation_Challenge_2026_DRAFT.pptx` (6 slides). Audited 14 October 2026.
+Deck: `NyaySaakshya_Seva_Innovation_Challenge_2026.pptx` (6 slides), built by `build_deck.py`. Audited 15 October 2026 (supersedes the 14 October draft audit).
 
-Classes: **VERIFIED** (read in repo or run locally), **SOURCED** (public primary source, opened and read), **ESTIMATE** (cost or planning assumption, stated as such on the slide), **TARGET** (proposed, not built or done), **PLACEHOLDER** (applicant must supply), **NO CLAIM** (slide states we do not claim it).
+Classes: **VERIFIED** (read in the repo or run locally), **SOURCED** (public primary source opened and read), **ESTIMATE**, **TARGET** (proposed, not built or done), **PORTAL** (as entered on the portal, from the applicant), **NO CLAIM** (slide says we do not claim it).
 
-"SE" = `SUBMISSION_EVIDENCE.md` section. "VAL" = `VALIDATION.md`. "DEP" = `DEPLOYMENT.md`.
+"SE" = `SUBMISSION_EVIDENCE.md`. "VAL" = `VALIDATION.md`. "DEP" = `DEPLOYMENT.md`.
 
 ## Slide 1: Title and applicant snapshot
 
-| Claim on slide | Class | Evidence |
+| Claim | Class | Evidence |
 |---|---|---|
-| Evidence-first triage for email-traffic captures; says what a capture does and does not prove | VERIFIED | SE 1, 4; README |
-| Stage: Working Prototype | VERIFIED (self-assessed) | Runs end to end locally on synthetic captures (SE 5); DEP classification B |
-| Screenshot "Scored: every finding cites its evidence" (22.15 / 100, CRITICAL, 6 sessions) | VERIFIED | Screenshot of the running console on a synthetic lab capture, `assets/screen_scored_flagship.png` |
-| Screenshot "Not scored" with withheld reason | VERIFIED | `assets/screen_withheld_not_scored.png`; schema 1.1 `scored:false, value:null` (VAL 14) |
-| "Maharashtra Zone", "Seva Innovation Challenge 2026" | SOURCED | Organiser site, SE 14 |
-| Applicant name, individual/team, sector, contact | PLACEHOLDER | `USER_INPUT_REQUIRED.md` |
+| Forensic triage for email-traffic captures; tells investigators what a capture does and does not prove | VERIFIED | SE 1, 4; README |
+| "It does not detect fraud or identify suspects" | VERIFIED | SE 1 (not an AI fraud detector, no attribution); reports state it |
+| Applicant: Siddhant Hiralal Patil; individual, team size 1 | PORTAL | Phase F brief (portal transcription). Spelling to be checked against the portal by the applicant |
+| Sector: Law and Order; sub-theme: Cyber-fraud, digital extortion and financial-crime intelligence | PORTAL | Phase F brief. The slide does not claim the tool provides intelligence |
+| Stage: Working Prototype | VERIFIED (self-assessed) | Runs end to end locally (14 Oct run); DEP classification B |
+| Screenshot "Scored" (22.15, 6 sessions) | VERIFIED | Reproduced on 14 Oct 2026: `deepdive_cross_session_control_endpoint.pcap`, CRITICAL 22.15, 12 of 12 sessions assessed, ID `afa30ff290742813` |
+| Screenshot "Not scored" | VERIFIED | `scored:false, value:null`; reproduced with `E_cut_during_handshake.pcap` (14 Oct) |
+| Contact details | **Omitted** | Not known to the repository. Add in `build_deck.py` `APPLICANT["contact"]` if wanted |
 
 ## Slide 2: The Problem
 
-| Claim on slide | Class | Evidence |
+| Claim | Class | Evidence |
 |---|---|---|
-| 17.82 lakh complaints handled through CFCFRMS (PIB, 7 Oct 2025; period not stated) | SOURCED | PIB backgrounder "Curbing Cyber Frauds in Digital India", read in full (SE 2). The release page returned 403; the backgrounder PDF was used. The slide says "over 17.82 lakh" and "period not stated" |
-| Investigators often hold a capture that is cut short or encrypted | Reasoned premise (hypothesis) | SE 2 "narrower problem". No investigator was interviewed. The slide says "often"; the applicant should soften or confirm after any interview |
-| Reading more into a capture than it shows can produce an unsupported conclusion | Reasoned premise | Basis for the product design; not a measured rate |
-| Wireshark decrypts TLS only if keys are supplied | SOURCED | Wireshark documentation (SE 14) |
-| SMTP security "favors failing open" | SOURCED | Durumeric et al., ACM IMC 2015, abstract read (SE 2). General mail study, not India or fraud specific |
-| Packet tools show packets; the analyst decides what is safe to conclude | SOURCED / reasoned | Wireshark and Zeek documentation (SE 4) |
-| Proposed first users: a Maharashtra cyber cell or forensic lab; no partner has agreed | TARGET / NO CLAIM | No partner exists (SE 3) |
-| "How many involve email is not published, so we make no claim" | NO CLAIM | SE 2: no published figure found |
+| "PIB cites over 17.82 lakh CFCFRMS cyber-fraud complaints (7 Oct 2025; period not stated; not email-specific)" and the big number "17.82 lakh complaints cited for the national CFCFRMS cyber-fraud system" | SOURCED | PIB PDF *Curbing Cyber Frauds in Digital India*, 7 Oct 2025, re-opened 15 Oct 2026: "financial institutions have been able to save more than ₹5,489 crore in over 17.82 lakh complaints". Period not stated. National, financial-fraud wide |
+| "How many involve email is not published, so we make no claim" | NO CLAIM | SE 2 |
+| Investigators often hold a capture that is cut short or encrypted | Reasoned premise | SE 2. No investigator interviewed. "often" is our reasoning |
+| Wireshark decrypts TLS only if keys are supplied | SOURCED | Wireshark TLS documentation (SE 14) |
+| SMTP security "favors failing open" | SOURCED | Durumeric et al., ACM IMC 2015 abstract (SE 2). General study, not India-specific |
+| Packet tools show packets; the analyst decides what is safe to conclude | SOURCED / reasoned | Wireshark, Zeek documentation (SE 4) |
+| Proposed first users: a Maharashtra cyber cell or forensic lab; no partner has agreed | TARGET / NO CLAIM | SE 3 |
 
-**Removed from this slide:** Maharashtra 5.16 lakh cases / ₹7,592 crore (press-only, unverified), national 24,02,579 complaints (could not be verified), CERT-In 29.44 lakh (snippet only), "41,405 servers in 193 countries" (not in the paper's abstract).
+**Removed:** Maharashtra 5.16 lakh / ₹7,592 crore (press only), 24,02,579 national count, CERT-In 29.44 lakh, "41,405 servers in 193 countries", and the Phase F "about 50 district cyber police stations" (single broadcaster report, official directory could not be loaded).
 
 ## Slide 3: Our Solution & Innovation
 
-| Claim on slide | Class | Evidence |
+| Claim | Class | Evidence |
 |---|---|---|
-| Reads a saved capture of email traffic (SMTP/IMAP/POP3) | VERIFIED | README; SE 1 |
-| Six evidence states: observed, inferred, unknown, ambiguous, incomplete, not observable | VERIFIED | `src/nyaysaakshya/evidence/states.py`; all six produced by controlled captures (VAL 14.7) |
+| Reads a saved capture of email traffic; labels every fact with one of six states | VERIFIED | `evidence/states.py`; all six produced by controlled captures (VAL 14.7) |
 | Each finding points to its packets | VERIFIED | 13,822 cited frames, 0 stream mismatches (VAL 15.5) |
-| If the capture cannot support a score it gives none | VERIFIED | `scored:false, value:null` (VAL 14) |
-| Input / Process / Output steps; SHA-256 fingerprint; sessions rebuilt; standards-based rules judge only what is visible | VERIFIED | README pipeline; capture SHA-256 in reports (SE 1) |
-| Output: cited findings, score or "not scored", and a report | VERIFIED | JSON, HTML and PDF report (SE 1) |
-| Table: packet tools give "Packets, fields, logs", "Analyst decides", "Depends on the analyst", "General analysis" | Hypothesis (qualitative) | SE 4 (Wireshark, Zeek documentation). The deck states no speed, cost or accuracy comparison |
-| Table: NyaySaakshya marks cut-off or encrypted traffic as incomplete or not observable | VERIFIED | VAL 14.7 |
-| Table: same capture + software gives same ID | VERIFIED | 98/98 controlled captures deterministic (VAL 14.9–14.10) |
-| "Narrow: evidence-bounded triage" | VERIFIED (scope) | SE 1: not an AI fraud detector, no attribution |
-| Key USP: says how sure the evidence allows us to be | VERIFIED | Evidence states and bands |
-| Novelty relative to other tools | NOT CLAIMED as absolute | SE 4 caution: we did not verify that no other tool does this. The slide says "Complements packet tools; no speed or cost comparison is made." |
+| If the capture cannot support a score, it gives none | VERIFIED | `scored:false, value:null` (VAL 14) |
+| Input / Process / Output steps; SHA-256 fingerprint; sessions rebuilt; standards-based rules | VERIFIED | README pipeline |
+| Table: packet tools "Packets, fields, logs", "Analyst decides", "Depends on the analyst", "General analysis" | Hypothesis (qualitative) | SE 4. No benchmark; slide says so |
+| Table: marked incomplete or not observable; same capture + software gives same ID | VERIFIED | VAL 14.7, 14.9–14.10 (98/98 deterministic) |
+| "Narrow: evidence-bounded triage" | VERIFIED (scope) | SE 1 |
+| Novelty | NOT CLAIMED as absolute | SE 4 caution. "Complements packet tools; no speed or cost comparison is made." |
 
 ## Slide 4: Feasibility & Implementation
 
-| Claim on slide | Class | Evidence |
+| Claim | Class | Evidence |
 |---|---|---|
-| Python and TShark read the capture; React console; FastAPI service; SQLite storage | VERIFIED | Repository; SE 5 |
-| 1,521 automated tests | VERIFIED | Baseline run recorded in SE 5 / VAL |
-| 98 controlled captures | VERIFIED | VAL 14 |
-| No GPU needed | VERIFIED | SE 8 (GPU): no dependency uses a GPU |
-| Not yet built: login and roles, audit log, encrypted storage, backups, database-concurrency fix | VERIFIED (known gaps) | DEP blockers; TECH-DEBT #10 |
-| Stage ladder with Working Prototype ticked | VERIFIED (self-assessed) | As slide 1 |
-| Local synthetic demo: no extra cost | VERIFIED | Runs locally (SE 7) |
-| Hosted free tiers wipe stored data when idle | SOURCED / VERIFIED | Vendor free-tier behaviour, SE 8, SE 11 |
-| Vercel Hobby is $0 for personal use only | SOURCED | Vercel pricing page (SE 8) |
-| On-premise pilot: not priced; needs vendor quotes | ESTIMATE (no number given) | SE 8. Render paid prices and the RBI rate were unverified, so no figure is shown |
-| 3 / 6 / 12-month milestones | TARGET | Proposed in SE 10; slide says "Proposed, not committed" |
+| Python, TShark, React console, FastAPI, SQLite | VERIFIED | Repository, SE 5 |
+| "Internal validation only: 1,521 automated tests; 98 controlled captures" | VERIFIED | Baseline run (SE 5); VAL 14 |
+| "No external pilot, real-world accuracy benchmark or approval" | VERIFIED | No pilot, partner or approval exists; VAL states mostly synthetic data |
+| "Not production-ready. Missing: login, audit log, encrypted storage, backups, a concurrency fix" | VERIFIED | Re-checked 14 Oct against source: no auth code, no delete/audit route, shared SQLite connection (`db.py:105`); DEP |
+| Stage ladder: Working Prototype | VERIFIED (self-assessed) | As slide 1 |
+| Cost box: local demo no extra cost; hosted free tiers wipe data; Vercel Hobby $0 personal use only; on-premise not priced | SOURCED / ESTIMATE (no number) | SE 8; Vercel pricing page. Render paid prices and RBI rate unverified, so none are shown |
+| 3 / 6 / 12-month milestones | TARGET | "Proposed, not committed" |
 | Partners: none yet; no department has agreed | NO CLAIM (accurate) | SE 3 |
-| [MENTOR / PARTNER] | PLACEHOLDER | `USER_INPUT_REQUIRED.md` |
 
-**Removed from this slide:** the statement "the core makes no outbound calls (code inspection)" was dropped to fit the layout. It remains in SE 7 and DEP and can be restored.
+**Removed from this slide:** "no GPU needed" and "no outbound calls" (space); both remain true in SE 7 and 8.
 
 ## Slide 5: Impact & Scalability
 
-| Claim on slide | Class | Evidence |
+| Claim | Class | Evidence |
 |---|---|---|
-| "1 pilot (target)"; none reached yet; no partner yet | TARGET | SE 9–10. Zero beneficiaries today |
-| Saving in cost / time: "To be measured" | NO CLAIM | No baseline measured (SE 9) |
+| "1 pilot (target)"; none reached; no partner | TARGET | SE 9–10 |
+| Saving in cost / time: "To be measured"; no baseline | NO CLAIM | SE 9 |
 | Jobs or livelihoods: "Not claimed" | NO CLAIM | No evidence |
-| Helps investigators avoid unsupported conclusions, supporting fairer and stronger cyber-fraud cases | TARGET / hypothesis | Intended effect; slide adds "Social impact is not yet measured" |
-| Links to SDG 16, target 16.a (institutions that combat crime) | SOURCED (mapping is our judgement) | UN SDG 16 page (sdgs.un.org/goals/goal16, read 14 Oct 2026): target 16.a concerns strengthening national institutions to prevent violence and combat terrorism and crime. Not recorded in SUBMISSION_EVIDENCE.md. Alignment is an argument, not a measured outcome |
-| No revenue model is decided; stack is open source; licences to be confirmed | VERIFIED / PLACEHOLDER | SE 8 (licences row) |
-| "Option to discuss with a partner: department budget or grant" | TARGET | Not agreed with anyone |
-| [SUSTAINABILITY MODEL] | PLACEHOLDER | `USER_INPUT_REQUIRED.md` |
-| Scale-up: demo, close security gaps, one supervised pilot, then further units; each unit runs locally | TARGET | SE 10; DEP. Slide says "Proposed; nothing is deployed" |
-| Pilot measures listed (time to first assessment, time to report, provenance share, unresolved-evidence handling, reproducibility, supervisor confidence) | TARGET | SE 9 |
+| Helps investigators avoid unsupported conclusions; "not yet measured" | TARGET / hypothesis | Intended effect, labelled unmeasured |
+| SDG 16, target 16.a | SOURCED (mapping is judgement) | sdgs.un.org/goals/goal16, read 14 Oct 2026 |
+| No revenue model decided; open-source stack; licences to be confirmed; partner budget or grant is an option, no commitment | VERIFIED / TARGET | SE 8; README ("No license has been selected") |
+| Scale-up: demo, close gaps, one supervised pilot, then more units; local per-unit; "Proposed; nothing is deployed" | TARGET | SE 10; DEP |
+| Pilot measures listed | TARGET | SE 9 |
 
 ## Slide 6: Team/Individual & Support Required
 
-| Claim on slide | Class | Evidence |
+| Claim | Class | Evidence |
 |---|---|---|
-| Team member names, roles, qualifications, photos | PLACEHOLDER | `USER_INPUT_REQUIRED.md` |
-| Mentor / faculty guide | PLACEHOLDER | As above |
-| Support ticked: mentorship (security), pilot with a government department, funding for secure deployment, testing/certification/IP support; incubation unticked | Applicant's choice (proposed) | Driven by the DEP blockers. The applicant must confirm each tick |
-| Closing sentence about moving from a tested prototype to a measured trial | TARGET | Does not claim deployment or outcomes |
-| Contact email / mobile | PLACEHOLDER | As above |
+| Siddhant Hiralal Patil; "Applicant and team lead"; individual application (team size 1) | PORTAL | Portal transcription. The role says nothing about authorship, because git history shows another contributor (see `docs/submission/FINAL_RELEASE_AUDIT.md`, contributor flag) |
+| "No other team member, mentor, partner or funder is named" | NO CLAIM | Says only that none is named; does not assert that none contributed |
+| "1,521 automated tests and 98 controlled captures (internal validation; see slide 4)" | VERIFIED | As slide 4 |
+| Support ticked: mentorship, department pilot, funding for secure deployment, testing/certification/IP; incubation unticked | Applicant's choice (proposed) | Follows the DEP blockers. Applicant must confirm the ticks |
+| Qualification, mentor, contact, photo | **Omitted** | Not in the repository. The circle shows initials "SP", not a photo |
 
-## Quantitative claims on the deck, in one place
+## Numbers on the deck
 
 | Number | Where | Basis |
 |---|---|---|
-| 17.82 lakh | Slide 2 (twice) | PIB backgrounder, 7 Oct 2025 (SOURCED) |
-| 22.15 / 100, 6 sessions | Slide 1 screenshot | Synthetic capture on the running console (VERIFIED, illustrative only) |
-| 1,521 tests | Slide 4 | Baseline test run (VERIFIED) |
-| 98 controlled captures | Slide 4 | VAL 14 (VERIFIED) |
-| 3 / 6 / 12 months | Slide 4 | TARGET |
-| 1 pilot | Slide 5 | TARGET |
-| $0 (Vercel Hobby) | Slide 4 | Vendor page, personal use only (SOURCED) |
-| SDG 16 / 16.a | Slide 5 | UN SDG framework (SOURCED; mapping is judgement) |
+| 17.82 lakh | Slide 2 (twice) | PIB, 7 Oct 2025 (SOURCED, national, period not stated, not email-specific) |
+| 22.15 / 100, 6 sessions | Slide 1 screenshot | Synthetic capture, current build (VERIFIED, illustrative) |
+| 1,521 tests; 98 controlled captures | Slides 4, 6 | VERIFIED, internal validation |
+| 3 / 6 / 12 months; 1 pilot | Slides 4, 5 | TARGET |
+| $0 (Vercel Hobby) | Slide 4 | Vendor page, personal use only |
+| SDG 16 / 16.a | Slide 5 | UN SDG framework |
 
-No beneficiary, savings, jobs, revenue, accuracy or speed figure appears on any slide.
+No beneficiary, savings, jobs, revenue, accuracy or speed figure appears on any slide. No Marathi claim appears. No AI claim appears. No live URL appears.
+
+## Not verifiable in this environment
+
+Rendering was done in LibreOffice only, with a substitute font (Nirmala UI is not installed), plus a wider-font (Arial) stress render. **The deck was not opened in PowerPoint.**

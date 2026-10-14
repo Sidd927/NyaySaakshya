@@ -1,13 +1,14 @@
 """
-Build the NyaySaakshya Seva Innovation Challenge 2026 DRAFT deck from the OFFICIAL template.
+Build the NyaySaakshya Seva Innovation Challenge 2026 deck from the OFFICIAL template.
 
     /tmp/pptxenv/bin/python build_deck.py            # needs python-pptx; run from this folder
 
 Reads  reference/Seva_Innovation_Challenge_2026_Presentation_Template.pptx  (never modified)
-Writes NyaySaakshya_Seva_Innovation_Challenge_2026_DRAFT.pptx
+Writes NyaySaakshya_Seva_Innovation_Challenge_2026.pptx
 
-Every statement placed on a slide is mapped to evidence in SLIDE_CLAIM_AUDIT.md. Text that the
-applicant must supply is written as a visible [CAPITALISED PLACEHOLDER] in orange.
+Every statement placed on a slide is mapped to evidence in SLIDE_CLAIM_AUDIT.md. The deck carries no
+placeholders: details only the applicant can confirm (contact, qualification, mentor) are left out
+unless filled in APPLICANT below, and are listed in docs/submission/USER_INPUT_REQUIRED.md.
 """
 import copy
 import os
@@ -20,11 +21,22 @@ from pptx.util import Emu, Inches, Pt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, "reference", "Seva_Innovation_Challenge_2026_Presentation_Template.pptx")
-OUT = os.path.join(HERE, "NyaySaakshya_Seva_Innovation_Challenge_2026_DRAFT.pptx")
+OUT = os.path.join(HERE, "NyaySaakshya_Seva_Innovation_Challenge_2026.pptx")
 ASSETS = os.path.join(HERE, "assets")
 
 NAVY, ORANGE, SLATE, WHITE = "1B2A5C", "F28C28", "2F3A56", "FFFFFF"
 A = "http://schemas.openxmlformats.org/drawingml/2006/main"
+
+# Name as shown on the portal (taken from Aadhaar). Check the spelling against the portal.
+# Optional details: leave as None to omit the line from the deck. Never guess these.
+APPLICANT = {
+    "name": "Siddhant Hiralal Patil",
+    "contact": None,        # e.g. "name@example.com | +91 ..." (applicant's own, confirmed)
+    "qualification": None,  # e.g. "B.E. Computer Engineering, 2025" (applicant's own, confirmed)
+    "mentor": None,         # e.g. "Dr A. Kulkarni, Professor, XYZ College" (only if real)
+}
+SECTOR = "Law and Order"
+SUB_THEME = "Cyber-fraud, digital extortion and financial-crime intelligence"
 
 prs = Presentation(TEMPLATE)
 slides = list(prs.slides)
@@ -114,11 +126,6 @@ def set_text(sh, paragraphs, size=None, italic=False, color=None, bold=None, bul
         txBody.append(p)
 
 
-def PH(text):
-    """A visible placeholder the applicant must replace."""
-    return (text, {"color": ORANGE, "bold": True, "italic": False})
-
-
 def fit_box(sh, height_in):
     sh.height = Inches(height_in)
 
@@ -133,26 +140,30 @@ def notes(slide, text):
 
 # ----------------------------------------------------------------------------- slide 1
 s = slides[0]
-set_text(shape(s, "Text 0"), ["SEVA INNOVATION CHALLENGE 2026  •  MAHARASHTRA ZONE  •  DRAFT"])
+set_text(shape(s, "Text 0"), ["SEVA INNOVATION CHALLENGE 2026  •  MAHARASHTRA ZONE"])
 set_text(shape(s, "Text 1"), ["NyaySaakshya"], bold=True)
 sub = shape(s, "Text 2")
-set_text(sub, ["Evidence-first triage for email-traffic captures. It tells cyber-cell investigators what a "
-               "capture does, and does not, prove."], size=13, italic=False, color="DCE3F5")
+set_text(sub, ["Forensic triage for email-traffic captures. It tells cyber-cell investigators what a "
+               "capture does, and does not, prove. It does not detect fraud or identify suspects."],
+         size=13, italic=False, color="DCE3F5")
 sub.top, sub.height, sub.width = Inches(1.55), Inches(0.95), Inches(5.3)
 
 # applicant snapshot (new box cloned from the subtitle box so fonts match)
 snap = copy.deepcopy(sub._element)
 sub._element.addnext(snap)
 snap_sh = [x for x in s.shapes if x._element is snap][0]
-snap_sh.top, snap_sh.height, snap_sh.width = Inches(2.85), Inches(1.6), Inches(5.3)
-set_text(snap_sh, [
-    [("Applicant / team:  ", {"color": "C9D2EC"}), PH("[APPLICANT NAME REQUIRED]")],
-    [("Application type:  ", {"color": "C9D2EC"}), PH("[INDIVIDUAL OR TEAM: REQUIRED]")],
-    [("Sector (as in portal):  ", {"color": "C9D2EC"}), PH("[SECTOR REQUIRED]")],
-    [("Contact:  ", {"color": "C9D2EC"}), PH("[EMAIL / MOBILE REQUIRED]")],
-    [("Stage:  ", {"color": "C9D2EC"}), ("Working Prototype", {"color": WHITE, "bold": True}),
-     ("   |   Status: draft for applicant review", {"color": "C9D2EC"})],
-], size=11, italic=False, color=WHITE, space_after=5)
+snap_sh.top, snap_sh.height, snap_sh.width = Inches(2.95), Inches(1.9), Inches(5.3)
+LBL = {"color": "C9D2EC"}
+snap_rows = [
+    [("Applicant:  ", LBL), (APPLICANT["name"], {"bold": True})],
+    [("Application type:  ", LBL), ("Individual (team size 1)", {})],
+    [("Sector:  ", LBL), (SECTOR, {})],
+    [("Sub-theme:  ", LBL), (SUB_THEME, {})],
+    [("Stage:  ", LBL), ("Working Prototype", {"color": WHITE, "bold": True})],
+]
+if APPLICANT["contact"]:
+    snap_rows.insert(4, [("Contact:  ", LBL), (APPLICANT["contact"], {})])
+set_text(snap_sh, snap_rows, size=11, italic=False, color=WHITE, space_after=5)
 
 # replace the "How to use this template" guidance box with prototype screens
 panel = shape(s, "Shape 15")
@@ -180,13 +191,12 @@ caption(s, 6.2, 1.28 + w * 234 / 774 + 0.04, 3.2, "Scored: every finding cites i
 y2 = 1.28 + w * 234 / 774 + 0.42
 img2 = s.shapes.add_picture(os.path.join(ASSETS, "screen_withheld_not_scored.png"), Inches(6.2), Inches(y2), width=Inches(w))
 caption(s, 6.2, y2 + w * 232 / 774 + 0.04, 3.2, "Withheld: no score when the capture cannot support one")
-caption(s, 0.5, 4.75, 5.4, "DRAFT: orange [CAPITAL] text is missing applicant information and must be replaced before submission.",
-        size=8.5, color=ORANGE, bold=True)
-notes(s, "Title and applicant snapshot. Placeholders in orange must be filled exactly as entered in the online application. "
+notes(s, "Title and applicant snapshot. Name, sector and sub-theme are as shown on the online application (name from Aadhaar). "
          "Positioning sentence: NyaySaakshya turns supported email-traffic captures into evidence-linked forensic findings and "
          "reproducible reports, while explicitly identifying what the evidence cannot establish. Maturity: Working Prototype "
-         "(see claim audit). Screens are synthetic lab captures from the working prototype; the applicant must approve them. "
-         "No live demo URL is configured for this product.")
+         "(see claim audit). Screens are synthetic lab captures from the working prototype. "
+         "The sub-theme is the portal's; NyaySaakshya supports the evidence-handling step and does not itself provide "
+         "financial-crime intelligence or determine that fraud occurred. No live demo URL is configured for this product.")
 
 # ----------------------------------------------------------------------------- slide 2
 s = slides[1]
@@ -197,14 +207,14 @@ set_text(shape(s, "Text 10"), ["Cyber-cell and forensic investigators, and the s
                                [("Proposed first users: ", {"bold": True}), ("a Maharashtra cyber cell or forensic lab. No partner has agreed yet.", {})]],
          space_after=4, **body)
 set_text(shape(s, "Text 13"), [
-    "Over 17.82 lakh cyber-fraud complaints handled through the national CFCFRMS (PIB, 7 Oct 2025; period not stated).",
+    "PIB cites over 17.82 lakh CFCFRMS cyber-fraud complaints (7 Oct 2025; period not stated; not email-specific).",
     "Wireshark decrypts TLS only if keys are supplied (Wireshark docs).",
     "SMTP security \"favors failing open\" (Durumeric et al., IMC 2015)."],
          size=9.5, italic=False, color=SLATE, bullet=True, space_after=3)
 set_text(shape(s, "Text 16"), ["Packet tools show packets; the analyst decides what is safe to conclude. "
                                "For cut-off or encrypted captures that judgement is manual and hard to repeat or check."], **body)
 set_text(shape(s, "Text 18"), ["17.82 lakh"], size=28)
-set_text(shape(s, "Text 19"), ["cyber-fraud complaints handled through the national CFCFRMS (PIB, Oct 2025)"], italic=False, size=10)
+set_text(shape(s, "Text 19"), ["complaints cited for the national CFCFRMS cyber-fraud system (PIB, Oct 2025)"], italic=False, size=10)
 set_text(shape(s, "Text 21"), ["Each case may rest on digital evidence that must be read carefully and defended. "
                                "How many involve email is not published, so we make no claim about it."], italic=False, size=9.5)
 notes(s, "Statistic: PIB backgrounder 'Curbing Cyber Frauds in Digital India', 7 Oct 2025: through CFCFRMS financial institutions "
@@ -282,9 +292,9 @@ for r in tf.paragraphs[0].runs:
 set_text(shape(s, "Text 12"), ["Working Prototype"], size=10, bold=True, color=ORANGE)
 box = dict(size=8.5, italic=False, color=SLATE)
 set_text(shape(s, "Text 19"), [
-    [("Built and running: ", {"bold": True}), ("Python and TShark read the capture; React console; FastAPI service; SQLite storage.", {})],
-    "1,521 automated tests; 98 controlled captures; no GPU needed.",
-    [("Not yet built: ", {"bold": True, "color": "B4531B"}), ("login and roles, audit log, encrypted storage, backups, a database-concurrency fix.", {})]],
+    [("Built and running: ", {"bold": True}), ("Python, TShark, React console, FastAPI, SQLite.", {})],
+    [("Internal validation only: ", {"bold": True}), ("1,521 automated tests; 98 controlled captures. No external pilot, real-world accuracy benchmark or approval.", {})],
+    [("Not production-ready. Missing: ", {"bold": True, "color": "B4531B"}), ("login, audit log, encrypted storage, backups, a concurrency fix.", {})]],
     space_after=3, **box)
 set_text(shape(s, "Text 22"), [
     [("Local synthetic demo: ", {"bold": True}), ("no extra cost.", {})],
@@ -297,8 +307,8 @@ set_text(shape(s, "Text 25"), [
     [("12 months: ", {"bold": True}), ("supervised single-unit pilot, only if a department agrees.", {})],
     "Proposed, not committed."], space_after=3, **box)
 set_text(shape(s, "Text 28"), [
-    [("None yet. ", {"bold": True}), ("Seeking one cyber cell or forensic lab for a supervised pilot. No department has agreed.", {})],
-    [PH("[MENTOR / PARTNER: add only if confirmed]")]], space_after=4, **box)
+    [("None yet. ", {"bold": True}), ("Seeking one cyber cell or forensic lab for a supervised pilot. No department has agreed.", {})]],
+    space_after=4, **box)
 notes(s, "Stage: Working Prototype. Evidence: 1,521 tests collected and passing at baseline c0f77b9 (VALIDATION.md, DEPLOYMENT.md). "
          "Blockers are documented in DEPLOYMENT.md sections 6 and 17: no authentication or audit trail, SQLite shared-connection defect "
          "(TECH-DEBT #10), analysis time limit not enforced, no TLS or encryption at rest, no retention or backup. Costs: Vercel pricing "
@@ -324,8 +334,8 @@ set_text(shape(s, "Text 19"), ["Helps investigators avoid unsupported conclusion
                                "Links to SDG 16 (institutions that combat crime, target 16.a).",
                                "Social impact is not yet measured."], space_after=4, **b5)
 set_text(shape(s, "Text 22"), ["No revenue model is decided. The stack is open source; licences are to be confirmed.",
-                               "Option to discuss with a partner: department budget or grant.",
-                               [PH("[SUSTAINABILITY MODEL: applicant to confirm]")]], space_after=4, **b5)
+                               "Option to discuss with a partner: department budget or grant. No commitment exists."],
+         space_after=4, **b5)
 set_text(shape(s, "Text 25"), ["Demo, then close the security gaps, then one supervised cyber-cell pilot, then further units.",
                                "Each unit would run locally so evidence stays in the unit; central administration only.",
                                "Proposed; nothing is deployed."], space_after=4, **b5)
@@ -344,13 +354,49 @@ notes(s, "No beneficiary, saving or jobs figure is claimed: there is no measured
 
 # ----------------------------------------------------------------------------- slide 6
 s = slides[5]
-cards = [("Text 7", "Text 8", "Text 9"), ("Text 13", "Text 14", "Text 15"),
-         ("Text 19", "Text 20", "Text 21"), ("Text 25", "Text 26", "Text 27")]
-for i, (n, r, q) in enumerate(cards, 1):
-    set_text(shape(s, n), [[PH("[NAME %d REQUIRED]" % i)]], size=10)
-    set_text(shape(s, r), [[PH("[ROLE]")]], size=9)
-    set_text(shape(s, q), [[PH("[QUALIFICATION]")]], size=8.5)
-set_text(shape(s, "Text 28"), [[PH("[MENTOR / FACULTY GUIDE: name, designation, or delete this line]")]], size=9)
+# Team of one: keep card 1 (widened), drop cards 2-4 and the mentor line.
+for nm in ("Shape 10", "Shape 11", "Text 12", "Text 13", "Text 14", "Text 15",
+           "Shape 16", "Shape 17", "Text 18", "Text 19", "Text 20", "Text 21",
+           "Shape 22", "Shape 23", "Text 24", "Text 25", "Text 26", "Text 27", "Text 28"):
+    remove(shape(s, nm))
+card = shape(s, "Shape 4")
+card.left, card.top, card.width, card.height = Inches(0.5), Inches(1.3), Inches(4.85), Inches(1.45)
+ring = shape(s, "Shape 5")
+ring.left, ring.top, ring.width, ring.height = Inches(0.72), Inches(1.5), Inches(0.9), Inches(0.9)
+ini = shape(s, "Text 6")
+ini.left, ini.top, ini.width, ini.height = Inches(0.72), Inches(1.5), Inches(0.9), Inches(0.9)
+initials = "".join(w[0] for w in APPLICANT["name"].split() if w[0].isupper())
+initials = initials[0] + initials[-1] if len(initials) > 2 else initials
+set_text(ini, [initials], size=16, bold=True, color=WHITE)
+for para in ini.text_frame.paragraphs:
+    para.alignment = 2
+nm_box, role_box, qual_box = shape(s, "Text 7"), shape(s, "Text 8"), shape(s, "Text 9")
+for sh, top, h in ((nm_box, 1.46, 0.36), (role_box, 1.86, 0.3), (qual_box, 2.16, 0.5)):
+    sh.left, sh.top, sh.width, sh.height = Inches(1.78), Inches(top), Inches(3.45), Inches(h)
+set_text(nm_box, [APPLICANT["name"]], size=15, bold=True, color=WHITE)
+set_text(role_box, ["Applicant and team lead"], size=10, bold=False, color=ORANGE)
+set_text(qual_box, [APPLICANT["qualification"] or "Individual application (team size 1)"], size=9, italic=False, color="DCE3F5")
+
+
+def clone_box(slide, src, left, top, w, h, paragraphs, **kw):
+    el = copy.deepcopy(src._element)
+    slide.shapes._spTree.append(el)
+    sh = [x for x in slide.shapes if x._element is el][0]
+    sh.left, sh.top, sh.width, sh.height = Inches(left), Inches(top), Inches(w), Inches(h)
+    set_text(sh, paragraphs, **kw)
+    return sh
+
+
+panel2 = copy.deepcopy(card._element)
+s.shapes._spTree.insert(list(s.shapes._spTree).index(card._element) + 1, panel2)
+p2 = [x for x in s.shapes if x._element is panel2][0]
+p2.left, p2.top, p2.width, p2.height = Inches(0.5), Inches(2.95), Inches(4.85), Inches(1.3)
+clone_box(s, nm_box, 0.72, 3.07, 4.4, 0.3, ["Individual application"], size=12, bold=True, color=WHITE)
+p2_rows = ["No other team member, mentor, partner or funder is named.",
+           "Evidence of work to date: 1,521 automated tests and 98 controlled captures (internal validation; see slide 4)."]
+if APPLICANT["mentor"]:
+    p2_rows.insert(1, "Mentor: " + APPLICANT["mentor"])
+clone_box(s, qual_box, 0.72, 3.4, 4.4, 1.0, p2_rows, size=9, italic=False, color="DCE3F5", space_after=4)
 for nm in ("Shape 31", "Shape 33", "Shape 35", "Shape 39"):
     sh = shape(s, nm)
     sh.fill.solid()
@@ -367,11 +413,13 @@ set_text(shape(s, "Text 36"), ["Funding / grant support (secure deployment)"], s
 set_text(shape(s, "Text 40"), ["Testing, certification or IP support"], size=10.5, bold=True, color=SLATE)
 set_text(shape(s, "Text 41"), ["With security mentorship and one supervised pilot, we can move from a tested prototype to a measured "
                                "trial of whether NyaySaakshya helps investigators avoid unsupported conclusions."], size=9.5, italic=False, color=SLATE)
-set_text(shape(s, "Text 42"), [[("Thank you  |  ", {}), PH("[CONTACT EMAIL / MOBILE REQUIRED]")]], size=11)
-notes(s, "Team details, mentor and contact information must come from the applicant; none is invented. Support ticked (orange): "
+thanks = "Thank you  |  " + APPLICANT["name"] + ("  |  " + APPLICANT["contact"] if APPLICANT["contact"] else "")
+set_text(shape(s, "Text 42"), [thanks], size=11)
+shape(s, "Text 42").top = Inches(4.6)
+notes(s, "Individual application, team size 1; name as on the portal. No teammate, mentor, qualification or contact is invented; "
+         "optional lines are filled only from the APPLICANT block in build_deck.py. Support ticked (orange): "
          "mentorship and technical guidance, a supervised pilot introduction (no department has agreed), funding for secure "
-         "deployment and testing, and testing/IP guidance. Incubation and workspace left unticked; the applicant may change it. "
-         "Delete unused team cards before submission.")
+         "deployment and testing, and testing/IP guidance. Incubation and workspace left unticked; the applicant may change it.")
 
 prs.save(OUT)
 print("saved", OUT, "slides:", len(prs.slides))

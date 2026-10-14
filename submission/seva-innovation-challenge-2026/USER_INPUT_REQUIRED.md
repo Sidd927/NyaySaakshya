@@ -1,43 +1,39 @@
 # Applicant input required before submission
 
-The draft deck (`submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026_DRAFT.pptx`) is **not submittable** until every item below is filled by the applicant. Orange `[CAPITAL]` text on the slides marks each gap. Nothing here was inferred or invented.
+Updated 15 October 2026. The final deck (`submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026.pptx`) has **no placeholders**: anything only the applicant can confirm is left out, not guessed. Items marked **MUST** block submission. Items marked **OPTIONAL** improve the deck.
 
-## A. Mandatory identity and eligibility (slides 1 and 6)
+## A. MUST: personal declarations and facts (portal)
 
-| # | Item | Slide | Placeholder on deck |
+| # | Item | Where | Notes |
 |---|---|---|---|
-| 1 | Applicant name, or team name | 1 | `[APPLICANT NAME REQUIRED]` |
-| 2 | Individual or team application | 1 | `[INDIVIDUAL OR TEAM: REQUIRED]` |
-| 3 | Team members (up to 4 cards): name, role, qualification, photo | 6 | `[NAME n REQUIRED]`, `[ROLE]`, `[QUALIFICATION]`, "Photo" |
-| 4 | If individual: delete unused cards and say so | 6 | |
-| 5 | Mentor or faculty guide, or delete the line | 6 | `[MENTOR / FACULTY GUIDE ...]` |
-| 6 | Contact email and mobile | 1, 6 | `[EMAIL / MOBILE REQUIRED]`, `[CONTACT EMAIL / MOBILE REQUIRED]` |
-| 7 | Official sector / category option exactly as shown in the portal. **We did not choose one.** The cyber-fraud theme is known only from press coverage, not the official pages | 1 | `[SECTOR REQUIRED]` |
-| 8 | Maharashtra domicile / eligibility confirmation, as the guidelines require | portal | not on slides |
-| 9 | IP declaration: who owns the code, any employer or institution claim, licences of dependencies | portal | not on slides |
-| 10 | Regulatory dependencies statement, as the guidelines require | portal | not on slides |
-| 11 | Consent and declarations in the application form | portal | not on slides |
+| 1 | **Confirm contributors and IP.** Git history outside this branch shows another author: `Dishita0526` (a 29 Sep 2026 frontend commit touching 48 files, in the earlier `pre-rebrand-main` history) and a `Sidd_927` first commit. This branch's root commit (3 Oct 2026) is a re-initialisation under your name, and the current frontend is close to that commit's content. | IP declaration; team size; slide 6 | Decide who contributed, whether anyone else is a team member or needs to be acknowledged or consent, and what you can truthfully declare. The deck says only "individual application, no other team member named". The team lead cannot be changed after team creation (FAQ). Ask the helpdesk if team composition must change. |
+| 2 | Conflict-of-interest declaration | Portal | Yours alone. |
+| 3 | Consent to verification and due diligence | Portal | Yours alone. |
+| 4 | Domicile: confirm you hold a certificate of Maharashtra, Chhattisgarh, DNH and DD, or Goa; upload if asked | Portal | Required for the individual (guidelines). |
+| 5 | IP status and regulatory-dependency statements | Portal | Wording suggestions in `PORTAL_APPLICATION_ANSWERS.md`. The repo has no licence file. |
+| 6 | Single submission under one primary sector | Portal | You submit this idea only once. |
+| 7 | Final accuracy declaration | Portal | Read the exact text. |
+| 8 | Team-name spelling as stored (shown as `NYAYSAakshya` / `NYAYSAKSHYA`); your name spelling (from Aadhaar) | Portal and deck | The deck uses "NyaySaakshya" and "Siddhant Hiralal Patil". Fix `APPLICANT["name"]` in `build_deck.py` if the portal differs. |
+| 9 | Citizens tick and AI/ML decision | Portal | Recommended: Government officials only (Citizens optional, indirect); AI/ML unticked. |
+| 10 | Open the PPTX in **PowerPoint** and check every slide | Deck | Not done: the deck was inspected only in LibreOffice with a substitute font. |
 
-## B. Facts only the applicant can confirm
+## B. OPTIONAL: deck lines left out (fill only with real, confirmed details)
 
-| # | Item | Slide | Notes |
-|---|---|---|---|
-| 12 | Any real investigator interview, pilot, partner or letter of support | 2, 4, 5 | None exists in the repository. Add only if real, with the person's consent. Slide 4 has `[MENTOR / PARTNER: add only if confirmed]` |
-| 13 | Sustainability model | 5 | `[SUSTAINABILITY MODEL: applicant to confirm]`. No revenue model is decided |
-| 14 | Confirm the support ticks on slide 6 (mentorship, department pilot, funding, testing/IP; incubation left unticked) | 6 | Change to match what you actually want |
-| 15 | Confirm "Working Prototype" as the stage | 1, 4 | Self-assessed from the repository |
-| 16 | Soften or confirm "Investigators often hold a capture that is cut short or encrypted" | 2 | A reasoned premise, not an interviewed fact |
-| 17 | Approve the two screenshots, or replace them | 1 | Both are from synthetic lab captures. No real case data was used. The "Engine Live 0.8.0" label is cropped out because it is stale |
+Set in the `APPLICANT` block at the top of `build_deck.py`, then re-run `/tmp/pptxenv/bin/python build_deck.py` from `submission/seva-innovation-challenge-2026/` (needs `python-pptx`), or add the text in PowerPoint.
 
-## C. Format discrepancy to resolve
+| Field | Currently | Add only if |
+|---|---|---|
+| `contact` (email, mobile) | omitted from slides 1 and 6 | you want it shown; the portal already holds your contact details |
+| `qualification` | slide 6 shows "Individual application (team size 1)" | you give your real qualification |
+| `mentor` | omitted | a real mentor or faculty guide agrees to be named |
+| Photo | initials "SP" in a circle | you replace the circle with your photo in PowerPoint |
+| Support ticks on slide 6 | mentorship, department pilot, funding, testing/IP ticked; incubation unticked | you disagree: change the ticks |
+| Real interviews, pilots, partners, letters of support | none exist; deck says so | one becomes real and consented |
 
-The challenge guidelines say to submit **a single .pptx**. The official template's own instructions say **PDF**. We could not reconcile this from the documents. Prepared both: the PPTX is the primary artifact and `..._PREVIEW.pdf` is a LibreOffice rendering. Check the portal's upload field. If it accepts only one type, export the PDF from PowerPoint, where the Nirmala UI font renders correctly, rather than using the preview PDF.
+## C. Format
 
-## D. Before you export
+Guidelines say a single `.pptx`. The portal accepts PDF, PPT and PPTX up to 15 MB (transcription). Upload the **PPTX**. Do not upload `_PREVIEW.pdf` (LibreOffice render, substitute font).
 
-1. Replace every orange `[CAPITAL]` placeholder, delete the orange "DRAFT" notice on slide 1, and remove the DRAFT tag in the kicker line.
-2. Open the PPTX in PowerPoint (Nirmala UI is not installed on the build Mac) and check every slide for overflow.
-3. Delete the speaker notes if the portal does not want them. They hold evidence notes.
-4. Keep the file under the 10 MB limit (draft is about 0.13 MB; PDF about 0.36 MB).
-5. Do not add numbers (beneficiaries, savings, jobs, accuracy) unless you can cite a primary source. See `SLIDE_CLAIM_AUDIT.md`.
-6. The portal deadline is 17 October 2026.
+## D. Helpdesk (support@sevainnovationchallenge.in, +91 91377 78135)
+
+Team-name spelling; what the "estimated number" field accepts when no verified estimate exists; whether team composition can change after creation (relevant to item A1); whether the sub-theme fits a forensic evidence tool; whether a separate domicile or identity upload is needed; a copy of the applicant manual.

@@ -4,6 +4,8 @@ Prepared 14 October 2026 (Wednesday). **Deadline: Saturday 17 October 2026, 11:5
 
 Related: `PORTAL_APPLICATION_ANSWERS.md` (paste-ready answers), `DEPLOYMENT_GO_NO_GO.md` (decision: NO-GO for public deployment; local demo and video), `submission/seva-innovation-challenge-2026/SLIDE_CLAIM_AUDIT.md`.
 
+> **Phase G update (15 Oct 2026).** The deck was rebuilt with no placeholders (sector, name, one-person slide 6 done). The optional "about 50 district cyber police stations" line was **dropped** as unverified. Section 3 below records the discrepancies as found; they are resolved except the items in `USER_INPUT_REQUIRED.md`. Release status: `FINAL_RELEASE_AUDIT.md`. New item: the contributor/IP flag (git history shows another author).
+
 **Source limits.** Portal screenshots were not available to this session; the form fields come from the Phase F brief's transcription. The portal was not logged into or touched. The public pages read on 14 Oct 2026 were `sevainnovationchallenge.in` (home, FAQ) and `/guidelines.html`. The "applicant manual" the FAQ cites is **not public**; its content is known only through the FAQ.
 
 ## 1. Requirements, classified
@@ -55,7 +57,7 @@ Do not wait for replies to proceed: draft everything, then adjust.
 
 ## 3. Inconsistencies found (prioritised)
 
-Deck = `NyaySaakshya_Seva_Innovation_Challenge_2026_DRAFT.pptx`. Not edited yet, by instruction. Edit after you approve the answers.
+Deck = `NyaySaakshya_Seva_Innovation_Challenge_2026.pptx`. Not edited yet, by instruction. Edit after you approve the answers.
 
 | P | Where | Discrepancy | Fix |
 |---|---|---|---|
@@ -64,7 +66,7 @@ Deck = `NyaySaakshya_Seva_Innovation_Challenge_2026_DRAFT.pptx`. Not edited yet,
 | **P0** | Slide 6 | Four team cards for a team of 1, all placeholders; mentor line; "Thank you" contact. | Keep one card (name, role, qualification, photo). Delete the other three. Mentor only if real. Contact. |
 | **P0** | Slide 1, 4, 5, 6 | Orange `[CAPITAL]` placeholders and the "DRAFT" notice and kicker tag. | Resolve or remove every one. |
 | **P1** | Slide 4 and 5 | `[MENTOR / PARTNER…]` and `[SUSTAINABILITY MODEL…]` placeholders. | Delete the lines or fill them with something real. No partner exists. |
-| **P1** | Slide 2 vs form field 2 | Deck gives only the national 17.82 lakh; the form will say "about 50 district cyber police stations" as potential units. | Optional: add one line on slide 2, "Potential units: about 50 district cyber police stations in Maharashtra (AIR, 12 Oct 2024)". Keeps deck and form consistent. Claim-audit row to add. |
+| **P1** | Slide 2 vs form field 2 | (Resolved in Phase G) The "about 50 units" idea was dropped; field 2 now says "no verified estimate". | None. |
 | **P1** | Slide 1 vs form field 5 | Stage matches (Working Prototype). | None. |
 | **P1** | Slide 3 vs form fields 3, 6 | Consistent: six states, abstention, reproducibility, no decryption claim. | None. |
 | **P1** | Slide 5 vs form fields 8, 11 | Consistent: nothing quantified; "to be measured". | None. |
@@ -100,7 +102,7 @@ Deck = `NyaySaakshya_Seva_Innovation_Challenge_2026_DRAFT.pptx`. Not edited yet,
 - [ ] Team name, sector and sub-theme on the portal, the deck and every answer match.
 - [ ] Deck: six slides, in order, no placeholders, no "DRAFT" text, no guidance text.
 - [ ] Deck file under 15 MB; opens in PowerPoint; slide count is six.
-- [ ] Every number in the deck and answers is in the claim audit with a source (17.82 lakh PIB; about 50 units AIR; 1,521 tests; 98 captures; 13,822 frames).
+- [ ] Every number in the deck and answers is in the claim audit with a source (17.82 lakh PIB; 1,521 tests; 98 captures; 13,822 frames).
 - [ ] No unsupported claims: device data, suspect detection, attacker attribution, fraud proof, TLS decryption, speed, accuracy, savings, users, pilots, partners, deployment, live URL.
 - [ ] AI/ML not ticked (unless you decide otherwise knowingly).
 - [ ] Stage is Working Prototype, not pilot or ready.
