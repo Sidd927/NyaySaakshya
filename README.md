@@ -283,6 +283,8 @@ The backend is configured through environment variables:
 
 The default data directory, `./nyaysaakshya-data`, is intentional: it is the NyaySaakshya-named default, it is git-ignored, and it is created on first run. Set `SMS_DATA_DIR` (or `--data-dir`) to put state elsewhere.
 
+Deployment architecture, the current security boundary and the path to a controlled pilot are in [`DEPLOYMENT.md`](DEPLOYMENT.md). The prototype has no authentication and is for test captures only.
+
 ### Docker
 
 The [`Dockerfile`](Dockerfile) (Ubuntu 24.04 + TShark 4.6 from the Wireshark PPA) is what the backend runs in deployment. TShark's version is pinned deliberately because a different version was found to change scores on the project's golden captures.
