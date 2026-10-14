@@ -1,5 +1,8 @@
 # NyaySaakshya — Seva Innovation Challenge 2026: Slide Blueprint
 
+> **Superseded in part (Phase E2, 14 Oct 2026).** The Maharashtra statistic (5.16 lakh cases, ₹7,592 crore) is press-reported and unverified, so the draft deck does not use it. Slide 2 uses the PIB backgrounder figure (over 17.82 lakh CFCFRMS complaints, 7 Oct 2025) instead. Read this blueprint together with `SUBMISSION_EVIDENCE.md` (correction log) and `submission/seva-innovation-challenge-2026/SLIDE_CLAIM_AUDIT.md`.
+
+
 Prepared 14 October 2026 on branch `design/landing-redesign` (base commit `ec689ee`, validation tag `v1.1.0-validation-baseline` = `c0f77b9`). This is a plan and copy bank, not the deck. The final PowerPoint is built in Phase E2.
 
 **Evidence classes used on every claim:** **Demonstrated** (reproducible test or inspected behaviour), **Sourced** (external source I opened), **Estimate** (explicit assumptions), **Target** (a future pilot objective, never an achieved result), **Unknown** (no numerical claim made). Unfilled applicant facts are `[USER INPUT REQUIRED: …]`.
