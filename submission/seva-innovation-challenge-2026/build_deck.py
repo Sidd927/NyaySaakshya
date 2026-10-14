@@ -6,26 +6,26 @@ Build the NyaySaakshya Seva Innovation Challenge 2026 deck from the OFFICIAL tem
 Reads  reference/Seva_Innovation_Challenge_2026_Presentation_Template.pptx  (never modified)
 Writes NyaySaakshya_Seva_Innovation_Challenge_2026.pptx
 
-Every statement placed on a slide is mapped to evidence in SLIDE_CLAIM_AUDIT.md. The deck carries no
-placeholders: details only the applicant can confirm (contact, qualification, mentor) are left out
-unless filled in APPLICANT below, and are listed in docs/submission/USER_INPUT_REQUIRED.md.
+The official template's six slides, header (number, title), footer and background are kept.
+Template guidance text is replaced; content is drawn with plain shapes and text in the
+template's font (Nirmala UI) and palette. Every statement is mapped to evidence in
+docs/submission/PHASE_H_CLAIM_AUDIT.md. The deck carries no placeholders: details only the
+applicant can confirm (contact, qualification, mentor) are left out unless filled in
+APPLICANT below, and are listed in docs/submission/USER_INPUT_REQUIRED.md.
 """
-import copy
 import os
-import sys
 
 from lxml import etree
 from pptx import Presentation
 from pptx.dml.color import RGBColor
-from pptx.util import Emu, Inches, Pt
+from pptx.enum.shapes import MSO_SHAPE
+from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
+from pptx.util import Inches, Pt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE = os.path.join(HERE, "reference", "Seva_Innovation_Challenge_2026_Presentation_Template.pptx")
 OUT = os.path.join(HERE, "NyaySaakshya_Seva_Innovation_Challenge_2026.pptx")
 ASSETS = os.path.join(HERE, "assets")
-
-NAVY, ORANGE, SLATE, WHITE = "1B2A5C", "F28C28", "2F3A56", "FFFFFF"
-A = "http://schemas.openxmlformats.org/drawingml/2006/main"
 
 # Name as shown on the portal (taken from Aadhaar). Check the spelling against the portal.
 # Optional details: leave as None to omit the line from the deck. Never guess these.
@@ -38,388 +38,455 @@ APPLICANT = {
 SECTOR = "Law and Order"
 SUB_THEME = "Cyber-fraud, digital extortion and financial-crime intelligence"
 
+NAVY, ORANGE, SLATE, MUTED = "1B2A5C", "F28C28", "2F3A56", "6B7280"
+LINE, WHITE = "D9DEEA", "FFFFFF"
+CARD_DARK, RING_DARK, ON_DARK, ON_DARK_DIM = "253870", "3A4C85", "DCE3F5", "C9D2EC"
+WARN = "B4531B"
+FONT = "Nirmala UI"
+A_NS = "{http://schemas.openxmlformats.org/drawingml/2006/main}"
+
 prs = Presentation(TEMPLATE)
 slides = list(prs.slides)
 
 
-def shape(slide, name):
+# ----------------------------------------------------------------------------- helpers
+def by_name(slide, name):
     for sh in slide.shapes:
         if sh.name == name:
             return sh
     raise KeyError(name)
 
 
-def _rpr_template(sh):
-    para = sh.text_frame.paragraphs[0]
-    return copy.deepcopy(para._p), (para.runs[0]._r.find("{%s}rPr" % A) if para.runs else None)
+def keep_only(slide, names):
+    for sh in list(slide.shapes):
+        if sh.name not in names:
+            sh._element.getparent().remove(sh._element)
 
 
-def set_text(sh, paragraphs, size=None, italic=False, color=None, bold=None, bullet=False,
-             space_after=None):
-    """Replace a text box's content, keeping the template's font, alignment and box.
+def _rgb(hex_):
+    return RGBColor.from_string(hex_)
 
-    `paragraphs`: list of paragraphs; each is a string or a list of (text, overrides) segments,
-    overrides being a dict with optional color / bold / italic.
-    """
-    tf = sh.text_frame
-    p0 = tf.paragraphs[0]._p
-    base_p = copy.deepcopy(p0)
-    run0 = tf.paragraphs[0].runs[0]._r if tf.paragraphs[0].runs else None
-    base_rpr = copy.deepcopy(run0.find("{%s}rPr" % A)) if run0 is not None else None
-    txBody = tf._txBody
-    for p in list(txBody.findall("{%s}p" % A)):
-        txBody.remove(p)
-    for para in paragraphs:
+
+def _fill_runs(p, segs, size, color, bold, italic):
+    for txt, ov in segs:
+        r = p.add_run()
+        r.text = txt
+        f = r.font
+        f.name = FONT
+        f.size = Pt(ov.get("size", size))
+        f.bold = ov.get("bold", bold)
+        f.italic = ov.get("italic", italic)
+        f.color.rgb = _rgb(ov.get("color", color))
+
+
+def write(tf, paras, size=10, color=SLATE, bold=False, italic=False, align=None, space_after=0):
+    """Fill a text frame. A paragraph is a string, a list of (text, overrides) segments, or
+    (segments, options) where options may hold bullet / space_after / align."""
+    first = True
+    for para in paras:
+        opts = {}
+        if isinstance(para, tuple) and len(para) == 2 and isinstance(para[1], dict) and not isinstance(para[0], tuple):
+            para, opts = para
         segs = [(para, {})] if isinstance(para, str) else para
-        p = copy.deepcopy(base_p)
-        for child in list(p):
-            if child.tag != "{%s}pPr" % A:
-                p.remove(child)
-        ppr = p.find("{%s}pPr" % A)
-        if ppr is None:
-            ppr = etree.Element("{%s}pPr" % A)
-            p.insert(0, ppr)
-        for tag in ("buNone", "buChar", "buAutoNum", "spcAft"):
-            for el in ppr.findall("{%s}%s" % (A, tag)):
+        p = tf.paragraphs[0] if first else tf.add_paragraph()
+        first = False
+        a = opts.get("align", align)
+        if a is not None:
+            p.alignment = a
+        p.space_after = Pt(opts.get("space_after", space_after))
+        _fill_runs(p, segs, size, color, bold, italic)
+        ppr = p._p.get_or_add_pPr()
+        for tag in ("buNone", "buChar"):
+            for el in ppr.findall(A_NS + tag):
                 ppr.remove(el)
-        # schema order inside a:pPr: spacing first, then the bullet
-        pos = 0
-        for k, child in enumerate(ppr):
-            if child.tag in ("{%s}lnSpc" % A, "{%s}spcBef" % A):
-                pos = k + 1
-        if space_after is not None:
-            sa = etree.Element("{%s}spcAft" % A)
-            etree.SubElement(sa, "{%s}spcPts" % A).set("val", str(int(space_after * 100)))
-            ppr.insert(pos, sa)
-            pos += 1
-        if bullet:
-            ppr.set("marL", "114300")
-            ppr.set("indent", "-114300")
-            bu = etree.Element("{%s}buChar" % A)
-            bu.set("char", "•")
-            ppr.insert(pos, bu)
+        if opts.get("bullet"):
+            ppr.set("marL", "128016")
+            ppr.set("indent", "-128016")
+            etree.SubElement(ppr, A_NS + "buChar").set("char", "•")
         else:
-            ppr.append(etree.Element("{%s}buNone" % A))
-        for text, ov in segs:
-            r = etree.SubElement(p, "{%s}r" % A)
-            if base_rpr is not None:
-                rpr = copy.deepcopy(base_rpr)
-                r.append(rpr)
-            else:
-                rpr = etree.SubElement(r, "{%s}rPr" % A)
-            rpr.set("i", "1" if ov.get("italic", italic) else "0")
-            b = ov.get("bold", bold)
-            if b is not None:
-                rpr.set("b", "1" if b else "0")
-            if size:
-                rpr.set("sz", str(int(size * 100)))
-            col = ov.get("color", color)
-            if col:
-                for el in rpr.findall("{%s}solidFill" % A):
-                    rpr.remove(el)
-                fill = etree.Element("{%s}solidFill" % A)
-                clr = etree.SubElement(fill, "{%s}srgbClr" % A)
-                clr.set("val", col)
-                rpr.insert(0, fill)
-            t = etree.SubElement(r, "{%s}t" % A)
-            t.text = text
-        txBody.append(p)
+            ppr.set("marL", "0")
+            ppr.set("indent", "0")
+            etree.SubElement(ppr, A_NS + "buNone")
 
 
-def fit_box(sh, height_in):
-    sh.height = Inches(height_in)
+def text(slide, x, y, w, h, paras, anchor=MSO_ANCHOR.TOP, **kw):
+    tb = slide.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
+    tf = tb.text_frame
+    tf.word_wrap = True
+    tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = 0
+    tf.vertical_anchor = anchor
+    write(tf, paras if isinstance(paras, list) else [paras], **kw)
+    return tb
 
 
-def remove(sh):
-    sh._element.getparent().remove(sh._element)
+def box(slide, x, y, w, h, fill=WHITE, line=LINE, radius=0.045, lw=0.75, shape=MSO_SHAPE.ROUNDED_RECTANGLE):
+    sh = slide.shapes.add_shape(shape, Inches(x), Inches(y), Inches(w), Inches(h))
+    if shape == MSO_SHAPE.ROUNDED_RECTANGLE:
+        sh.adjustments[0] = radius
+    if fill is None:
+        sh.fill.background()
+    else:
+        sh.fill.solid()
+        sh.fill.fore_color.rgb = _rgb(fill)
+    if line is None:
+        sh.line.fill.background()
+    else:
+        sh.line.color.rgb = _rgb(line)
+        sh.line.width = Pt(lw)
+    sh.shadow.inherit = False
+    return sh
 
 
-def notes(slide, text):
-    slide.notes_slide.notes_text_frame.text = text
+def set_header(slide, sub_text, dark=False):
+    sub = by_name(slide, "Text 3")
+    para = sub.text_frame.paragraphs[0]
+    r = para.runs[0]
+    r.text = sub_text
+    for extra in para.runs[1:]:
+        extra._r.getparent().remove(extra._r)
+    r.font.size = Pt(11.5)
+    r.font.italic = False
+    r.font.color.rgb = _rgb(ON_DARK if dark else SLATE)
 
 
-# ----------------------------------------------------------------------------- slide 1
+def notes(slide, body):
+    slide.notes_slide.notes_text_frame.text = body
+
+
+def pic(slide, name, x, y, w):
+    return slide.shapes.add_picture(os.path.join(ASSETS, name), Inches(x), Inches(y), width=Inches(w))
+
+
+def initials_of(name):
+    caps = "".join(w[0] for w in name.split() if w[0].isupper())
+    return caps[0] + caps[-1] if len(caps) > 2 else caps
+
+
+# ============================================================================= slide 1
 s = slides[0]
-set_text(shape(s, "Text 0"), ["SEVA INNOVATION CHALLENGE 2026  •  MAHARASHTRA ZONE"])
-set_text(shape(s, "Text 1"), ["NyaySaakshya"], bold=True)
-sub = shape(s, "Text 2")
-set_text(sub, ["Forensic triage for email-traffic captures. It tells cyber-cell investigators what a "
-               "capture does, and does not, prove. It does not detect fraud or identify suspects."],
-         size=13, italic=False, color="DCE3F5")
-sub.top, sub.height, sub.width = Inches(1.55), Inches(0.95), Inches(5.3)
+keep_only(s, {"Text 0", "Text 1", "Shape 15"})
+by_name(s, "Text 0").text_frame.paragraphs[0].runs[0].text = "SEVA INNOVATION CHALLENGE 2026  •  MAHARASHTRA ZONE"
+title = by_name(s, "Text 1")
+title.text_frame.paragraphs[0].runs[0].text = "NyaySaakshya"
+title.left, title.top, title.width, title.height = Inches(0.5), Inches(0.78), Inches(4.6), Inches(0.75)
 
-# applicant snapshot (new box cloned from the subtitle box so fonts match)
-snap = copy.deepcopy(sub._element)
-sub._element.addnext(snap)
-snap_sh = [x for x in s.shapes if x._element is snap][0]
-snap_sh.top, snap_sh.height, snap_sh.width = Inches(2.95), Inches(1.9), Inches(5.3)
-LBL = {"color": "C9D2EC"}
-snap_rows = [
-    [("Applicant:  ", LBL), (APPLICANT["name"], {"bold": True})],
-    [("Application type:  ", LBL), ("Individual (team size 1)", {})],
-    [("Sector:  ", LBL), (SECTOR, {})],
-    [("Sub-theme:  ", LBL), (SUB_THEME, {})],
-    [("Stage:  ", LBL), ("Working Prototype", {"color": WHITE, "bold": True})],
-]
+text(s, 0.5, 1.62, 4.6, 0.7, ["Know what an email-traffic capture proves, and what it cannot."],
+     size=17, bold=True, color=WHITE)
+text(s, 0.5, 2.42, 4.55, 1.0,
+     ["A working prototype for forensic triage of saved email-traffic captures. Each issue it reports cites the "
+      "packets behind it. When a capture cannot support a score, NyaySaakshya says so. It does not detect "
+      "fraud or identify suspects."], size=10.5, color=ON_DARK)
+
+snap = [("Applicant", [(APPLICANT["name"], {"bold": True, "color": WHITE})], 0.27),
+        ("Application", [("Individual (team size 1)", {})], 0.27),
+        ("Sector", [(SECTOR, {})], 0.27),
+        ("Sub-theme", [(SUB_THEME, {})], 0.43),
+        ("Stage", [("Working Prototype", {"bold": True, "color": WHITE}),
+                   (": lab-validated, no external pilot", {})], 0.27)]
 if APPLICANT["contact"]:
-    snap_rows.insert(4, [("Contact:  ", LBL), (APPLICANT["contact"], {})])
-set_text(snap_sh, snap_rows, size=11, italic=False, color=WHITE, space_after=5)
+    snap.append(("Contact", [(APPLICANT["contact"], {})], 0.27))
+yy = 3.62
+for label, val, h in snap:
+    text(s, 0.5, yy, 0.95, h, [label], size=9.5, color=ON_DARK_DIM)
+    text(s, 1.45, yy, 3.6, h, [val], size=10, color=ON_DARK)
+    yy += h
 
-# replace the "How to use this template" guidance box with prototype screens
-panel = shape(s, "Shape 15")
-remove(shape(s, "Text 16"))
-remove(shape(s, "Text 17"))
-panel.left, panel.top, panel.width, panel.height = Inches(6.05), Inches(0.85), Inches(3.45), Inches(3.75)
-cap_style = shape(s, "Text 0")
+panel = by_name(s, "Shape 15")
+panel.left, panel.top, panel.width, panel.height = Inches(5.3), Inches(0.9), Inches(4.2), Inches(4.3)
+text(s, 5.48, 1.02, 3.9, 0.25, ["Real output of the current build, synthetic lab captures"],
+     size=9.5, bold=True, color=ORANGE)
+W1 = 3.84
+pic(s, "screen_scored.png", 5.48, 1.34, W1)
+h1 = W1 * 456 / 1374
+text(s, 5.48, 1.34 + h1 + 0.06, 3.84, 0.4,
+     ["Enough evidence: a score, with the rule, standard and packet it rests on"], size=9.5, color=ON_DARK)
+y2 = 1.34 + h1 + 0.5
+pic(s, "screen_withheld.png", 5.48, y2, W1)
+h2 = W1 * 512 / 1374
+text(s, 5.48, y2 + h2 + 0.06, 3.84, 0.4,
+     ["Not enough evidence: no score, and the reason is stated"], size=9.5, color=ON_DARK)
+text(s, 5.48, 4.86, 3.84, 0.25, ["Cropped from the working console; not edited."], size=8.5,
+     italic=True, color=ON_DARK_DIM)
+notes(s, "Sources and basis. Screens: the NyaySaakshya console running locally on 15 Oct 2026, uploading two synthetic "
+         "lab captures (a multi-session SMTP capture with plaintext authentication, and a capture that ends inside a TLS "
+         "handshake). Sector and sub-theme are as listed on the Seva Maharashtra-zone portal. The sub-theme names "
+         "financial-crime intelligence; NyaySaakshya supports the evidence-handling step and does not itself provide "
+         "intelligence or determine that fraud occurred.")
 
-
-def caption(slide, x, y, w, text, size=8.5, color="C9D2EC", bold=False):
-    el = copy.deepcopy(cap_style._element)
-    slide.shapes._spTree.append(el)
-    sh = [x_ for x_ in slide.shapes if x_._element is el][0]
-    sh.left, sh.top, sh.width, sh.height = Inches(x), Inches(y), Inches(w), Inches(0.3)
-    set_text(sh, [text], size=size, color=color, bold=bold, italic=False)
-    for rpr in sh._element.iter("{%s}rPr" % A):
-        rpr.set("spc", "0")
-    return sh
-
-
-caption(s, 6.2, 0.95, 3.2, "Prototype screens (synthetic lab captures)", size=9, color=ORANGE, bold=True)
-w = 3.15
-img1 = s.shapes.add_picture(os.path.join(ASSETS, "screen_scored_flagship.png"), Inches(6.2), Inches(1.28), width=Inches(w))
-caption(s, 6.2, 1.28 + w * 234 / 774 + 0.04, 3.2, "Scored: every finding cites its evidence")
-y2 = 1.28 + w * 234 / 774 + 0.42
-img2 = s.shapes.add_picture(os.path.join(ASSETS, "screen_withheld_not_scored.png"), Inches(6.2), Inches(y2), width=Inches(w))
-caption(s, 6.2, y2 + w * 232 / 774 + 0.04, 3.2, "Withheld: no score when the capture cannot support one")
-notes(s, "Title and applicant snapshot. Name, sector and sub-theme are as shown on the online application (name from Aadhaar). "
-         "Positioning sentence: NyaySaakshya turns supported email-traffic captures into evidence-linked forensic findings and "
-         "reproducible reports, while explicitly identifying what the evidence cannot establish. Maturity: Working Prototype "
-         "(see claim audit). Screens are synthetic lab captures from the working prototype. "
-         "The sub-theme is the portal's; NyaySaakshya supports the evidence-handling step and does not itself provide "
-         "financial-crime intelligence or determine that fraud occurred. No live demo URL is configured for this product.")
-
-# ----------------------------------------------------------------------------- slide 2
+# ============================================================================= slide 2
 s = slides[1]
-body = dict(size=10.5, italic=False, color=SLATE)
-set_text(shape(s, "Text 7"), ["Investigators often hold a network capture that is cut short or encrypted. Reading more into it "
-                              "than it shows can produce a conclusion the evidence cannot support, and weaken a cyber-fraud case."], **body)
-set_text(shape(s, "Text 10"), ["Cyber-cell and forensic investigators, and the supervisors who must defend a finding.",
-                               [("Proposed first users: ", {"bold": True}), ("a Maharashtra cyber cell or forensic lab. No partner has agreed yet.", {})]],
-         space_after=4, **body)
-set_text(shape(s, "Text 13"), [
-    "PIB cites over 17.82 lakh CFCFRMS cyber-fraud complaints (7 Oct 2025; period not stated; not email-specific).",
-    "Wireshark decrypts TLS only if keys are supplied (Wireshark docs).",
-    "SMTP security \"favors failing open\" (Durumeric et al., IMC 2015)."],
-         size=9.5, italic=False, color=SLATE, bullet=True, space_after=3)
-set_text(shape(s, "Text 16"), ["Packet tools show packets; the analyst decides what is safe to conclude. "
-                               "For cut-off or encrypted captures that judgement is manual and hard to repeat or check."], **body)
-set_text(shape(s, "Text 18"), ["17.82 lakh"], size=28)
-set_text(shape(s, "Text 19"), ["complaints cited for the national CFCFRMS cyber-fraud system (PIB, Oct 2025)"], italic=False, size=10)
-set_text(shape(s, "Text 21"), ["Each case may rest on digital evidence that must be read carefully and defended. "
-                               "How many involve email is not published, so we make no claim about it."], italic=False, size=9.5)
-notes(s, "Statistic: PIB backgrounder 'Curbing Cyber Frauds in Digital India', 7 Oct 2025: through CFCFRMS financial institutions "
-         "saved more than Rs 5,489 crore in over 17.82 lakh complaints (period not stated). Maharashtra press figures were "
-         "excluded because the primary record could not be opened. Wireshark TLS wiki: decryption needs supplied secrets. "
-         "Durumeric et al., ACM IMC 2015 abstract: SMTP policies favour failing open. The email share of fraud is unknown.")
+keep_only(s, {"Shape 0", "Text 1", "Text 2", "Text 3", "Text 4"})
+set_header(s, "A capture can show less than it seems to. Reading too much into it can undermine the finding built on it.")
+text(s, 0.5, 1.26, 6.0, 0.28, ["Three ways a capture can mislead an investigator"], size=12.5, bold=True, color=NAVY)
+for x, w, label in ((0.68, 1.75, "What the capture shows"), (2.65, 1.6, "Easy to conclude"),
+                    (4.45, 2.0, "What it actually supports")):
+    text(s, x, 1.6, w, 0.22, [label], size=9, bold=True, color=MUTED)
+rows = [("It ends before the TLS handshake finishes", "No encryption was used",
+         "Incomplete: the capture stops before the answer is known"),
+        ("The server never offers STARTTLS", "Someone stripped the encryption",
+         "Ambiguous: genuine non-support and stripping look identical in the bytes"),
+        ("TLS 1.3 encrypts the server certificate", "The certificate is invalid",
+         "Not observable in a passive capture")]
+ry = 1.86
+for a, b, c in rows:
+    box(s, 0.5, ry, 6.05, 0.86, fill=WHITE, line=LINE)
+    box(s, 0.5, ry, 0.06, 0.86, fill=ORANGE, line=None, shape=MSO_SHAPE.RECTANGLE)
+    text(s, 0.68, ry, 1.75, 0.86, [a], size=10, bold=True, color=NAVY, anchor=MSO_ANCHOR.MIDDLE)
+    text(s, 2.65, ry, 1.6, 0.86, [b], size=10, color=WARN, anchor=MSO_ANCHOR.MIDDLE)
+    text(s, 4.45, ry, 2.0, 0.86, [c], size=10, color=SLATE, anchor=MSO_ANCHOR.MIDDLE)
+    ry += 0.94
+box(s, 6.8, 1.26, 2.7, 3.38, fill=NAVY, line=NAVY, radius=0.04)
+text(s, 6.98, 1.4, 2.35, 3.15, [
+    [("Why it matters", {"size": 11.5, "bold": True, "color": ORANGE})],
+    [("A conclusion the evidence cannot support is a weak foundation for any cyber-fraud case built on it.", {"size": 10, "color": WHITE})],
+    [("Who is affected", {"size": 11.5, "bold": True, "color": ORANGE})],
+    [("Cyber-cell and forensic investigators, and the supervisors who must defend a finding. Proposed first "
+      "users: a Maharashtra cyber cell or forensic lab. No partner has agreed yet.", {"size": 10, "color": WHITE})],
+    [("The gap today", {"size": 11.5, "bold": True, "color": ORANGE})],
+    [("Packet tools show packets. Deciding what is safe to conclude is manual and hard to repeat.",
+      {"size": 10, "color": WHITE})],
+], space_after=4)
+box(s, 0.5, 4.74, 9.0, 0.5, fill="E8ECF6", line=None, radius=0.1)
+text(s, 0.68, 4.74, 8.65, 0.5,
+     [[("Context only: ", {"bold": True}),
+       ("PIB (7 Oct 2025) cites over 17.82 lakh complaints in the national CFCFRMS cyber-fraud system; period not "
+        "stated. It is not email-specific, and we make no claim about how many cases involve email.", {})]],
+     size=9, color=SLATE, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "Sources. Failure modes: RFC 3207 (SMTP STARTTLS, Feb 2002) notes that an active attacker can delete the "
+         "'250 STARTTLS' response, and the same bytes arise when a server does not support STARTTLS. RFC 8446 (TLS 1.3) "
+         "encrypts the server certificate, so a passive capture cannot show it. Context figure: PIB backgrounder "
+         "'Curbing Cyber Frauds in Digital India', 7 Oct 2025: through CFCFRMS financial institutions saved more than "
+         "Rs 5,489 crore in over 17.82 lakh complaints; the period is not stated. The share involving email is not "
+         "published, so none is claimed.")
 
-# ----------------------------------------------------------------------------- slide 3
+# ============================================================================= slide 3
 s = slides[2]
-set_text(shape(s, "Text 6"), ["NyaySaakshya reads a saved capture of email traffic and labels every fact: observed, inferred, "
-                              "unknown, ambiguous, incomplete or not observable. Each finding points to its packets. "
-                              "If the capture cannot support a score, it gives none."], size=10, italic=False, color=SLATE)
-set_text(shape(s, "Text 12"), ["Investigator uploads a saved email-traffic capture"], size=9, italic=False, color=SLATE)
-set_text(shape(s, "Text 18"), ["SHA-256 fingerprint; sessions rebuilt; standards-based rules judge only what is visible"], size=9, italic=False, color=SLATE)
-set_text(shape(s, "Text 24"), ["Cited findings, a score or \"not scored\", and a report"], size=9, italic=False, color=SLATE)
-tbl_shape = [x for x in s.shapes if x.has_table][0]
-tbl = tbl_shape.table
-rows = [["", "Packet tools alone", "NyaySaakshya"],
-        ["What you get", "Packets, fields, logs", "Cited findings with an evidence state"],
-        ["Cut-off or encrypted", "Analyst decides", "Marked incomplete or not observable"],
-        ["Repeatable?", "Depends on the analyst", "Same capture + software, same ID"],
-        ["Role", "General analysis", "Narrow: evidence-bounded triage"]]
-for r, row in enumerate(rows):
-    for c, txt in enumerate(row):
-        cell = tbl.cell(r, c)
-        tf = cell.text_frame
-        p = tf.paragraphs[0]
-        if p.runs:
-            p.runs[0].text = txt
-            for extra in p.runs[1:]:
-                extra._r.getparent().remove(extra._r)
-        elif txt:
-            run = p.add_run()
-            run.text = txt
-            src = tbl.cell(0, 1).text_frame.paragraphs[0].runs[0]._r.find("{%s}rPr" % A)
-            run._r.insert(0, copy.deepcopy(src))
-        for run in p.runs:
-            run.font.size = Pt(8.5)
-            run.font.italic = False
-            if r > 0 and c > 0:
-                run.font.color.rgb = RGBColor.from_string(SLATE)
-        if r > 0 and c == 0:
-            for run in p.runs:
-                run.font.bold = True
-for r in tbl.rows:
-    r.height = Inches(0.42)
-note = copy.deepcopy(shape(s, "Text 26")._element)
-s.shapes._spTree.append(note)
-note_sh = [x for x in s.shapes if x._element is note][0]
-note_sh.top, note_sh.height = Inches(3.86), Inches(0.2)
-set_text(note_sh, ["Complements packet tools; no speed or cost comparison is made."], size=8, italic=True, color="6B7280", bold=False)
-shape(s, "Text 26").top = Inches(4.08)
-shape(s, "Text 27").top = Inches(4.38)
-set_text(shape(s, "Text 27"), ["Every finding says how sure the evidence allows us to be, and which packets it rests on. "
-                               "When a capture is not enough, it says so instead of guessing."], size=10, italic=False, color=SLATE)
-notes(s, "Workflow: Capture > Analysis > Evidence-linked findings > Posture assessment > Report. Six evidence states are defined in "
-         "src/nyaysaakshya/evidence/states.py and produced by reproducible captures. Frame provenance: 13,822 cited frames, 0 stream "
-         "mismatches. Score withheld when unsupported (scored=false, value=null). Same capture and software give the same assessment "
-         "ID (98/98 controlled captures). Comparison column for packet tools is from their documentation (Wireshark TLS wiki; Zeek "
-         "smtp.log shows a tls true/false field in the documented example); we did not benchmark them. No claim of being first or only.")
+keep_only(s, {"Shape 0", "Text 1", "Text 2", "Text 3", "Text 4"})
+set_header(s, "Every fact is labelled by how strongly the capture supports it. If it cannot support a score, none is given.")
+steps = [("Capture", "Saved PCAP or PCAPNG; SHA-256 recorded"), ("Analysis", "TShark parses; sessions rebuilt"),
+         ("Evidence", "Every fact gets a state"), ("Finding", "Rule, standard and frame cited"),
+         ("Posture", "A score, or none"), ("Report", "JSON, HTML and PDF")]
+sx, sw, gap = 0.5, 1.37, 0.156
+for i, (lab, desc) in enumerate(steps):
+    x = sx + i * (sw + gap)
+    box(s, x, 1.26, sw, 0.72, fill=WHITE, line=LINE)
+    text(s, x + 0.08, 1.3, sw - 0.16, 0.25, [lab], size=11, bold=True, color=NAVY)
+    text(s, x + 0.08, 1.54, sw - 0.16, 0.42, [desc], size=8.5, color=SLATE)
+    if i < 5:
+        text(s, x + sw, 1.46, gap, 0.3, ["›"], size=14, bold=True, color=ORANGE, align=PP_ALIGN.CENTER)
 
-# ----------------------------------------------------------------------------- slide 4
+text(s, 0.5, 2.08, 4.3, 0.26, ["Six evidence states"], size=12, bold=True, color=NAVY)
+states = [("OBSERVED", "Seen directly in the captured bytes", True), ("INFERRED", "Deduced; the basis is stated", True),
+          ("UNKNOWN", "Too little evidence to decide", False), ("AMBIGUOUS", "More than one reading fits", False),
+          ("INCOMPLETE", "Capture is cut off at that point", False), ("NOT OBSERVABLE", "Cannot be seen passively", False)]
+for i, (nm, mean, ok) in enumerate(states):
+    col, row = i % 2, i // 2
+    x, y = 0.5 + col * 2.2, 2.4 + row * 0.6
+    box(s, x, y, 2.1, 0.52, fill=NAVY if ok else WHITE, line=NAVY if ok else ORANGE, lw=1.25, radius=0.08)
+    text(s, x + 0.1, y + 0.04, 1.95, 0.2, [nm], size=9.5, bold=True, color=WHITE if ok else WARN)
+    text(s, x + 0.1, y + 0.25, 1.95, 0.28, [mean], size=8.5, color=ON_DARK if ok else SLATE)
+text(s, 0.5, 4.2, 4.3, 0.2, [[("Navy", {"bold": True, "color": NAVY}), (": can support a conclusion.  ", {}),
+                              ("Orange", {"bold": True, "color": WARN}), (": cannot.", {})]], size=9, color=SLATE)
+
+text(s, 5.15, 2.08, 4.35, 0.26, ["One finding, traced to its packets"], size=12, bold=True, color=NAVY)
+chain = [("Source", "Capture SHA-256 97b2b61a…; stream #0, 10.0.0.6 to 10.0.0.80:587"),
+         ("Evidence", "Frame #7: authentication activity = True (OBSERVED); TLS transition = False (OBSERVED)"),
+         ("Rule", "SEC-PLAIN-001, citing NIST SP 800-52 Rev. 2 section 3.1"),
+         ("Finding", "Authentication activity without TLS protection: CONFIRMED")]
+cy = 2.4
+for i, (lab, body) in enumerate(chain):
+    h = 0.5 if i == 1 else 0.4
+    box(s, 5.15, cy, 4.35, h, fill=WHITE, line=LINE, radius=0.08)
+    text(s, 5.27, cy, 0.7, h, [lab], size=9, bold=True, color=ORANGE, anchor=MSO_ANCHOR.MIDDLE)
+    text(s, 5.95, cy, 3.45, h, [body], size=9, color=SLATE, anchor=MSO_ANCHOR.MIDDLE)
+    cy += h + 0.06
+text(s, 5.15, cy, 4.35, 0.2, ["From a real run on a synthetic lab capture."], size=8.5, italic=True, color=MUTED)
+
+box(s, 0.5, 4.6, 5.0, 0.6, fill=NAVY, line=NAVY, radius=0.1)
+text(s, 0.65, 4.6, 4.75, 0.6,
+     [[("Withholding a score is deliberate. ", {"bold": True, "color": ORANGE}),
+       ("If no session can be assessed, or fewer than half yield a conclusion, the result is Not scored, with the "
+        "reason. Blindness is never reported as safety.", {})]],
+     size=9, color=WHITE, anchor=MSO_ANCHOR.MIDDLE)
+box(s, 5.62, 4.6, 3.88, 0.6, fill=WHITE, line=LINE, radius=0.1)
+text(s, 5.75, 4.6, 3.65, 0.6,
+     [[("How it differs: ", {"bold": True, "color": NAVY}),
+       ("Wireshark, Zeek and NetworkMiner expose packets and fields. Their documentation, as we read it, has no "
+        "per-fact evidence states. A design strength, not a claim of uniqueness.", {})]],
+     size=8.5, color=SLATE, anchor=MSO_ANCHOR.MIDDLE)
+notes(s, "Sources. Evidence states and abstention are properties of the prototype, shown here from a real local run on a "
+         "synthetic capture. NIST SP 800-52 Rev. 2 (Guidelines for the Selection, Configuration, and Use of TLS "
+         "Implementations). Comparison basis, documentation read 15 Oct 2026: Wireshark user guide (Expert Information) "
+         "and TLS wiki; Zeek SMTP::Info (a tls true/false field); NetworkMiner product page (extracts files, emails and "
+         "credentials from PCAPs; not designed to decrypt). No benchmark was run against these tools and no speed or "
+         "accuracy comparison is made.")
+
+# ============================================================================= slide 4
 s = slides[3]
-set_text(shape(s, "Text 5"), ["Current stage: Working Prototype"], size=12, bold=True, color=NAVY)
-tick = shape(s, "Shape 11")
+keep_only(s, {"Shape 0", "Text 1", "Text 2", "Text 3", "Text 4", "Text 5", "Shape 6", "Shape 7", "Text 8", "Shape 9",
+              "Text 10", "Shape 11", "Text 12", "Shape 13", "Text 14", "Shape 15", "Text 16"})
+set_header(s, "A working prototype, tested internally, and an honest list of what a pilot would still need.")
+r = by_name(s, "Text 5").text_frame.paragraphs[0].runs[0]
+r.text = "Current stage: Working Prototype (lab-validated; no external pilot)"
+r.font.size = Pt(11.5)
+r.font.bold = True
+r.font.italic = False
+r.font.color.rgb = _rgb(NAVY)
+tick = by_name(s, "Shape 11")
 tick.fill.solid()
-tick.fill.fore_color.rgb = RGBColor.from_string(ORANGE)
-tf = tick.text_frame
-tf.text = "✓"
-tf.paragraphs[0].alignment = 2
-for r in tf.paragraphs[0].runs:
-    r.font.size = Pt(12)
-    r.font.bold = True
-    r.font.color.rgb = RGBColor.from_string(WHITE)
-set_text(shape(s, "Text 12"), ["Working Prototype"], size=10, bold=True, color=ORANGE)
-box = dict(size=8.5, italic=False, color=SLATE)
-set_text(shape(s, "Text 19"), [
-    [("Built and running: ", {"bold": True}), ("Python, TShark, React console, FastAPI, SQLite.", {})],
-    [("Internal validation only: ", {"bold": True}), ("1,521 automated tests; 98 controlled captures. No external pilot, real-world accuracy benchmark or approval.", {})],
-    [("Not production-ready. Missing: ", {"bold": True, "color": "B4531B"}), ("login, audit log, encrypted storage, backups, a concurrency fix.", {})]],
-    space_after=3, **box)
-set_text(shape(s, "Text 22"), [
-    [("Local synthetic demo: ", {"bold": True}), ("no extra cost.", {})],
-    [("Hosted prototype: ", {"bold": True}), ("free tiers wipe stored data when idle; Vercel Hobby is $0 for personal use only.", {})],
-    [("On-premise pilot: ", {"bold": True}), ("not priced. Needs vendor quotes for a server and encrypted storage, plus security engineering.", {})],
-    "Estimates only, not quotations."], space_after=3, **box)
-set_text(shape(s, "Text 25"), [
-    [("3 months: ", {"bold": True}), ("close the security gaps; tests pass.", {})],
-    [("6 months: ", {"bold": True}), ("technical pilot on synthetic or consented captures; collect baselines.", {})],
-    [("12 months: ", {"bold": True}), ("supervised single-unit pilot, only if a department agrees.", {})],
-    "Proposed, not committed."], space_after=3, **box)
-set_text(shape(s, "Text 28"), [
-    [("None yet. ", {"bold": True}), ("Seeking one cyber cell or forensic lab for a supervised pilot. No department has agreed.", {})]],
-    space_after=4, **box)
-notes(s, "Stage: Working Prototype. Evidence: 1,521 tests collected and passing at baseline c0f77b9 (VALIDATION.md, DEPLOYMENT.md). "
-         "Blockers are documented in DEPLOYMENT.md sections 6 and 17: no authentication or audit trail, SQLite shared-connection defect "
-         "(TECH-DEBT #10), analysis time limit not enforced, no TLS or encryption at rest, no retention or backup. Costs: Vercel pricing "
-         "page (Hobby $0 non-commercial); Render docs (free instances spin down and wipe files). Render paid prices and on-premise "
-         "costs were not verified, so no totals are stated. Milestones are proposed, not commitments.")
+tick.fill.fore_color.rgb = _rgb(ORANGE)
+tick.text_frame.text = "✓"
+tick.text_frame.paragraphs[0].alignment = PP_ALIGN.CENTER
+for rr in tick.text_frame.paragraphs[0].runs:
+    rr.font.size = Pt(12)
+    rr.font.bold = True
+    rr.font.name = FONT
+    rr.font.color.rgb = _rgb(WHITE)
+wp = by_name(s, "Text 12").text_frame.paragraphs[0].runs[0]
+wp.font.bold = True
+wp.font.color.rgb = _rgb(ORANGE)
 
-# ----------------------------------------------------------------------------- slide 5
+cards = [
+    (0.5, 2.95, "Built and tested (internal)", [
+        "Python and TShark analysis, React console, FastAPI service, SQLite",
+        "1,521 automated tests",
+        "98 controlled captures: 10 real Postfix and Dovecot, 6 OpenSSL handshakes, 82 crafted in-project",
+        "Same capture and software give the same result (98 of 98)",
+        "Validation found and fixed cases where the engine over-read evidence"],
+     "Lab validation only: no real-world accuracy benchmark."),
+    (3.55, 2.95, "Not built yet", [
+        "Login and roles",
+        "Audit log",
+        "Encrypted storage, backups, retention",
+        "Fix for a database-concurrency defect",
+        "Enforced analysis time limit",
+        "Sandboxed parsing of untrusted files"],
+     "Not production-ready. The demo is local, with synthetic captures only."),
+    (6.6, 2.9, "Proposed path (not committed)", [
+        [("0 to 3 months: ", {"bold": True}), ("close the gaps; write a threat model", {})],
+        [("3 to 6 months: ", {"bold": True}), ("technical pilot on synthetic or consented captures", {})],
+        [("6 to 12 months: ", {"bold": True}), ("supervised single-unit pilot, only if a department agrees", {})]],
+     "Depends on security mentorship, a willing unit and that unit's legal approval for real captures. "
+     "Costs not yet estimated."),
+]
+for x, w, head, items, foot in cards:
+    box(s, x, 2.6, w, 2.55, fill=WHITE, line=LINE)
+    text(s, x + 0.14, 2.7, w - 0.28, 0.26, [head], size=11.5, bold=True, color=NAVY)
+    paras = [(it, {"bullet": True, "space_after": 2}) for it in items]
+    text(s, x + 0.14, 3.0, w - 0.28, 1.4, paras, size=9, color=SLATE)
+    text(s, x + 0.14, 4.55, w - 0.28, 0.55, [foot], size=8.5, italic=True, color=WARN, anchor=MSO_ANCHOR.BOTTOM)
+notes(s, "Basis. Internal validation record: 98 controlled captures (10 real Postfix and Dovecot sessions, 6 OpenSSL "
+         "handshakes, 82 crafted by in-project generators); 1,521 automated tests; identical results on repeat runs for 98 "
+         "of 98 captures. No real-world or third-party traffic has been evaluated and no false-positive or false-negative "
+         "rates are claimed. The security gaps listed are the known blockers for any pilot. Timeline items are proposals, "
+         "not commitments. No hosting or implementation cost is stated because none has been verified.")
+
+# ============================================================================= slide 5
 s = slides[4]
-big = dict(size=20, bold=True)
-set_text(shape(s, "Text 6"), ["1 pilot (target)"], **big)
-set_text(shape(s, "Text 8"), ["Target: one supervised cyber-cell pilot in year one. None reached yet; no partner yet."], size=9, italic=False, color=SLATE)
-set_text(shape(s, "Text 10"), ["To be measured"], **big)
-set_text(shape(s, "Text 12"), ["Pilot to compare time to a first assessment and to a finished report with current practice. No baseline yet."], size=9, italic=False, color=SLATE)
-set_text(shape(s, "Text 14"), ["Not claimed"], **big)
-set_text(shape(s, "Text 16"), ["No evidence of job creation, so none is claimed."], size=9, italic=False, color=SLATE)
-for nm in ("Text 8", "Text 12", "Text 16"):
-    shape(s, nm).height = Inches(0.55)
-    shape(s, nm).top = Inches(2.35)
-for nm in ("Text 7", "Text 11", "Text 15"):
-    shape(s, nm).top = Inches(2.05)
-b5 = dict(size=9, italic=False, color=SLATE)
-set_text(shape(s, "Text 19"), ["Helps investigators avoid unsupported conclusions, supporting fairer and stronger cyber-fraud cases.",
-                               "Links to SDG 16 (institutions that combat crime, target 16.a).",
-                               "Social impact is not yet measured."], space_after=4, **b5)
-set_text(shape(s, "Text 22"), ["No revenue model is decided. The stack is open source; licences are to be confirmed.",
-                               "Option to discuss with a partner: department budget or grant. No commitment exists."],
-         space_after=4, **b5)
-set_text(shape(s, "Text 25"), ["Demo, then close the security gaps, then one supervised cyber-cell pilot, then further units.",
-                               "Each unit would run locally so evidence stays in the unit; central administration only.",
-                               "Proposed; nothing is deployed."], space_after=4, **b5)
-meas = copy.deepcopy(shape(s, "Text 4")._element)
-s.shapes._spTree.append(meas)
-meas_sh = [x for x in s.shapes if x._element is meas][0]
-meas_sh.left, meas_sh.top, meas_sh.width, meas_sh.height = Inches(0.5), Inches(5.1), Inches(5.4), Inches(0.4)
-for para in meas_sh.text_frame.paragraphs:
-    para.alignment = 1
-set_text(meas_sh, ["Pilot measures: time to first assessment, time to report, share of findings with usable provenance, correct "
-                   "handling of unresolved evidence, reproducibility, supervisor confidence."], size=7.5, color="6B7280", italic=True)
-notes(s, "No beneficiary, saving or jobs figure is claimed: there is no measured baseline. Targets and measurement methods are from "
-         "SUBMISSION_EVIDENCE.md section 9. SDG 16 wording (target 16.a: strengthen national institutions to prevent violence and "
-         "combat terrorism and crime) from the UN SDG 16 page. Technical validation (not social impact): 98 controlled captures, "
-         "deterministic 98/98, 13,822 cited frames with 0 mismatches.")
+keep_only(s, {"Shape 0", "Text 1", "Text 2", "Text 3", "Text 4"})
+set_header(s, "Fewer unsupported conclusions in cyber-fraud cases: the expected benefit, to be measured in a supervised pilot.")
+cols = [
+    (0.5, "Public value (expected, not yet measured)", [
+        "Investigators and supervisors can see what a capture supports and which packets show it",
+        "Findings can be re-checked: the same capture gives the same result",
+        "Fewer conclusions that the evidence cannot bear",
+        "Fits SDG 16, target 16.a: strengthening institutions that combat crime"], None),
+    (3.55, "Adoption path (proposed)", None,
+     [("1", "Hardened local build"), ("2", "One supervised unit"), ("3", "Measured results, then decide on more units")]),
+    (6.6, "How success would be measured", [
+        "Time to a first assessment",
+        "Time to a finished report",
+        "Findings with usable packet citations",
+        "Handling of unresolved evidence",
+        "Repeat-run agreement",
+        "Supervisor confidence"], None),
+]
+for x, head, bullets, flow in cols:
+    box(s, x, 1.28, 2.9, 2.62, fill=WHITE, line=LINE)
+    text(s, x + 0.14, 1.38, 2.62, 0.4, [head], size=11, bold=True, color=NAVY)
+    if bullets:
+        text(s, x + 0.14, 1.82, 2.62, 1.5, [(b, {"bullet": True, "space_after": 3}) for b in bullets], size=9.5, color=SLATE)
+    if flow:
+        fy = 1.85
+        for num, lab in flow:
+            box(s, x + 0.14, fy, 2.62, 0.42, fill="EEF1F8", line=None, radius=0.15)
+            box(s, x + 0.2, fy + 0.07, 0.28, 0.28, fill=ORANGE, line=None, shape=MSO_SHAPE.OVAL)
+            text(s, x + 0.2, fy + 0.07, 0.28, 0.28, [num], size=9.5, bold=True, color=WHITE, align=PP_ALIGN.CENTER,
+                 anchor=MSO_ANCHOR.MIDDLE)
+            text(s, x + 0.56, fy, 2.15, 0.42, [lab], size=9.5, color=SLATE, anchor=MSO_ANCHOR.MIDDLE)
+            fy += 0.5
+        text(s, x + 0.14, fy + 0.02, 2.62, 0.5,
+             ["Each unit would run it locally, so captures stay in its own environment. A design intention, not built or validated."],
+             size=8.5, italic=True, color=MUTED)
+text(s, 6.74, 3.35, 2.62, 0.4, ["Baselines come from the pilot. No targets are claimed yet."], size=8.5, italic=True, color=MUTED)
 
-# ----------------------------------------------------------------------------- slide 6
+box(s, 0.5, 4.05, 5.0, 1.05, fill=NAVY, line=NAVY, radius=0.06)
+text(s, 0.68, 4.15, 4.65, 0.9, [
+    [("What the Challenge would unlock", {"size": 11, "bold": True, "color": ORANGE})],
+    [("Security mentorship and one supervised pilot would turn a lab-validated prototype into a measured "
+      "public-sector trial of whether it helps investigators avoid unsupported conclusions.", {"size": 10, "color": WHITE})],
+], space_after=3)
+box(s, 5.62, 4.05, 3.88, 1.05, fill=WHITE, line=LINE, radius=0.06)
+text(s, 5.78, 4.13, 3.6, 0.95, [
+    [("Not claimed: ", {"bold": True, "color": WARN}),
+     ("beneficiaries reached, time or cost saved, jobs. None has been measured.", {})],
+    [("Sustainability: ", {"bold": True, "color": NAVY}),
+     ("no revenue model is decided. It builds on open-source components (TShark, Python, FastAPI, React); "
+      "NyaySaakshya's own licence is not yet chosen.", {})],
+], size=8.5, color=SLATE, space_after=3)
+notes(s, "Basis. No beneficiary, saving or jobs figure is claimed: there is no measured baseline and no pilot. SDG 16 target "
+         "16.a (United Nations): strengthen relevant national institutions to prevent violence and combat terrorism and "
+         "crime. The adoption path and the local-processing model are proposals. Third-party components: TShark/Wireshark "
+         "(GPL-2.0-or-later, used as a separate program), FastAPI and React (MIT), ReportLab (BSD).")
+
+# ============================================================================= slide 6
 s = slides[5]
-# Team of one: keep card 1 (widened), drop cards 2-4 and the mentor line.
-for nm in ("Shape 10", "Shape 11", "Text 12", "Text 13", "Text 14", "Text 15",
-           "Shape 16", "Shape 17", "Text 18", "Text 19", "Text 20", "Text 21",
-           "Shape 22", "Shape 23", "Text 24", "Text 25", "Text 26", "Text 27", "Text 28"):
-    remove(shape(s, nm))
-card = shape(s, "Shape 4")
-card.left, card.top, card.width, card.height = Inches(0.5), Inches(1.3), Inches(4.85), Inches(1.45)
-ring = shape(s, "Shape 5")
-ring.left, ring.top, ring.width, ring.height = Inches(0.72), Inches(1.5), Inches(0.9), Inches(0.9)
-ini = shape(s, "Text 6")
-ini.left, ini.top, ini.width, ini.height = Inches(0.72), Inches(1.5), Inches(0.9), Inches(0.9)
-initials = "".join(w[0] for w in APPLICANT["name"].split() if w[0].isupper())
-initials = initials[0] + initials[-1] if len(initials) > 2 else initials
-set_text(ini, [initials], size=16, bold=True, color=WHITE)
-for para in ini.text_frame.paragraphs:
-    para.alignment = 2
-nm_box, role_box, qual_box = shape(s, "Text 7"), shape(s, "Text 8"), shape(s, "Text 9")
-for sh, top, h in ((nm_box, 1.46, 0.36), (role_box, 1.86, 0.3), (qual_box, 2.16, 0.5)):
-    sh.left, sh.top, sh.width, sh.height = Inches(1.78), Inches(top), Inches(3.45), Inches(h)
-set_text(nm_box, [APPLICANT["name"]], size=15, bold=True, color=WHITE)
-set_text(role_box, ["Applicant and team lead"], size=10, bold=False, color=ORANGE)
-set_text(qual_box, [APPLICANT["qualification"] or "Individual application (team size 1)"], size=9, italic=False, color="DCE3F5")
-
-
-def clone_box(slide, src, left, top, w, h, paragraphs, **kw):
-    el = copy.deepcopy(src._element)
-    slide.shapes._spTree.append(el)
-    sh = [x for x in slide.shapes if x._element is el][0]
-    sh.left, sh.top, sh.width, sh.height = Inches(left), Inches(top), Inches(w), Inches(h)
-    set_text(sh, paragraphs, **kw)
-    return sh
-
-
-panel2 = copy.deepcopy(card._element)
-s.shapes._spTree.insert(list(s.shapes._spTree).index(card._element) + 1, panel2)
-p2 = [x for x in s.shapes if x._element is panel2][0]
-p2.left, p2.top, p2.width, p2.height = Inches(0.5), Inches(2.95), Inches(4.85), Inches(1.3)
-clone_box(s, nm_box, 0.72, 3.07, 4.4, 0.3, ["Individual application"], size=12, bold=True, color=WHITE)
-p2_rows = ["No other team member, mentor, partner or funder is named.",
-           "Evidence of work to date: 1,521 automated tests and 98 controlled captures (internal validation; see slide 4)."]
+keep_only(s, {"Shape 0", "Text 1", "Text 2", "Text 3", "Text 43"})
+set_header(s, "One applicant with a working prototype, and the specific help needed to reach a supervised pilot.", dark=True)
+box(s, 0.5, 1.28, 3.75, 1.25, fill=CARD_DARK, line=CARD_DARK, radius=0.07)
+box(s, 0.68, 1.5, 0.8, 0.8, fill=RING_DARK, line=ORANGE, lw=1.5, shape=MSO_SHAPE.OVAL)
+text(s, 0.68, 1.5, 0.8, 0.8, [initials_of(APPLICANT["name"])], size=16, bold=True, color=WHITE,
+     align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+text(s, 1.65, 1.46, 2.5, 0.9, [
+    [(APPLICANT["name"], {"size": 13.5, "bold": True, "color": WHITE})],
+    [("Applicant and team lead", {"size": 10, "color": ORANGE})],
+    [(APPLICANT["qualification"] or "Individual application (team size 1)", {"size": 9.5, "color": ON_DARK})],
+], space_after=3)
+box(s, 0.5, 2.68, 3.75, 2.0 if not APPLICANT["mentor"] else 1.7, fill=CARD_DARK, line=CARD_DARK, radius=0.05)
+text(s, 0.68, 2.78, 3.4, 1.85, [
+    [("Next milestone (proposed, about 3 months)", {"size": 10.5, "bold": True, "color": ORANGE})],
+    [("A hardened local pilot-candidate build: login and roles, audit log, encrypted storage, backups and a written "
+      "threat model.", {"size": 10, "color": WHITE})],
+    [("Why this help", {"size": 10.5, "bold": True, "color": ORANGE})],
+    [("The core analysis is built. What blocks a pilot is security engineering and access to a supervised unit.",
+      {"size": 10, "color": WHITE})],
+    [("Individual application: no other team member, mentor, partner or funder is named.",
+      {"size": 9, "color": ON_DARK_DIM})],
+], space_after=5)
 if APPLICANT["mentor"]:
-    p2_rows.insert(1, "Mentor: " + APPLICANT["mentor"])
-clone_box(s, qual_box, 0.72, 3.4, 4.4, 1.0, p2_rows, size=9, italic=False, color="DCE3F5", space_after=4)
-for nm in ("Shape 31", "Shape 33", "Shape 35", "Shape 39"):
-    sh = shape(s, nm)
-    sh.fill.solid()
-    sh.fill.fore_color.rgb = RGBColor.from_string(ORANGE)
-    sh.text_frame.text = "✓"
-    sh.text_frame.paragraphs[0].alignment = 2
-    for r_ in sh.text_frame.paragraphs[0].runs:
-        r_.font.size = Pt(9)
-        r_.font.bold = True
-        r_.font.color.rgb = RGBColor.from_string(WHITE)
-set_text(shape(s, "Text 32"), ["Mentorship & technical guidance (security)"], size=10.5, bold=True, color=SLATE)
-set_text(shape(s, "Text 34"), ["Pilot with a government department"], size=10.5, bold=True, color=SLATE)
-set_text(shape(s, "Text 36"), ["Funding / grant support (secure deployment)"], size=10.5, bold=True, color=SLATE)
-set_text(shape(s, "Text 40"), ["Testing, certification or IP support"], size=10.5, bold=True, color=SLATE)
-set_text(shape(s, "Text 41"), ["With security mentorship and one supervised pilot, we can move from a tested prototype to a measured "
-                               "trial of whether NyaySaakshya helps investigators avoid unsupported conclusions."], size=9.5, italic=False, color=SLATE)
-thanks = "Thank you  |  " + APPLICANT["name"] + ("  |  " + APPLICANT["contact"] if APPLICANT["contact"] else "")
-set_text(shape(s, "Text 42"), [thanks], size=11)
-shape(s, "Text 42").top = Inches(4.6)
-notes(s, "Individual application, team size 1; name as on the portal. No teammate, mentor, qualification or contact is invented; "
-         "optional lines are filled only from the APPLICANT block in build_deck.py. Support ticked (orange): "
-         "mentorship and technical guidance, a supervised pilot introduction (no department has agreed), funding for secure "
-         "deployment and testing, and testing/IP guidance. Incubation and workspace left unticked; the applicant may change it.")
+    text(s, 0.5, 4.45, 3.75, 0.3, ["Mentor: " + APPLICANT["mentor"]], size=9.5, color=ON_DARK)
+if APPLICANT["contact"]:
+    text(s, 0.5, 4.8, 3.75, 0.3, ["Contact: " + APPLICANT["contact"]], size=9.5, color=ON_DARK)
+
+box(s, 4.45, 1.28, 5.05, 3.82, fill=WHITE, line=WHITE, radius=0.04)
+text(s, 4.65, 1.4, 4.7, 0.28, ["Support we are seeking"], size=12.5, bold=True, color=NAVY)
+asks = [(True, "Security mentorship", "Review the threat model and hardening plan for sensitive evidence"),
+        (True, "A supervised pilot unit", "Cyber cell or forensic lab; synthetic data first. No partner yet"),
+        (True, "Testing, certification and IP guidance", "Choose a licence; understand evidence-handling expectations"),
+        (True, "Funding for a secure pilot build", "Login, audit log, encrypted storage and backups"),
+        (False, "Incubation and workspace", "Not requested")]
+ay = 1.8
+for ok, head, sub in asks:
+    box(s, 4.68, ay + 0.03, 0.22, 0.22, fill=ORANGE if ok else WHITE, line=ORANGE, lw=1.25, radius=0.1)
+    if ok:
+        text(s, 4.68, ay + 0.03, 0.22, 0.22, ["✓"], size=9, bold=True, color=WHITE, align=PP_ALIGN.CENTER,
+             anchor=MSO_ANCHOR.MIDDLE)
+    text(s, 5.05, ay, 4.3, 0.55, [[(head, {"size": 10.5, "bold": ok, "color": NAVY if ok else MUTED})],
+                                  [(sub, {"size": 9, "color": SLATE if ok else MUTED})]], space_after=1)
+    ay += 0.58
+text(s, 4.65, 4.72, 4.7, 0.36, ["Thank you  |  " + APPLICANT["name"]], size=10.5, bold=True, color=NAVY)
+notes(s, "Individual application, team size 1; name as shown on the portal. No other team member, mentor, partner or funder "
+         "is named. Support ticks are the applicant's request; incubation is not requested.")
 
 prs.save(OUT)
 print("saved", OUT, "slides:", len(prs.slides))
