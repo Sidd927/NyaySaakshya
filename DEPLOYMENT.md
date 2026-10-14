@@ -492,7 +492,7 @@ Supported by the repository:
 | # | Question | Technically accurate | 20-second answer |
 |---|---|---|---|
 | 1 | Where would it run? | Today on one workstation; a pilot would run on a hardened server or forensic workstation inside the investigating unit behind a TLS proxy. Hosted demo on a free plan is ephemeral | "Inside the unit, on its own machine. The online demo is only a demo." |
-| 2 | Does the capture leave the unit? | No outbound call exists in the code; the proposed multi-unit design keeps raw captures local and shares only administration and aggregate counts | "No. The analysis never sends it anywhere, and the design keeps it local." |
+| 2 | Does the capture leave the unit? | In the **proposed on-premise** deployment, no: the code makes no outbound call and the multi-unit design keeps raw captures local. In the **current hosted demo** (frontend and backend on third-party platforms) an upload does leave the user's machine, so it is for test captures only | "In the on-premise design, no. The online demo is hosted, so it only gets test captures." |
 | 3 | Does analysis need internet? | Not at runtime, by static inspection; installation needs packages; air-gapped operation is not tested | "Not to analyse. Installing needs packages. We haven't claimed an air-gap test." |
 | 4 | GPU? | No dependency uses one | "No GPU. It is TShark and plain Python." |
 | 5 | What happens to uploaded evidence? | Stored once, content-addressed, hashed while written, kept, never deleted by the prototype; no retention or deletion control yet | "Kept unchanged with its hash. Retention and deletion controls are a required pilot step, not built." |
