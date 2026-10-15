@@ -17,7 +17,13 @@ SRC = "src/nyaysaakshya"
 #: The freeze guards below diff HEAD against this tag: protected packages may not change
 #: after it except where a guard explicitly allows. A repository without the tag (a
 #: shallow or tag-less clone) cannot be checked, so the guards skip with a reason.
-FREEZE_BASELINE_TAG = "v1.0.0-nyaysaakshya"
+#:
+#: Re-baselined from `v1.0.0-nyaysaakshya` to `v1.1.0-validation-baseline` (c0f77b9): Phase B
+#: (VALIDATION.md) made reviewed, documented fixes to the protected packages, so the old tag
+#: made the guard fail once those fixes were committed (it passed while they were still
+#: uncommitted, because `git diff <tag> HEAD` ignores the working tree). The protection is
+#: unchanged: any later edit to a protected package still fails unless declared.
+FREEZE_BASELINE_TAG = "v1.1.0-validation-baseline"
 
 
 def _modules(package_dir):
