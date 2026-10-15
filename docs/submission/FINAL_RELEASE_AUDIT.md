@@ -81,7 +81,7 @@ Full list: `USER_INPUT_REQUIRED.md`. In short:
 ## 8. Git and `main`
 
 - Work is on `design/landing-redesign`; commits are normal and pushed without force; no Claude co-author trailer; `v1.1.0-validation-baseline` is untouched (still `c0f77b9`).
-- **Gate for updating `main`:** (a) full suite 1,521 passed, 0 failed on the final branch; (b) `main` (`22bcd7d`) is an ancestor of the branch, so a plain fast-forward is possible; (c) `git diff --name-status main..HEAD` shows 102 added and 84 modified files, **0 deleted or renamed**, from 16 commits: landing-redesign phases 1 to 5, the Phase B validation fixes (`c0f77b9`), deployment and submission documents, research experiments, and the submission deck; (d) a scan of all changed text files for private keys and common token patterns found none; (e) the frontend builds (`npm run build`); (f) the repository is private. The outcome of the fast-forward is recorded in the final report, not in this file.
+- **Gate for updating `main`:** (a) full suite 1,521 passed, 0 failed on the final branch; (b) `main` (`22bcd7d`) is an ancestor of the branch, so a plain fast-forward is possible; (c) `git diff --name-status main..HEAD` shows 102 added and 84 modified files, **0 deleted or renamed**, from 16 commits: landing-redesign phases 1 to 5, the Phase B validation fixes (`c0f77b9`), deployment and submission documents, research experiments, and the submission deck; (d) a scan of all changed text files for private keys and common token patterns found none; (e) the frontend builds (`npm run build`); (f) the repository is private. **Outcome:** `main` was fast-forwarded from `22bcd7d` to `d07463a` (the branch head at that moment) and pushed normally; no force, no history rewrite. Only this audit file and the final report differ after that point.
 - Privacy: the Phase G version of this file (already on the private remote) quoted a third party's email address. It is not repeated in any new file. History is not rewritten. The repository is **private** (checked with the GitHub CLI), which is the least disruptive protection; do not make it public without scrubbing history, or if you do, rewrite history deliberately with her knowledge.
 
 ## 9. Residual limitations that could affect evaluation
@@ -103,5 +103,5 @@ Weak fit to a sub-theme that names "intelligence"; the premise that investigator
 | PPTX and PDF generated and inspected | PASS (LibreOffice; slide 1 also Quick Look; **not PowerPoint**) |
 | Validation suite | PASS: 1,521 passed, 0 failed (stale freeze guard re-baselined) |
 | Git: committed and pushed | See the final report |
-| `main` updated | See the final report |
+| `main` updated | YES: fast-forward `22bcd7d` to `d07463a`, pushed |
 | **Overall** | **READY WITH EXPLICIT APPLICANT INPUTS** |
