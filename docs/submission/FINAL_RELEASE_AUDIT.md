@@ -12,12 +12,13 @@ All safe work is finished and verified. What remains is yours: factual answers a
 
 | File | Size | Note |
 |---|---|---|
-| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026.pptx` | 227,022 bytes (0.23 MB) | **Submission file.** Six slides, official template, built from source by `build_deck.py` |
-| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026_PREVIEW.pdf` | 408,700 bytes (0.39 MB) | LibreOffice render, review only |
+| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026.pptx` | 227,561 bytes (0.23 MB) | **Submission file.** Six slides, official template, built from source by `build_deck.py` |
+| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026_PREVIEW.pdf` | 413,538 bytes (0.39 MB) | LibreOffice render, review only |
 | `submission/seva-innovation-challenge-2026/build_deck.py`, `assets/screen_scored.png`, `assets/screen_withheld.png`, `reference/` (official template, unmodified) | | Reproducible build; screenshots are 2x crops of the real console |
 | `docs/submission/PORTAL_FIELD_BY_FIELD_FINAL.md` | | **Definitive manual-entry guide**, 16 portal fields in order, character counts, fallbacks, selections, caveats |
 | `docs/submission/PORTAL_APPLICATION_ANSWERS.md` | | Same answer text plus reasoning and the declarations table |
 | `docs/submission/PROFILE_FINAL_COPY.md` | | One-liner 113 characters (limit 140) |
+| `docs/submission/FINAL_DECK_RED_TEAM_REVIEW.md`, `FINAL_DECK_CLAIM_AUDIT.md`, `FINAL_DECK_CHANGELOG.md` | | Final deck pass: official applicant guide read, slide 3 architecture strip, concrete failure-and-fix, before/after framing, demo line; the deck-claim audit here supersedes the deck section of `PHASE_H_CLAIM_AUDIT.md` |
 | `docs/submission/PHASE_H_RESEARCH_AND_EVALUATION.md`, `PHASE_H_CLAIM_AUDIT.md`, `PHASE_H_RED_TEAM_REVIEW.md`, `PHASE_H_BASELINE.md` | | Research, 36 deck claims audited, three-reviewer critique, baseline |
 | `docs/submission/FINAL_SUBMISSION_CHECKLIST.md`, `USER_INPUT_REQUIRED.md`, `DEPLOYMENT_GO_NO_GO.md` | | Ordered checklist; applicant-only items; NO-GO re-confirmed |
 

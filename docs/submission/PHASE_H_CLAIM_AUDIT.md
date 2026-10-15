@@ -2,6 +2,8 @@
 
 Audited 15 October 2026 against `f798d8d` plus the Phase H deck. Evidence was re-checked in source and by running the system locally (backend on 127.0.0.1, synthetic captures only, scratch data directory). "Deck" slide numbers refer to `NyaySaakshya_Seva_Innovation_Challenge_2026.pptx`; "App" means a field in `PORTAL_APPLICATION_ANSWERS.md`.
 
+**Deck claims (section B) are superseded by `FINAL_DECK_CLAIM_AUDIT.md`** (final deck of 15 Oct, after the last pass). Sections A, C and D remain current.
+
 Status: **V** verified, **P** partially verified (qualified wording used), **U** unsupported (removed or labelled as proposal).
 
 ## A. Product capabilities (re-checked)
