@@ -238,14 +238,17 @@ for a, b, c in rows:
 box(s, 6.8, 1.26, 2.7, 3.38, fill=NAVY, line=NAVY, radius=0.04)
 text(s, 6.98, 1.4, 2.35, 3.15, [
     [("Why it matters", {"size": 11.5, "bold": True, "color": ORANGE})],
-    [("A conclusion the evidence cannot support is a weak foundation for any cyber-fraud case built on it.", {"size": 10, "color": WHITE})],
+    [("A conclusion the evidence cannot support is a weak foundation for a case.", {"size": 10, "color": WHITE})],
     [("Who is affected", {"size": 11.5, "bold": True, "color": ORANGE})],
-    [("Cyber-cell and forensic investigators, and the supervisors who must defend a finding. Proposed first "
-      "users: a Maharashtra cyber cell or forensic lab. No partner has agreed yet.", {"size": 10, "color": WHITE})],
+    [("Cyber-cell and forensic investigators and their supervisors. Proposed first users: a Maharashtra "
+      "cyber cell or forensic lab; no partner has agreed.", {"size": 10, "color": WHITE})],
     [("The gap today", {"size": 11.5, "bold": True, "color": ORANGE})],
     [("Packet tools show packets. Deciding what is safe to conclude is manual and hard to repeat.",
       {"size": 10, "color": WHITE})],
-], space_after=4)
+    [("Not yet known", {"size": 11.5, "bold": True, "color": ORANGE})],
+    [("How often investigators meet such captures. None consulted yet.",
+      {"size": 10, "color": WHITE})],
+], space_after=3)
 box(s, 0.5, 4.74, 9.0, 0.5, fill="E8ECF6", line=None, radius=0.1)
 text(s, 0.68, 4.74, 8.65, 0.5,
      [[("Context only: ", {"bold": True}),
@@ -263,37 +266,40 @@ notes(s, "Sources. Failure modes: RFC 3207 (SMTP STARTTLS, Feb 2002) notes that 
 s = slides[2]
 keep_only(s, {"Shape 0", "Text 1", "Text 2", "Text 3", "Text 4"})
 set_header(s, "Every fact is labelled by how strongly the capture supports it. If it cannot support a score, none is given.")
-steps = [("Capture", "Saved PCAP or PCAPNG; SHA-256 recorded"), ("Analysis", "TShark parses; sessions rebuilt"),
-         ("Evidence", "Every fact gets a state"), ("Finding", "Rule, standard and frame cited"),
-         ("Posture", "A score, or none"), ("Report", "JSON, HTML and PDF")]
+steps = [("Capture", "Web upload of a PCAP or PCAPNG; SHA-256 recorded"),
+         ("TShark parse", "Read-only. No live capture, no decryption"),
+         ("Sessions", "Sessions rebuilt; every fact gets an evidence state"),
+         ("Rules", "19 versioned rules cited to RFC or NIST. No AI in verdicts"),
+         ("Posture", "A score, or Not scored when evidence is thin"),
+         ("Reports", "JSON, HTML, PDF with packet citations")]
 sx, sw, gap = 0.5, 1.37, 0.156
 for i, (lab, desc) in enumerate(steps):
     x = sx + i * (sw + gap)
-    box(s, x, 1.26, sw, 0.72, fill=WHITE, line=LINE)
-    text(s, x + 0.08, 1.3, sw - 0.16, 0.25, [lab], size=11, bold=True, color=NAVY)
-    text(s, x + 0.08, 1.54, sw - 0.16, 0.42, [desc], size=8.5, color=SLATE)
+    box(s, x, 1.26, sw, 0.84, fill=WHITE, line=LINE)
+    text(s, x + 0.08, 1.3, sw - 0.16, 0.22, [lab], size=11, bold=True, color=NAVY)
+    text(s, x + 0.08, 1.54, sw - 0.16, 0.55, [desc], size=8.5, color=SLATE)
     if i < 5:
-        text(s, x + sw, 1.46, gap, 0.3, ["›"], size=14, bold=True, color=ORANGE, align=PP_ALIGN.CENTER)
+        text(s, x + sw, 1.5, gap, 0.3, ["›"], size=14, bold=True, color=ORANGE, align=PP_ALIGN.CENTER)
 
-text(s, 0.5, 2.08, 4.3, 0.26, ["Six evidence states"], size=12, bold=True, color=NAVY)
+text(s, 0.5, 2.2, 4.3, 0.26, ["Six evidence states"], size=12, bold=True, color=NAVY)
 states = [("OBSERVED", "Seen directly in the captured bytes", True), ("INFERRED", "Deduced; the basis is stated", True),
           ("UNKNOWN", "Too little evidence to decide", False), ("AMBIGUOUS", "More than one reading fits", False),
           ("INCOMPLETE", "Capture is cut off at that point", False), ("NOT OBSERVABLE", "Cannot be seen passively", False)]
 for i, (nm, mean, ok) in enumerate(states):
     col, row = i % 2, i // 2
-    x, y = 0.5 + col * 2.2, 2.4 + row * 0.6
+    x, y = 0.5 + col * 2.2, 2.5 + row * 0.6
     box(s, x, y, 2.1, 0.52, fill=NAVY if ok else WHITE, line=NAVY if ok else ORANGE, lw=1.25, radius=0.08)
     text(s, x + 0.1, y + 0.04, 1.95, 0.2, [nm], size=9.5, bold=True, color=WHITE if ok else WARN)
     text(s, x + 0.1, y + 0.25, 1.95, 0.28, [mean], size=8.5, color=ON_DARK if ok else SLATE)
-text(s, 0.5, 4.2, 4.3, 0.2, [[("Navy", {"bold": True, "color": NAVY}), (": can support a conclusion.  ", {}),
+text(s, 0.5, 4.27, 4.3, 0.2, [[("Navy", {"bold": True, "color": NAVY}), (": can support a conclusion.  ", {}),
                               ("Orange", {"bold": True, "color": WARN}), (": cannot.", {})]], size=9, color=SLATE)
 
-text(s, 5.15, 2.08, 4.35, 0.26, ["One finding, traced to its packets"], size=12, bold=True, color=NAVY)
+text(s, 5.15, 2.2, 4.35, 0.26, ["One finding, traced to its packets"], size=12, bold=True, color=NAVY)
 chain = [("Source", "Capture SHA-256 97b2b61a…; stream #0, 10.0.0.6 to 10.0.0.80:587"),
          ("Evidence", "Frame #7: authentication activity = True (OBSERVED); TLS transition = False (OBSERVED)"),
          ("Rule", "SEC-PLAIN-001, citing NIST SP 800-52 Rev. 2 section 3.1"),
          ("Finding", "Authentication activity without TLS protection: CONFIRMED")]
-cy = 2.4
+cy = 2.5
 for i, (lab, body) in enumerate(chain):
     h = 0.5 if i == 1 else 0.4
     box(s, 5.15, cy, 4.35, h, fill=WHITE, line=LINE, radius=0.08)
@@ -302,20 +308,23 @@ for i, (lab, body) in enumerate(chain):
     cy += h + 0.06
 text(s, 5.15, cy, 4.35, 0.2, ["From a real run on a synthetic lab capture."], size=8.5, italic=True, color=MUTED)
 
-box(s, 0.5, 4.6, 5.0, 0.6, fill=NAVY, line=NAVY, radius=0.1)
-text(s, 0.65, 4.6, 4.75, 0.6,
+box(s, 0.5, 4.64, 5.0, 0.58, fill=NAVY, line=NAVY, radius=0.1)
+text(s, 0.65, 4.64, 4.75, 0.58,
      [[("Withholding a score is deliberate. ", {"bold": True, "color": ORANGE}),
        ("If no session can be assessed, or fewer than half yield a conclusion, the result is Not scored, with the "
         "reason. Blindness is never reported as safety.", {})]],
      size=9, color=WHITE, anchor=MSO_ANCHOR.MIDDLE)
-box(s, 5.62, 4.6, 3.88, 0.6, fill=WHITE, line=LINE, radius=0.1)
-text(s, 5.75, 4.6, 3.65, 0.6,
+box(s, 5.62, 4.64, 3.88, 0.58, fill=WHITE, line=LINE, radius=0.1)
+text(s, 5.75, 4.64, 3.65, 0.58,
      [[("How it differs: ", {"bold": True, "color": NAVY}),
        ("Wireshark, Zeek and NetworkMiner expose packets and fields. Their documentation, as we read it, has no "
         "per-fact evidence states. A design strength, not a claim of uniqueness.", {})]],
      size=8.5, color=SLATE, anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "Sources. Evidence states and abstention are properties of the prototype, shown here from a real local run on a "
-         "synthetic capture. NIST SP 800-52 Rev. 2 (Guidelines for the Selection, Configuration, and Use of TLS "
+notes(s, "Sources. Architecture as implemented (backend pipeline module): upload, SHA-256 and validation, read-only TShark dissection, "
+         "session reconstruction with STARTTLS/TLS state, evidence extraction, 16 single-session and 3 cross-session rules, "
+         "posture engine (score or withheld), then JSON/HTML/PDF reports rendered from the stored assessment. An optional "
+         "anomaly lane is off by default and cannot change a finding, band, score or coverage. Evidence states and abstention "
+         "are shown from a real local run on a synthetic capture. NIST SP 800-52 Rev. 2 (Guidelines for the Selection, Configuration, and Use of TLS "
          "Implementations). Comparison basis, documentation read 15 Oct 2026: Wireshark user guide (Expert Information) "
          "and TLS wiki; Zeek SMTP::Info (a tls true/false field); NetworkMiner product page (extracts files, emails and "
          "credentials from PCAPs; not designed to decrypt). No benchmark was run against these tools and no speed or "
@@ -352,7 +361,7 @@ cards = [
         "1,521 automated tests",
         "98 controlled lab captures: 10 from Postfix and Dovecot software in a lab, 6 OpenSSL handshakes, 82 crafted in-project",
         "Same capture and software give the same result (98 of 98)",
-        "Validation found and fixed cases where the engine over-read evidence"],
+        "Failure found and fixed: on 44 cut-off streams the engine said \"no TLS\" 41 times; now once (an arguable case)"],
      "Lab validation only: no real-world traffic and no accuracy benchmark."),
     (3.55, 2.95, "Not built yet", [
         "Login and roles",
@@ -366,8 +375,8 @@ cards = [
         [("0 to 3 months: ", {"bold": True}), ("close the gaps; write a threat model", {})],
         [("3 to 6 months: ", {"bold": True}), ("technical pilot on synthetic or consented captures", {})],
         [("6 to 12 months: ", {"bold": True}), ("supervised single-unit pilot, only if a department agrees", {})]],
-     "Depends on security mentorship, a willing unit and that unit's legal approval for real captures. "
-     "Costs not yet estimated."),
+     "Depends on security mentorship, a willing unit and its legal approval for real captures. "
+     "Cost not priced; a technical pilot needs no cloud service or GPU."),
 ]
 for x, w, head, items, foot in cards:
     box(s, x, 2.6, w, 2.55, fill=WHITE, line=LINE)
@@ -392,7 +401,7 @@ cols = [
         "Fewer conclusions that the evidence cannot bear",
         "Fits SDG 16, target 16.a: strengthening institutions that combat crime"], None),
     (3.55, "Adoption path (proposed)", None,
-     [("1", "Hardened local build"), ("2", "One supervised unit"), ("3", "Measured results, then decide on more units")]),
+     [("1", "Hardened local build"), ("2", "One supervised unit: a cyber cell or forensic lab"), ("3", "Measured results, then decide on more units")]),
     (6.6, "How success would be measured", [
         "Time to a first assessment",
         "Time to a finished report",
@@ -409,16 +418,16 @@ for x, head, bullets, flow in cols:
     if flow:
         fy = 1.85
         for num, lab in flow:
-            box(s, x + 0.14, fy, 2.62, 0.42, fill="EEF1F8", line=None, radius=0.15)
-            box(s, x + 0.2, fy + 0.07, 0.28, 0.28, fill=ORANGE, line=None, shape=MSO_SHAPE.OVAL)
-            text(s, x + 0.2, fy + 0.07, 0.28, 0.28, [num], size=9.5, bold=True, color=WHITE, align=PP_ALIGN.CENTER,
+            box(s, x + 0.14, fy, 2.62, 0.4, fill="EEF1F8", line=None, radius=0.15)
+            box(s, x + 0.2, fy + 0.06, 0.28, 0.28, fill=ORANGE, line=None, shape=MSO_SHAPE.OVAL)
+            text(s, x + 0.2, fy + 0.06, 0.28, 0.28, [num], size=9.5, bold=True, color=WHITE, align=PP_ALIGN.CENTER,
                  anchor=MSO_ANCHOR.MIDDLE)
-            text(s, x + 0.56, fy, 2.15, 0.42, [lab], size=9.5, color=SLATE, anchor=MSO_ANCHOR.MIDDLE)
-            fy += 0.5
-        text(s, x + 0.14, fy + 0.02, 2.62, 0.5,
-             ["Each unit would run it locally, so captures stay in its own environment. A design intention, not built or validated."],
+            text(s, x + 0.56, fy, 2.15, 0.4, [lab], size=9, color=SLATE, anchor=MSO_ANCHOR.MIDDLE)
+            fy += 0.46
+        text(s, x + 0.14, fy + 0.02, 2.62, 0.62,
+             ["Likely owner: Home Department (police cyber cells); no office approached yet. Each unit would run it locally: a design intention, not built or validated."],
              size=8.5, italic=True, color=MUTED)
-text(s, 6.74, 3.35, 2.62, 0.4, ["Baselines come from the pilot. No targets are claimed yet."], size=8.5, italic=True, color=MUTED)
+text(s, 6.74, 3.08, 2.62, 0.8, ["Before: current practice, measured in the pilot. After: with NyaySaakshya. No targets claimed. The existing cost it targets is analyst time, to be measured."], size=8.5, italic=True, color=MUTED)
 
 box(s, 0.5, 4.05, 5.0, 1.05, fill=NAVY, line=NAVY, radius=0.06)
 text(s, 0.68, 4.15, 4.65, 0.9, [
@@ -451,8 +460,9 @@ text(s, 1.65, 1.46, 2.5, 0.9, [
     [(APPLICANT["name"], {"size": 13.5, "bold": True, "color": WHITE})],
     [("Applicant and team lead", {"size": 10, "color": ORANGE})],
     [(APPLICANT["qualification"] or "Individual application (team size 1)", {"size": 9.5, "color": ON_DARK})],
+    [("No other team member, mentor, partner or funder is named.", {"size": 9, "color": ON_DARK_DIM})],
 ], space_after=3)
-box(s, 0.5, 2.68, 3.75, 2.0 if not APPLICANT["mentor"] else 1.7, fill=CARD_DARK, line=CARD_DARK, radius=0.05)
+box(s, 0.5, 2.68, 3.75, 2.2 if not APPLICANT["mentor"] else 1.9, fill=CARD_DARK, line=CARD_DARK, radius=0.05)
 text(s, 0.68, 2.78, 3.4, 1.85, [
     [("Next milestone (proposed, about 3 months)", {"size": 10.5, "bold": True, "color": ORANGE})],
     [("A hardened local pilot-candidate build: login and roles, audit log, encrypted storage, backups and a written "
@@ -460,8 +470,10 @@ text(s, 0.68, 2.78, 3.4, 1.85, [
     [("Why this help", {"size": 10.5, "bold": True, "color": ORANGE})],
     [("The core analysis is built. What blocks a pilot is security engineering and access to a supervised unit.",
       {"size": 10, "color": WHITE})],
-    [("Individual application: no other team member, mentor, partner or funder is named.",
-      {"size": 9, "color": ON_DARK_DIM})],
+    [("Demonstrable now", {"size": 10.5, "bold": True, "color": ORANGE})],
+    [("A local demo on synthetic captures: a supported finding, a withheld score and a report export.",
+      {"size": 10, "color": WHITE})],
+
 ], space_after=5)
 if APPLICANT["mentor"]:
     text(s, 0.5, 4.45, 3.75, 0.3, ["Mentor: " + APPLICANT["mentor"]], size=9.5, color=ON_DARK)
