@@ -350,10 +350,10 @@ cards = [
     (0.5, 2.95, "Built and tested (internal)", [
         "Python and TShark analysis, React console, FastAPI service, SQLite",
         "1,521 automated tests",
-        "98 controlled captures: 10 real Postfix and Dovecot, 6 OpenSSL handshakes, 82 crafted in-project",
+        "98 controlled lab captures: 10 from Postfix and Dovecot software in a lab, 6 OpenSSL handshakes, 82 crafted in-project",
         "Same capture and software give the same result (98 of 98)",
         "Validation found and fixed cases where the engine over-read evidence"],
-     "Lab validation only: no real-world accuracy benchmark."),
+     "Lab validation only: no real-world traffic and no accuracy benchmark."),
     (3.55, 2.95, "Not built yet", [
         "Login and roles",
         "Audit log",
@@ -375,8 +375,8 @@ for x, w, head, items, foot in cards:
     paras = [(it, {"bullet": True, "space_after": 2}) for it in items]
     text(s, x + 0.14, 3.0, w - 0.28, 1.4, paras, size=9, color=SLATE)
     text(s, x + 0.14, 4.55, w - 0.28, 0.55, [foot], size=8.5, italic=True, color=WARN, anchor=MSO_ANCHOR.BOTTOM)
-notes(s, "Basis. Internal validation record: 98 controlled captures (10 real Postfix and Dovecot sessions, 6 OpenSSL "
-         "handshakes, 82 crafted by in-project generators); 1,521 automated tests; identical results on repeat runs for 98 "
+notes(s, "Basis. Internal validation record: 98 controlled captures (10 sessions from real Postfix and Dovecot software run in a lab, 6 OpenSSL "
+         "handshakes, 82 crafted by in-project generators; no real-world traffic); 1,521 automated tests; identical results on repeat runs for 98 "
          "of 98 captures. No real-world or third-party traffic has been evaluated and no false-positive or false-negative "
          "rates are claimed. The security gaps listed are the known blockers for any pilot. Timeline items are proposals, "
          "not commitments. No hosting or implementation cost is stated because none has been verified.")
