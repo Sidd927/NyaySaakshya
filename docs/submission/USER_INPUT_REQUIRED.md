@@ -1,12 +1,14 @@
 # Applicant input required
 
+The definitive field-by-field entry guide is `PORTAL_FIELD_BY_FIELD_FINAL.md`. Applicant-provided statements (not independently verified): you agree with the compliance consent; you are not related to, employed by or professionally linked with the organisers or jury (portal answer: No); you submit as an individual; Dishita is a friend who helped with some frontend work and is not a team member.
+
 Updated 15 October 2026 (Phase H). Only things that **you** must supply, decide or declare. Everything else is finished. The final deck (`submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026.pptx`) has **no placeholders**: details only you can confirm are left out, not guessed.
 
 ## A. Personal facts to supply (before you submit)
 
 | # | What | Why it matters |
 |---|---|---|
-| 1 | **IP and contributor facts.** Dishita (a friend who helped with some frontend work) is not a team member and is not added as one. Answer, in your own words: did she agree her frontend contributions can be included in this project and submitted by you (written is best)? Did she assign or license them to you, or keep rights? Should she be acknowledged? Does any employer, college or funder have a claim? Is `Sidd_927` your other GitHub account? | The IP declaration and due diligence (6 to 10 Nov) ask about ownership. The repository's older history shows a 29 Sep 2026 frontend commit by `Dishita0526` (48 files) and the current frontend is close to it. The deck makes no claim of sole authorship |
+| 1 | **IP and contributor facts.** Dishita (a friend who helped with some frontend work) is not a team member and is not added as one. Answer, in your own words: did she agree her frontend contributions can be included in this project and submitted by you (written is best)? Did she assign or license them to you, or keep rights? Should she be acknowledged? Does any employer, college or funder have a claim? Is `Sidd_927` your other GitHub account? | The IP declaration and due diligence (6 to 10 Nov) ask about ownership. The repository's older history shows a 29 Sep 2026 frontend commit by Dishita's GitHub account (48 files) and the current frontend is close to it. The deck makes no claim of sole authorship |
 | 2 | **Domicile:** do you hold a certificate of Maharashtra, Chhattisgarh, Dadra and Nagar Haveli and Daman and Diu, or Goa? Have the file ready. | Required for the individual applicant (official guidelines) |
 | 3 | **Name spelling:** your name (from Aadhaar) and the stored team name (`NYAYSAakshya` / `NYAYSAKSHYA` as transcribed) | The deck says "Siddhant Hiralal Patil" and "NyaySaakshya". If the portal differs, edit `APPLICANT["name"]` in `build_deck.py` or fix it in PowerPoint |
 
@@ -18,6 +20,7 @@ Consent to verification and due diligence; conflict of interest; domicile; IP st
 
 | # | Decision | Recommendation |
 |---|---|---|
+| 0 | Tested/piloted dropdown | "Testing in progress" (internal testing, no external pilot); field 10 must say there is no external pilot |
 | 1 | Stage option | "Working prototype (TRL 5-6)" if comfortable saying "lab-validated, no external pilot"; "Concept validated (TRL 3-4)" is the conservative alternative |
 | 2 | Estimated number affected | "No verified estimate" (text); if number-only, ask the helpdesk, else `1` with explanation. Never 17.82 lakh |
 | 3 | Beneficiaries | Government officials; Citizens only as an indirect, optional tick |
@@ -47,6 +50,6 @@ Consent to verification and due diligence; conflict of interest; domicile; IP st
 
 Ask in one email: exact stored team-name spelling and whether it can be corrected; what "estimated number affected" accepts when no verified estimate exists; whether the "Law and Order / Cyber-Fraud, Digital Extortion and Financial-Crime Intelligence" sub-theme suits an evidence-handling tool; whether a separate identity or domicile upload is needed; whether team composition can change; whether the applicant manual can be shared.
 
-## G. Repository facts you may want to fix (not required for submission)
+## G. Repository facts (resolved)
 
-`README.md` and `VALIDATION.md` say "1521 passed, 0 failed". A clean run on the committed baseline gives 1,520 passed and 1 failed (a code-freeze guard that diffs against the old tag `v1.0.0-nyaysaakshya`). Re-pointing that guard's baseline tag to `v1.1.0-validation-baseline` (a one-line change) fixes it: on a scratch copy in `/tmp`, all 22 architecture tests passed. A declared allow-list would also work. I did not change tests; say the word if you want it done and `main` updated afterwards.
+`README.md` and `VALIDATION.md` said "1521 passed, 0 failed". That was not reproducible from the committed baseline because a code-freeze guard referenced the old tag `v1.0.0-nyaysaakshya`. In the final execution pass the guard was re-baselined to `v1.1.0-validation-baseline`, and the full suite now passes (1,521 passed, 0 failed). Nothing for you to do.

@@ -123,7 +123,7 @@ Fairness note: general-purpose packet tools are not designed to be assessment to
 | Below-18 or below-21 category | Official home page: "Below-18 Category"; FPJ: "below 21" | Not relevant to this applicant |
 | Evaluation criteria | Official national (South Zone) lists vs press list for Maharashtra | Neither is an official Maharashtra rubric; kept as hypotheses |
 | Sub-theme data | Page `SECTORS` array misaligned vs `SECTOR_DETAILS` | `SECTOR_DETAILS` matches the applicant's portal text |
-| Test pass count | `VALIDATION.md` says 1,521 passed; a clean run gives 1,520 passed, 1 failed (freeze guard) | See `PHASE_H_BASELINE.md` and `PHASE_H_CLAIM_AUDIT.md` |
+| Test pass count | `VALIDATION.md` says 1,521 passed; a clean run gives 1,520 passed, 1 failed (freeze guard) | Resolved in the final pass: guard re-baselined, 1,521 passed; see `FINAL_RELEASE_AUDIT.md` |
 | Durumeric et al. | 2015 study | Used only for the general point; stale for current deployment rates |
 | PIB statistic | Period not stated | Qualified on the slide |
 

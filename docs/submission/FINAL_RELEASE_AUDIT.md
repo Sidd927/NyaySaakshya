@@ -6,16 +6,17 @@ Phase H gate, 15 October 2026, on branch `design/landing-redesign` (starting com
 
 **READY WITH EXPLICIT APPLICANT INPUTS.**
 
-All safe work is finished and verified. What remains is yours: factual answers about the IP/contributor position, the personal declarations, a PowerPoint check of the deck, and a few choices. None of these is a release defect. One repository item (a failing code-freeze test) is disclosed in section 5 and does not affect the submission.
+All safe work is finished and verified. What remains is yours: factual answers about the IP/contributor position, the personal declarations, a PowerPoint check of the deck, and a few choices. None of these is a release defect. The earlier failing code-freeze test is fixed (section 5).
 
 ## 1. Deliverables
 
 | File | Size | Note |
 |---|---|---|
-| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026.pptx` | 226,978 bytes (0.22 MB) | **Submission file.** Six slides, official template, built from source by `build_deck.py` |
-| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026_PREVIEW.pdf` | 408,019 bytes (0.39 MB) | LibreOffice render, review only |
+| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026.pptx` | 227,022 bytes (0.23 MB) | **Submission file.** Six slides, official template, built from source by `build_deck.py` |
+| `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_Challenge_2026_PREVIEW.pdf` | 408,700 bytes (0.39 MB) | LibreOffice render, review only |
 | `submission/seva-innovation-challenge-2026/build_deck.py`, `assets/screen_scored.png`, `assets/screen_withheld.png`, `reference/` (official template, unmodified) | | Reproducible build; screenshots are 2x crops of the real console |
-| `docs/submission/PORTAL_APPLICATION_ANSWERS.md` | | Final, with character counts, short versions, checkbox choices, evidence, warnings |
+| `docs/submission/PORTAL_FIELD_BY_FIELD_FINAL.md` | | **Definitive manual-entry guide**, 16 portal fields in order, character counts, fallbacks, selections, caveats |
+| `docs/submission/PORTAL_APPLICATION_ANSWERS.md` | | Same answer text plus reasoning and the declarations table |
 | `docs/submission/PROFILE_FINAL_COPY.md` | | One-liner 113 characters (limit 140) |
 | `docs/submission/PHASE_H_RESEARCH_AND_EVALUATION.md`, `PHASE_H_CLAIM_AUDIT.md`, `PHASE_H_RED_TEAM_REVIEW.md`, `PHASE_H_BASELINE.md` | | Research, 36 deck claims audited, three-reviewer critique, baseline |
 | `docs/submission/FINAL_SUBMISSION_CHECKLIST.md`, `USER_INPUT_REQUIRED.md`, `DEPLOYMENT_GO_NO_GO.md` | | Ordered checklist; applicant-only items; NO-GO re-confirmed |
@@ -27,7 +28,7 @@ Both files are far below the 15 MB limit reported for the portal.
 - **Six slides**, in the official order, confirmed with `python-pptx` and the 6-page PDF; 16:9, 10 x 5.625 in.
 - **No placeholders, DRAFT marks, template guidance, repo file names or internal notes**: a text scan of every shape and speaker note found 0 hits. Speaker notes now cite public sources only.
 - **Text size:** body 9 to 12.5 pt, captions 8.5 pt, the template's footer 8 pt, headings 13.5 to 28 pt.
-- **Rendering:** all six slides were rendered to PNG at 130 dpi in LibreOffice and viewed, in the default fallback font and in a wider-font stress render (Arial in place of Nirmala UI). Layout problems found (overlapping caption on slide 3, a wrapped ask on slide 6, tight boxes on slides 4 and 5, the kicker overlapped by the panel on slide 1) were fixed and re-rendered. A second renderer, macOS Quick Look, rendered slide 1 only. Keynote could not be driven by script, so there is no Keynote check.
+- **Rendering:** all six slides were rendered to PNG at 130 dpi in LibreOffice and viewed, in the default fallback font and in a wider-font stress render (Arial in place of Nirmala UI). Final-pass change: slide 4 now says "98 controlled lab captures: 10 from Postfix and Dovecot software in a lab" and "no real-world traffic", so "real" cannot be read as real-world data. Layout problems found (overlapping caption on slide 3, a wrapped ask on slide 6, tight boxes on slides 4 and 5, the kicker overlapped by the panel on slide 1) were fixed and re-rendered. A second renderer, macOS Quick Look, rendered slide 1 only. Keynote could not be driven by script, so there is no Keynote check.
 - **Not done:** the deck was **never opened in Microsoft PowerPoint**. Nirmala UI is not installed on the build Mac. A PowerPoint check by you is required (checklist step 2).
 - **Design:** official template header, footer, colours and font kept. Each slide has one message line, one visual structure, real product evidence (two enlarged real screen crops, a worked provenance example in native text), and limitations in labelled boxes.
 
@@ -54,11 +55,13 @@ Both files are far below the 15 MB limit reported for the portal.
 | Estimated number affected | None in the deck; "no verified estimate" in the answers |
 | `build_deck.py`, deck notes, audit | Reference the same files |
 
-## 5. Validation suite
+## 5. Validation suite and the code-freeze guard
 
-`PYTHONPATH=src python3 -m pytest -q` on the committed baseline: **1,520 passed, 1 failed** (95 s). The failing test is `tests/test_backend_architecture.py::test_phase_seven_source_changes_only_where_declared`, a code-freeze guard that diffs `HEAD` against the old tag `v1.0.0-nyaysaakshya`. It passed in Phase B.4 only because the validated fixes were still uncommitted; once committed (`c0f77b9`) it fails. Every behaviour, semantic-contract, reproducibility and ML-isolation test passes. I did not suppress or weaken any test and did not edit the file. On a scratch copy in `/tmp`, re-pointing the guard's baseline tag to `v1.1.0-validation-baseline` made all 22 architecture tests pass. `README.md` and `VALIDATION.md` still say "1521 passed, 0 failed", which is not true for the committed baseline; flagged, not edited.
-
-Local demo re-run: flagship capture CRITICAL 22.15 (`afa30ff290742813`), cut-handshake capture INSUFFICIENT_EVIDENCE (`870e1edcae99f7da`), identical IDs to 14 Oct; JSON, HTML and PDF reports exported for both.
+- **The guard:** `tests/test_backend_architecture.py` diffs `HEAD` against `FREEZE_BASELINE_TAG`; protected packages (`posture/`, `analysis/`, `crosssession/`, `ml/`, `session/`, `evidence/`, `dissect/`, `ingest/`) may not change after that tag except where a guard declares it. It pointed at `v1.0.0-nyaysaakshya` (3 Oct 2026, the original import).
+- **Why it failed:** Phase B (`VALIDATION.md`) made reviewed fixes to 16 protected files, committed as `c0f77b9` (`v1.1.0-validation-baseline`). During Phase B.4 those fixes were uncommitted, and `git diff <tag> HEAD` ignores the working tree, so the guard passed and the suite was reported as 1,521 passed. Once committed, the guard correctly saw them and failed. Between `690d271` and `c0f77b9` the protected packages changed; between `c0f77b9` and the final branch they did not (0 changed files in `src` and `tests`).
+- **Is the reference stale, and does the fix keep the protection?** Yes, stale: the validated baseline is the later tag. The fix changes one constant and adds a comment; the protected-package list and every assertion are unchanged. A probe edit to `posture/scoring.py` committed in a scratch worktree made `test_phase_seven_source_changes_only_where_declared` fail again, so the guard still bites. The probe worktree was removed.
+- **Results on the final branch:** the 22 architecture tests: 22 passed. Full suite `PYTHONPATH=src python3 -m pytest -q`: **1,521 passed, 0 failed, 0 skipped** (95 s). Before the fix: 1,520 passed, 1 failed. No assertion was weakened, no test disabled, no behaviour, scoring or rule changed. `README.md` and `VALIDATION.md` ("1521 passed, 0 failed") are now accurate.
+- Local demo re-run: flagship capture CRITICAL 22.15 (`afa30ff290742813`), cut-handshake capture INSUFFICIENT_EVIDENCE (`870e1edcae99f7da`), identical IDs to 14 Oct; JSON, HTML and PDF reports exported for both.
 
 ## 6. Personal inputs, declarations and decisions (yours)
 
@@ -77,14 +80,13 @@ Full list: `USER_INPUT_REQUIRED.md`. In short:
 
 ## 8. Git and `main`
 
-- Work is on `design/landing-redesign`; commits are normal and pushed without force; no Claude co-author trailer; the validation tag is untouched.
-- **`main` was not updated.** `main` (`22bcd7d`) is an ancestor of the branch, so a fast-forward is technically possible, and a scan of the 183 changed files found no secrets or private keys. I stopped at the gate because: (a) the full test suite is not green on the branch (the freeze guard above), so a fast-forward would give `main` a failing test; (b) the diff is +65,436 / -1,200 lines across validation fixes, research experiments, the landing redesign and submission files, far wider than finalisation, and making `main` carry all of it is your decision; (c) fixing the guard means editing a test, which I will not do without your approval.
-- Option: approve a one-line commit re-pointing the guard's baseline tag to `v1.1.0-validation-baseline`, re-run the suite, and then fast-forward `main`.
-- Privacy note: the Phase G version of this file (commit `f798d8d`, already pushed to the private remote) quoted a third party's email address. It is removed here; the remote history keeps it unless rewritten, which I will not do without force-pushing.
+- Work is on `design/landing-redesign`; commits are normal and pushed without force; no Claude co-author trailer; `v1.1.0-validation-baseline` is untouched (still `c0f77b9`).
+- **Gate for updating `main`:** (a) full suite 1,521 passed, 0 failed on the final branch; (b) `main` (`22bcd7d`) is an ancestor of the branch, so a plain fast-forward is possible; (c) `git diff --name-status main..HEAD` shows 102 added and 84 modified files, **0 deleted or renamed**, from 16 commits: landing-redesign phases 1 to 5, the Phase B validation fixes (`c0f77b9`), deployment and submission documents, research experiments, and the submission deck; (d) a scan of all changed text files for private keys and common token patterns found none; (e) the frontend builds (`npm run build`); (f) the repository is private. The outcome of the fast-forward is recorded in the final report, not in this file.
+- Privacy: the Phase G version of this file (already on the private remote) quoted a third party's email address. It is not repeated in any new file. History is not rewritten. The repository is **private** (checked with the GitHub CLI), which is the least disruptive protection; do not make it public without scrubbing history, or if you do, rewrite history deliberately with her knowledge.
 
 ## 9. Residual limitations that could affect evaluation
 
-Weak fit to a sub-theme that names "intelligence"; the premise that investigators face these captures is a hypothesis and no investigator was consulted; validation is internal and mostly in-project synthetic (82 of 98); no real-world accuracy, no pilot, no partner; no estimated number affected; a solo applicant with no stated qualification; no live link and a private repository; the prototype lacks authentication, audit, encryption and backups; one freeze-guard test fails; inconsistent version labels in the UI and reports; Marathi report unreviewed; rendering not checked in PowerPoint.
+Weak fit to a sub-theme that names "intelligence"; the premise that investigators face these captures is a hypothesis and no investigator was consulted; validation is internal and mostly in-project synthetic (82 of 98); no real-world accuracy, no pilot, no partner; no estimated number affected; a solo applicant with no stated qualification; no live link and a private repository; the prototype lacks authentication, audit, encryption and backups; inconsistent version labels in the UI and reports; Marathi report unreviewed; rendering not checked in PowerPoint.
 
 ## 10. Gate result
 
@@ -99,7 +101,7 @@ Weak fit to a sub-theme that names "intelligence"; the premise that investigator
 | Deployment recommendation explicit | PASS (NO-GO) |
 | Personal declarations and inputs listed | PASS |
 | PPTX and PDF generated and inspected | PASS (LibreOffice; slide 1 also Quick Look; **not PowerPoint**) |
-| Validation suite | PARTIAL: 1,520 of 1,521, one stale freeze guard, diagnosed |
+| Validation suite | PASS: 1,521 passed, 0 failed (stale freeze guard re-baselined) |
 | Git: committed and pushed | See the final report |
-| `main` updated | **NO** (section 8) |
+| `main` updated | See the final report |
 | **Overall** | **READY WITH EXPLICIT APPLICANT INPUTS** |

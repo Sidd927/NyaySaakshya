@@ -13,7 +13,7 @@ Recorded 15 October 2026, 00:53 IST, before any Phase H change.
 | Validation tag | `v1.1.0-validation-baseline` -> `c0f77b9` (unchanged) |
 | `main` | `22bcd7d`, an **ancestor** of the branch: 0 commits on `main` not on the branch, 13 on the branch not on `main` |
 | Diff vs `main` | 183 files, +65,436 / -1,200 (validation fixes and evidence, landing redesign, docs, research experiments, submission files) |
-| Authors on this branch | 19 commits, all Siddhant Patil. Other authors (`Dishita0526`, `Sidd_927`) exist only in the older `pre-rebrand-main` history |
+| Authors on this branch | 19 commits, all Siddhant Patil. Other authors (Dishita's GitHub account, `Sidd_927`) exist only in the older `pre-rebrand-main` history |
 
 ## Artifacts inspected
 
@@ -35,6 +35,8 @@ Recorded 15 October 2026, 00:53 IST, before any Phase H change.
 5. **One-line profile field is limited to 140 characters** (public wizard code). The Phase G one-liner was about 150.
 6. `faq.html` on the organiser's site returns HTTP 404; the FAQ is on the home page.
 7. The `v1.0.0` freeze guard, the stale "Engine Live 0.8.0" label, and report generator "0.9.0" versus engine 0.10.0 are known version-label inconsistencies.
+
+**Resolved in the final execution pass (15 Oct 2026):** the guard's baseline tag was re-pointed to `v1.1.0-validation-baseline` (comment added in the test file), a probe edit in a scratch worktree still failed the guard, and the full suite then passed: 1,521 passed, 0 failed. See `FINAL_RELEASE_AUDIT.md` section 5.
 
 ## Scope for Phase H
 

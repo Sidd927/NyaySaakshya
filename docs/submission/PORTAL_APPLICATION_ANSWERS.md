@@ -1,6 +1,6 @@
 # Portal application answers (final, paste-ready)
 
-Final rebuild 15 October 2026 (Phase H). For **manual entry by the applicant**. Nothing here was entered into the portal, and the logged-in portal was never accessed.
+Final rebuild 15 October 2026 (Phase H, updated in the final execution pass). **The definitive manual-entry guide is `PORTAL_FIELD_BY_FIELD_FINAL.md`**; this file keeps the reasoning, and both use identical answer text. For **manual entry by the applicant**. Nothing here was entered into the portal, and the logged-in portal was never accessed.
 
 **What is and is not known about the form**
 
@@ -138,16 +138,16 @@ Labels: **Verified** (checked in the repo, by running it, or at a public source)
 
 ## 9. Has the solution been tested or piloted?
 
-Select **tested internally, not piloted** (or the nearest option). If the form is Yes/No about testing, answer Yes and write "internal validation only" in field 10. Do not select anything that implies an external pilot.
+The portal options are "No", "Testing in progress", "Yes - One Pilot", "Yes - multiple pilots" and "Currently deployed". **Select "Testing in progress".** It is the truthful fit for internal testing with no external pilot: "No" would deny the 1,521 automated tests and 98 controlled captures, and the three "Yes"/"deployed" options would claim a pilot or deployment that does not exist. Because "Testing in progress" can be read as an external trial, field 10 must say, in its first sentence, that there is no external pilot and no deployment. Internal validation (tests on lab-generated captures run by the author) is not a pilot (a supervised trial with real users and real cases).
 
 - **Evidence:** 1,521 automated tests; 98 controlled captures. Both are internal validation, not an external pilot. **Note:** a clean run on the committed baseline gives 1,520 passed and 1 failed (a code-freeze guard, not a behaviour test); the answers say "automated tests", never "passing". See `PHASE_H_CLAIM_AUDIT.md`.
 - **Confidence:** Verified.
 
 ## 10. Pilot/deployment details
 
-**Recommended answer** (607 characters):
+**Recommended answer** (646 characters):
 
-> No external pilot and no real-world deployment. Internal validation only, on lab-generated or synthetic captures: 1,521 automated tests; 98 controlled captures (10 real Postfix/Dovecot sessions, 6 OpenSSL handshakes, 82 crafted in-project), all giving the same result on repeat; 13,822 cited packets cross-checked against TShark with no mismatches. There is no real-world accuracy benchmark, no government approval and no use on real case data. No partner has agreed. Proposed, not agreed: one supervised pilot in a Maharashtra cyber cell, after login, an audit log, encrypted storage and backups are built.
+> No external pilot and no real-world deployment. Internal validation only, on lab-generated or synthetic captures: 1,521 automated tests; 98 controlled lab captures (10 sessions on real Postfix/Dovecot software, 6 OpenSSL handshakes, 82 crafted in-project; no real-world traffic), all giving the same result on repeat; 13,822 cited packets cross-checked against TShark with no mismatches. There is no real-world accuracy benchmark, no government approval and no use on real case data. No partner has agreed. Proposed, not agreed: one supervised pilot in a Maharashtra cyber cell, after login, an audit log, encrypted storage and backups are built.
 
 **Short version** (182 characters):
 
@@ -186,13 +186,17 @@ Upload `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_C
 
 **Leave blank.** The GitHub repository is private (confirmed with the GitHub CLI 14 Oct), so evaluators could not open it. Do not make it public before the deadline: it contains research data and no licence.
 
-## 15. Consent and conflict-of-interest declaration
+## 15. Compliance consent
 
-**Not answered here. These are yours.** See the declarations table.
+**Applicant-confirmed, but you tick it yourself** after reading the exact statement. The applicant says he agrees with it. Before ticking, make sure every part that applies is true for you: accuracy, eligibility, originality, documents, and the right to submit the code and assets. The IP part has an open factual question (see the IP note).
+
+## 16. Relationship with the organisers or jury
+
+The applicant states "No" (not related to, employed by, or professionally linked with the organisers or jury). Select **No**, on the basis of that applicant statement only; it was not independently verified. You tick it yourself.
 
 ---
 
-## 16. Other fields found in official materials
+## 17. Other fields found in official materials
 
 | Field or document | What to do | Source |
 |---|---|---|
@@ -205,7 +209,7 @@ Upload `submission/seva-innovation-challenge-2026/NyaySaakshya_Seva_Innovation_C
 
 ### IP and contributor note (facts only you can supply)
 
-The repository's older history (`pre-rebrand-main`) shows a 29 Sep 2026 frontend commit by another GitHub account (`Dishita0526`, 48 files) and a first commit by `Sidd_927`. You have explained that Dishita is a friend who helped with some frontend work and is not a member of this team. **She is not added as a team member.** What you still need to answer factually, in your own words:
+The repository's older history (`pre-rebrand-main`) shows a 29 Sep 2026 frontend commit by another GitHub account (Dishita's GitHub account, 48 files) and a first commit by `Sidd_927`. You have explained that Dishita is a friend who helped with some frontend work and is not a member of this team. **She is not added as a team member.** What you still need to answer factually, in your own words:
 
 1. Did she agree that her frontend contributions may be included in this project and submitted by you? In writing is best.
 2. Did she assign or license her contribution to you, or does she retain rights? Is any of her code from another source?

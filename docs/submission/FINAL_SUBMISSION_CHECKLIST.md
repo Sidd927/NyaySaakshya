@@ -4,7 +4,7 @@ Ordered, from now to the saved confirmation. **Deadline: Saturday 17 October 202
 
 I did not log in, edit or submit anything on the portal, and nothing below has been done for you.
 
-Related: `PORTAL_APPLICATION_ANSWERS.md` (paste-ready answers), `USER_INPUT_REQUIRED.md` (what only you can supply), `FINAL_RELEASE_AUDIT.md` (readiness verdict), `PHASE_H_RESEARCH_AND_EVALUATION.md` (official rules and sources).
+Related: **`PORTAL_FIELD_BY_FIELD_FINAL.md` (definitive entry guide, portal order)**, `PORTAL_APPLICATION_ANSWERS.md` (reasoning), `USER_INPUT_REQUIRED.md` (what only you can supply), `FINAL_RELEASE_AUDIT.md` (readiness verdict), `PHASE_H_RESEARCH_AND_EVALUATION.md` (official rules and sources).
 
 ## Official requirements, classified
 
@@ -38,7 +38,7 @@ Format note: the public guidelines say "a single PowerPoint (.pptx)"; the applic
 
 - [ ] Log in yourself. Open the application form. Save as draft often (the FAQ confirms drafts are supported).
 - [ ] For every field, read its **character limit and mandatory flag**. Note any field that differs from `PORTAL_APPLICATION_ANSWERS.md`.
-- [ ] Paste the answers (full or "Short version" to fit), fields 1 to 11, one by one.
+- [ ] Paste the answers (full or short fallback to fit) from `PORTAL_FIELD_BY_FIELD_FINAL.md`, fields 1 to 11, one by one. Tested/piloted (field 9): "Testing in progress".
 - [ ] Beneficiaries: Government officials (Citizens optional, indirect). Technology: Mobile/web platform and Data analytics, **not** AI/ML. Advantages: New process/service model and "Other". Stage: as decided.
 - [ ] Estimated number: follow the decision path in the answers file; ask the helpdesk if the field rejects text.
 - [ ] Upload the **PPTX** (not the preview PDF).
@@ -48,8 +48,10 @@ Format note: the public guidelines say "a single PowerPoint (.pptx)"; the applic
 
 ## Step 4: declarations (you, personally)
 
-- [ ] Consent to verification and due diligence.
-- [ ] Conflict of interest.
+- [ ] Field 15, compliance consent (you agree; tick it yourself after reading the exact wording).
+- [ ] Field 16, relationship with organisers or jury: "No" (your statement).
+- [ ] Consent to verification and due diligence, if shown separately.
+- [ ] Conflict of interest, if shown separately.
 - [ ] Domicile.
 - [ ] IP status (after Step 1).
 - [ ] Regulatory dependencies (suggested facts in the answers file).

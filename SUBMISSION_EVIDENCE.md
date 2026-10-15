@@ -74,7 +74,7 @@ Product surface [verified]: React analyst console (upload, evidence, findings, c
 
 ## 6. Validation evidence  *(slide 4)*
 
-From `VALIDATION.md` (controlled corpus: 98 captures, 1,426 TCP streams; 10 captures are real Postfix/Dovecot traffic, 6 real OpenSSL handshakes, the rest crafted by in-project generators):
+From `VALIDATION.md` (controlled corpus: 98 captures, 1,426 TCP streams; 10 captures are lab sessions run on real Postfix/Dovecot software (not real-world traffic), 6 real OpenSSL handshakes, the rest crafted by in-project generators):
 
 - Extracted facts agree with an independent raw-byte read of the same packets on 1,426/1,426 streams (three of four facts; the fourth differs only on the 3 raw-TLS streams the engine deliberately does not analyse).
 - Score recomputed independently for 98/98 captures; determinism 98/98 over two runs; the ML lane (off by default) leaves findings, band, score, coverage and abstentions identical on all 98.
