@@ -308,17 +308,17 @@ for i, (lab, body) in enumerate(chain):
     cy += h + 0.06
 text(s, 5.15, cy, 4.35, 0.2, ["From a real run on a synthetic lab capture."], size=8.5, italic=True, color=MUTED)
 
-box(s, 0.5, 4.64, 5.0, 0.58, fill=NAVY, line=NAVY, radius=0.1)
-text(s, 0.65, 4.64, 4.75, 0.58,
+box(s, 0.5, 4.62, 5.0, 0.62, fill=NAVY, line=NAVY, radius=0.1)
+text(s, 0.65, 4.62, 4.75, 0.62,
      [[("Withholding a score is deliberate. ", {"bold": True, "color": ORANGE}),
        ("If no session can be assessed, or fewer than half yield a conclusion, the result is Not scored, with the "
         "reason. Blindness is never reported as safety.", {})]],
      size=9, color=WHITE, anchor=MSO_ANCHOR.MIDDLE)
-box(s, 5.62, 4.64, 3.88, 0.58, fill=WHITE, line=LINE, radius=0.1)
-text(s, 5.75, 4.64, 3.65, 0.58,
+box(s, 5.62, 4.62, 3.88, 0.62, fill=WHITE, line=LINE, radius=0.1)
+text(s, 5.75, 4.62, 3.65, 0.62,
      [[("How it differs: ", {"bold": True, "color": NAVY}),
-       ("Wireshark, Zeek and NetworkMiner expose packets and fields. Their documentation, as we read it, has no "
-        "per-fact evidence states. A design strength, not a claim of uniqueness.", {})]],
+       ("Wireshark, Zeek and NetworkMiner expose packets and fields. The documentation we reviewed does not "
+        "describe per-fact evidence states (not proof they lack them). A design strength, not uniqueness.", {})]],
      size=8.5, color=SLATE, anchor=MSO_ANCHOR.MIDDLE)
 notes(s, "Sources. Architecture as implemented (backend pipeline module): upload, SHA-256 and validation, read-only TShark dissection, "
          "session reconstruction with STARTTLS/TLS state, evidence extraction, 16 single-session and 3 cross-session rules, "
@@ -360,7 +360,7 @@ cards = [
         "Python and TShark analysis, React console, FastAPI service, SQLite",
         "1,521 automated tests",
         "98 controlled lab captures: 10 from Postfix and Dovecot software in a lab, 6 OpenSSL handshakes, 82 crafted in-project",
-        "Same capture and software give the same result (98 of 98)",
+        "Repeat runs gave the same result (98 of 98 captures)",
         "Failure found and fixed: on 44 cut-off streams the engine said \"no TLS\" 41 times; now once (an arguable case)"],
      "Lab validation only: no real-world traffic and no accuracy benchmark."),
     (3.55, 2.95, "Not built yet", [
@@ -373,8 +373,8 @@ cards = [
      "Not production-ready. The demo is local, with synthetic captures only."),
     (6.6, 2.9, "Proposed path (not committed)", [
         [("0 to 3 months: ", {"bold": True}), ("close the gaps; write a threat model", {})],
-        [("3 to 6 months: ", {"bold": True}), ("technical pilot on synthetic or consented captures", {})],
-        [("6 to 12 months: ", {"bold": True}), ("supervised single-unit pilot, only if a department agrees", {})]],
+        [("3 to 6 months: ", {"bold": True}), ("technical pilot on synthetic captures", {})],
+        [("6 to 12 months: ", {"bold": True}), ("supervised single-unit pilot, only if a department agrees; real case data only once authorised and prerequisites are met", {})]],
      "Depends on security mentorship, a willing unit and its legal approval for real captures. "
      "Cost not priced; a technical pilot needs no cloud service or GPU."),
 ]
@@ -397,7 +397,7 @@ set_header(s, "Fewer unsupported conclusions in cyber-fraud cases: the expected 
 cols = [
     (0.5, "Public value (expected, not yet measured)", [
         "Investigators and supervisors can see what a capture supports and which packets show it",
-        "Findings can be re-checked: the same capture gives the same result",
+        "Findings can be re-checked: repeat runs gave the same result",
         "Fewer conclusions that the evidence cannot bear",
         "Fits SDG 16, target 16.a: strengthening institutions that combat crime"], None),
     (3.55, "Adoption path (proposed)", None,

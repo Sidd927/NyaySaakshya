@@ -33,3 +33,16 @@ Speaker notes: slide 3's note now describes the implemented pipeline; notes stil
 - All six slides rendered at 130 dpi in LibreOffice, in the default fallback font and in a wider-font stress render (Arial in place of Nirmala UI), and inspected; overflows found in the stress render (slides 2, 3, 6) were fixed and re-rendered. Slides unchanged between renders were compared by pixel equality to the inspected images.
 - Text scan of slides and notes: no placeholders, paths, emails or draft marks. The only "AI" in the deck is "No AI in verdicts".
 - **Not verified:** Microsoft PowerPoint (not available here; Keynote could not be scripted). Nirmala UI is not installed on the build machine, so the applicant must open the PPTX in PowerPoint and check each slide.
+
+## Final audit pass (16 October 2026): alignment with the reviewed answers
+
+Deck wording brought into line with `PORTAL_APPLICATION_ANSWERS_FINAL_REVIEWED.md` and the evidence matrix. No new content.
+
+| Slide | Change | Why |
+|---|---|---|
+| 3 | "How it differs": "The documentation we reviewed does not describe per-fact evidence states (not proof they lack them). A design strength, not uniqueness." Bottom boxes slightly taller | Matches the narrowed field 6 wording; avoids claiming competitors lack a capability |
+| 4 | "Repeat runs gave the same result (98 of 98 captures)" instead of "Same capture and software give the same result" | The assessment ID excludes the TShark version, so only demonstrated repeatability is claimed |
+| 4 | Pilot path: "technical pilot on synthetic captures"; "supervised single-unit pilot, only if a department agrees; real case data only once authorised and prerequisites are met" | Field 10: synthetic first; consent alone is not enough |
+| 5 | "Findings can be re-checked: repeat runs gave the same result" | Same reason |
+
+Checked and unchanged: slides 1, 2 and 6 agree with the answers (identity, sector, sub-theme, "None consulted yet", "no external pilot", no AI claim, 17.82 lakh as secondary context). Rendered at 130 dpi in LibreOffice (default and Arial stress) and inspected; not opened in PowerPoint.
